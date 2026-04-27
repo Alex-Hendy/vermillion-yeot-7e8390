@@ -132,9 +132,9 @@
     <span class="rc-val" id="yearsVal">5 yrs</span>
   </div>
   <div class="rc-row" style="margin-bottom:1.5rem">
-    <label>Policy strength</label>
+    <label>Coverage</label>
     <input type="range" min="1" max="3" step="1" value="2" id="strengthSlider" oninput="update()">
-    <span class="rc-val" id="strengthVal">Moderate</span>
+    <span class="rc-val" id="strengthVal">Partial coverage</span>
   </div>
 
   <div class="rc-cards" id="cards"></div>
@@ -241,7 +241,7 @@ function setScope(s) {
 }
 
 function strengthLabel(v) {
-  return ['Soft (CPI-linked cap)', 'Moderate (hard % cap)', 'Strict (freeze or near-zero)'][v-1];
+  return ['Exemptions allowed', 'Partial coverage', 'Universal'][v-1];
 }
 
 function getPeakExitRate(cap, strength) {
