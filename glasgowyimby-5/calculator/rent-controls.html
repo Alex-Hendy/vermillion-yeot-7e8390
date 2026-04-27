@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rent control supply calculator — Glasgow YIMBY</title>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,700;0,9..144,900;1,9..144,400;1,9..144,700;1,9..144,900&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../style.css">
+<style>
+  .calc-hero { background: var(--black); color: var(--cream); padding: 5rem 2rem 4rem; }
+  .calc-hero-inner { max-width: 760px; margin: 0 auto; }
+  .back-link { color: var(--amber); text-decoration: none; font-size: 0.85rem; font-weight: 600; display: inline-flex; align-items: center; gap: 0.4rem; margin-bottom: 2rem; }
+  .back-link:hover { text-decoration: underline; }
+  .calc-hero-label { display: inline-block; font-size: 0.72rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; padding: 0.3rem 0.75rem; border-radius: 100px; margin-bottom: 1.25rem; border: 1.5px solid rgba(232,160,32,0.4); background: rgba(232,160,32,0.15); color: var(--amber); }
+  .calc-hero-title { font-family: 'Fraunces', serif; font-size: clamp(2rem, 4vw, 3rem); font-weight: 900; line-height: 1.1; letter-spacing: -0.02em; color: var(--cream); margin-bottom: 1.25rem; }
+  .calc-hero-intro { font-size: 1.05rem; color: rgba(245,237,216,0.75); line-height: 1.75; max-width: 640px; }
+  .calc-hero-intro strong { color: var(--amber); font-weight: 600; }
+  .content { max-width: 760px; margin: 0 auto; padding: 3rem 2rem 4rem; }
+  .content p { font-size: 1rem; color: var(--muted); line-height: 1.8; margin-bottom: 1rem; }
+  .content p strong { color: var(--black); font-weight: 600; }
+  .content-divider { border: none; border-top: 2px solid var(--black); margin: 2rem 0; }
+  .rc-toggle { display: flex; gap: 8px; margin-bottom: 1.5rem; }
+  .rc-toggle button { padding: 6px 18px; border-radius: 4px; border: 2px solid var(--black); background: var(--cream); color: var(--black); font-size: 13px; font-weight: 600; cursor: pointer; font-family: inherit; }
+  .rc-toggle button.active { background: var(--black); color: var(--cream); }
+  .rc-row { display: flex; align-items: center; gap: 12px; margin-bottom: 0.875rem; }
+  .rc-row label { font-size: 13px; color: var(--muted); min-width: 200px; font-weight: 500; }
+  .rc-row input[type=range] { flex: 1; accent-color: var(--black); }
+  .rc-row .rc-val { font-size: 14px; font-weight: 600; min-width: 52px; text-align: right; color: var(--black); font-family: 'Fraunces', serif; }
+  .rc-cards { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-bottom: 1.5rem; }
+  .rc-card { background: var(--cream); border: 2px solid var(--black); border-radius: 8px; padding: 12px 14px; }
+  .rc-card-label { font-size: 11px; font-weight: 600; color: var(--muted); text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 4px; }
+  .rc-card-val { font-family: 'Fraunces', serif; font-size: 22px; font-weight: 900; color: var(--black); }
+  .rc-card-val.danger { color: var(--orange); }
+  .rc-card-sub { font-size: 11px; color: #7A5C3E; margin-top: 2px; }
+  .rc-chart-wrap { position: relative; width: 100%; height: 240px; margin-bottom: 0.75rem; }
+  .rc-chart-note { font-size: 11px; color: #7A5C3E; margin-bottom: 1.5rem; font-style: italic; }
+  .rc-caveat { background: var(--orange-light); border: 2px solid var(--orange); border-radius: 8px; padding: 10px 14px; font-size: 12px; color: #5A2808; line-height: 1.6; margin-bottom: 1.5rem; }
+  .bonus-box { border: 2px solid var(--orange); border-radius: 8px; padding: 1rem 1.25rem; margin-bottom: 1.5rem; background: #FAE8E0; }
+  .bonus-label { font-size: 11px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: #5A2808; margin-bottom: 0.5rem; display: flex; align-items: center; gap: 6px; }
+  .bonus-arrow { display: inline-block; width: 0; height: 0; border-left: 6px solid transparent; border-right: 6px solid transparent; border-top: 8px solid var(--orange); flex-shrink: 0; }
+  .bonus-inner { display: flex; align-items: center; gap: 1rem; flex-wrap: wrap; }
+  .bonus-stat { font-family: 'Fraunces', serif; font-size: 1.6rem; font-weight: 900; color: var(--orange); flex-shrink: 0; }
+  .bonus-text { font-size: 12px; color: #5A2808; line-height: 1.6; flex: 1; }
+  .rc-formula-box { background: var(--black); border-radius: 10px; padding: 1.5rem; margin-bottom: 1.5rem; }
+  .rc-formula-title { font-family: 'Fraunces', serif; font-size: 16px; font-weight: 700; color: var(--cream); margin-bottom: 1.25rem; }
+  .rc-formula-eq { font-family: monospace; font-size: 13px; background: rgba(255,255,255,0.08); border-radius: 6px; padding: 0.875rem 1rem; color: var(--cream); margin-bottom: 1.25rem; line-height: 2; }
+  .rc-formula-eq .term { color: var(--amber); font-weight: 600; }
+  .rc-formula-eq .op { color: rgba(245,237,216,0.5); }
+  .rc-formula-eq .result { color: var(--orange); font-weight: 600; }
+  .rc-annotations { display: flex; flex-direction: column; gap: 8px; }
+  .rc-ann { display: flex; gap: 10px; align-items: baseline; }
+  .rc-ann-term { font-size: 12px; font-weight: 600; color: var(--amber); min-width: 140px; font-family: monospace; flex-shrink: 0; }
+  .rc-ann-desc { font-size: 12px; color: rgba(245,237,216,0.7); line-height: 1.5; flex: 1; }
+  .rc-ann-val { font-size: 12px; font-weight: 600; color: var(--cream); min-width: 80px; text-align: right; flex-shrink: 0; }
+  .who-title { font-family: 'Fraunces', serif; font-size: 1.4rem; font-weight: 900; color: var(--black); margin-bottom: 1.25rem; }
+  .who-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 2rem; }
+  .who-card { border: 2px solid var(--black); border-radius: 8px; padding: 1.25rem; }
+  .who-card.wins { background: #D8E0B8; }
+  .who-card.loses { background: var(--orange-light); }
+  .who-card.mixed { background: #E8A020; }
+  .who-card-label { font-size: 11px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 0.75rem; display: flex; align-items: center; gap: 6px; }
+  .badge-win { background: #4A5E3A; color: #D8E0B8; font-size: 10px; font-weight: 700; padding: 2px 7px; border-radius: 100px; letter-spacing: 0.06em; }
+  .badge-lose { background: var(--orange); color: #FAE8E0; font-size: 10px; font-weight: 700; padding: 2px 7px; border-radius: 100px; letter-spacing: 0.06em; }
+  .badge-mixed { background: #7A4A00; color: #FAEEDA; font-size: 10px; font-weight: 700; padding: 2px 7px; border-radius: 100px; letter-spacing: 0.06em; }
+  .who-card h3 { font-family: 'Fraunces', serif; font-size: 1rem; font-weight: 700; margin-bottom: 0.5rem; color: var(--black); }
+  .who-card p { font-size: 13px; line-height: 1.65; color: var(--muted); }
+  .who-card p + p { margin-top: 0.5rem; }
+  .sources-title { font-family: 'Fraunces', serif; font-size: 1.2rem; font-weight: 900; color: var(--black); margin-bottom: 1rem; }
+  .study-strip { display: flex; flex-direction: column; gap: 8px; margin-bottom: 2rem; }
+  .study { border-left: 3px solid var(--amber); padding: 6px 0 6px 12px; }
+  .study-name { font-size: 13px; font-weight: 600; color: var(--black); }
+  .study-finding { font-size: 12px; color: var(--muted); line-height: 1.5; margin-top: 2px; }
+  .study a { color: var(--orange); text-decoration: none; font-size: 12px; }
+  .study a:hover { text-decoration: underline; }
+  .myth-link-box { background: var(--black); border-radius: 10px; padding: 1.5rem; margin-bottom: 2rem; display: flex; align-items: center; justify-content: space-between; gap: 1rem; flex-wrap: wrap; }
+  .myth-link-box p { color: rgba(245,237,216,0.75); font-size: 0.95rem; line-height: 1.6; flex: 1; }
+  .myth-link-box a { background: var(--amber); color: var(--black); padding: 0.6rem 1.25rem; border-radius: 4px; font-weight: 600; font-size: 0.9rem; text-decoration: none; white-space: nowrap; border: 2px solid var(--black); }
+  .myth-link-box a:hover { background: var(--orange); color: var(--cream); }
+  @media (max-width: 768px) {
+    .calc-hero { padding: 3rem 1.25rem 2.5rem; }
+    .content { padding: 2rem 1.25rem; }
+    .rc-cards { grid-template-columns: 1fr 1fr; }
+    .who-grid { grid-template-columns: 1fr; }
+    .rc-row label { min-width: 140px; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="../index.html" class="logo">Glasgow <span>YIMBY</span></a>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="../ideas/index.html">The ideas</a></li>
+    <li><a href="../myths/index.html">Myths</a></li>
+    <li><a href="rent-controls.html">Calculator</a></li>
+    <li><a href="../news.html">News</a></li>
+    <li><a href="../get-involved.html" class="nav-cta">Get involved</a></li>
+  </ul>
+  <button class="nav-toggle" id="navToggle" onclick="toggleNav()">Menu</button>
+</nav>
+
+<div class="calc-hero">
+  <div class="calc-hero-inner">
+    <a href="../myths/rent-controls.html" class="back-link">← Back to rent controls myth</a>
+    <div class="calc-hero-label">Interactive calculator</div>
+    <div class="calc-hero-title">What does rent control do to rental supply?</div>
+    <p class="calc-hero-intro">Study after study shows the same thing: <strong>when rent controls are introduced, landlords sell up.</strong> Use this calculator to model how many rental homes would leave the market in Greater Glasgow or Scotland under different policy scenarios, based on published academic evidence.</p>
+  </div>
+</div>
+
+<div class="content">
+
+  <p>When rent controls are introduced, landlords sell up. Some convert their properties to owner-occupation. Some redevelop for other uses. Some simply sell to owner-occupiers who would otherwise have rented. The result is a smaller private rental market with fewer homes available to the people who need them most.</p>
+  <p>This is not a theoretical concern. It is one of the most consistently replicated findings in housing economics, documented across cities and countries over more than a century of evidence.</p>
+
+  <hr class="content-divider">
+
+  <div class="rc-toggle" id="scopeToggle">
+    <button class="active" onclick="setScope('glasgow')">Greater Glasgow</button>
+    <button onclick="setScope('scotland')">All Scotland</button>
+  </div>
+
+  <div class="rc-row">
+    <label>Rent cap (max yearly increase)</label>
+    <input type="range" min="0" max="10" step="0.5" value="3" id="capSlider" oninput="update()">
+    <span class="rc-val" id="capVal">3%</span>
+  </div>
+  <div class="rc-row">
+    <label>Years in force</label>
+    <input type="range" min="1" max="20" step="1" value="5" id="yearsSlider" oninput="update()">
+    <span class="rc-val" id="yearsVal">5 yrs</span>
+  </div>
+  <div class="rc-row" style="margin-bottom:1.5rem">
+    <label>Policy strength</label>
+    <input type="range" min="1" max="3" step="1" value="2" id="strengthSlider" oninput="update()">
+    <span class="rc-val" id="strengthVal">Moderate</span>
+  </div>
+
+  <div class="rc-cards" id="cards"></div>
+
+  <div class="rc-chart-wrap">
+    <canvas id="rcChart" role="img" aria-label="Line chart comparing baseline rental supply against modelled supply under rent control from 2026 onwards"></canvas>
+  </div>
+  <div class="rc-chart-note">2025 shows the pre-policy baseline. The reduction begins in 2026 as controls take effect. Exit rate is front-loaded as the most financially marginal landlords leave first. It slows only as that population is exhausted, not because conditions improve. Rent controls prevent yields recovering.</div>
+
+  <div class="bonus-box" id="bonusBox">
+    <div class="bonus-label"><span class="bonus-arrow"></span> Additional negative effect: new construction</div>
+    <div class="bonus-inner">
+      <div class="bonus-stat" id="bonusStat"></div>
+      <div class="bonus-text" id="bonusText"></div>
+    </div>
+  </div>
+
+  <div class="rc-caveat">
+    These are modelled estimates based on published academic evidence, not predictions. The actual effect of any rent control policy depends on its design, enforcement, and wider market conditions.
+  </div>
+
+  <hr class="content-divider">
+
+  <div class="who-title">Winning and losing under rent control</div>
+  <div class="who-grid">
+    <div class="who-card wins">
+      <div class="who-card-label"><span class="badge-win">WINNING</span></div>
+      <h3>Wealthier renters looking to buy</h3>
+      <p>As landlords sell up, more properties enter the sales market. The people best placed to take advantage are those with savings or mortgage access. Rent controls quietly transfer housing wealth upwards.</p>
+    </div>
+    <div class="who-card mixed">
+      <div class="who-card-label"><span class="badge-mixed">MIXED</span></div>
+      <h3>Sitting tenants</h3>
+      <p>This is why rent controls are politically appealing: renters already in a controlled property pay below the market rate in the short run. But the protection is fragile.</p>
+      <p>A sitting tenant cannot easily move without losing their controlled rent, trapping them in a home that may no longer suit them. And if their landlord eventually decides to sell, they lose their home entirely and re-enter a rental market that is now smaller and more expensive than before.</p>
+    </div>
+    <div class="who-card loses">
+      <div class="who-card-label"><span class="badge-lose">LOSING</span></div>
+      <h3>Renters in the cheapest homes</h3>
+      <p>The properties most likely to be sold are those at the bottom of the market: older stock with the thinnest yields. These are the most affordable homes currently available to rent. When they leave the market, the cheapest options disappear first.</p>
+    </div>
+    <div class="who-card loses">
+      <div class="who-card-label"><span class="badge-lose">LOSING</span></div>
+      <h3>New renters entering the market</h3>
+      <p>A smaller rental market means more competition for fewer homes. New renters, including young people, people moving for work, and those leaving temporary accommodation, face a market with less choice and higher asking rents on the uncontrolled new-let segment.</p>
+    </div>
+  </div>
+
+  <hr class="content-divider">
+
+  <div class="rc-formula-box" id="formulaBox">
+    <div class="rc-formula-title">How we calculate this</div>
+    <div class="rc-formula-eq" id="formulaEq"></div>
+    <div class="rc-annotations" id="annotations"></div>
+  </div>
+
+  <div class="sources-title">Evidence base</div>
+  <div class="study-strip">
+    <div class="study">
+      <div class="study-name">Diamond, McQuade & Qian (2019) — San Francisco</div>
+      <div class="study-finding">Rent control reduced rental housing supply by 15% as landlords converted or redeveloped properties. The policy transferred wealth from future renters to existing ones. <a href="https://www.aeaweb.org/articles?id=10.1257/aer.20181289" target="_blank">Read →</a></div>
+    </div>
+    <div class="study">
+      <div class="study-name">Kholodilin (2022) — 16 countries, 1910 to 2016</div>
+      <div class="study-finding">Stricter rent regulation consistently reduces rental supply across all country contexts, with harder caps producing larger and faster landlord exits. <a href="https://www.tandfonline.com/doi/full/10.1080/19491247.2022.2164398" target="_blank">Read →</a></div>
+    </div>
+    <div class="study">
+      <div class="study-name">Sims (2007) — Massachusetts deregulation</div>
+      <div class="study-finding">When rent controls were lifted in Massachusetts in 1995, rental housing supply increased significantly, confirming that controls had been suppressing it. <a href="https://www.sciencedirect.com/science/article/abs/pii/S0094119006000659" target="_blank">Read →</a></div>
+    </div>
+    <div class="study">
+      <div class="study-name">Brookings Institution (2022)</div>
+      <div class="study-finding">Comprehensive review concludes rent control "decreases affordability, fuels gentrification, and creates negative externalities" in the long run. <a href="https://www.brookings.edu/articles/what-does-economic-evidence-tell-us-about-the-effects-of-rent-control/" target="_blank">Read →</a></div>
+    </div>
+  </div>
+
+  <div class="myth-link-box">
+    <p>Want the full argument against rent controls, with more context and citations?</p>
+    <a href="../myths/rent-controls.html">Read the myth page →</a>
+  </div>
+
+</div>
+
+<footer>
+  <strong>Glasgow YIMBY</strong> — a grassroots campaign for more homes in Glasgow &nbsp;|&nbsp;
+  <a href="mailto:hello@glasgowyimby.com">hello@glasgowyimby.com</a>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
+<script>
+const SCOPE = {
+  glasgow: { label: 'Greater Glasgow', rentalStock: 92000, annualCompletions: 4200 },
+  scotland: { label: 'Scotland', rentalStock: 380000, annualCompletions: 22000 }
+};
+let scope = 'glasgow';
+let chart = null;
+
+function setScope(s) {
+  scope = s;
+  document.querySelectorAll('#scopeToggle button').forEach((b,i) => {
+    b.classList.toggle('active', (i===0&&s==='glasgow')||(i===1&&s==='scotland'));
+  });
+  update();
+}
+
+function strengthLabel(v) {
+  return ['Soft (CPI-linked cap)', 'Moderate (hard % cap)', 'Strict (freeze or near-zero)'][v-1];
+}
+
+function getPeakExitRate(cap, strength) {
+  const base = [0.06, 0.11, 0.17][strength-1];
+  const capAdj = cap <= 0 ? 1.5 : cap <= 2 ? 1.25 : cap <= 4 ? 1.0 : cap <= 7 ? 0.75 : 0.55;
+  return Math.min(base * capAdj, 0.22);
+}
+
+function getConstructionReduction(cap, strength) {
+  const base = [0.03, 0.06, 0.10][strength-1];
+  const capAdj = cap <= 0 ? 1.4 : cap <= 2 ? 1.2 : cap <= 4 ? 1.0 : cap <= 7 ? 0.75 : 0.5;
+  return Math.min(base * capAdj, 0.14);
+}
+
+function stockInYear(t, initialStock, peakRate, decayFactor) {
+  let stock = initialStock;
+  for (let i = 0; i < t; i++) {
+    const rate = peakRate * Math.exp(-decayFactor * i);
+    stock = stock * (1 - rate);
+  }
+  return Math.round(stock);
+}
+
+function update() {
+  const cap = parseFloat(document.getElementById('capSlider').value);
+  const years = parseInt(document.getElementById('yearsSlider').value);
+  const strength = parseInt(document.getElementById('strengthSlider').value);
+  document.getElementById('capVal').textContent = cap + '%';
+  document.getElementById('yearsVal').textContent = years + ' yr' + (years > 1 ? 's' : '');
+  document.getElementById('strengthVal').textContent = strengthLabel(strength);
+  const s = SCOPE[scope];
+  const peakRate = getPeakExitRate(cap, strength);
+  const decayFactor = 0.1;
+  const chartYears = Math.min(years, 14);
+  const labels = ['2025', ...Array.from({length: chartYears}, (_,i) => (2026 + i).toString())];
+  const baseData = labels.map(() => s.rentalStock);
+  const rcData = [s.rentalStock, ...labels.slice(1).map((_,i) => stockInYear(i+1, s.rentalStock, peakRate, decayFactor))];
+  const finalStock = stockInYear(years, s.rentalStock, peakRate, decayFactor);
+  const homesLost = s.rentalStock - finalStock;
+  const pct = Math.round((homesLost / s.rentalStock) * 100);
+  const yr1Lost = s.rentalStock - stockInYear(1, s.rentalStock, peakRate, decayFactor);
+  document.getElementById('cards').innerHTML = `
+    <div class="rc-card"><div class="rc-card-label">Rental homes today</div><div class="rc-card-val">${s.rentalStock.toLocaleString()}</div><div class="rc-card-sub">${s.label} baseline</div></div>
+    <div class="rc-card"><div class="rc-card-label">Lost in year 1</div><div class="rc-card-val danger">${yr1Lost.toLocaleString()}</div><div class="rc-card-sub">by end of 2026</div></div>
+    <div class="rc-card"><div class="rc-card-label">Lost after ${years} yr${years>1?'s':''}</div><div class="rc-card-val danger">${homesLost.toLocaleString()}</div><div class="rc-card-sub">${pct}% of today's stock</div></div>
+    <div class="rc-card"><div class="rc-card-label">Homes remaining</div><div class="rc-card-val">${finalStock.toLocaleString()}</div><div class="rc-card-sub">after ${years} yr${years>1?'s':''}</div></div>
+  `;
+  if (chart) chart.destroy();
+  chart = new Chart(document.getElementById('rcChart'), {
+    type: 'line',
+    data: {
+      labels,
+      datasets: [
+        { label: 'Baseline', data: baseData, borderColor: '#E8A020', backgroundColor: 'rgba(232,160,32,0.06)', borderWidth: 2, pointRadius: 0, fill: true, tension: 0 },
+        { label: 'With rent control', data: rcData, borderColor: '#D45A1A', backgroundColor: 'rgba(212,90,26,0.08)', borderWidth: 2, pointRadius: 3, pointBackgroundColor: '#D45A1A', fill: true, tension: 0.3, borderDash: [4,3] }
+      ]
+    },
+    options: {
+      responsive: true, maintainAspectRatio: false,
+      plugins: { legend: { display: true, position: 'top', labels: { font: { size: 12 }, boxWidth: 10, padding: 16 } } },
+      scales: {
+        x: { ticks: { font: { size: 11 }, autoSkip: true, maxTicksLimit: 10 } },
+        y: { ticks: { font: { size: 11 }, callback: v => v.toLocaleString() }, title: { display: true, text: 'Rental homes available', font: { size: 11 } } }
+      }
+    }
+  });
+  const constReduction = getConstructionReduction(cap, strength);
+  const homesNotBuilt = Math.round(s.annualCompletions * constReduction * years);
+  const constPct = Math.round(constReduction * 100);
+  document.getElementById('bonusStat').textContent = homesNotBuilt.toLocaleString();
+  document.getElementById('bonusText').innerHTML = `Estimated additional homes <em>not built</em> over ${years} year${years>1?'s':''} due to reduced developer confidence: a further <strong>${constPct}%</strong> reduction in new completions. Based on Kholodilin (2022).`;
+  const capAdj = cap <= 0 ? '×1.5' : cap <= 2 ? '×1.25' : cap <= 4 ? '×1.0' : cap <= 7 ? '×0.75' : '×0.55';
+  const baseRatePct = ['6%', '11%', '17%'][strength-1];
+  document.getElementById('formulaEq').innerHTML =
+    `<span class="term">S(t)</span> <span class="op">=</span> <span class="term">S₀</span> <span class="op">×</span> <span class="op">∏</span><sub>i=0</sub><sup>t-1</sup> <span class="op">(</span><span class="op">1</span> <span class="op">-</span> <span class="term">r₀</span> <span class="op">·</span> e<sup><span class="op">-λi</span></sup><span class="op">)</span>
+<br><span class="result">= ${s.rentalStock.toLocaleString()}</span> <span class="op">×</span> <span class="op">∏</span><sub>i=0</sub><sup>${years-1}</sup> <span class="op">(</span><span class="op">1</span> <span class="op">-</span> <span class="result">${(peakRate*100).toFixed(1)}%</span> <span class="op">·</span> e<sup><span class="op">-0.1i</span></sup><span class="op">)</span> <span class="op">=</span> <span class="result">${finalStock.toLocaleString()} homes</span>`;
+  document.getElementById('annotations').innerHTML = `
+    <div class="rc-ann"><div class="rc-ann-term">S(t)</div><div class="rc-ann-desc">Rental stock remaining after t years under rent control</div><div class="rc-ann-val">${finalStock.toLocaleString()}</div></div>
+    <div class="rc-ann"><div class="rc-ann-term">S₀</div><div class="rc-ann-desc">Baseline rental stock in 2025, from Scottish Government 2024 data</div><div class="rc-ann-val">${s.rentalStock.toLocaleString()}</div></div>
+    <div class="rc-ann"><div class="rc-ann-term">r₀</div><div class="rc-ann-desc">Peak annual exit rate in year 1 (2026): base rate (${baseRatePct}, ${strengthLabel(strength).toLowerCase()}) × cap adjustment (${capAdj} for ${cap}% cap)</div><div class="rc-ann-val">${(peakRate*100).toFixed(1)}%/yr</div></div>
+    <div class="rc-ann"><div class="rc-ann-term">e<sup>-λi</sup></div><div class="rc-ann-desc">Decay factor (λ = 0.1): exit rate slows as marginal landlords have already left, not because conditions improve</div><div class="rc-ann-val">λ = 0.1</div></div>
+    <div class="rc-ann"><div class="rc-ann-term">∏ (product)</div><div class="rc-ann-desc">Each year's stock is the previous year's stock × (1 minus that year's exit rate), compounded from 2026</div><div class="rc-ann-val">${years} steps</div></div>
+  `;
+}
+
+function toggleNav() {
+  const links = document.getElementById('navLinks');
+  const toggle = document.getElementById('navToggle');
+  const open = links.classList.toggle('open');
+  toggle.textContent = open ? 'Close' : 'Menu';
+}
+
+update();
+</script>
+</body>
+</html>

@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>News — Glasgow YIMBY</title>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,700;0,9..144,900;1,9..144,400;1,9..144,700;1,9..144,900&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<style>
+  .news-hero { background: var(--black); color: var(--cream); padding: 5rem 2rem 4rem; }
+  .news-hero-inner { max-width: 760px; margin: 0 auto; }
+  .news-hero-label { display: inline-block; font-size: 0.72rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; padding: 0.3rem 0.75rem; border-radius: 100px; margin-bottom: 1.25rem; border: 1.5px solid rgba(232,160,32,0.4); background: rgba(232,160,32,0.15); color: var(--amber); }
+  .news-hero-title { font-family: 'Fraunces', serif; font-size: clamp(2.2rem, 4vw, 3rem); font-weight: 900; line-height: 1.1; letter-spacing: -0.03em; color: var(--cream); margin-bottom: 1.25rem; }
+  .news-hero-intro { font-size: 1rem; color: rgba(245,237,216,0.7); line-height: 1.75; max-width: 580px; }
+  .content { max-width: 760px; margin: 0 auto; padding: 3rem 2rem 4rem; }
+  .news-list { display: flex; flex-direction: column; gap: 0; }
+  .news-item { border-bottom: 1px solid var(--border); padding: 1.75rem 0; }
+  .news-item:first-child { padding-top: 0; }
+  .news-meta { display: flex; align-items: center; gap: 0.75rem; margin-bottom: 0.6rem; flex-wrap: wrap; }
+  .news-date { font-size: 0.8rem; font-weight: 600; color: var(--muted); }
+  .news-source { font-size: 0.75rem; font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase; background: var(--sandstone, #E8DCC8); color: var(--muted); padding: 2px 8px; border-radius: 100px; border: 1px solid var(--border); }
+  .news-tag { font-size: 0.75rem; font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase; padding: 2px 8px; border-radius: 100px; }
+  .news-tag.planning { background: var(--olive-light); color: #3A4A20; border: 1px solid #5A6830; }
+  .news-tag.emergency { background: var(--orange-light); color: #5A2808; border: 1px solid var(--orange); }
+  .news-tag.development { background: #FAEEDA; color: #7A4A00; border: 1px solid var(--amber); }
+  .news-tag.policy { background: #E6F1FB; color: #0C447C; border: 1px solid #378ADD; }
+  .news-item h2 { font-family: 'Fraunces', serif; font-size: 1.15rem; font-weight: 700; color: var(--black); margin-bottom: 0.5rem; line-height: 1.3; }
+  .news-item h2 a { color: var(--black); text-decoration: none; }
+  .news-item h2 a:hover { color: var(--orange); }
+  .news-item p { font-size: 0.92rem; color: var(--muted); line-height: 1.7; margin-bottom: 0.6rem; }
+  .news-read-more { font-size: 0.82rem; font-weight: 600; color: var(--orange); text-decoration: none; }
+  .news-read-more:hover { text-decoration: underline; }
+  .news-note { background: var(--sandstone, #E8DCC8); border-radius: 8px; padding: 1rem 1.25rem; margin-bottom: 2rem; font-size: 0.88rem; color: var(--muted); line-height: 1.6; border: 1px solid var(--border); }
+  .news-note strong { color: var(--black); }
+  @media (max-width: 768px) {
+    .news-hero { padding: 3rem 1.25rem 2.5rem; }
+    .content { padding: 2rem 1.25rem; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="logo">Glasgow <span>YIMBY</span></a>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="ideas/index.html">The ideas</a></li>
+    <li><a href="myths/index.html">Myths</a></li>
+    <li><a href="calculator/rent-controls.html">Calculator</a></li>
+    <li><a href="news.html">News</a></li>
+    <li><a href="get-involved.html" class="nav-cta">Get involved</a></li>
+  </ul>
+  <button class="nav-toggle" id="navToggle" onclick="toggleNav()">Menu</button>
+</nav>
+
+<div class="news-hero">
+  <div class="news-hero-inner">
+    <div class="news-hero-label">Glasgow housing news</div>
+    <div class="news-hero-title">What's happening in Glasgow housing</div>
+    <p class="news-hero-intro">A curated selection of significant news and developments in Glasgow housing and planning. Updated when something worth reading comes along.</p>
+  </div>
+</div>
+
+<div class="content">
+
+  <div class="news-note">
+    <strong>Editorial note:</strong> We link to original sources and summarise in our own words. We select stories that are significant for Glasgow's housing supply, planning decisions, or the scale of the housing emergency.
+  </div>
+
+  <div class="news-list">
+
+    <div class="news-item">
+      <div class="news-meta">
+        <span class="news-date">April 2026</span>
+        <span class="news-source">Global Student Living</span>
+        <span class="news-tag planning">Planning</span>
+      </div>
+      <h2><a href="https://gslglobal.com/2026/04/23/savills-obtains-planning-approval-for-pbsa-development-in-central-glasgow/" target="_blank">Planning approved for 259-bed student development on Cadogan Street</a></h2>
+      <p>Savills has secured planning approval for a purpose-built student accommodation scheme in Glasgow city centre, near George Square. The design-led development addresses a complex central site and adds to the growing pipeline of new residential units in the city core.</p>
+      <a href="https://gslglobal.com/2026/04/23/savills-obtains-planning-approval-for-pbsa-development-in-central-glasgow/" target="_blank" class="news-read-more">Read the full story →</a>
+    </div>
+
+    <div class="news-item">
+      <div class="news-meta">
+        <span class="news-date">March 2026</span>
+        <span class="news-source">Scottish Construction Now</span>
+        <span class="news-tag development">Development</span>
+      </div>
+      <h2><a href="https://www.scottishconstructionnow.com/tag/glasgow" target="_blank">Plans submitted for 400+ new homes in Wyndford as £100m transformation advances</a></h2>
+      <p>The long-running regeneration of Wyndford in the north of the city has taken a significant step forward, with plans submitted for more than 400 new homes as part of a £100 million transformation of the community.</p>
+      <a href="https://www.scottishconstructionnow.com/tag/glasgow" target="_blank" class="news-read-more">Read the full story →</a>
+    </div>
+
+    <div class="news-item">
+      <div class="news-meta">
+        <span class="news-date">March 2026</span>
+        <span class="news-source">Scottish Construction Now</span>
+        <span class="news-tag planning">Planning</span>
+      </div>
+      <h2><a href="https://www.scottishconstructionnow.com/tag/glasgow" target="_blank">Third phase of Dundashill housing development approved by Glasgow City Council</a></h2>
+      <p>Planning permission has been granted for the third phase of the award-winning Dundashill development by igloo Regeneration, continuing the transformation of the former brewery site into a mixed residential neighbourhood in the north of the city.</p>
+      <a href="https://www.scottishconstructionnow.com/tag/glasgow" target="_blank" class="news-read-more">Read the full story →</a>
+    </div>
+
+    <div class="news-item">
+      <div class="news-meta">
+        <span class="news-date">February 2026</span>
+        <span class="news-source">Project Scotland</span>
+        <span class="news-tag development">Development</span>
+      </div>
+      <h2><a href="https://projectscot.com/2026/02/innovative-glasgow-project-could-reshape-uk-city-centre-housing-developments/" target="_blank">Historic St Enoch Square building to be converted into city centre homes</a></h2>
+      <p>West of Scotland Housing Association has secured planning consent to convert the B-listed Station House at 34-36 St Enoch Square into mid-market rent homes. The project is being held up as a model for how commercial buildings can be repurposed to increase city centre residential population.</p>
+      <a href="https://projectscot.com/2026/02/innovative-glasgow-project-could-reshape-uk-city-centre-housing-developments/" target="_blank" class="news-read-more">Read the full story →</a>
+    </div>
+
+    <div class="news-item">
+      <div class="news-meta">
+        <span class="news-date">2026</span>
+        <span class="news-source">Glasgow City Council</span>
+        <span class="news-tag policy">Policy</span>
+      </div>
+      <h2><a href="https://www.glasgow.gov.uk/article/14200/Over-6-000-affordable-homes-to-be-built-in-Glasgow-as-five-year-housing-investment-plan-agreed" target="_blank">Glasgow agrees five-year plan to build 6,661 affordable homes — but needs £890m from Scottish Government to deliver it</a></h2>
+      <p>Glasgow City Council has approved its Strategic Housing Investment Plan for 2026/27 to 2030/31, setting out plans for over 6,000 new affordable homes. The plan has been submitted to the Scottish Government along with a request for £890 million in grant funding to deliver it. Without that funding, the homes will not be built.</p>
+      <a href="https://www.glasgow.gov.uk/article/14200/Over-6-000-affordable-homes-to-be-built-in-Glasgow-as-five-year-housing-investment-plan-agreed" target="_blank" class="news-read-more">Read the full story →</a>
+    </div>
+
+    <div class="news-item">
+      <div class="news-meta">
+        <span class="news-date">December 2025</span>
+        <span class="news-source">Scottish Housing News</span>
+        <span class="news-tag policy">Policy</span>
+      </div>
+      <h2><a href="https://www.scottishhousingnews.com/articles/wheatley-to-buy-homes-to-create-more-affordable-social-housing-in-glasgow" target="_blank">Wheatley Homes launches programme to buy private homes for social rent in Glasgow</a></h2>
+      <p>Wheatley Homes Glasgow has launched a programme to purchase privately owned properties and convert them to social rent, backed by £24 million of Scottish Government emergency funding. The programme targets properties in communities where Wheatley already operates, with the aim of rapidly increasing supply for households on the waiting list.</p>
+      <a href="https://www.scottishhousingnews.com/articles/wheatley-to-buy-homes-to-create-more-affordable-social-housing-in-glasgow" target="_blank" class="news-read-more">Read the full story →</a>
+    </div>
+
+    <div class="news-item">
+      <div class="news-meta">
+        <span class="news-date">November 2023, ongoing</span>
+        <span class="news-source">Glasgow City Council</span>
+        <span class="news-tag emergency">Housing emergency</span>
+      </div>
+      <h2><a href="https://www.glasgow.gov.uk/article/11508/Glasgow-s-housing-emergency" target="_blank">Glasgow's housing emergency: 6,000+ homeless households, 4,200+ in temporary accommodation</a></h2>
+      <p>Glasgow City Council declared a housing emergency in November 2023. The situation has not improved: more than 6,000 households currently have live homelessness applications, and over 4,200 are in temporary accommodation each night. The council is using almost 1,500 bed and breakfast rooms for emergency placements. The cause is straightforward: demand for housing is far greater than supply.</p>
+      <a href="https://www.glasgow.gov.uk/article/11508/Glasgow-s-housing-emergency" target="_blank" class="news-read-more">Read the full story →</a>
+    </div>
+
+    <div class="news-item">
+      <div class="news-meta">
+        <span class="news-date">Ongoing</span>
+        <span class="news-source">Chalmers Properties</span>
+        <span class="news-tag emergency">Housing emergency</span>
+      </div>
+      <h2><a href="https://chalmersproperties.co.uk/glasgow-rental-market-report/" target="_blank">Average Glasgow rent hits £1,275/month as market stabilises after years of sharp rises</a></h2>
+      <p>Average monthly rents across Greater Glasgow have reached approximately £1,275, reflecting annual growth of around 5.6% as of April 2026. Rents rose sharply between 2022 and 2024 before entering a more stable phase, but remain 75% higher than a decade ago. Demand remains strong and supply constrained.</p>
+      <a href="https://chalmersproperties.co.uk/glasgow-rental-market-report/" target="_blank" class="news-read-more">Read the full story →</a>
+    </div>
+
+  </div>
+</div>
+
+<footer>
+  <strong>Glasgow YIMBY</strong> — a grassroots campaign for more homes in Glasgow &nbsp;|&nbsp;
+  <a href="mailto:hello@glasgowyimby.com">hello@glasgowyimby.com</a>
+</footer>
+
+<script>
+function toggleNav() {
+  const links = document.getElementById('navLinks');
+  const toggle = document.getElementById('navToggle');
+  const open = links.classList.toggle('open');
+  toggle.textContent = open ? 'Close' : 'Menu';
+}
+</script>
+</body>
+</html>
