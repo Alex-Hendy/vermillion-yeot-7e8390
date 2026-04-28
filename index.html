@@ -3,7 +3,16 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Glasgow YIMBY — More homes for Glasgow</title>
+<title>Glasgow YIMBY — Build More Homes in Glasgow</title>
+<meta property="og:title" content="Glasgow YIMBY — Build More Homes in Glasgow">
+<meta property="og:description" content="Glasgow YIMBY is a grassroots campaign for more homes in Glasgow. Rising rents, long waiting lists, young people priced out. The solution is to build more homes.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://glasgowyimby.com">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Glasgow YIMBY — Build More Homes in Glasgow">
+<meta name="twitter:description" content="Glasgow YIMBY is a grassroots campaign for more homes in Glasgow. Rising rents, long waiting lists, young people priced out. The solution is to build more homes.">
+<link rel="canonical" href="https://glasgowyimby.com">
+<meta name="description" content="Glasgow YIMBY is a grassroots campaign for more homes in Glasgow. Rising rents, long waiting lists, young people priced out. The solution is to build more homes.">
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,700;0,9..144,900;1,9..144,400;1,9..144,700;1,9..144,900&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
 <style>
@@ -15,13 +24,14 @@
   .btn-group { display: flex; gap: 1rem; flex-wrap: wrap; }
   .skyline-card { background: var(--black); border-radius: 12px; padding: 1.75rem; border: 2px solid var(--black); }
   .skyline-label { font-size: 0.72rem; color: rgba(245,237,216,0.5); margin-bottom: 1.25rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; }
-  .chart-wrap { position: relative; height: 160px; margin-bottom: 0.5rem; }
+  .chart-wrap { position: relative; height: 180px; margin-bottom: 0; }
   .chart-wrap svg { width: 100%; height: 100%; overflow: visible; }
-  .chart-source { font-size: 0.65rem; color: rgba(245,237,216,0.25); margin-top: 0.4rem; margin-bottom: 0; }
-  .stat-row { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 0.75rem; margin-top: 1.25rem; }
-  .stat { background: rgba(255,255,255,0.07); border-radius: 8px; padding: 0.875rem; text-align: center; border: 1px solid rgba(255,255,255,0.1); }
-  .stat-num { font-family: 'Fraunces', serif; font-size: 1.5rem; color: var(--amber); display: block; font-weight: 900; }
-  .stat-desc { font-size: 0.7rem; color: rgba(245,237,216,0.6); font-weight: 500; }
+  .chart-source { font-size: 0.58rem; color: rgba(245,237,216,0.18); margin-top: 0.3rem; margin-bottom: 0.6rem; }
+  .stat-row { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 0; margin-top: 0; border-top: 1px solid rgba(255,255,255,0.1); }
+  .stat { padding: 0.75rem 0.5rem; text-align: center; border-right: 1px solid rgba(255,255,255,0.08); }
+  .stat:last-child { border-right: none; }
+  .stat-num { font-family: 'Fraunces', serif; font-size: 1.4rem; color: var(--amber); display: block; font-weight: 900; line-height: 1.1; }
+  .stat-desc { font-size: 0.62rem; color: rgba(245,237,216,0.45); font-weight: 500; display: block; margin-top: 3px; }
   section { max-width: 1100px; margin: 0 auto; padding: 4rem 2rem; }
   .ideas-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.25rem; }
   .idea-card { background: var(--cream); border: 2px solid var(--black); border-radius: 10px; padding: 1.5rem; transition: transform 0.15s, box-shadow 0.15s; text-decoration: none; display: block; cursor: pointer; }
@@ -108,6 +118,7 @@
         <svg viewBox="0 0 500 160" preserveAspectRatio="none" id="rentChart"></svg>
       </div>
       <p class="chart-source">Sources: Scottish Government Private Sector Rent Statistics; Understanding Glasgow; Chalmers Properties 2026</p>
+
       <div class="stat-row">
         <div class="stat"><span class="stat-num">14k+</span><span class="stat-desc">on waiting lists</span></div>
         <div class="stat"><span class="stat-num">+75%</span><span class="stat-desc">rent rise since 2010</span></div>
