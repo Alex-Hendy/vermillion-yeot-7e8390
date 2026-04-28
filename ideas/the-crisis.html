@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Glasgow's Housing Crisis: The Scale of the Problem — Glasgow YIMBY</title>
+<link rel="canonical" href="https://glasgowyimby.com/ideas/the-crisis.html">
+<meta name="description" content="Glasgow declared a housing emergency in 2023. Over 6,000 households are homeless, rents are up 75% since 2010, and the waiting list has over 14,000 people. Here is the evidence.">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,700;0,9..144,900;1,9..144,400;1,9..144,700;1,9..144,900&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../style.css">
+<style>
+  .idea-hero { background: var(--black); color: var(--cream); padding: 5rem 2rem 4rem; }
+  .idea-hero-inner { max-width: 760px; margin: 0 auto; }
+  .back-link { color: var(--amber); text-decoration: none; font-size: 0.85rem; font-weight: 600; display: inline-flex; align-items: center; gap: 0.4rem; margin-bottom: 2rem; }
+  .back-link:hover { text-decoration: underline; }
+  .step-label { display: inline-block; font-size: 0.72rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; padding: 0.3rem 0.75rem; border-radius: 100px; margin-bottom: 1.25rem; border: 1.5px solid rgba(232,160,32,0.4); background: rgba(232,160,32,0.15); color: var(--amber); }
+  .idea-title { font-family: 'Fraunces', serif; font-size: clamp(2rem, 4vw, 3rem); font-weight: 900; line-height: 1.1; letter-spacing: -0.02em; color: var(--cream); margin-bottom: 1.25rem; }
+  .idea-intro { font-size: 1.05rem; color: rgba(245,237,216,0.75); line-height: 1.75; }
+  .content { max-width: 760px; margin: 0 auto; padding: 4rem 2rem; }
+  .content h2 { font-family: 'Fraunces', serif; font-size: 1.6rem; font-weight: 900; letter-spacing: -0.02em; margin: 2.5rem 0 0.75rem; color: var(--black); }
+  .content h2:first-child { margin-top: 0; }
+  .content p { font-size: 1rem; color: var(--muted); line-height: 1.8; margin-bottom: 1rem; }
+  .content p strong { color: var(--black); font-weight: 600; }
+  .stat-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin: 2rem 0; }
+  .stat-box { background: var(--black); border-radius: 10px; padding: 1.25rem; text-align: center; }
+  .stat-box .num { font-family: 'Fraunces', serif; font-size: 2rem; font-weight: 900; color: var(--amber); display: block; line-height: 1.1; margin-bottom: 0.35rem; }
+  .stat-box .label { font-size: 0.75rem; color: rgba(245,237,216,0.6); line-height: 1.5; }
+  .callout { background: var(--amber); border: 2px solid var(--black); border-radius: 10px; padding: 1.5rem 1.75rem; margin: 2rem 0; }
+  .callout p { color: var(--black); margin: 0; font-weight: 500; line-height: 1.7; }
+  .evidence-card { border: 2px solid var(--black); border-radius: 10px; padding: 1.5rem; margin: 1.5rem 0; background: var(--cream); }
+  .evidence-card .source { font-size: 0.75rem; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: var(--orange); margin-bottom: 0.5rem; }
+  .evidence-card p { margin: 0; font-size: 0.95rem; color: var(--muted); line-height: 1.7; }
+  .idea-nav { border-top: 2px solid var(--black); padding: 3rem 2rem; max-width: 760px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; }
+  .idea-nav a { text-decoration: none; font-weight: 600; font-size: 0.9rem; color: var(--orange); }
+  .idea-nav a:hover { text-decoration: underline; }
+  @media (max-width: 768px) {
+    .idea-hero { padding: 3rem 1.25rem 2.5rem; }
+    .content { padding: 2.5rem 1.25rem; }
+    .stat-row { grid-template-columns: 1fr; }
+    .idea-nav { padding: 2rem 1.25rem; flex-direction: column; align-items: flex-start; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="../index.html" class="logo">Glasgow <span>YIMBY</span></a>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="index.html">The ideas</a></li>
+    <li><a href="../myths/index.html">Myths</a></li>
+    <li><a href="../evidence.html">Evidence</a></li>
+    <li><a href="../calculator/rent-controls.html">Calculator</a></li>
+    <li><a href="../news.html">News</a></li>
+    <li><a href="../get-involved.html" class="nav-cta">Get involved</a></li>
+  </ul>
+  <button class="nav-toggle" id="navToggle" onclick="toggleNav()">Menu</button>
+</nav>
+
+<div class="idea-hero">
+  <div class="idea-hero-inner">
+    <a href="index.html" class="back-link">← Back to the ideas</a>
+    <div class="step-label">Step 1 of 4</div>
+    <div class="idea-title">Glasgow has a housing crisis</div>
+    <p class="idea-intro">Glasgow City Council declared a housing emergency in November 2023. It was not a political gesture. The numbers behind it are stark, and they have not improved.</p>
+  </div>
+</div>
+
+<div class="content">
+
+  <div class="stat-row">
+    <div class="stat-box"><span class="num">6,000+</span><span class="label">households with live homelessness applications</span></div>
+    <div class="stat-box"><span class="num">4,200+</span><span class="label">people in temporary accommodation every night</span></div>
+    <div class="stat-box"><span class="num">14,000+</span><span class="label">households on the social housing waiting list</span></div>
+  </div>
+
+  <h2>The numbers</h2>
+  <p>Glasgow's housing emergency is not a housing quality problem or a housing management problem. It is a supply problem. There are simply not enough homes for the people who need them.</p>
+  <p>Average rents for a two-bedroom home in Greater Glasgow have risen from around £730 per month in 2010 to around £1,275 today — a rise of 75% in fifteen years, far outstripping wage growth. The private rented sector has tightened dramatically: vacancy rates are near zero, meaning landlords face almost no competition for tenants, and renters face almost no alternatives.</p>
+  <p>The social housing waiting list has over 14,000 households on it. Glasgow City Council is using almost 1,500 bed and breakfast rooms for emergency placements — an expensive, inadequate, and deeply disruptive solution to a structural problem.</p>
+
+  <div class="callout">
+    <p>Glasgow has built fewer homes per capita than almost any comparable European city over the past three decades. The consequences — rising rents, long waiting lists, homelessness — are the predictable result of sustained undersupply.</p>
+  </div>
+
+  <h2>This is not just a Glasgow problem</h2>
+  <p>Scotland as a whole is building around 20,000 homes per year. Research from the Scottish Federation of Housing Associations, Shelter Scotland, and CIH Scotland finds that Scotland needs to build approximately 15,700 affordable homes per year alone — nearly double current affordable output of around 8,200. Across all tenures, Scotland needs closer to 25,000 homes per year to meet demand.</p>
+  <p>The Scottish Government declared a national housing emergency in 2023. Budget cuts to the Affordable Housing Supply Programme since 2023/24 — equivalent to a 22% real-terms reduction — have made the situation worse. Private sector housebuilding starts in 2024 were at their lowest since 2013.</p>
+
+  <div class="evidence-card">
+    <div class="source">Glasgow City Council, 2024</div>
+    <p>Glasgow's housing emergency declaration confirmed: over 6,000 live homelessness applications, over 4,200 people in temporary accommodation nightly, and almost 1,500 bed and breakfast placements being used for emergency housing. Source: <a href="https://www.glasgow.gov.uk/article/11508/Glasgow-s-housing-emergency" target="_blank" style="color:var(--orange);">Glasgow City Council housing emergency page →</a></p>
+  </div>
+
+  <div class="evidence-card">
+    <div class="source">SFHA / Shelter Scotland / CIH Scotland</div>
+    <p>Scotland must build approximately 15,700 affordable homes per year to meet need — nearly double current output of around 8,200 in 2024. This figure covers social rent, mid-market rent, and low-cost homeownership. It does not include market rate homes, which are also needed at significant scale.</p>
+  </div>
+
+  <h2>What caused this?</h2>
+  <p>Housing crises do not happen overnight. Glasgow's has been building for decades, driven by sustained undersupply across all tenures. The reasons for that undersupply — a planning system that makes building difficult and uncertain, regulatory requirements that add cost, a political culture that has treated housing as a local amenity to be protected rather than a public good to be expanded — are the subject of the pages that follow.</p>
+  <p>The important point is this: the crisis is real, it is serious, and it has a cause. Understanding the cause is the first step to fixing it.</p>
+
+</div>
+
+<div class="idea-nav">
+  <a href="index.html">← All ideas</a>
+  <a href="supply-is-the-answer.html">Next: Building more homes is the solution →</a>
+</div>
+
+<footer>
+  <strong>Glasgow YIMBY</strong> — a grassroots campaign for more homes in Glasgow &nbsp;|&nbsp;
+  <a href="mailto:hello@glasgowyimby.com">hello@glasgowyimby.com</a>
+</footer>
+
+<script>
+function toggleNav() {
+  const links = document.getElementById('navLinks');
+  const toggle = document.getElementById('navToggle');
+  const open = links.classList.toggle('open');
+  toggle.textContent = open ? 'Close' : 'Menu';
+}
+</script>
+</body>
+</html>
