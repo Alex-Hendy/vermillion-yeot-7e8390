@@ -22,9 +22,9 @@
   .content p { font-size: 1rem; color: var(--muted); line-height: 1.8; margin-bottom: 1rem; }
   .content p strong { color: var(--black); font-weight: 600; }
   .stat-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin: 2rem 0; }
-  .stat-box { background: var(--black); border-radius: 10px; padding: 1.25rem; text-align: center; }
-  .stat-box .num { font-family: 'Fraunces', serif; font-size: 2rem; font-weight: 900; color: var(--amber); display: block; line-height: 1.1; margin-bottom: 0.35rem; }
-  .stat-box .label { font-size: 0.75rem; color: rgba(245,237,216,0.6); line-height: 1.5; }
+  .stat-box { background: var(--black); border-radius: 10px; padding: 1.5rem 1.25rem; text-align: center; display: flex; flex-direction: column; align-items: center; justify-content: center; }
+  .stat-box .num { font-family: 'Fraunces', serif; font-size: 2.2rem; font-weight: 900; color: var(--amber); display: block; line-height: 1.1; margin-bottom: 0.5rem; }
+  .stat-box .label { font-size: 0.78rem; color: rgba(245,237,216,0.75); line-height: 1.55; }
   .callout { background: var(--amber); border: 2px solid var(--black); border-radius: 10px; padding: 1.5rem 1.75rem; margin: 2rem 0; }
   .callout p { color: var(--black); margin: 0; font-weight: 500; line-height: 1.7; }
   .evidence-card { border: 2px solid var(--black); border-radius: 10px; padding: 1.5rem; margin: 1.5rem 0; background: var(--cream); }
@@ -60,53 +60,67 @@
     <a href="index.html" class="back-link">← Back to the ideas</a>
     <div class="step-label">Step 1 of 3</div>
     <div class="idea-title">Glasgow has a housing crisis</div>
-    <p class="idea-intro">Rents have risen 75% since 2010. House prices are up 70% since 2015. A city where ordinary people cannot afford to live is not a well-functioning city. The evidence is clear, and the cause is not complicated.</p>
+    <p class="idea-intro">When housing costs rise far faster than wages, year after year, something has gone wrong — and it has been going wrong for a long time. The evidence is in the prices.</p>
   </div>
 </div>
 
 <div class="content">
 
   <div class="stat-row">
-    <div class="stat-box"><span class="num">+75%</span><span class="label">rent rise since 2010, from £730 to £1,275/month for a 2-bed</span></div>
-    <div class="stat-box"><span class="num">+70%</span><span class="label">house price rise since 2015, from around £109k to £185k</span></div>
-    <div class="stat-box"><span class="num">2x</span><span class="label">homes needed vs built: Scotland requires around 25,000 new homes a year but builds around 20,000</span></div>
+    <div class="stat-box">
+      <span class="num">+75%</span>
+      <span class="label">rent rise since 2010, from £730 to £1,275/month for a 2-bed in Greater Glasgow</span>
+    </div>
+    <div class="stat-box">
+      <span class="num">+70%</span>
+      <span class="label">house price rise since 2015, from around £109k to £185k</span>
+    </div>
+    <div class="stat-box">
+      <span class="num">~75%</span>
+      <span class="label">Glasgow is building only around 75% of its own local housing target — itself likely far too low</span>
+    </div>
   </div>
 
-  <h2>Rents have risen faster than wages</h2>
+  <h2>The price signal is unambiguous</h2>
   <p>In 2010, the average monthly rent for a two-bedroom home in Greater Glasgow was around £730. Today it is around £1,275 — a rise of 75% in fifteen years. Over the same period, average wages in Scotland rose by roughly 40%. The gap between what people earn and what it costs to rent a home has widened substantially and consistently.</p>
-  <p>This is not a short-term fluctuation. The steepest rises came between 2021 and 2024, when rents jumped by over 30% in three years as the market tightened severely following a period of constrained supply. Glasgow's rental vacancy rate — the proportion of rental homes sitting empty at any given time — is close to zero. In a healthy market it would be 3–5%. Near-zero vacancy means landlords face almost no competitive pressure, and renters face almost no alternatives.</p>
+  <p>House prices tell the same story. Glasgow prices have risen by around 70% since 2015, from roughly £109,000 to £185,000. This is not a bubble or a short-term distortion. It is the predictable result of demand consistently outpacing supply over many years. When prices rise this fast and this persistently, the market is not misfiring — it is doing exactly what markets do when there are not enough homes to go around.</p>
 
   <div class="callout">
-    <p>When a rental market has near-zero vacancies, it is not a market in any meaningful sense. It is a queue. And the people at the back of that queue — those on lower incomes, those without guarantors, those leaving temporary accommodation — have almost nowhere to go.</p>
+    <p>Supply constraints do not break markets. They make markets function exactly as economics predicts: prices rise, housing is rationed by income, and the people least able to compete — younger renters, those on lower wages, people without family wealth to draw on — are priced out first. The answer is more supply.</p>
   </div>
 
-  <h2>Buying a home has become harder too</h2>
-  <p>House prices in Glasgow have risen by around 70% since 2015, from roughly £109,000 to £185,000 today. That sounds affordable by the standards of London or Edinburgh — and compared to those cities, it is. But the relevant comparison is not other cities. It is Glasgow wages.</p>
-  <p>Scotland's average full-time salary is around £38,000. At that income, and at current mortgage rates, a solo buyer can typically borrow around £152,000 — not enough to buy the average Glasgow home without a substantial deposit. Saving that deposit while paying today's rents is extremely difficult for most people. The result is that homeownership is being deferred or abandoned altogether by a growing share of the population, and the pressure on the rental market intensifies as a result.</p>
-  <p>This is not primarily a story about rich buyers pricing out first-timers. It is a story about supply: not enough homes are being built, so prices rise, so fewer people can buy, so more people rent, so rents rise too. The two markets are connected, and the shortage drives both.</p>
-
   <h2>Glasgow is not building enough homes</h2>
-  <p>Scotland needs to build around 25,000 homes per year across all tenures to meet demand. It is currently building around 20,000. The gap — roughly 5,000 homes per year — compounds over time. Every year of undersupply makes the next year's shortage worse.</p>
-  <p>Glasgow City Council declared a housing emergency in November 2023. More than 6,000 households have live homelessness applications. Over 4,200 people are in temporary accommodation every night. The Scottish Government cut the Affordable Housing Supply Programme budget by 22% in real terms in 2023/24, making an already difficult situation worse. Private sector housebuilding starts in 2024 were at their lowest since 2013.</p>
+  <p>The price signal alone tells us supply is insufficient. But the construction data confirms it. Private housebuilding starts in Scotland in 2024 were at their lowest since 2013. Glasgow is currently building at around 75% of its own local housing target — and that target is itself likely a significant underestimate of genuine need, since official targets are set through a planning process that tends to reflect what is politically deliverable rather than what the market actually requires.</p>
+  <p>The Competition and Markets Authority, in its 2024 analysis of housebuilding in the UK, calculated an implied Scotland-wide target of around 20,000 homes per year. Scotland is broadly hitting that figure nationally, but Glasgow and Edinburgh are each only at around 75% of their local targets. The cities where demand is greatest are precisely the places where delivery is most constrained.</p>
+
+  <h2>What this means for renters</h2>
+  <p>A rental market under supply pressure produces predictable results. Glasgow rental properties are being let within around 25 days on average — in a well-supplied market, that figure would be closer to 6–8 weeks. Rents have risen fastest at the bottom of the market: one-bedroom properties, the entry point for younger renters and those on lower incomes, saw annual rises of over 6% in 2025–26.</p>
+  <p>The people bearing the sharpest end of this are those who in a better-supplied market would already own their home. The average first-time buyer property in Glasgow costs around £167,000. A 5% deposit on that is around £8,350 — and analysis by Lloyds Bank found that in Glasgow, monthly mortgage costs would actually be around £396 cheaper than renting the equivalent home. The barrier is not the ongoing cost of ownership. It is accumulating the deposit while paying today's rents.</p>
+  <p>People who cannot get on the ownership ladder stay in the rental market longer, which tightens it further. Those who cannot compete in the private rental market turn to social housing waiting lists — lists that have grown not because social housing is being destroyed, but because the private market has become unaffordable to a growing proportion of the population. The social housing emergency is a symptom of the supply crisis, not a separate problem.</p>
+
+  <h2>What caused this?</h2>
+  <p>Glasgow's housing cost crisis has been building for decades, driven by sustained undersupply across all tenures. The reasons for that undersupply — a planning system that makes building difficult and uncertain, regulatory requirements that add cost and delay, a political culture that has treated housing as a local amenity to be managed rather than a public good to be expanded — are the subject of the pages that follow.</p>
+  <p>The important point is this: rising rents and rising prices are not the cause of the crisis. They are its most visible symptoms. The cause is that Glasgow has not been building enough homes. That is what needs to change.</p>
 
   <div class="evidence-card">
-    <div class="source">Scottish Government Private Sector Rent Statistics; Understanding Glasgow</div>
-    <p>Average two-bedroom rents in Greater Glasgow rose from approximately £730/month in 2010 to £1,275/month in 2026 — a 75% increase over fifteen years, significantly outpacing wage growth over the same period.</p>
+    <div class="source">Scottish Government Private Sector Rent Statistics, 2010–2025</div>
+    <p>Average two-bedroom rents in Greater Glasgow rose from approximately £730/month in 2010 to £1,275/month in 2026 — a rise of 75% over fifteen years, significantly outpacing wage growth over the same period. Greater Glasgow consistently had among the highest cumulative rent increases of any Broad Rental Market Area in Scotland.</p>
   </div>
 
   <div class="evidence-card">
     <div class="source">Registers of Scotland / UK House Price Index</div>
-    <p>Average house prices in Glasgow have risen from approximately £109,000 in 2015 to £185,000 in early 2026 — a rise of around 70%. The same index shows prices have been rising consistently since 2013/14, with the steepest acceleration coming after 2016.</p>
+    <p>Average house prices in Glasgow rose from approximately £109,000 in 2015 to £185,000 in early 2026 — a rise of around 70% in a decade. The average first-time buyer property in Glasgow costs around £167,000 as of early 2026.</p>
   </div>
 
   <div class="evidence-card">
-    <div class="source">SFHA / Shelter Scotland / CIH Scotland</div>
-    <p>Scotland must build approximately 15,700 affordable homes per year to meet need — nearly double current output of around 8,200. Across all tenures, Scotland needs closer to 25,000 homes per year. It is currently building around 20,000. Source: <a href="https://www.glasgow.gov.uk/article/11508/Glasgow-s-housing-emergency" target="_blank" style="color:var(--orange);">Glasgow City Council housing emergency page →</a></p>
+    <div class="source">Competition and Markets Authority, Housebuilding Market Study (2024)</div>
+    <p>The CMA calculated an implied Scotland-wide housing target of around 20,000 homes per year. Glasgow and Edinburgh were identified as delivering only around 75% of their local targets — the two cities with the greatest demand pressure are the two most underdelivering relative to need. <a href="https://www.gov.uk/cma-cases/housebuilding-market-study" target="_blank" style="color:var(--orange);">Read the CMA study →</a></p>
   </div>
 
-  <h2>Why this matters for the argument</h2>
-  <p>Glasgow's housing crisis is sometimes framed as a social housing problem: a question of waiting lists, homelessness applications, and council budgets. Those are real and serious. But framing it that way leads to a narrow set of solutions — more public funding, more social housing — which, while necessary, are not sufficient on their own.</p>
-  <p>The market-level evidence — rising rents, rising prices, near-zero vacancies — tells a different story. This is a supply problem. There are not enough homes for the people who want to live in Glasgow, across all income levels and tenures. Social housing waiting lists and private rents rise for the same underlying reason: the city is not building enough homes. That is what the pages that follow address.</p>
+  <div class="evidence-card">
+    <div class="source">Lloyds Bank / ONS, October 2025</div>
+    <p>In Glasgow, buying a home with a mortgage is around £396 per month cheaper than renting the equivalent property — the largest such gap of any UK city analysed. The barrier to homeownership is not the ongoing cost but the deposit, which requires accumulating savings while paying high rents.</p>
+  </div>
 
 </div>
 
