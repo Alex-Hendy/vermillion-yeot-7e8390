@@ -36,8 +36,12 @@
   .nuance-box p { color: #3A4A20; margin: 0; font-size: 0.95rem; line-height: 1.7; }
   .dilemma-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin: 2rem 0; }
   .dilemma-card { border: 2px solid var(--black); border-radius: 10px; padding: 1.5rem; }
-  .dilemma-card.universal { background: var(--orange-light); }
-  .dilemma-card.partial { background: #FAEEDA; }
+  .dilemma-card.universal { background: #1A1208; color: var(--cream); }
+  .dilemma-card.universal h3 { color: var(--amber); }
+  .dilemma-card.universal p { color: rgba(245,237,216,0.75); }
+  .dilemma-card.partial { background: var(--orange-light); }
+  .dilemma-card.partial h3 { color: var(--black); }
+  .dilemma-card.partial p { color: var(--muted); }
   .dilemma-card h3 { font-family: 'Fraunces', serif; font-size: 1.05rem; font-weight: 900; color: var(--black); margin-bottom: 0.5rem; }
   .dilemma-card p { font-size: 0.9rem; color: var(--muted); line-height: 1.7; margin: 0; }
   .who-title { font-family: 'Fraunces', serif; font-size: 1.4rem; font-weight: 900; color: var(--black); margin-bottom: 1.25rem; }
@@ -100,11 +104,11 @@
   <div class="dilemma-grid">
     <div class="dilemma-card universal">
       <h3>Universal coverage</h3>
-      <p>Controls apply to all or nearly all private rented properties. Every landlord faces constrained returns. The financially marginal ones sell up: some to owner-occupiers, some for redevelopment. The rental market shrinks. Fewer homes, same demand — rents rise in the medium term, particularly for new tenants entering the market.</p>
+      <p>Controls apply to all or nearly all private rented properties. Every landlord faces constrained returns. The financially marginal ones sell up. The rental market shrinks. Fewer homes, same demand — and the market tightens further with each passing year as the pool of available homes contracts.</p>
     </div>
     <div class="dilemma-card partial">
       <h3>Partial coverage</h3>
-      <p>Controls apply to some properties but not others — typically exempting new builds, properties above a certain value, or small landlords. Demand concentrates in the uncontrolled segment. Rents spike there as it absorbs the excess demand that cannot access controlled homes. You have legislated a two-tier market: lucky insiders and everyone else.</p>
+      <p>Controls apply to some properties but not others. The rent-controlled homes stay controlled — a fixed pool of lucky tenants paying below-market rents. But all the unmet demand that cannot access controlled homes concentrates into the uncontrolled segment. Rents spike there. The city divides into big winners and big losers, and the gap only grows over time as the two markets diverge further.</p>
     </div>
   </div>
 
@@ -112,11 +116,17 @@
 
   <h2>The zero-sum reality</h2>
   <p>The clearest illustration of the dilemma comes from San Francisco. When strict rent control was extended to small multi-family buildings in 1994, existing tenants in those buildings saved $2.9 billion in rent over the following sixteen years. But renters who moved to San Francisco after controls were introduced paid an extra $2.9 billion over the same period — exactly what existing tenants saved.</p>
-  <p>Rent control did not reduce the total cost of renting in San Francisco. It redistributed it: from current tenants to future ones, from those lucky enough to be in place when controls were introduced to those who came later. As Centre for Cities analysts Anthony Breach noted, this shows how rent control does not help all renters — only a few. Tenants lucky enough to already be in housing that suits their needs benefit greatly. Young people who want their own place, people moving for work, and anyone who needs to move all lose out.</p>
+  <p>Rent control did not reduce the total cost of renting in San Francisco. It redistributed it: from future renters to current ones, from those who came later to those who happened to be in place when controls were introduced. As Centre for Cities analyst Anthony Breach noted, this shows how rent control does not help all renters — only a few. Anyone who needs to move loses out.</p>
+  <p>And that is the hidden trap. Under rent control, anyone who ever needs to move — for a new job, for more space, to leave a relationship — faces the full force of the uncontrolled market. Their controlled rent is not portable. Once they leave, it is gone. The result is that tenants become trapped: staying in homes that no longer suit them, because the cost of leaving is prohibitive. Rent control does not give renters security. It gives them a cage with a low rent.</p>
 
   <div class="callout">
-    <p>Rent control divides renters into the privileged and the outsiders. Those already in rented homes when controls are introduced do well. The city's young people, people arriving from elsewhere, and anyone who needs to move all face a smaller market with less choice and higher asking rents on uncontrolled properties. The total cost of renting does not fall — it is just redistributed.</p>
+    <p>Rent control changes the system for rationing scarce homes from price to luck — specifically, the luck of who happened to be renting when controls were introduced. It does not make housing more available. It makes access to good housing a matter of incumbency rather than need, freezing in place whoever was there first and penalising everyone who comes after.</p>
   </div>
+
+  <h2>The knock-on effects nobody talks about</h2>
+  <p>When people cannot move without losing their home, the consequences extend well beyond the housing market. Workers cannot relocate for better jobs, or to the places where their skills are most needed — slowing economic mobility and productivity across the city. Families living in homes that no longer fit them — a couple who cannot afford to upsize when they have children, an older person rattling around in a large flat they would willingly exchange for something smaller — cannot adapt their housing to their lives.</p>
+  <p>In more serious cases, the inability to leave a rent-controlled home can make it harder for people to leave dangerous situations. Someone in an abusive relationship who knows that leaving means re-entering an unaffordable open market faces a higher barrier to getting out. This is not a hypothetical. It is a direct consequence of a system that makes the cost of moving prohibitively high.</p>
+  <p>These are the costs that never appear in the studies measuring whether rents fell in controlled units. They are real, and they fall on the people least able to absorb them.</p>
 
   <h2>What happened in the cities that tried it</h2>
 
@@ -150,14 +160,9 @@
     <p>When Massachusetts lifted rent controls in 1995, rental housing supply increased significantly — confirming that controls had been suppressing it. This natural experiment runs the evidence in reverse: removing controls produced the increase in supply that economic theory predicts controls would reduce. <a href="https://www.sciencedirect.com/science/article/abs/pii/S0094119006000659" target="_blank" style="color:var(--orange);">Read the paper →</a></p>
   </div>
 
-  <h2>The policy that never builds a home</h2>
-  <p>Even if you accept the most optimistic reading of partial rent controls — that they reduce rents in the controlled sector without meaningfully reducing supply — the fundamental problem remains. Glasgow's housing crisis is caused by a shortage of homes. Rent controls do not build homes. They redistribute the cost of a shortage among existing renters, protecting some at the expense of others, while leaving the underlying shortage completely intact.</p>
-  <p>A policy that holds rents down without adding homes manages a shortage rather than resolving it. And in doing so, it actively reduces the incentive to build: developers who cannot charge market rents on new investment do not build, and the pipeline of new homes that would actually ease the crisis never materialises. Partial coverage does not escape this — it just directs the damage more narrowly.</p>
-  <p>The cities that have actually made housing affordable — Vienna, Helsinki, Auckland, Minneapolis — did so by building significantly more homes. That is the only intervention that has ever worked.</p>
-
   <div class="nuance-box">
     <h3>Where we stand</h3>
-    <p>Glasgow YIMBY understands the appeal of rent controls. When rents rise 75% in fifteen years and wages have not kept pace, direct intervention feels like the right response. But the cities that have actually made housing affordable — Vienna, Helsinki, Auckland, Minneapolis — did so by building significantly more homes. We want what rent control advocates want: rents that people can afford. We just think a century of evidence points to a different way of getting there.</p>
+    <p>Rent controls are bad policy. The cities that have made housing affordable — Vienna, Helsinki, Auckland, Minneapolis — did so by building significantly more homes. That is what Glasgow needs. Not a system that entrenches the luck of who happened to be renting when controls were introduced.</p>
   </div>
 
   <hr class="content-divider">
