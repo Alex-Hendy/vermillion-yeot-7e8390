@@ -33,17 +33,28 @@
   .stat-num { font-family: 'Fraunces', serif; font-size: 1.4rem; color: var(--amber); display: block; font-weight: 900; line-height: 1.1; }
   .stat-desc { font-size: 0.62rem; color: rgba(245,237,216,0.45); font-weight: 500; display: block; margin-top: 3px; }
   section { max-width: 1100px; margin: 0 auto; padding: 4rem 2rem; }
-  .ideas-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.25rem; }
-  .idea-card { background: var(--cream); border: 2px solid var(--black); border-radius: 10px; padding: 1.5rem; transition: transform 0.15s, box-shadow 0.15s; text-decoration: none; display: block; cursor: pointer; }
-  .idea-card:hover { transform: translate(-2px, -2px); box-shadow: 4px 4px 0 var(--black); }
-  .idea-icon { width: 38px; height: 38px; border-radius: 8px; background: var(--amber); border: 1.5px solid var(--black); display: flex; align-items: center; justify-content: center; margin-bottom: 1rem; font-size: 16px; }
-  .idea-card:nth-child(2) .idea-icon { background: var(--orange-light); }
-  .idea-card:nth-child(3) .idea-icon { background: var(--olive-light); }
-  .idea-card:nth-child(4) .idea-icon { background: var(--orange-light); }
-  .idea-card:nth-child(5) .idea-icon { background: var(--olive-light); }
-  .idea-card:nth-child(6) .idea-icon { background: var(--amber); }
-  .idea-card h3 { font-family: 'Fraunces', serif; font-size: 1.05rem; font-weight: 700; margin-bottom: 0.5rem; color: var(--black); }
-  .idea-card p { font-size: 0.88rem; color: var(--muted); line-height: 1.65; }
+
+  /* IDEAS SECTION */
+  #ideasWrapper { position: relative; overflow: hidden; }
+  #stepsGrid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem; padding-right: 56px; }
+  .step-card { background: var(--cream); border: 2px solid var(--black); border-radius: 10px; padding: 1.5rem; text-decoration: none; display: block; transition: opacity 0.3s ease, transform 0.35s ease; }
+  .step-card:hover { transform: translate(-2px, -2px); box-shadow: 4px 4px 0 var(--black); }
+  #ideasWrapper.hovered .step-card { pointer-events: none; }
+  #ideasWrapper.hovered .step-card.left { opacity: 0.15; }
+  #ideasWrapper.hovered .step-card.right { opacity: 0.35; transform: translateX(-116px); }
+  .step-num { font-size: 0.72rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--orange); margin-bottom: 0.4rem; }
+  .step-card h3 { font-family: 'Fraunces', serif; font-size: 1.05rem; font-weight: 700; margin-bottom: 0.5rem; color: var(--black); }
+  .step-card p { font-size: 0.88rem; color: var(--muted); line-height: 1.65; }
+  .step-link { display: inline-block; margin-top: 0.75rem; font-size: 0.85rem; font-weight: 600; color: var(--orange); }
+  #demandsBtn { position: absolute; top: 0; right: 0; bottom: 0; width: 44px; background: var(--black); border-radius: 10px; border: 2px solid var(--black); display: flex; align-items: center; justify-content: center; text-decoration: none; cursor: pointer; overflow: hidden; transition: width 0.35s ease; z-index: 10; }
+  #ideasWrapper.hovered #demandsBtn { width: 160px; }
+  #collapsedLabel { writing-mode: vertical-rl; transform: rotate(180deg); font-size: 0.72rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--amber); white-space: nowrap; transition: opacity 0.15s; position: absolute; }
+  #expandedLabel { opacity: 0; transition: opacity 0.2s 0.15s; text-align: center; padding: 0 1rem; position: absolute; pointer-events: none; width: 100%; }
+  #ideasWrapper.hovered #collapsedLabel { opacity: 0; }
+  #ideasWrapper.hovered #expandedLabel { opacity: 1; }
+  .demands-label { font-size: 0.72rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--amber); margin-bottom: 0.6rem; }
+  .demands-text { font-size: 0.85rem; color: var(--cream); line-height: 1.5; }
+
   .myth-outer { padding: 0 2rem 4rem; max-width: 1100px; margin: 0 auto; }
   .myth-section { background: var(--black); color: var(--cream); border-radius: 12px; padding: 3.5rem; border: 2px solid var(--black); }
   .myth-section .section-title { color: var(--cream); margin-bottom: 2rem; }
@@ -70,7 +81,8 @@
     .hero h1 { font-size: 2.2rem; }
     .hero p { max-width: 100%; }
     .btn-group { flex-direction: column; }
-    .ideas-grid { grid-template-columns: 1fr; }
+    #stepsGrid { grid-template-columns: 1fr; padding-right: 0; }
+    #demandsBtn { display: none; }
     section { padding: 3rem 1.25rem; }
     .myth-outer { padding: 0 1.25rem 3rem; }
     .myth-section { padding: 2rem 1.25rem; }
@@ -80,7 +92,6 @@
   }
   @media (min-width: 769px) and (max-width: 1024px) {
     .hero { padding: 3rem 1.5rem; gap: 2rem; }
-    .ideas-grid { grid-template-columns: repeat(2, 1fr); }
     .myth-outer { padding: 0 1.5rem 4rem; }
     section { padding: 3.5rem 1.5rem; }
   }
@@ -118,7 +129,6 @@
         <svg viewBox="0 0 500 160" preserveAspectRatio="none" id="rentChart"></svg>
       </div>
       <p class="chart-source">Sources: Scottish Government Private Sector Rent Statistics; Understanding Glasgow; Chalmers Properties 2026</p>
-
       <div class="stat-row">
         <div class="stat"><span class="stat-num">14k+</span><span class="stat-desc">on waiting lists</span></div>
         <div class="stat"><span class="stat-num">+75%</span><span class="stat-desc">rent rise since 2010</span></div>
@@ -131,37 +141,42 @@
 <section id="ideas">
   <div class="label">What we believe</div>
   <div class="section-title">The YIMBY case for Glasgow</div>
-  <div class="section-intro">Glasgow has built fewer homes per capita than almost any comparable European city. The consequences are felt by everyone: rising rents, long waiting lists, young people priced out. We think there's a better way.</div>
-  <div class="ideas-grid">
-    <a href="ideas/affordable-by-abundance.html" class="idea-card">
-      <div class="idea-icon">💷</div>
-      <h3>Affordable by abundance</h3>
-      <p>The most reliable way to make housing affordable is to build more of it. Supply and demand works in housing just as it does everywhere else.</p>
-    </a>
-    <a href="ideas/build-more-everywhere.html" class="idea-card">
-      <div class="idea-icon">🏗️</div>
-      <h3>Build more, everywhere</h3>
-      <p>Restricting new homes drives up costs for everyone. Allowing more housing in more neighbourhoods keeps rents affordable and gives people real choices.</p>
-    </a>
-    <a href="ideas/planning-reform.html" class="idea-card">
-      <div class="idea-icon">🗳️</div>
-      <h3>Planning reform</h3>
-      <p>Scotland's planning system gives too much power to those who already have homes, and too little to those who need them. We want to change that.</p>
-    </a>
-    <a href="ideas/homes-near-transport.html" class="idea-card">
-      <div class="idea-icon">🚇</div>
-      <h3>Homes near transport</h3>
-      <p>Building densely around subway and rail stations reduces car dependency, cuts emissions, and connects people to jobs without requiring a car.</p>
-    </a>
-    <a href="ideas/jobs-and-economy.html" class="idea-card">
-      <div class="idea-icon">🔨</div>
-      <h3>Jobs and the economy</h3>
-      <p>Building homes creates thousands of well-paid local jobs in construction, architecture, and supply chains. A city that builds is a city that works.</p>
-    </a>
-    <a href="ideas/welcoming-new-glaswegians.html" class="idea-card">
-      <div class="idea-icon">🤝</div>
-      <h3>Welcoming new Glaswegians</h3>
-      <p>Glasgow has always grown by welcoming newcomers. Restrictive housing pulls up the drawbridge on that tradition. A city open to people must be open to homes too.</p>
+  <div class="section-intro">YIMBY — Yes In My Back Yard — is the belief that building more homes, in more places, is how cities solve housing crises. Here is the argument for Glasgow, step by step.</div>
+
+  <div id="ideasWrapper">
+    <div id="stepsGrid">
+      <a href="ideas/the-crisis.html" class="step-card left">
+        <div class="step-num">Step 1</div>
+        <h3>Glasgow has a housing crisis</h3>
+        <p>6,000+ homelessness applications, rents up 75% since 2010. This is not a normal housing market.</p>
+        <span class="step-link">Read the evidence →</span>
+      </a>
+      <a href="ideas/supply-is-the-answer.html" class="step-card right">
+        <div class="step-num">Step 2</div>
+        <h3>Building more homes is the solution</h3>
+        <p>Every city that has solved a housing crisis built its way out. Market-rate housebuilding is the primary mechanism.</p>
+        <span class="step-link">Read the argument →</span>
+      </a>
+      <a href="ideas/barriers.html" class="step-card left">
+        <div class="step-num">Step 3</div>
+        <h3>The rules make it too hard to build</h3>
+        <p>Scotland's planning system makes building homes more expensive and uncertain than it needs to be.</p>
+        <span class="step-link">Read about the barriers →</span>
+      </a>
+      <a href="ideas/what-needs-to-change.html" class="step-card right">
+        <div class="step-num">Step 4</div>
+        <h3>What needs to change</h3>
+        <p>Concrete demands for Glasgow City Council and the Scottish Government.</p>
+        <span class="step-link">Read our demands →</span>
+      </a>
+    </div>
+
+    <a id="demandsBtn" href="ideas/what-needs-to-change.html">
+      <div id="collapsedLabel">Our demands</div>
+      <div id="expandedLabel">
+        <div class="demands-label">Our demands</div>
+        <div class="demands-text">How we'd solve Glasgow's housing crisis →</div>
+      </div>
     </a>
   </div>
 </section>
@@ -295,6 +310,16 @@ function handleSignup() {
     setTimeout(() => { document.getElementById('emailInput').style.borderColor = ''; }, 1500);
   }
 }
+</script>
+<script>
+(function() {
+  const wrapper = document.getElementById('ideasWrapper');
+  const btn = document.getElementById('demandsBtn');
+  if (wrapper && btn) {
+    btn.addEventListener('mouseenter', () => wrapper.classList.add('hovered'));
+    btn.addEventListener('mouseleave', () => wrapper.classList.remove('hovered'));
+  }
+})();
 </script>
 </body>
 </html>
