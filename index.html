@@ -46,8 +46,6 @@
   .step-link { display: inline-block; margin-top: 0.75rem; font-size: 0.85rem; font-weight: 600; color: var(--orange); }
   #demandsBtn { position: absolute; top: 6px; right: 6px; bottom: 6px; width: 88px; background: var(--black); border-radius: 10px; border: 2px solid var(--black); display: flex; align-items: center; justify-content: center; text-decoration: none; cursor: pointer; overflow: hidden; transition: width 0.35s ease; z-index: 10; }
   #ideasWrapper.hovered #demandsBtn { width: 200px; }
-  #flameSvg { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; opacity: 0; transition: opacity 0.25s 0.1s; z-index: 2; }
-  #ideasWrapper.hovered #flameSvg { opacity: 1; }
   #collapsedLabel { writing-mode: vertical-rl; transform: rotate(180deg); font-family: 'Fraunces', serif; font-size: 1.4rem; font-weight: 900; letter-spacing: 0.06em; text-transform: uppercase; color: var(--amber); white-space: nowrap; transition: opacity 0.15s; position: absolute; }
   #expandedLabel { opacity: 0; transition: opacity 0.1s 0s; text-align: center; padding: 0 1.25rem; position: absolute; pointer-events: none; width: 100%; }
   #ideasWrapper.hovered #collapsedLabel { opacity: 0; }
@@ -178,7 +176,6 @@
     </div>
 
     <a id="demandsBtn" href="ideas/what-needs-to-change.html">
-      <svg id="flameSvg" xmlns="http://www.w3.org/2000/svg"></svg>
       <div id="collapsedLabel">Our demands</div>
       <div id="expandedLabel">
         <div class="demands-label">Our demands</div>
@@ -324,59 +321,10 @@ function handleSignup() {
 (function() {
   const wrapper = document.getElementById('ideasWrapper');
   const btn = document.getElementById('demandsBtn');
-  const svg = document.getElementById('flameSvg');
-  if (!wrapper || !btn || !svg) return;
-
-  function buildFlames() {
-    const w = btn.offsetWidth;
-    const h = btn.offsetHeight;
-    const N = 28;
-    const flameW = 7;
-    const flameH = 14;
-    const inset = 3;
-    svg.setAttribute('viewBox', `0 0 ${w} ${h}`);
-    svg.innerHTML = '';
-    for (let i = 0; i < N; i++) {
-      const t = i / N;
-      const perim = 2 * (w + h);
-      const dist = t * perim;
-      let px, py, angle;
-      if (dist < w) { px = dist; py = inset; angle = 90; }
-      else if (dist < w + h) { px = w - inset; py = dist - w; angle = 180; }
-      else if (dist < 2*w + h) { px = w - (dist - w - h); py = h - inset; angle = 270; }
-      else { px = inset; py = h - (dist - 2*w - h); angle = 0; }
-      const g = document.createElementNS('http://www.w3.org/2000/svg', 'g');
-      g.setAttribute('transform', `translate(${px},${py}) rotate(${angle})`);
-      const delay = (i / N * 0.8).toFixed(2);
-      const dur = (0.5 + Math.random() * 0.3).toFixed(2);
-      const path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
-      path.setAttribute('d', `M0,0 C-${flameW/2},${flameH*0.4} -${flameW/2.5},${flameH*0.7} 0,${flameH} C${flameW/2.5},${flameH*0.7} ${flameW/2},${flameH*0.4} 0,0`);
-      path.setAttribute('fill', '#E8A020');
-      path.setAttribute('opacity', '0.85');
-      const anim = document.createElementNS('http://www.w3.org/2000/svg', 'animateTransform');
-      anim.setAttribute('attributeName', 'transform');
-      anim.setAttribute('type', 'scale');
-      anim.setAttribute('values', `1 1; ${(0.7 + Math.random()*0.4).toFixed(2)} ${(0.8 + Math.random()*0.4).toFixed(2)}; 1 1`);
-      anim.setAttribute('dur', dur + 's');
-      anim.setAttribute('begin', delay + 's');
-      anim.setAttribute('repeatCount', 'indefinite');
-      anim.setAttribute('additive', 'sum');
-      path.appendChild(anim);
-      const animCol = document.createElementNS('http://www.w3.org/2000/svg', 'animate');
-      animCol.setAttribute('attributeName', 'fill');
-      animCol.setAttribute('values', '#E8A020;#D45A1A;#E8A020');
-      animCol.setAttribute('dur', dur + 's');
-      animCol.setAttribute('begin', delay + 's');
-      animCol.setAttribute('repeatCount', 'indefinite');
-      path.appendChild(animCol);
-      g.appendChild(path);
-      svg.appendChild(g);
-    }
+  if (wrapper && btn) {
+    btn.addEventListener('mouseenter', () => wrapper.classList.add('hovered'));
+    btn.addEventListener('mouseleave', () => wrapper.classList.remove('hovered'));
   }
-
-  btn.addEventListener('mouseenter', () => { wrapper.classList.add('hovered'); buildFlames(); });
-  btn.addEventListener('mouseleave', () => wrapper.classList.remove('hovered'));
-  buildFlames();
 })();
 </script>
 </body>
