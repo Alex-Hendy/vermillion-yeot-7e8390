@@ -47,9 +47,9 @@
   #demandsBtn { position: absolute; top: 6px; right: 6px; bottom: 6px; width: 88px; background: var(--black); border-radius: 10px; border: 2px solid var(--black); display: flex; align-items: center; justify-content: center; text-decoration: none; cursor: pointer; overflow: hidden; transition: width 0.35s ease; z-index: 10; }
   #ideasWrapper.hovered #demandsBtn { width: 200px; }
   #collapsedLabel { writing-mode: vertical-rl; transform: rotate(180deg); font-family: 'Fraunces', serif; font-size: 1.4rem; font-weight: 900; letter-spacing: 0.06em; text-transform: uppercase; color: var(--amber); white-space: nowrap; transition: opacity 0.15s; position: absolute; }
-  #expandedLabel { opacity: 0; transition: opacity 0.2s 0.15s; text-align: center; padding: 0 1.25rem; position: absolute; pointer-events: none; width: 100%; }
+  #expandedLabel { opacity: 0; transition: opacity 0.1s 0s; text-align: center; padding: 0 1.25rem; position: absolute; pointer-events: none; width: 100%; }
   #ideasWrapper.hovered #collapsedLabel { opacity: 0; }
-  #ideasWrapper.hovered #expandedLabel { opacity: 1; }
+  #ideasWrapper.hovered #expandedLabel { opacity: 1; transition: opacity 0.2s 0.15s; }
   .demands-label { font-size: 0.72rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--amber); margin-bottom: 0.6rem; }
   .demands-text { font-size: 0.92rem; color: var(--cream); line-height: 1.5; }
 
@@ -69,7 +69,7 @@
   .myth-all-top { display: flex; flex-direction: column; }
   .myth-all-label { font-size: 0.72rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--amber); margin-bottom: 0.4rem; }
   .myth-all-title { font-family: 'Fraunces', serif; font-size: 0.95rem; font-style: italic; font-weight: 900; color: rgba(245,237,216,0.75); line-height: 1.4; margin-bottom: 0.7rem; }
-  .myth-all-sub { font-size: 0.85rem; color: rgba(245,237,216,0.55); line-height: 1.55; }
+  .myth-all-sub { font-size: 0.95rem; color: rgba(245,237,216,0.55); line-height: 1.55; }
   .myth-all-link { font-size: 0.8rem; color: var(--amber); font-weight: 600; display: inline-block; margin-top: 0.75rem; }
 
   /* JOIN SECTION */
