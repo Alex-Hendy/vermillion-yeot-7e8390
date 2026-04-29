@@ -1,4 +1,5 @@
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
 :root {
   --black: #1A1208; --cream: #F5EDD8; --amber: #E8A020; --orange: #D45A1A;
   --orange-light: #F0D0B8; --olive: #5A6830; --olive-light: #D8E0B8;
