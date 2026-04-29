@@ -22,17 +22,23 @@
   .step-card h2 { font-family: 'Fraunces', serif; font-size: 1.3rem; font-weight: 900; color: var(--black); margin-bottom: 0.5rem; line-height: 1.25; }
   .step-card p { font-size: 0.92rem; color: var(--muted); line-height: 1.7; margin: 0; }
   .step-card .read-more { display: inline-block; margin-top: 0.75rem; font-size: 0.85rem; font-weight: 600; color: var(--orange); }
-  .divider { border: none; border-top: 2px solid var(--black); margin: 2rem 0; }
-  .also-section h3 { font-family: 'Fraunces', serif; font-size: 1.1rem; font-weight: 900; color: var(--black); margin-bottom: 1rem; }
-  .also-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; }
-  .also-card { background: var(--cream); border: 1.5px solid var(--black); border-radius: 8px; padding: 1.25rem; text-decoration: none; display: block; transition: transform 0.15s, box-shadow 0.15s; }
-  .also-card:hover { transform: translate(-2px,-2px); box-shadow: 3px 3px 0 var(--black); }
-  .also-card h4 { font-family: 'Fraunces', serif; font-size: 1rem; font-weight: 900; color: var(--black); margin-bottom: 0.35rem; }
-  .also-card p { font-size: 0.85rem; color: var(--muted); line-height: 1.6; margin: 0; }
+
+  .demands-outer { background: var(--amber); border-top: 2px solid var(--black); border-bottom: 2px solid var(--black); margin: 0 -2rem; padding: 2.5rem 2rem; }
+  .demands-inner { max-width: 760px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; gap: 2rem; flex-wrap: wrap; }
+  .demands-text-block { flex: 1; }
+  .demands-label { font-size: 0.72rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--black); background: var(--black); color: var(--cream); display: inline-block; padding: 0.3rem 0.75rem; border-radius: 100px; margin-bottom: 1rem; border: 1.5px solid var(--black); }
+  .demands-title { font-family: 'Fraunces', serif; font-size: clamp(1.6rem, 3vw, 2.2rem); font-weight: 900; color: var(--black); line-height: 1.15; margin-bottom: 0.75rem; letter-spacing: -0.02em; }
+  .demands-desc { font-size: 0.95rem; color: #3A2808; line-height: 1.75; max-width: 480px; }
+  .demands-cta { flex-shrink: 0; }
+  .demands-cta a { display: inline-block; background: var(--black); color: var(--cream); border: 2px solid var(--black); padding: 0.875rem 1.75rem; border-radius: 4px; font-size: 1rem; font-weight: 600; text-decoration: none; transition: background 0.15s; white-space: nowrap; }
+  .demands-cta a:hover { background: var(--orange); border-color: var(--orange); }
+
   @media (max-width: 768px) {
     .ideas-hero { padding: 3rem 1.25rem 2.5rem; }
     .content { padding: 2.5rem 1.25rem; }
-    .also-grid { grid-template-columns: 1fr; }
+    .demands-outer { margin: 0 -1.25rem; padding: 2rem 1.25rem; }
+    .demands-inner { flex-direction: column; gap: 1.5rem; }
+    .demands-cta a { width: 100%; text-align: center; display: block; }
   }
 </style>
 </head>
@@ -79,25 +85,21 @@
       <p>Scotland's planning system, Section 75 agreements, energy standards, parking requirements, and affordable housing contributions all make building homes more expensive and more uncertain than it needs to be. The result is fewer homes built than Scotland needs.</p>
       <span class="read-more">Read about the barriers →</span>
     </a>
-    <a href="what-needs-to-change.html" class="step-card">
-      <div class="step-num">Step 4</div>
-      <h2>What needs to change</h2>
-      <p>Concrete demands for Glasgow City Council and the Scottish Government: faster planning, reformed Section 75, car-free development near transport, higher housing targets with teeth, and a Local Development Plan that treats housing as a priority.</p>
-      <span class="read-more">Read our demands →</span>
-    </a>
   </div>
 
-  <hr class="divider">
+</div>
 
-  <div class="also-section">
-    <h3>Our demands</h3>
-    <p style="font-size:0.95rem;color:var(--muted);line-height:1.75;margin-bottom:1.25rem;">Glasgow YIMBY makes specific, evidence-based demands of Glasgow City Council and the Scottish Government. Eight concrete asks — from binding housing targets to parking reform to Section 75 simplification.</p>
-    <a href="what-needs-to-change.html" class="step-card" style="display:block;text-decoration:none;">
-      <div class="step-num">Read our demands</div>
-      <h2 style="margin:0;">What needs to change →</h2>
-    </a>
+<div class="demands-outer">
+  <div class="demands-inner">
+    <div class="demands-text-block">
+      <div class="demands-label">Our demands</div>
+      <div class="demands-title">So what needs to change?</div>
+      <p class="demands-desc">Glasgow YIMBY makes specific, evidence-based demands of Glasgow City Council and the Scottish Government: from binding housing targets to parking reform to Section 75 simplification.</p>
+    </div>
+    <div class="demands-cta">
+      <a href="what-needs-to-change.html">Read our demands →</a>
+    </div>
   </div>
-
 </div>
 
 <footer>
