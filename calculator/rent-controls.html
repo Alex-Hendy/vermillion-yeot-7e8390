@@ -6,7 +6,7 @@
 <title>Rent Control Supply Calculator: Model the Impact on Glasgow — Glasgow YIMBY</title>
 <link rel="canonical" href="https://glasgowyimby.com/calculator/rent-controls.html">
 <meta name="description" content="Interactive calculator modelling how rent controls would affect Glasgow's rental supply. Adjust the rent cap, years in force, and coverage to see the projected impact on rental homes.">
-<link href="https://fonts.googleapis.com/css2?family=Anybody:ital,wdth,wght@0,125,700;0,125,900;1,125,700;1,125,900&family=Plus+Jakarta+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,700;0,9..144,900;1,9..144,400;1,9..144,700;1,9..144,900&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../style.css">
 <style>
   .calc-hero { background: var(--black); color: var(--cream); padding: 5rem 2rem 4rem; }
@@ -14,7 +14,7 @@
   .back-link { color: var(--amber); text-decoration: none; font-size: 0.85rem; font-weight: 600; display: inline-flex; align-items: center; gap: 0.4rem; margin-bottom: 2rem; }
   .back-link:hover { text-decoration: underline; }
   .calc-hero-label { display: inline-block; font-size: 0.72rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; padding: 0.3rem 0.75rem; border-radius: 100px; margin-bottom: 1.25rem; border: 1.5px solid rgba(232,160,32,0.4); background: rgba(232,160,32,0.15); color: var(--amber); }
-  .calc-hero-title { font-family: 'Anybody', sans-serif; font-size: clamp(2rem, 4vw, 3rem); font-weight: 900; line-height: 1.1; letter-spacing: -0.02em; color: var(--cream); margin-bottom: 1.25rem; }
+  .calc-hero-title { font-family: 'Fraunces', serif; font-size: clamp(2rem, 4vw, 3rem); font-weight: 900; line-height: 1.1; letter-spacing: -0.02em; color: var(--cream); margin-bottom: 1.25rem; }
   .calc-hero-intro { font-size: 1.05rem; color: rgba(245,237,216,0.75); line-height: 1.75; max-width: 640px; }
   .calc-hero-intro strong { color: var(--amber); font-weight: 600; }
   .content { max-width: 760px; margin: 0 auto; padding: 3rem 2rem 4rem; }
@@ -24,14 +24,21 @@
   .rc-toggle { display: flex; gap: 8px; margin-bottom: 1.5rem; }
   .rc-toggle button { padding: 6px 18px; border-radius: 4px; border: 2px solid var(--black); background: var(--cream); color: var(--black); font-size: 13px; font-weight: 600; cursor: pointer; font-family: inherit; }
   .rc-toggle button.active { background: var(--black); color: var(--cream); }
-  .rc-row { display: flex; align-items: center; gap: 12px; margin-bottom: 0.875rem; }
-  .rc-row label { font-size: 13px; color: var(--muted); min-width: 200px; font-weight: 500; }
+
+  /* SLIDER ROWS WITH TOOLTIPS */
+  .rc-row { display: flex; align-items: center; gap: 12px; margin-bottom: 0.875rem; position: relative; }
+  .rc-row label { font-size: 13px; color: var(--muted); min-width: 200px; font-weight: 500; display: flex; align-items: center; gap: 6px; cursor: default; }
+  .rc-info { display: inline-flex; align-items: center; justify-content: center; width: 15px; height: 15px; border-radius: 100px; background: var(--muted); color: var(--cream); font-size: 9px; font-weight: 700; cursor: help; flex-shrink: 0; position: relative; }
+  .rc-tooltip { position: absolute; left: 0; bottom: calc(100% + 8px); background: var(--black); color: var(--cream); font-size: 12px; line-height: 1.6; padding: 10px 14px; border-radius: 8px; width: 280px; pointer-events: none; opacity: 0; transition: opacity 0.15s; z-index: 20; font-weight: 400; border: 1px solid rgba(255,255,255,0.12); }
+  .rc-tooltip::after { content: ''; position: absolute; top: 100%; left: 20px; border: 6px solid transparent; border-top-color: var(--black); }
+  .rc-info:hover .rc-tooltip { opacity: 1; }
   .rc-row input[type=range] { flex: 1; accent-color: var(--black); }
-  .rc-row .rc-val { font-size: 14px; font-weight: 600; min-width: 52px; text-align: right; color: var(--black); font-family: 'Anybody', sans-serif; }
+  .rc-row .rc-val { font-size: 14px; font-weight: 600; min-width: 52px; text-align: right; color: var(--black); font-family: 'Fraunces', serif; }
+
   .rc-cards { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-bottom: 1.5rem; }
   .rc-card { background: var(--cream); border: 2px solid var(--black); border-radius: 8px; padding: 12px 14px; }
   .rc-card-label { font-size: 11px; font-weight: 600; color: var(--muted); text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 4px; }
-  .rc-card-val { font-family: 'Anybody', sans-serif; font-size: 22px; font-weight: 900; color: var(--black); }
+  .rc-card-val { font-family: 'Fraunces', serif; font-size: 22px; font-weight: 900; color: var(--black); }
   .rc-card-val.danger { color: var(--orange); }
   .rc-card-sub { font-size: 11px; color: #7A5C3E; margin-top: 2px; }
   .rc-chart-wrap { position: relative; width: 100%; height: 240px; margin-bottom: 0.75rem; }
@@ -41,10 +48,10 @@
   .bonus-label { font-size: 11px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: #5A2808; margin-bottom: 0.5rem; display: flex; align-items: center; gap: 6px; }
   .bonus-arrow { display: inline-block; width: 0; height: 0; border-left: 6px solid transparent; border-right: 6px solid transparent; border-top: 8px solid var(--orange); flex-shrink: 0; }
   .bonus-inner { display: flex; align-items: center; gap: 1rem; flex-wrap: wrap; }
-  .bonus-stat { font-family: 'Anybody', sans-serif; font-size: 1.6rem; font-weight: 900; color: var(--orange); flex-shrink: 0; }
+  .bonus-stat { font-family: 'Fraunces', serif; font-size: 1.6rem; font-weight: 900; color: var(--orange); flex-shrink: 0; }
   .bonus-text { font-size: 12px; color: #5A2808; line-height: 1.6; flex: 1; }
   .rc-formula-box { background: var(--black); border-radius: 10px; padding: 1.5rem; margin-bottom: 1.5rem; }
-  .rc-formula-title { font-family: 'Anybody', sans-serif; font-size: 16px; font-weight: 700; color: var(--cream); margin-bottom: 1.25rem; }
+  .rc-formula-title { font-family: 'Fraunces', serif; font-size: 16px; font-weight: 700; color: var(--cream); margin-bottom: 1.25rem; }
   .rc-formula-eq { font-family: monospace; font-size: 13px; background: rgba(255,255,255,0.08); border-radius: 6px; padding: 0.875rem 1rem; color: var(--cream); margin-bottom: 1.25rem; line-height: 2; }
   .rc-formula-eq .term { color: var(--amber); font-weight: 600; }
   .rc-formula-eq .op { color: rgba(245,237,216,0.5); }
@@ -54,7 +61,7 @@
   .rc-ann-term { font-size: 12px; font-weight: 600; color: var(--amber); min-width: 140px; font-family: monospace; flex-shrink: 0; }
   .rc-ann-desc { font-size: 12px; color: rgba(245,237,216,0.7); line-height: 1.5; flex: 1; }
   .rc-ann-val { font-size: 12px; font-weight: 600; color: var(--cream); min-width: 80px; text-align: right; flex-shrink: 0; }
-  .who-title { font-family: 'Anybody', sans-serif; font-size: 1.4rem; font-weight: 900; color: var(--black); margin-bottom: 1.25rem; }
+  .who-title { font-family: 'Fraunces', serif; font-size: 1.4rem; font-weight: 900; color: var(--black); margin-bottom: 1.25rem; }
   .who-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 2rem; }
   .who-card { border: 2px solid var(--black); border-radius: 8px; padding: 1.25rem; }
   .who-card.wins { background: #D8E0B8; }
@@ -64,10 +71,10 @@
   .badge-win { background: #4A5E3A; color: #D8E0B8; font-size: 10px; font-weight: 700; padding: 2px 7px; border-radius: 100px; letter-spacing: 0.06em; }
   .badge-lose { background: var(--orange); color: #FAE8E0; font-size: 10px; font-weight: 700; padding: 2px 7px; border-radius: 100px; letter-spacing: 0.06em; }
   .badge-mixed { background: #7A4A00; color: #FAEEDA; font-size: 10px; font-weight: 700; padding: 2px 7px; border-radius: 100px; letter-spacing: 0.06em; }
-  .who-card h3 { font-family: 'Anybody', sans-serif; font-size: 1rem; font-weight: 700; margin-bottom: 0.5rem; color: var(--black); }
+  .who-card h3 { font-family: 'Fraunces', serif; font-size: 1rem; font-weight: 700; margin-bottom: 0.5rem; color: var(--black); }
   .who-card p { font-size: 13px; line-height: 1.65; color: var(--muted); }
   .who-card p + p { margin-top: 0.5rem; }
-  .sources-title { font-family: 'Anybody', sans-serif; font-size: 1.2rem; font-weight: 900; color: var(--black); margin-bottom: 1rem; }
+  .sources-title { font-family: 'Fraunces', serif; font-size: 1.2rem; font-weight: 900; color: var(--black); margin-bottom: 1rem; }
   .study-strip { display: flex; flex-direction: column; gap: 8px; margin-bottom: 2rem; }
   .study { border-left: 3px solid var(--amber); padding: 6px 0 6px 12px; }
   .study-name { font-size: 13px; font-weight: 600; color: var(--black); }
@@ -84,6 +91,7 @@
     .rc-cards { grid-template-columns: 1fr 1fr; }
     .who-grid { grid-template-columns: 1fr; }
     .rc-row label { min-width: 140px; }
+    .rc-tooltip { width: 220px; }
   }
 </style>
 </head>
@@ -95,7 +103,6 @@
     <li><a href="../ideas/index.html">The ideas</a></li>
     <li><a href="../myths/index.html">Myths</a></li>
     <li><a href="../evidence.html">Evidence</a></li>
-    <li><a href="rent-controls.html">Calculator</a></li>
     <li><a href="../news.html">News</a></li>
     <li><a href="../get-involved.html" class="nav-cta">Get involved</a></li>
   </ul>
@@ -124,17 +131,32 @@
   </div>
 
   <div class="rc-row">
-    <label>Rent cap (max yearly increase)</label>
+    <label>
+      Rent cap (max yearly increase)
+      <span class="rc-info">i
+        <span class="rc-tooltip">The maximum percentage a landlord can increase rent each year under the policy. A 0% cap is a full rent freeze — no increases allowed at all. A 3% cap means rents can rise by up to 3% per year. A higher cap gives landlords more room to keep pace with inflation and costs, making them less likely to exit the market.</span>
+      </span>
+    </label>
     <input type="range" min="0" max="10" step="0.5" value="3" id="capSlider" oninput="update()">
     <span class="rc-val" id="capVal">3%</span>
   </div>
   <div class="rc-row">
-    <label>Years in force</label>
+    <label>
+      Years in force
+      <span class="rc-info">i
+        <span class="rc-tooltip">How long the rent control policy remains in place. The longer controls last, the more landlords exit the market — and the harder it becomes for the rental market to recover, since rent controls typically prevent yields from adjusting back to levels that attract investment.</span>
+      </span>
+    </label>
     <input type="range" min="1" max="20" step="1" value="5" id="yearsSlider" oninput="update()">
     <span class="rc-val" id="yearsVal">5 yrs</span>
   </div>
   <div class="rc-row" style="margin-bottom:1.5rem">
-    <label>Coverage</label>
+    <label>
+      Coverage
+      <span class="rc-info">i
+        <span class="rc-tooltip"><strong>Exemptions allowed:</strong> Many property types are excluded — new builds, small landlords, short-term lets, or properties above a certain value. Landlords with exempt properties face no constraint and are unlikely to exit.<br><br><strong>Partial coverage:</strong> Controls apply to most of the private rental sector but with some carve-outs. A significant portion of landlords are affected and face reduced yields.<br><br><strong>Universal:</strong> Controls apply to virtually all private rented properties with no exemptions. Every landlord faces the constraint, producing the largest market-wide exit effect.</span>
+      </span>
+    </label>
     <input type="range" min="1" max="3" step="1" value="2" id="strengthSlider" oninput="update()">
     <span class="rc-val" id="strengthVal">Partial coverage</span>
   </div>
@@ -248,13 +270,14 @@ function strengthLabel(v) {
 
 function getPeakExitRate(cap, strength) {
   const base = [0.06, 0.11, 0.17][strength-1];
-  const capAdj = cap <= 0 ? 1.5 : cap <= 2 ? 1.25 : cap <= 4 ? 1.0 : cap <= 7 ? 0.75 : 0.55;
+  // Wider range: 0% cap = x1.5, 10% cap = x0.4. Steeper curve so high caps still matter but less.
+  const capAdj = cap <= 0 ? 1.5 : cap <= 2 ? 1.3 : cap <= 4 ? 1.1 : cap <= 7 ? 0.8 : 0.4;
   return Math.min(base * capAdj, 0.22);
 }
 
 function getConstructionReduction(cap, strength) {
   const base = [0.03, 0.06, 0.10][strength-1];
-  const capAdj = cap <= 0 ? 1.4 : cap <= 2 ? 1.2 : cap <= 4 ? 1.0 : cap <= 7 ? 0.75 : 0.5;
+  const capAdj = cap <= 0 ? 1.4 : cap <= 2 ? 1.2 : cap <= 4 ? 1.0 : cap <= 7 ? 0.7 : 0.35;
   return Math.min(base * capAdj, 0.14);
 }
 
@@ -315,7 +338,7 @@ function update() {
   const constPct = Math.round(constReduction * 100);
   document.getElementById('bonusStat').textContent = homesNotBuilt.toLocaleString();
   document.getElementById('bonusText').innerHTML = `Estimated additional homes <em>not built</em> over ${years} year${years>1?'s':''} due to reduced developer confidence: a further <strong>${constPct}%</strong> reduction in new completions. Based on Kholodilin (2022).`;
-  const capAdj = cap <= 0 ? '×1.5' : cap <= 2 ? '×1.25' : cap <= 4 ? '×1.0' : cap <= 7 ? '×0.75' : '×0.55';
+  const capAdjLabel = cap <= 0 ? '×1.5' : cap <= 2 ? '×1.3' : cap <= 4 ? '×1.1' : cap <= 7 ? '×0.8' : '×0.4';
   const baseRatePct = ['6%', '11%', '17%'][strength-1];
   document.getElementById('formulaEq').innerHTML =
     `<span class="term">S(t)</span> <span class="op">=</span> <span class="term">S₀</span> <span class="op">×</span> <span class="op">∏</span><sub>i=0</sub><sup>t-1</sup> <span class="op">(</span><span class="op">1</span> <span class="op">-</span> <span class="term">r₀</span> <span class="op">·</span> e<sup><span class="op">-λi</span></sup><span class="op">)</span>
@@ -323,7 +346,7 @@ function update() {
   document.getElementById('annotations').innerHTML = `
     <div class="rc-ann"><div class="rc-ann-term">S(t)</div><div class="rc-ann-desc">Rental stock remaining after t years under rent control</div><div class="rc-ann-val">${finalStock.toLocaleString()}</div></div>
     <div class="rc-ann"><div class="rc-ann-term">S₀</div><div class="rc-ann-desc">Baseline rental stock in 2025, from Scottish Government 2024 data</div><div class="rc-ann-val">${s.rentalStock.toLocaleString()}</div></div>
-    <div class="rc-ann"><div class="rc-ann-term">r₀</div><div class="rc-ann-desc">Peak annual exit rate in year 1 (2026): base rate (${baseRatePct}, ${strengthLabel(strength).toLowerCase()}) × cap adjustment (${capAdj} for ${cap}% cap)</div><div class="rc-ann-val">${(peakRate*100).toFixed(1)}%/yr</div></div>
+    <div class="rc-ann"><div class="rc-ann-term">r₀</div><div class="rc-ann-desc">Peak annual exit rate in year 1 (2026): base rate (${baseRatePct}, ${strengthLabel(strength).toLowerCase()}) × cap adjustment (${capAdjLabel} for ${cap}% cap)</div><div class="rc-ann-val">${(peakRate*100).toFixed(1)}%/yr</div></div>
     <div class="rc-ann"><div class="rc-ann-term">e<sup>-λi</sup></div><div class="rc-ann-desc">Decay factor (λ = 0.1): exit rate slows as marginal landlords have already left, not because conditions improve</div><div class="rc-ann-val">λ = 0.1</div></div>
     <div class="rc-ann"><div class="rc-ann-term">∏ (product)</div><div class="rc-ann-desc">Each year's stock is the previous year's stock × (1 minus that year's exit rate), compounded from 2026</div><div class="rc-ann-val">${years} steps</div></div>
   `;
