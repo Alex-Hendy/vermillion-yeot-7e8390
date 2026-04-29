@@ -51,8 +51,8 @@
   .pull-btn:active { transform: scale(0.97); }
   .pull-btn:disabled { opacity: 0.45; cursor: not-allowed; transform: none; }
 
-  .slot-card { background: var(--cream); border: 2px solid var(--black); border-radius: 10px; padding: 1.25rem; opacity: 0; transform: translateY(8px); transition: opacity 0.4s, transform 0.4s; margin-top: 1.5rem; }
-  .slot-card.show { opacity: 1; transform: translateY(0); }
+  .slot-card { background: var(--cream); border: 2px solid var(--black); border-radius: 10px; padding: 1.25rem; opacity: 0; transition: opacity 0.4s; margin-top: 1.5rem; min-height: 160px; }
+  .slot-card.show { opacity: 1; }
   .slot-tag { display: inline-block; font-size: 11px; padding: 3px 10px; border-radius: 100px; margin-bottom: 8px; font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase; border: 1.5px solid var(--black); }
   .tag-s { background: #D8E0B8; color: #3A4A20; }
   .tag-w { background: var(--orange-light); color: #5A2808; }
@@ -317,9 +317,11 @@ async function doSpin() {
   const target = nextFromQueue();
   pullCount++;
 
-  await spinOne(0, target, 1400);
-  await spinOne(1, target, 1600);
-  await spinOne(2, target, 1800);
+  // Start all three reels with 300ms offsets, don't await sequentially
+  const p0 = spinOne(0, target, 1400);
+  const p1 = new Promise(r => setTimeout(() => spinOne(1, target, 1500).then(r), 300));
+  const p2 = new Promise(r => setTimeout(() => spinOne(2, target, 1600).then(r), 600));
+  await Promise.all([p0, p1, p2]);
 
   document.getElementById('winBar').classList.add('lit');
   spinning = false;
