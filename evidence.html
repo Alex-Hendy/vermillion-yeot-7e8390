@@ -51,7 +51,8 @@
   .pull-btn:active { transform: scale(0.97); }
   .pull-btn:disabled { opacity: 0.45; cursor: not-allowed; transform: none; }
 
-  .slot-card { background: var(--cream); border: 2px solid var(--black); border-radius: 10px; padding: 1.25rem; opacity: 0; transition: opacity 0.4s; margin-top: 1.5rem; min-height: 160px; }
+  .slot-card { background: var(--cream); border: 2px solid var(--black); border-radius: 10px; padding: 1.25rem; opacity: 0; transition: opacity 0.4s; margin-top: 1.5rem; min-height: 160px; display: none; }
+  .slot-card.used { display: block; }
   .slot-card.show { opacity: 1; }
   .slot-tag { display: inline-block; font-size: 11px; padding: 3px 10px; border-radius: 100px; margin-bottom: 8px; font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase; border: 1.5px solid var(--black); }
   .tag-s { background: #D8E0B8; color: #3A4A20; }
@@ -332,13 +333,15 @@ async function doSpin() {
 
 function showCard(i) {
   const c = CASES[i];
+  const card = document.getElementById('slotCard');
   document.getElementById('slotTag').textContent = c.type === 'success' ? 'Success story' : 'Cautionary tale';
   document.getElementById('slotTag').className = 'slot-tag ' + (c.type === 'success' ? 'tag-s' : 'tag-w');
   document.getElementById('slotCity').textContent = c.city + ', ' + c.country;
   document.getElementById('slotReform').textContent = c.reform;
   document.getElementById('slotBody').textContent = c.body;
   document.getElementById('slotSrc').innerHTML = c.src;
-  setTimeout(() => document.getElementById('slotCard').classList.add('show'), 80);
+  card.classList.add('used');
+  setTimeout(() => card.classList.add('show'), 80);
 }
 
 function toggleNav() {
