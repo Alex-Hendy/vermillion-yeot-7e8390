@@ -43,6 +43,8 @@
   .win-bar { height: 3px; background: rgba(255,255,255,0.06); border-radius: 2px; margin: 0 0 1.25rem; transition: background 0.5s, box-shadow 0.5s; }
   .win-bar.lit { background: #E8A020; box-shadow: 0 0 8px rgba(232,160,32,0.6); }
 
+  .cab-counter { text-align: center; font-size: 11px; color: rgba(245,237,216,0.35); letter-spacing: 0.06em; margin-bottom: 1rem; font-weight: 600; text-transform: uppercase; min-height: 16px; }
+
   .pull-btn-wrap { display: flex; justify-content: center; }
   .pull-btn { background: #E8A020; color: #1A1208; border: 3px solid #C47A10; border-radius: 10px; padding: 14px 52px; font-size: 16px; font-weight: 700; cursor: pointer; font-family: 'Fraunces', serif; transition: background 0.15s, transform 0.1s; }
   .pull-btn:hover { background: #D45A1A; color: #F5EDD8; border-color: #8B3A0E; }
@@ -110,7 +112,7 @@
 <div class="content">
 
   <div class="section-head">Try your luck</div>
-  <p class="section-sub">Spin the reels to land on a case study. Each one is a city that changed its planning rules and measured what happened next.</p>
+  <p class="section-sub">Spin the reels to land on a case study. Each pull gives you a city you haven't seen yet — once you've seen all five, the reels reset.</p>
 
   <div class="cabinet">
     <div class="cab-title">YIMBY evidence — cities that changed the rules</div>
@@ -122,6 +124,7 @@
       </div>
     </div>
     <div class="win-bar" id="winBar"></div>
+    <div class="cab-counter" id="cabCounter"></div>
     <div class="pull-btn-wrap">
       <button class="pull-btn" id="pullBtn" onclick="doSpin()">Pull</button>
     </div>
@@ -156,7 +159,7 @@
         <div class="case-stat-pill">Rents down 21%</div>
       </div>
       <div class="case-card-reform">Citywide upzoning by a single council — from 2017</div>
-      <div class="case-card-body">Lower Hutt (population 114,000) acted alone, upzoning 80% of residential land from 2017 without waiting for national reform. Construction tripled. Rents fell 21% relative to comparable cities that did not reform. A city comparable to Glasgow in scale, proving a single council can act and see measurable results within a few years.</div>
+      <div class="case-card-body">Lower Hutt (population 114,000) acted alone, upzoning 80% of residential land from 2017 without waiting for national reform. Construction tripled. Rents fell 21% relative to comparable cities that did not reform — proving a single council can act and see results.</div>
       <div class="case-card-src">Maltman & Greenaway-McGrevy (2024), Journal of Housing Economics. <a href="https://www.sciencedirect.com/science/article/pii/S1051137724000512" target="_blank">Read the research →</a></div>
     </div>
     <div class="case-card">
@@ -165,7 +168,7 @@
         <div class="case-stat-pill">+1% vs +14% elsewhere</div>
       </div>
       <div class="case-card-reform">Eliminated single-family zoning citywide — 2020</div>
-      <div class="case-card-body">Minneapolis became the first major US city to end single-family-only zoning, permitting duplexes and triplexes on all residential lots and removing parking minimums. From 2017 to 2022 it permitted 21,000 new units, vastly more than comparable Midwestern cities. Rents rose just 1% while the rest of Minnesota saw a 14% increase over the same period.</div>
+      <div class="case-card-body">Minneapolis became the first major US city to end single-family-only zoning, permitting duplexes and triplexes on all residential lots and removing parking minimums. From 2017 to 2022 it permitted 21,000 new units, vastly more than comparable Midwestern cities. Rents rose just 1% while the rest of Minnesota saw a 14% increase.</div>
       <div class="case-card-src">Pew Charitable Trusts (2023). <a href="https://www.cbsnews.com/news/affordable-housing-shortage-yimby-movement/" target="_blank">Read the evidence →</a></div>
     </div>
     <div class="case-card">
@@ -174,7 +177,7 @@
         <div class="case-stat-pill">Rents fell</div>
       </div>
       <div class="case-card-reform">Zoning liberalisation and planning reform — from 2019</div>
-      <div class="case-card-body">Austin overhauled its zoning codes, removed parking minimums, and streamlined permitting, making it far easier to build. It became one of the top US cities for apartment construction per capita. The result: rents fell while continuing to rise in most comparable American cities, making Austin one of the most-cited YIMBY proof points in the world.</div>
+      <div class="case-card-body">Austin overhauled its zoning codes, removed parking minimums, and streamlined permitting, making it far easier to build. It became one of the top US cities for apartment construction per capita. The result: rents fell while continuing to rise in most comparable American cities.</div>
       <div class="case-card-src">Pew Charitable Trusts / multiple sources. <a href="https://www.wvik.org/npr-top-stories/2026-02-24/is-the-yimby-movement-doomed" target="_blank">Read the evidence →</a></div>
     </div>
     <div class="case-card warning">
@@ -217,9 +220,38 @@ const Q_SVG = `<svg width="44" height="54" viewBox="0 0 44 54" fill="none" xmlns
   <rect x="15" y="47" width="14" height="6" rx="3" fill="#E8A020" stroke="#1A1208" stroke-width="2"/>
 </svg>`;
 
-let lastResult = -1;
+// Queue-based shuffle: cycle through all cases in random order, no repeats until all seen
+let queue = [];
 let spinning = false;
-let reelState = [0, 0, 0];
+let pullCount = 0;
+
+function shuffle(arr) {
+  const a = arr.slice();
+  for (let i = a.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [a[i], a[j]] = [a[j], a[i]];
+  }
+  return a;
+}
+
+function nextFromQueue() {
+  if (queue.length === 0) {
+    queue = shuffle([...Array(N).keys()]);
+  }
+  return queue.shift();
+}
+
+function updateCounter() {
+  const seen = pullCount % N === 0 && pullCount > 0 ? N : pullCount % N;
+  const counter = document.getElementById('cabCounter');
+  if (pullCount === 0) {
+    counter.textContent = '';
+  } else if (seen === N) {
+    counter.textContent = "You've seen all five — reshuffling";
+  } else {
+    counter.textContent = seen + ' of ' + N + ' seen this round';
+  }
+}
 
 function qCell() {
   const cell = document.createElement('div');
@@ -250,7 +282,6 @@ function buildSpinStrip(col, targetCase) {
   const strip = document.getElementById('strip' + col);
   strip.innerHTML = '';
   strip.style.transition = 'none';
-
   const spinRows = 12 + col * 3;
   for (let i = 0; i < spinRows; i++) {
     strip.appendChild(dataCell(col, i % N));
@@ -266,7 +297,6 @@ function spinOne(col, targetCase, duration) {
     const totalCells = buildSpinStrip(col, targetCase);
     const strip = document.getElementById('strip' + col);
     const targetTop = -((totalCells - 1) * CELL_H);
-
     requestAnimationFrame(() => {
       requestAnimationFrame(() => {
         strip.style.transition = `top ${duration}ms cubic-bezier(0.25, 0.1, 0.05, 1)`;
@@ -284,9 +314,8 @@ async function doSpin() {
   document.getElementById('slotCard').classList.remove('show');
   document.getElementById('winBar').classList.remove('lit');
 
-  let target;
-  do { target = Math.floor(Math.random() * N); } while (target === lastResult);
-  lastResult = target;
+  const target = nextFromQueue();
+  pullCount++;
 
   await spinOne(0, target, 1400);
   await spinOne(1, target, 1600);
@@ -295,6 +324,7 @@ async function doSpin() {
   document.getElementById('winBar').classList.add('lit');
   spinning = false;
   document.getElementById('pullBtn').disabled = false;
+  updateCounter();
   showCard(target);
 }
 
@@ -317,6 +347,7 @@ function toggleNav() {
 }
 
 buildInitialReels();
+updateCounter();
 </script>
 </body>
 </html>
