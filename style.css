@@ -4,6 +4,7 @@
   --orange-light: #F0D0B8; --olive: #5A6830; --olive-light: #D8E0B8;
   --muted: #4A3820;
 }
+::selection { background: var(--amber); color: var(--black); }
 body { font-family: 'DM Sans', sans-serif; background: var(--cream); color: var(--black); line-height: 1.6; font-size: 16px; }
 .logo, h1, h2, h3, h4, [style*="Anybody"] {  }
 
