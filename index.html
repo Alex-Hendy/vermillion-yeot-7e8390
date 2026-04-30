@@ -24,8 +24,8 @@
   .btn-group { display: flex; gap: 1rem; flex-wrap: wrap; }
   .skyline-card { background: var(--black); border-radius: 12px; padding: 1.75rem; border: 2px solid var(--black); }
   .skyline-label { font-size: 0.72rem; color: rgba(245,237,216,0.5); margin-bottom: 1.25rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; }
-  .chart-wrap { position: relative; height: 180px; margin-bottom: 0; }
-  .chart-wrap svg { width: 100%; height: 100%; overflow: visible; }
+  .chart-wrap { position: relative; height: 210px; margin-bottom: 0; }
+  .chart-wrap svg { width: 100%; height: 100%; }
   .stat-row { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 0; border-top: 1px solid rgba(255,255,255,0.1); }
   .stat { padding: 0.75rem 0.5rem; text-align: center; border-right: 1px solid rgba(255,255,255,0.08); }
   .stat:last-child { border-right: none; }
@@ -134,9 +134,8 @@
   </div>
   <div class="hero-visual">
     <div class="skyline-card">
-      <div class="skyline-label">Average monthly rent — Greater Glasgow, 2-bed</div>
       <div class="chart-wrap">
-        <svg viewBox="0 0 500 160" preserveAspectRatio="none" id="rentChart"></svg>
+        <svg viewBox="0 0 500 210" id="rentChart" style="width:100%;display:block;"></svg>
       </div>
       <div class="stat-row">
         <div class="stat"><span class="stat-num">+70%</span><span class="stat-desc">house price rise since 2015</span></div>
@@ -246,54 +245,80 @@
 
 <script>
 (function() {
+  const svg = document.getElementById('rentChart');
+  if (!svg) return;
+  const ns = 'http://www.w3.org/2000/svg';
+  function el(tag, attrs, text) {
+    const e = document.createElementNS(ns, tag);
+    Object.entries(attrs).forEach(([k,v]) => e.setAttribute(k, v));
+    if (text !== undefined) e.textContent = text;
+    return e;
+  }
+
   const data = [
     { year: 2010, rent: 730 }, { year: 2012, rent: 760 }, { year: 2014, rent: 790 },
     { year: 2016, rent: 820 }, { year: 2018, rent: 860 }, { year: 2019, rent: 880 },
     { year: 2020, rent: 890 }, { year: 2021, rent: 910 }, { year: 2022, rent: 980 },
     { year: 2023, rent: 1100 }, { year: 2024, rent: 1210 }, { year: 2026, rent: 1275 },
   ];
-  const svg = document.getElementById('rentChart');
-  if (!svg) return;
-  const W = 500, H = 160;
-  const pad = { top: 18, right: 62, bottom: 28, left: 46 };
+
+  const W = 500, H = 210;
+  const pad = { top: 18, right: 50, bottom: 55, left: 58 };
   const iW = W - pad.left - pad.right;
   const iH = H - pad.top - pad.bottom;
-  const minY = 600, maxY = 1400, minX = 2010, maxX = 2026;
+  const minY = 550, maxY = 1400, minX = 2010, maxX = 2026;
+
   function xP(y) { return pad.left + ((y - minX) / (maxX - minX)) * iW; }
   function yP(r) { return pad.top + (1 - (r - minY) / (maxY - minY)) * iH; }
-  const ns = 'http://www.w3.org/2000/svg';
-  function el(tag, attrs) {
-    const e = document.createElementNS(ns, tag);
-    Object.entries(attrs).forEach(([k,v]) => e.setAttribute(k, v));
-    return e;
-  }
-  const defs = el('defs', {});
-  defs.innerHTML = `<linearGradient id="rg" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#E8A020" stop-opacity="0.22"/><stop offset="100%" stop-color="#E8A020" stop-opacity="0.02"/></linearGradient>`;
-  svg.appendChild(defs);
-  [2010,2014,2018,2022,2026].forEach(y => {
-    svg.appendChild(el('line', { x1: xP(y), x2: xP(y), y1: pad.top, y2: pad.top+iH, stroke: 'rgba(245,237,216,0.08)', 'stroke-width': '1' }));
-    const t = el('text', { x: xP(y), y: H-6, fill: 'rgba(245,237,216,0.4)', 'font-size': '11', 'font-family': 'DM Sans,sans-serif', 'text-anchor': 'middle' });
-    t.textContent = y; svg.appendChild(t);
+
+  // Background
+  svg.appendChild(el('rect', { x:0, y:0, width:W, height:H, fill:'#3D2410', rx:'8' }));
+  svg.appendChild(el('rect', { x:0, y:0, width:W, height:H, fill:'#5C3A1E', opacity:'0.3', rx:'8' }));
+
+  // Horizontal grid lines
+  [600,800,1000,1200].forEach(r => {
+    svg.appendChild(el('line', { x1:pad.left, x2:pad.left+iW, y1:yP(r), y2:yP(r), stroke:'#C4A060', 'stroke-width':'0.4', opacity:'0.2' }));
+    svg.appendChild(el('text', { x:pad.left-6, y:yP(r)+3, 'text-anchor':'end', 'font-family':'DM Sans,sans-serif', 'font-size':'8', 'font-weight':'700', 'letter-spacing':'0.3', fill:'#C4A060', opacity:'0.5' }, r >= 1000 ? r.toLocaleString() : r.toString()));
   });
-  [800,1000,1200].forEach(r => {
-    svg.appendChild(el('line', { x1: pad.left, x2: pad.left+iW, y1: yP(r), y2: yP(r), stroke: 'rgba(245,237,216,0.08)', 'stroke-width': '1' }));
-    const t = el('text', { x: pad.left-6, y: yP(r)+4, fill: 'rgba(245,237,216,0.4)', 'font-size': '11', 'font-family': 'DM Sans,sans-serif', 'text-anchor': 'end' });
-    t.textContent = '£'+r; svg.appendChild(t);
+
+  // Baseline
+  svg.appendChild(el('line', { x1:pad.left, x2:pad.left+iW, y1:yP(minY), y2:yP(minY), stroke:'#C4A060', 'stroke-width':'0.8', opacity:'0.5' }));
+  svg.appendChild(el('line', { x1:pad.left, x2:pad.left, y1:pad.top, y2:yP(minY), stroke:'#C4A060', 'stroke-width':'0.8', opacity:'0.5' }));
+
+  // Y axis unit label
+  const yLabel = el('text', { x:14, y:pad.top+iH/2, 'text-anchor':'middle', 'font-family':'DM Sans,sans-serif', 'font-size':'7', 'font-weight':'700', 'letter-spacing':'2', fill:'#C4A060', opacity:'0.4', transform:`rotate(-90,14,${pad.top+iH/2})` }, '£ PER MONTH');
+  svg.appendChild(yLabel);
+
+  // X axis ticks and labels
+  [2010,2014,2018,2022,2024,2026].forEach(y => {
+    svg.appendChild(el('line', { x1:xP(y), x2:xP(y), y1:yP(minY), y2:yP(minY)+5, stroke:'#C4A060', 'stroke-width':'0.8', opacity:'0.4' }));
+    svg.appendChild(el('text', { x:xP(y), y:yP(minY)+15, 'text-anchor':'middle', 'font-family':'DM Sans,sans-serif', 'font-size':'8', 'font-weight':'700', 'letter-spacing':'0.5', fill:'#C4A060', opacity:'0.5' }, y.toString()));
   });
-  const pts = data.map(d => xP(d.year)+','+yP(d.rent)).join(' ');
-  const bL = xP(data[0].year)+','+(pad.top+iH);
-  const bR = xP(data[data.length-1].year)+','+(pad.top+iH);
-  svg.appendChild(el('polygon', { points: bL+' '+pts+' '+bR, fill: 'url(#rg)' }));
-  svg.appendChild(el('polyline', { points: pts, fill: 'none', stroke: '#E8A020', 'stroke-width': '2.5', 'stroke-linejoin': 'round', 'stroke-linecap': 'round' }));
+
+  // Filled area
+  const pts = data.map(d => `${xP(d.year).toFixed(1)},${yP(d.rent).toFixed(1)}`).join(' ');
+  const baseL = `${xP(data[0].year).toFixed(1)},${yP(minY).toFixed(1)}`;
+  const baseR = `${xP(data[data.length-1].year).toFixed(1)},${yP(minY).toFixed(1)}`;
+  svg.appendChild(el('polygon', { points:`${baseL} ${pts} ${baseR}`, fill:'#7A3A18', opacity:'0.8' }));
+
+  // Line
+  svg.appendChild(el('polyline', { points:pts, fill:'none', stroke:'#C8742A', 'stroke-width':'2', 'stroke-linejoin':'round', 'stroke-linecap':'round' }));
+
+  // Square data points
+  data.forEach((d, i) => {
+    const x = xP(d.year);
+    const y = yP(d.rent);
+    const isLast = i === data.length - 1;
+    svg.appendChild(el('rect', { x:(x-3).toFixed(1), y:(y-3).toFixed(1), width:'6', height:'6', fill: isLast ? '#E8A020' : '#C8742A' }));
+  });
+
+  // End label
   const last = data[data.length-1];
-  svg.appendChild(el('circle', { cx: xP(last.year), cy: yP(last.rent), r: '4', fill: '#E8A020' }));
-  const tLast = el('text', { x: xP(last.year)+6, y: yP(last.rent)+4, fill: '#E8A020', 'font-size': '11', 'font-weight': '600', 'font-family': 'DM Sans,sans-serif' });
-  tLast.textContent = '£1,275'; svg.appendChild(tLast);
-  const first = data[0];
-  svg.appendChild(el('circle', { cx: xP(first.year), cy: yP(first.rent), r: '3', fill: 'rgba(232,160,32,0.6)' }));
-  const tFirst = el('text', { x: xP(first.year)+6, y: yP(first.rent)-6, fill: '#E8A020', 'font-size': '11', 'font-weight': '600', 'font-family': 'DM Sans,sans-serif', opacity: '0.7' });
-  tFirst.textContent = '£730'; svg.appendChild(tFirst);
-})();
+  svg.appendChild(el('text', { x:xP(last.year), y:yP(last.rent)-8, 'text-anchor':'middle', 'font-family':'DM Sans,sans-serif', 'font-size':'10', 'font-weight':'700', 'letter-spacing':'0.3', fill:'#E8A020' }, '£1,275'));
+
+  // Chart title
+  svg.appendChild(el('text', { x:W/2, y:H-8, 'text-anchor':'middle', 'font-family':'DM Sans,sans-serif', 'font-size':'7.5', 'font-weight':'700', 'letter-spacing':'2', fill:'#C4A060', opacity:'0.45' }, 'AVERAGE MONTHLY RENT — GREATER GLASGOW 2-BED'));
+})()
 </script>
 <script>
 function toggleNav() {
