@@ -1,5 +1,6 @@
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 html { scroll-behavior: smooth; }
+@import url('https://fonts.googleapis.com/css2?family=Maname&family=Outfit:wght@400;500;600;700&display=swap');
 @font-face {
   font-family: 'Canarina';
   src: url('fonts/Canarina-Grande.woff2') format('woff2');
@@ -64,7 +65,7 @@ html { scroll-behavior: smooth; }
   font-display: swap;
 }
 :root {
-  --font-heading: 'Nyght Serif', serif;
+  --font-heading: 'Maname', serif;
   --font-body: 'Outfit', sans-serif;
   --black: #1A1208; --cream: #F5EDD8; --amber: #E8A020; --orange: #D45A1A;
   --orange-light: #F0D0B8; --olive: #5A6830; --olive-light: #D8E0B8;
