@@ -283,7 +283,7 @@
   // Horizontal grid lines
   [600,800,1000,1200].forEach(r => {
     svg.appendChild(el('line', { x1:pad.left, x2:pad.left+iW, y1:yP(r), y2:yP(r), stroke:'#C4A060', 'stroke-width':'0.4', opacity:'0.2' }));
-    svg.appendChild(el('text', { x:pad.left-6, y:yP(r)+3, 'text-anchor':'end', 'font-family':'Outfit,sans-serif', 'font-size':'8', 'font-weight':'700', 'letter-spacing':'0.3', fill:'#C4A060', opacity:'0.5' }, r >= 1000 ? r.toLocaleString() : r.toString()));
+    svg.appendChild(el('text', { x:pad.left-6, y:yP(r)+3, 'text-anchor':'end', 'font-family':'Bungee,sans-serif', 'font-size':'8', 'font-weight':'700', 'letter-spacing':'0.3', fill:'#C4A060', opacity:'0.5' }, r >= 1000 ? r.toLocaleString() : r.toString()));
   });
 
   // Baseline
@@ -291,13 +291,13 @@
   svg.appendChild(el('line', { x1:pad.left, x2:pad.left, y1:pad.top, y2:yP(minY), stroke:'#C4A060', 'stroke-width':'0.8', opacity:'0.5' }));
 
   // Y axis unit label
-  const yLabel = el('text', { x:14, y:pad.top+iH/2, 'text-anchor':'middle', 'font-family':'Outfit,sans-serif', 'font-size':'7', 'font-weight':'700', 'letter-spacing':'2', fill:'#C4A060', opacity:'0.4', transform:`rotate(-90,14,${pad.top+iH/2})` }, '£ PER MONTH');
+  const yLabel = el('text', { x:14, y:pad.top+iH/2, 'text-anchor':'middle', 'font-family':'Bungee,sans-serif', 'font-size':'7', 'font-weight':'700', 'letter-spacing':'2', fill:'#C4A060', opacity:'0.4', transform:`rotate(-90,14,${pad.top+iH/2})` }, '£ PER MONTH');
   svg.appendChild(yLabel);
 
   // X axis ticks and labels
   [2010,2014,2018,2022,2024,2026].forEach(y => {
     svg.appendChild(el('line', { x1:xP(y), x2:xP(y), y1:yP(minY), y2:yP(minY)+5, stroke:'#C4A060', 'stroke-width':'0.8', opacity:'0.4' }));
-    svg.appendChild(el('text', { x:xP(y), y:yP(minY)+15, 'text-anchor':'middle', 'font-family':'Outfit,sans-serif', 'font-size':'8', 'font-weight':'700', 'letter-spacing':'0.5', fill:'#C4A060', opacity:'0.5' }, y.toString()));
+    svg.appendChild(el('text', { x:xP(y), y:yP(minY)+15, 'text-anchor':'middle', 'font-family':'Bungee,sans-serif', 'font-size':'8', 'font-weight':'700', 'letter-spacing':'0.5', fill:'#C4A060', opacity:'0.5' }, y.toString()));
   });
 
   // Filled area
@@ -319,10 +319,10 @@
 
   // End label
   const last = data[data.length-1];
-  svg.appendChild(el('text', { x:xP(last.year), y:yP(last.rent)-8, 'text-anchor':'middle', 'font-family':'Outfit,sans-serif', 'font-size':'10', 'font-weight':'700', 'letter-spacing':'0.3', fill:'#E8A020' }, '£1,275'));
+  svg.appendChild(el('text', { x:xP(last.year), y:yP(last.rent)-8, 'text-anchor':'middle', 'font-family':'Bungee,sans-serif', 'font-size':'10', 'font-weight':'700', 'letter-spacing':'0.3', fill:'#E8A020' }, '£1,275'));
 
   // Chart title
-  svg.appendChild(el('text', { x:W/2, y:H-8, 'text-anchor':'middle', 'font-family':'Outfit,sans-serif', 'font-size':'7.5', 'font-weight':'700', 'letter-spacing':'2', fill:'#C4A060', opacity:'0.45' }, 'AVERAGE MONTHLY RENT — GREATER GLASGOW 2-BED'));
+  svg.appendChild(el('text', { x:W/2, y:H-8, 'text-anchor':'middle', 'font-family':'Bungee,sans-serif', 'font-size':'7.5', 'font-weight':'700', 'letter-spacing':'2', fill:'#C4A060', opacity:'0.45' }, 'AVERAGE MONTHLY RENT — GREATER GLASGOW 2-BED'));
 })()
 </script>
 <script>
