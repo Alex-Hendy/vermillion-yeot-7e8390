@@ -2,21 +2,21 @@
 html { scroll-behavior: smooth; }
 @font-face {
   font-family: 'Canarina';
-  src: url('/fonts/Canarina-Grande.woff2') format('woff2');
+  src: url('fonts/Canarina-Grande.woff2') format('woff2');
   font-weight: 900;
   font-style: normal;
   font-display: swap;
 }
 @font-face {
   font-family: 'Canarina';
-  src: url('/fonts/Canarina-Mediana.woff2') format('woff2');
+  src: url('fonts/Canarina-Mediana.woff2') format('woff2');
   font-weight: 500;
   font-style: normal;
   font-display: swap;
 }
 @font-face {
   font-family: 'Canarina';
-  src: url('/fonts/Canarina-Chica.woff2') format('woff2');
+  src: url('fonts/Canarina-Chica.woff2') format('woff2');
   font-weight: 400;
   font-style: normal;
   font-display: swap;
@@ -27,7 +27,7 @@ html { scroll-behavior: smooth; }
   --muted: #4A3820;
 }
 ::selection { background: var(--amber); color: var(--black); }
-body { font-family: 'DM Sans', sans-serif; background: var(--cream); color: var(--black); line-height: 1.6; font-size: 16px; }
+body { font-family: 'Outfit', sans-serif; background: var(--cream); color: var(--black); line-height: 1.6; font-size: 16px; }
 .logo, h1, h2, h3, h4, [style*="Anybody"] {  }
 
 /* NAV */
