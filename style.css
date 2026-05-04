@@ -66,6 +66,7 @@ html { scroll-behavior: smooth; }
 }
 :root {
   --font-heading: 'Bungee', sans-serif;
+  --font-subheading: 'Outfit', sans-serif;
   --font-body: 'Outfit', sans-serif;
   --black: #1A1208; --cream: #F5EDD8; --amber: #E8A020; --orange: #D45A1A;
   --orange-light: #F0D0B8; --olive: #5A6830; --olive-light: #D8E0B8;
@@ -80,7 +81,7 @@ nav { display: flex; justify-content: space-between; align-items: center; paddin
 .logo { text-decoration: none; display: inline-flex; align-items: center; }
 .logo img { display: block; height: 50px; width: auto; }
 .nav-links { list-style: none; display: flex; gap: 2rem; align-items: center; }
-.nav-links a { text-decoration: none; color: var(--black); font-size: 0.88rem; font-weight: 400; font-family: var(--font-heading); transition: color 0.2s; }
+.nav-links a { text-decoration: none; color: var(--black); font-size: 0.88rem; font-weight: 700; font-family: var(--font-subheading); transition: color 0.2s; }
 .nav-links a:hover { color: var(--orange); }
 .nav-cta { background: var(--black) !important; color: var(--cream) !important; padding: 0.5rem 1.25rem; border-radius: 4px; font-size: 0.85rem !important; }
 .nav-cta:hover { background: var(--orange) !important; color: var(--cream) !important; }
@@ -103,9 +104,12 @@ nav { display: flex; justify-content: space-between; align-items: center; paddin
 
 /* FOOTER */
 footer { border-top: 2px solid var(--black); padding: 2rem; text-align: center; font-size: 0.85rem; color: var(--muted); background: var(--cream); }
-footer strong { color: var(--black); font-family: var(--font-heading); font-weight: 900; }
+footer strong { color: var(--black); font-family: var(--font-subheading); font-weight: 700; }
 footer a { color: var(--orange); text-decoration: none; }
 footer a:hover { text-decoration: underline; }
+
+/* SUBHEADINGS */
+h2, h3, h4 { font-family: var(--font-subheading); font-weight: 700; }
 
 /* CITATION */
 .citation { font-size: 0.8rem; color: var(--muted); border-left: 3px solid var(--amber); padding-left: 0.75rem; margin: 0.5rem 0 1.25rem; font-style: italic; }
