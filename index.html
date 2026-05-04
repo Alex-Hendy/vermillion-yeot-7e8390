@@ -132,7 +132,7 @@
   </div>
   <div class="hero-visual">
     <div class="skyline-card">
-      <svg viewBox="0 0 500 160" preserveAspectRatio="none" id="rentChart"></svg>
+      <svg viewBox="0 0 500 175" preserveAspectRatio="none" id="rentChart"></svg>
       <div class="stat-row">
         <div class="stat"><span class="stat-num">+70%</span><span class="stat-desc">house price rise since 2015</span></div>
         <div class="stat"><span class="stat-num">+75%</span><span class="stat-desc">rent rise since 2010</span></div>
@@ -270,7 +270,7 @@
     const t = document.createElementNS(ns, 'text');
     t.setAttribute('x', xP(y)); t.setAttribute('y', H-6);
     t.setAttribute('fill', 'rgba(245,237,216,0.4)'); t.setAttribute('font-size', '11');
-    t.setAttribute('font-family', 'Bungee,sans-serif'); t.setAttribute('text-anchor', 'middle');
+    t.setAttribute('font-family', 'Outfit,sans-serif'); t.setAttribute('text-anchor', 'middle');
     t.textContent = y; svg.appendChild(t);
   });
   [800,1000,1200].forEach(r => {
@@ -278,7 +278,7 @@
     const t = document.createElementNS(ns, 'text');
     t.setAttribute('x', pad.left-6); t.setAttribute('y', yP(r)+4);
     t.setAttribute('fill', 'rgba(245,237,216,0.4)'); t.setAttribute('font-size', '11');
-    t.setAttribute('font-family', 'Bungee,sans-serif'); t.setAttribute('text-anchor', 'end');
+    t.setAttribute('font-family', 'Outfit,sans-serif'); t.setAttribute('text-anchor', 'end');
     t.textContent = '£'+r; svg.appendChild(t);
   });
   const pts = data.map(d => xP(d.year)+','+yP(d.rent)).join(' ');
@@ -291,8 +291,20 @@
   const tLast = document.createElementNS(ns, 'text');
   tLast.setAttribute('x', xP(last.year)+6); tLast.setAttribute('y', yP(last.rent)+4);
   tLast.setAttribute('fill', '#E8A020'); tLast.setAttribute('font-size', '11');
-  tLast.setAttribute('font-weight', '600'); tLast.setAttribute('font-family', 'Bungee,sans-serif');
+  tLast.setAttribute('font-weight', '600'); tLast.setAttribute('font-family', 'Outfit,sans-serif');
   tLast.textContent = '£1,275'; svg.appendChild(tLast);
+
+  // Chart subtitle
+  const tTitle = document.createElementNS(ns, 'text');
+  tTitle.setAttribute('x', W/2); tTitle.setAttribute('y', H-4);
+  tTitle.setAttribute('text-anchor', 'middle');
+  tTitle.setAttribute('font-family', 'Outfit,sans-serif');
+  tTitle.setAttribute('font-size', '9');
+  tTitle.setAttribute('font-weight', '600');
+  tTitle.setAttribute('letter-spacing', '1.5');
+  tTitle.setAttribute('fill', 'rgba(245,237,216,0.35)');
+  tTitle.textContent = 'AVERAGE MONTHLY RENT — GREATER GLASGOW 2-BED';
+  svg.appendChild(tTitle);
 })()
 </script>
 <script>
