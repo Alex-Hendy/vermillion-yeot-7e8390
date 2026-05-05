@@ -23,8 +23,8 @@
   .hero p { font-size: 1rem; color: var(--muted); margin-bottom: 2rem; max-width: 480px; line-height: 1.75; }
   .btn-group { display: flex; gap: 1rem; flex-wrap: wrap; }
   .skyline-card { background: var(--black); border-radius: 12px; padding: 1.75rem; border: 2px solid var(--black); }
-  .chart-wrap { position: relative; height: 180px; margin-bottom: 0; }
-  .chart-wrap svg { width: 100%; height: 100%; overflow: visible; }
+  .chart-wrap { position: relative; height: 175px; margin-bottom: 0; }
+  .chart-wrap svg { width: 100%; height: 100%; }
   .stat-row { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 0; border-top: 1px solid rgba(255,255,255,0.1); margin-top: 1rem; }
   .stat { padding: 0.75rem 0.5rem; text-align: center; border-right: 1px solid rgba(255,255,255,0.08); }
   .stat:last-child { border-right: none; }
@@ -132,7 +132,7 @@
   </div>
   <div class="hero-visual">
     <div class="skyline-card">
-      <svg viewBox="0 0 500 175" preserveAspectRatio="none" id="rentChart"></svg>
+      <svg viewBox="0 0 500 175" id="rentChart"></svg>
       <div class="stat-row">
         <div class="stat"><span class="stat-num">+70%</span><span class="stat-desc">house price rise since 2015</span></div>
         <div class="stat"><span class="stat-num">+75%</span><span class="stat-desc">rent rise since 2010</span></div>
