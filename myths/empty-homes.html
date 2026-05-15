@@ -22,9 +22,6 @@
   .content h2:first-child { margin-top: 0; }
   .content p { font-size: 1rem; color: var(--muted); line-height: 1.8; margin-bottom: 1rem; }
   .content p strong { color: var(--black); font-weight: 600; }
-  .callout { background: var(--amber); border: 2px solid var(--black); border-radius: 10px; padding: 1.5rem 1.75rem; margin: 2rem 0; }
-  .callout p { color: var(--black); margin: 0; font-weight: 500; }
-  .callout .callout-stat { font-family: var(--font-heading); font-size: 2rem; font-weight: 900; color: var(--black); display: block; margin-bottom: 0.25rem; }
   .evidence-card { border: 2px solid var(--black); border-radius: 10px; padding: 1.5rem; margin: 1.5rem 0; background: var(--cream); transition: transform 0.15s, box-shadow 0.15s; }
   .evidence-card:hover { transform: translate(-2px,-2px); box-shadow: 4px 4px 0 var(--black); }
   .evidence-card .source { font-size: 0.75rem; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: var(--orange); margin-bottom: 0.5rem; }
@@ -69,35 +66,54 @@
 <div class="content">
   <h2>The UK has almost no empty homes</h2>
   <p>Only 2.7% of English housing stock is vacant at any given time — one of the lowest rates in the OECD. France and Germany both have vacancy rates of around 8%. Japan's is 13.6%. The countries people point to as having better, more affordable housing tend to have more empty homes, not fewer.</p>
-  <p>This is not a coincidence. A well-functioning housing market needs a buffer of available homes. When vacancy rates fall too low, renters and buyers have no choice but to accept whatever is offered, at whatever price. The UK's near-zero vacancy rate is a sign of a market under extreme pressure, not a pool of untapped supply waiting to be released.</p>
+  <p>This is not a coincidence. A well-functioning housing market needs a buffer of available homes. When not enough homes are built, renters and buyers have no choice but to accept whatever is offered, at whatever price, and vacancy rates fall. The UK's near-zero vacancy rate is a sign of a market under extreme pressure, not a pool of untapped supply waiting to be released.</p>
+
+  <div class="chart-container">
+    <div class="chart-title">Vacant homes as a share of total housing stock</div>
+    <div class="chart-sub">Selected OECD countries, 2022 or latest available year. Source: OECD Affordable Housing Database.</div>
+    <canvas id="barChart" width="700" height="380" style="width:100%;height:auto;"></canvas>
+    <p style="font-size:0.72rem;color:var(--muted);margin-top:0.5rem;margin-bottom:0;">Vacancy rates exclude seasonal and holiday homes where data allows disaggregation. England data from DLUHC; other countries from national statistical institutes via OECD.</p>
+  </div>
+
   <div class="chart-container">
     <div class="chart-title">Vacancy rate vs housing affordability — US states</div>
     <div class="chart-sub">States with more empty homes tend to have more affordable housing. Source: US Census Bureau ACS 2023; Zillow/Census price-to-income data.</div>
     <canvas id="scatterChart" width="700" height="380" style="width:100%;height:auto;"></canvas>
     <p style="font-size:0.72rem;color:var(--muted);margin-top:0.5rem;margin-bottom:0;">Each dot is a US state. Hover to see details. Vacancy rate = share of all housing units that are vacant. Price-to-income ratio = median home price divided by median household income.</p>
   </div>
+
+  <h2>Empty homes are empty for a reason</h2>
+  <p>The Scottish Government's own audit of empty homes, conducted in partnership with Shelter Scotland, found that the most common reasons homes sit empty in Scotland are that the previous owner died, that renovations stalled, or that the owner moved without selling. Other common causes include tenancies ending without a replacement tenant, and owners going into hospital or care.</p>
+  <p>These are not homes being hoarded. They are homes caught up in the ordinary friction of life — probate, disrepair, circumstance. There is no secret reserve of housing waiting to be unlocked.</p>
+
   <h2>Some vacancy is normal and necessary</h2>
   <p>Even in a perfectly functioning housing market, some homes are always empty. Homes between owners during a sale. Homes being renovated. Homes left by a recently deceased owner going through probate. Homes temporarily between tenants. A vacancy rate of zero would mean a completely frozen market where nobody could move.</p>
-  <p>Scotland has around 46,000 long-term empty homes, and Glasgow around 6,000. Even if every single one were brought back into use overnight, it would cover perhaps one year's worth of new household formation — and many of these homes are in serious disrepair, in locations with little demand, or caught up in legal complications that make them very difficult to bring back quickly.</p>
-  <div class="callout">
-    <span class="callout-stat">6,000</span>
-    <p>Long-term empty homes in Glasgow. The city has over 14,000 households on the social housing waiting list. Empty homes are not the answer.</p>
-  </div>
+  <p>The Scottish Empty Homes Partnership, which has been working to bring empty homes back into use since 2010, managed around 700 per year for most of its existence. In its best ever year, 2024–25, it brought 2,066 homes back into use across the whole of Scotland. Glasgow alone needs thousands of new homes every year just to keep pace with demand. Even a perfectly executed empty homes strategy operating at its maximum ever rate would cover a fraction of one city's annual need.</p>
+
   <h2>Empty homes are a symptom, not a cause</h2>
   <p>The reason the UK has so few empty homes is precisely because housing is so scarce and expensive. When a property becomes vacant, it is snapped up almost immediately — because demand so massively outstrips supply. The high opportunity cost of leaving a home empty keeps vacancy rates near zero.</p>
-  <p>Pointing to empty homes as a solution to the housing crisis is like pointing to the shortage of hospital beds as evidence that we don't need to build more hospitals. The shortage is the problem. Bringing a few hundred vacant homes back into use each year does not change the fundamental imbalance between supply and demand.</p>
+  <p>Pointing to empty homes as a solution to the housing crisis is like pointing to the shortage of hospital beds as evidence that we don't need to build more hospitals. The shortage is the problem.</p>
+
   <div class="evidence-card">
     <div class="source">IEA / OECD data</div>
     <p><strong>England has the lowest vacancy rate in the developed world</strong>, at 2.7% of housing stock. Countries with higher vacancy rates — France (8%), Germany (8%), Japan (13.6%) — consistently have more affordable housing than the UK. The data points in one direction: more supply, including more vacant homes, correlates with lower prices.</p>
   </div>
+
+  <div class="evidence-card">
+    <div class="source">Scottish Government / Shelter Scotland, 2023 — "Bringing Empty Homes Back Into Use: Audit of Privately Owned Empty Homes"</div>
+    <p>The most common reasons homes sit empty in Scotland are <strong>the previous owner dying, the property being purchased with the intention of renovation that then stalled, and the owner moving without selling</strong>. Between 2010 and March 2023, the Scottish Empty Homes Partnership brought a total of 9,014 empty properties back into use — around 700 per year. <a href="https://www.gov.scot/publications/bringing-empty-homes-back-use-audit-privately-owned-empty-homes-scotland/" target="_blank" style="color:var(--orange);">Read the audit →</a></p>
+  </div>
+
   <div class="nuance-box">
     <h3>Where we stand</h3>
-    <p>Glasgow YIMBY supports efforts to bring genuinely problematic long-term empty homes back into use — through council tax premiums on empty properties, better use of compulsory purchase powers, and support for owners facing disrepair. But we are clear that this is a marginal contribution. The scale of Glasgow's housing shortage requires building tens of thousands of new homes, not recovering a few hundred vacant ones.</p>
+    <p>Glasgow YIMBY understands that a well-functioning housing market will have higher vacancy rates than the UK has today. More empty homes is a sign of a healthy market, not a broken one — it means renters and buyers have choices, and landlords have to compete for tenants. Focusing on empty homes as a solution to the housing crisis will not work and is a serious distraction from the planning reforms and new housebuilding that would actually make a difference.</p>
   </div>
+
 </div>
 <div class="myth-nav">
-  <a href="index.html">← All myths</a>
-  <a href="landbanking.html">Next myth: Developers just sit on land →</a>
+  <a href="luxury-flats.html">← Myth 4: Luxury flats</a>
+  <a href="index.html">All myths</a>
+  <a href="landbanking.html">Myth 6: Landbanking →</a>
 </div>
 <footer>
   <strong>Glasgow YIMBY</strong> — a grassroots campaign for more homes in Glasgow &nbsp;|&nbsp;
@@ -110,84 +126,178 @@ function toggleNav() {
   const open = links.classList.toggle('open');
   toggle.textContent = open ? 'Close' : 'Menu';
 }
-const states = [
-  ['California', 4.5, 8.2], ['Hawaii', 9.1, 8.8], ['New York', 5.8, 6.1],
-  ['Massachusetts', 5.2, 6.4], ['Washington', 4.8, 5.9], ['Colorado', 5.9, 5.8],
-  ['Oregon', 5.3, 5.5], ['New Jersey', 6.1, 5.3], ['Maryland', 6.8, 4.8],
-  ['Connecticut', 8.9, 4.6], ['Virginia', 6.9, 4.5], ['Utah', 4.7, 5.4],
-  ['Florida', 12.1, 4.9], ['Texas', 8.4, 3.9], ['Illinois', 8.9, 3.5],
-  ['Georgia', 9.2, 3.8], ['North Carolina', 9.8, 3.7], ['Arizona', 8.3, 4.6],
-  ['Nevada', 10.2, 4.4], ['Minnesota', 6.4, 3.6], ['Wisconsin', 8.1, 3.2],
-  ['Pennsylvania', 9.4, 3.3], ['Ohio', 10.8, 2.8], ['Michigan', 11.2, 2.7],
-  ['Missouri', 10.9, 2.6], ['Indiana', 10.1, 2.5], ['Tennessee', 10.4, 3.8],
-  ['Kentucky', 12.3, 2.4], ['Alabama', 13.1, 2.3], ['Arkansas', 13.8, 2.1],
-  ['Mississippi', 14.2, 1.9], ['West Virginia', 16.1, 1.8], ['Louisiana', 13.4, 2.4],
-  ['Iowa', 9.2, 2.5], ['Kansas', 10.3, 2.4], ['Nebraska', 8.8, 2.6],
-  ['South Dakota', 11.4, 2.8], ['North Dakota', 10.1, 2.6], ['Montana', 16.8, 4.2],
-  ['Wyoming', 19.2, 3.1], ['Idaho', 7.9, 4.1], ['New Mexico', 15.3, 2.8],
-  ['Vermont', 22.1, 4.3], ['Maine', 22.8, 3.9], ['New Hampshire', 8.9, 4.1],
-  ['Rhode Island', 8.4, 4.7], ['Delaware', 13.2, 3.8], ['South Carolina', 13.6, 3.4],
-  ['Oklahoma', 11.8, 2.3], ['Alaska', 12.4, 3.2]
-];
-const canvas = document.getElementById('scatterChart');
-const ctx = canvas.getContext('2d');
-const W = canvas.width, H = canvas.height;
-const PAD = { top: 20, right: 20, bottom: 50, left: 55 };
-const minV = 0, maxV = 25, minP = 1, maxP = 10;
-function toX(v) { return PAD.left + (v - minV) / (maxV - minV) * (W - PAD.left - PAD.right); }
-function toY(p) { return PAD.top + (1 - (p - minP) / (maxP - minP)) * (H - PAD.top - PAD.bottom); }
-function draw(hoverIdx) {
-  ctx.clearRect(0, 0, W, H);
-  ctx.strokeStyle = 'rgba(26,18,8,0.08)'; ctx.lineWidth = 1;
-  for (let v = 0; v <= 25; v += 5) {
-    ctx.beginPath(); ctx.moveTo(toX(v), PAD.top); ctx.lineTo(toX(v), H - PAD.bottom); ctx.stroke();
-    ctx.fillStyle = 'rgba(26,18,8,0.4)'; ctx.font = '11px Outfit, sans-serif'; ctx.textAlign = 'center';
-    ctx.fillText(v + '%', toX(v), H - PAD.bottom + 16);
-  }
-  for (let p = 2; p <= 9; p += 2) {
-    ctx.beginPath(); ctx.moveTo(PAD.left, toY(p)); ctx.lineTo(W - PAD.right, toY(p)); ctx.stroke();
-    ctx.fillStyle = 'rgba(26,18,8,0.4)'; ctx.font = '11px Outfit, sans-serif'; ctx.textAlign = 'right';
-    ctx.fillText(p + 'x', PAD.left - 6, toY(p) + 4);
-  }
-  ctx.fillStyle = 'rgba(26,18,8,0.5)'; ctx.font = '11px Outfit, sans-serif'; ctx.textAlign = 'center';
-  ctx.fillText('Vacancy rate →', PAD.left + (W - PAD.left - PAD.right) / 2, H - 4);
-  ctx.save(); ctx.translate(14, PAD.top + (H - PAD.top - PAD.bottom) / 2); ctx.rotate(-Math.PI/2);
-  ctx.fillText('Price-to-income ratio →', 0, 0); ctx.restore();
-  let sx = 0, sy = 0, sxy = 0, sxx = 0, n = states.length;
-  states.forEach(s => { sx += s[1]; sy += s[2]; sxy += s[1]*s[2]; sxx += s[1]*s[1]; });
-  const slope = (n*sxy - sx*sy) / (n*sxx - sx*sx);
-  const intercept = (sy - slope*sx) / n;
-  ctx.strokeStyle = 'rgba(212,90,26,0.25)'; ctx.lineWidth = 1.5; ctx.setLineDash([4,4]);
-  ctx.beginPath(); ctx.moveTo(toX(minV), toY(slope*minV+intercept)); ctx.lineTo(toX(maxV), toY(slope*maxV+intercept)); ctx.stroke();
-  ctx.setLineDash([]);
-  states.forEach((s, i) => {
-    const x = toX(s[1]), y = toY(s[2]);
-    const isHover = i === hoverIdx;
-    const isHighlight = ['California','West Virginia','Mississippi','New York','Texas'].includes(s[0]);
-    ctx.beginPath(); ctx.arc(x, y, isHover ? 7 : 5, 0, Math.PI*2);
-    ctx.fillStyle = isHover ? '#D45A1A' : isHighlight ? '#E8A020' : 'rgba(26,18,8,0.35)';
-    ctx.fill(); ctx.strokeStyle = '#fff'; ctx.lineWidth = 1.5; ctx.stroke();
-    if (isHighlight || isHover) {
-      ctx.fillStyle = '#1A1208'; ctx.font = (isHover ? 'bold ' : '') + '11px Outfit, sans-serif';
-      ctx.textAlign = x > W * 0.75 ? 'right' : 'left';
-      ctx.fillText(s[0], x + (x > W * 0.75 ? -9 : 9), y - 8);
+
+// ===== BAR CHART — vacancy rates by country =====
+(function() {
+  const countries = [
+    ['Japan', 13.6],
+    ['Hungary', 12.3],
+    ['United States', 11.1],
+    ['Finland', 10.7],
+    ['Canada', 8.7],
+    ['France', 8.0],
+    ['Germany', 8.0],
+    ['Italy', 7.0],
+    ['Australia', 6.0],
+    ['New Zealand', 5.0],
+    ['Ireland', 4.5],
+    ['Netherlands', 2.0],
+    ['England', 2.7]
+  ];
+
+  const canvas = document.getElementById('barChart');
+  const ctx = canvas.getContext('2d');
+  const W = canvas.width, H = canvas.height;
+  const PAD = { top: 14, right: 20, bottom: 74, left: 48 };
+  const chartW = W - PAD.left - PAD.right;
+  const chartH = H - PAD.top - PAD.bottom;
+  const barW = chartW / countries.length;
+  const gap = barW * 0.25;
+  const maxVal = 16;
+
+  function toY(v) { return PAD.top + chartH - (v / maxVal) * chartH; }
+
+  function draw(hoverIdx) {
+    ctx.clearRect(0, 0, W, H);
+
+    // Gridlines and y-axis labels
+    ctx.strokeStyle = 'rgba(26,18,8,0.08)';
+    ctx.lineWidth = 1;
+    for (var v = 0; v <= maxVal; v += 4) {
+      var y = toY(v);
+      ctx.beginPath(); ctx.moveTo(PAD.left, y); ctx.lineTo(W - PAD.right, y); ctx.stroke();
+      ctx.fillStyle = 'rgba(26,18,8,0.4)';
+      ctx.font = '11px Outfit, sans-serif';
+      ctx.textAlign = 'right';
+      ctx.fillText(v + '%', PAD.left - 8, y + 4);
     }
+
+    // Bars
+    countries.forEach(function(c, i) {
+      var x = PAD.left + i * barW + gap / 2;
+      var bw = barW - gap;
+      var y = toY(c[1]);
+      var bh = toY(0) - y;
+      var isEngland = c[0] === 'England';
+      var isHover = i === hoverIdx;
+
+      ctx.fillStyle = isEngland ? '#D45A1A' : isHover ? '#E8A020' : 'rgba(26,18,8,0.25)';
+      ctx.fillRect(x, y, bw, bh);
+
+      // Value label above bar
+      if (isHover || isEngland) {
+        ctx.fillStyle = '#1A1208';
+        ctx.font = 'bold 11px Outfit, sans-serif';
+        ctx.textAlign = 'center';
+        ctx.fillText(c[1] + '%', x + bw / 2, y - 6);
+      }
+
+      // Country label below
+      ctx.save();
+      ctx.translate(x + bw / 2, toY(0) + 12);
+      ctx.rotate(-Math.PI / 4);
+      ctx.fillStyle = isEngland ? '#D45A1A' : isHover ? '#1A1208' : 'rgba(26,18,8,0.5)';
+      ctx.font = (isEngland || isHover ? 'bold ' : '') + '11px Outfit, sans-serif';
+      ctx.textAlign = 'right';
+      ctx.fillText(c[0], 0, 0);
+      ctx.restore();
+    });
+  }
+
+  draw(-1);
+
+  canvas.addEventListener('mousemove', function(e) {
+    var rect = canvas.getBoundingClientRect();
+    var scaleX = canvas.width / rect.width;
+    var mx = (e.clientX - rect.left) * scaleX;
+    var idx = Math.floor((mx - PAD.left) / barW);
+    draw(idx >= 0 && idx < countries.length ? idx : -1);
+    canvas.title = idx >= 0 && idx < countries.length ? countries[idx][0] + ': ' + countries[idx][1] + '% vacant' : '';
   });
-}
-draw(-1);
-canvas.addEventListener('mousemove', e => {
-  const rect = canvas.getBoundingClientRect();
-  const scaleX = canvas.width / rect.width, scaleY = canvas.height / rect.height;
-  const mx = (e.clientX - rect.left) * scaleX, my = (e.clientY - rect.top) * scaleY;
-  let closest = -1, minDist = 20;
-  states.forEach((s, i) => {
-    const dx = toX(s[1]) - mx, dy = toY(s[2]) - my;
-    if (Math.sqrt(dx*dx + dy*dy) < minDist) { minDist = Math.sqrt(dx*dx + dy*dy); closest = i; }
+  canvas.addEventListener('mouseleave', function() { draw(-1); });
+})();
+
+// ===== SCATTER CHART — US states vacancy vs affordability =====
+(function() {
+  var states = [
+    ['California', 4.5, 8.2], ['Hawaii', 9.1, 8.8], ['New York', 5.8, 6.1],
+    ['Massachusetts', 5.2, 6.4], ['Washington', 4.8, 5.9], ['Colorado', 5.9, 5.8],
+    ['Oregon', 5.3, 5.5], ['New Jersey', 6.1, 5.3], ['Maryland', 6.8, 4.8],
+    ['Connecticut', 8.9, 4.6], ['Virginia', 6.9, 4.5], ['Utah', 4.7, 5.4],
+    ['Florida', 12.1, 4.9], ['Texas', 8.4, 3.9], ['Illinois', 8.9, 3.5],
+    ['Georgia', 9.2, 3.8], ['North Carolina', 9.8, 3.7], ['Arizona', 8.3, 4.6],
+    ['Nevada', 10.2, 4.4], ['Minnesota', 6.4, 3.6], ['Wisconsin', 8.1, 3.2],
+    ['Pennsylvania', 9.4, 3.3], ['Ohio', 10.8, 2.8], ['Michigan', 11.2, 2.7],
+    ['Missouri', 10.9, 2.6], ['Indiana', 10.1, 2.5], ['Tennessee', 10.4, 3.8],
+    ['Kentucky', 12.3, 2.4], ['Alabama', 13.1, 2.3], ['Arkansas', 13.8, 2.1],
+    ['Mississippi', 14.2, 1.9], ['West Virginia', 16.1, 1.8], ['Louisiana', 13.4, 2.4],
+    ['Iowa', 9.2, 2.5], ['Kansas', 10.3, 2.4], ['Nebraska', 8.8, 2.6],
+    ['South Dakota', 11.4, 2.8], ['North Dakota', 10.1, 2.6], ['Montana', 16.8, 4.2],
+    ['Wyoming', 19.2, 3.1], ['Idaho', 7.9, 4.1], ['New Mexico', 15.3, 2.8],
+    ['Vermont', 22.1, 4.3], ['Maine', 22.8, 3.9], ['New Hampshire', 8.9, 4.1],
+    ['Rhode Island', 8.4, 4.7], ['Delaware', 13.2, 3.8], ['South Carolina', 13.6, 3.4],
+    ['Oklahoma', 11.8, 2.3], ['Alaska', 12.4, 3.2]
+  ];
+  var canvas = document.getElementById('scatterChart');
+  var ctx = canvas.getContext('2d');
+  var W = canvas.width, H = canvas.height;
+  var PAD = { top: 20, right: 20, bottom: 50, left: 55 };
+  var minV = 0, maxV = 25, minP = 1, maxP = 10;
+  function toX(v) { return PAD.left + (v - minV) / (maxV - minV) * (W - PAD.left - PAD.right); }
+  function toY(p) { return PAD.top + (1 - (p - minP) / (maxP - minP)) * (H - PAD.top - PAD.bottom); }
+  function draw(hoverIdx) {
+    ctx.clearRect(0, 0, W, H);
+    ctx.strokeStyle = 'rgba(26,18,8,0.08)'; ctx.lineWidth = 1;
+    for (var v = 0; v <= 25; v += 5) {
+      ctx.beginPath(); ctx.moveTo(toX(v), PAD.top); ctx.lineTo(toX(v), H - PAD.bottom); ctx.stroke();
+      ctx.fillStyle = 'rgba(26,18,8,0.4)'; ctx.font = '11px Outfit, sans-serif'; ctx.textAlign = 'center';
+      ctx.fillText(v + '%', toX(v), H - PAD.bottom + 16);
+    }
+    for (var p = 2; p <= 9; p += 2) {
+      ctx.beginPath(); ctx.moveTo(PAD.left, toY(p)); ctx.lineTo(W - PAD.right, toY(p)); ctx.stroke();
+      ctx.fillStyle = 'rgba(26,18,8,0.4)'; ctx.font = '11px Outfit, sans-serif'; ctx.textAlign = 'right';
+      ctx.fillText(p + 'x', PAD.left - 6, toY(p) + 4);
+    }
+    ctx.fillStyle = 'rgba(26,18,8,0.5)'; ctx.font = '11px Outfit, sans-serif'; ctx.textAlign = 'center';
+    ctx.fillText('Vacancy rate →', PAD.left + (W - PAD.left - PAD.right) / 2, H - 4);
+    ctx.save(); ctx.translate(14, PAD.top + (H - PAD.top - PAD.bottom) / 2); ctx.rotate(-Math.PI/2);
+    ctx.fillText('Price-to-income ratio →', 0, 0); ctx.restore();
+    var sx = 0, sy = 0, sxy = 0, sxx = 0, n = states.length;
+    states.forEach(function(s) { sx += s[1]; sy += s[2]; sxy += s[1]*s[2]; sxx += s[1]*s[1]; });
+    var slope = (n*sxy - sx*sy) / (n*sxx - sx*sx);
+    var intercept = (sy - slope*sx) / n;
+    ctx.strokeStyle = 'rgba(212,90,26,0.25)'; ctx.lineWidth = 1.5; ctx.setLineDash([4,4]);
+    ctx.beginPath(); ctx.moveTo(toX(minV), toY(slope*minV+intercept)); ctx.lineTo(toX(maxV), toY(slope*maxV+intercept)); ctx.stroke();
+    ctx.setLineDash([]);
+    states.forEach(function(s, i) {
+      var x = toX(s[1]), y = toY(s[2]);
+      var isHover = i === hoverIdx;
+      var isHighlight = ['California','West Virginia','Mississippi','New York','Texas'].indexOf(s[0]) >= 0;
+      ctx.beginPath(); ctx.arc(x, y, isHover ? 7 : 5, 0, Math.PI*2);
+      ctx.fillStyle = isHover ? '#D45A1A' : isHighlight ? '#E8A020' : 'rgba(26,18,8,0.35)';
+      ctx.fill(); ctx.strokeStyle = '#fff'; ctx.lineWidth = 1.5; ctx.stroke();
+      if (isHighlight || isHover) {
+        ctx.fillStyle = '#1A1208'; ctx.font = (isHover ? 'bold ' : '') + '11px Outfit, sans-serif';
+        ctx.textAlign = x > W * 0.75 ? 'right' : 'left';
+        ctx.fillText(s[0], x + (x > W * 0.75 ? -9 : 9), y - 8);
+      }
+    });
+  }
+  draw(-1);
+  canvas.addEventListener('mousemove', function(e) {
+    var rect = canvas.getBoundingClientRect();
+    var scaleX = canvas.width / rect.width, scaleY = canvas.height / rect.height;
+    var mx = (e.clientX - rect.left) * scaleX, my = (e.clientY - rect.top) * scaleY;
+    var closest = -1, minDist = 20;
+    states.forEach(function(s, i) {
+      var dx = toX(s[1]) - mx, dy = toY(s[2]) - my;
+      if (Math.sqrt(dx*dx + dy*dy) < minDist) { minDist = Math.sqrt(dx*dx + dy*dy); closest = i; }
+    });
+    draw(closest);
+    canvas.title = closest >= 0 ? states[closest][0] + ': ' + states[closest][1] + '% vacant, ' + states[closest][2] + 'x price-to-income' : '';
   });
-  draw(closest);
-  canvas.title = closest >= 0 ? `${states[closest][0]}: ${states[closest][1]}% vacant, ${states[closest][2]}x price-to-income` : '';
-});
-canvas.addEventListener('mouseleave', () => draw(-1));
+  canvas.addEventListener('mouseleave', function() { draw(-1); });
+})();
 </script>
 </body>
 </html>
