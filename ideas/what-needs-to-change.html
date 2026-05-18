@@ -31,11 +31,11 @@
 
   /* Demand rows */
   .demandCards-wrap { overflow: visible; }
-  .demand-row { display: flex; border-radius: 10px; border: 2px solid var(--black); margin-bottom: 1rem; position: relative; transition: transform 0.3s ease; }
+  .demand-row { display: flex; flex-wrap: nowrap; border-radius: 10px; border: 2px solid var(--black); margin-bottom: 1rem; position: relative; transition: transform 0.3s ease; overflow: visible; }
   .demand-row:hover { transform: translateX(-112px); }
-  .demand-col { padding: 1.25rem; transition: opacity 0.3s ease; background: var(--cream); flex: 1 1 50%; min-width: 0; }
+  .demand-col { padding: 1.25rem; transition: opacity 0.3s ease; background: var(--cream); flex: 0 0 calc(50% - 24px); }
   .demand-row:hover .demand-col { opacity: 0.35; }
-  .demand-col-currently { border-right: 1px solid rgba(26,18,8,0.1); }
+  .demand-col-currently { border-right: 1px solid rgba(26,18,8,0.1); border-radius: 8px 0 0 8px; }
   .demand-col-wewant { }
   .demand-col-label { font-size: 0.68rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 0.5rem; }
   .label-currently { color: var(--orange); }
