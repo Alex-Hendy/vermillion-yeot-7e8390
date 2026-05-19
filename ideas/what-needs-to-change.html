@@ -315,11 +315,11 @@ function filterCards(filter) {
   rows.forEach(function(row) {
     var target = row.getAttribute('data-target');
     if (filter === 'all') {
-      row.style.display = 'grid';
+      row.style.display = 'flex';
     } else if (filter === 'sg') {
-      row.style.display = (target === 'sg' || target === 'both') ? 'grid' : 'none';
+      row.style.display = (target === 'sg' || target === 'both') ? 'flex' : 'none';
     } else if (filter === 'gcc') {
-      row.style.display = (target === 'gcc' || target === 'both') ? 'grid' : 'none';
+      row.style.display = (target === 'gcc' || target === 'both') ? 'flex' : 'none';
     }
   });
   document.querySelectorAll('.toggle-btn').forEach(function(btn) {
