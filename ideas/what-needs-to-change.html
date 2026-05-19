@@ -31,12 +31,12 @@
 
   /* Demand rows */
   .demandCards-wrap { overflow: visible; }
-  .demand-row { display: flex; flex-wrap: nowrap; border-radius: 10px; border: 2px solid var(--black); margin-bottom: 1rem; position: relative; transition: transform 0.3s ease; overflow: visible; width: 100%; }
+  .demand-row { display: flex; flex-wrap: nowrap; border-radius: 10px; margin-bottom: 1rem; position: relative; transition: transform 0.3s ease; overflow: visible; width: 100%; }
   .demand-row:hover { transform: translateX(-112px); }
-  .demand-col { padding: 1.25rem; transition: opacity 0.3s ease; background: var(--cream); width: calc((100% - 48px) / 2); flex-shrink: 0; flex-grow: 0; }
+  .demand-col { padding: 1.25rem; transition: opacity 0.3s ease; background: var(--cream); width: calc((100% - 48px) / 2); flex-shrink: 0; flex-grow: 0; border: 2px solid var(--black); border-right: none; }
   .demand-row:hover .demand-col { opacity: 0.35; }
-  .demand-col-currently { border-right: 1px solid rgba(26,18,8,0.1); border-radius: 8px 0 0 8px; }
-  .demand-col-wewant { }
+  .demand-col-currently { border-right: 1px solid rgba(26,18,8,0.1); border-radius: 10px 0 0 10px; }
+  .demand-col-wewant { border-right: none; }
   .demand-col-label { font-size: 0.68rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 0.5rem; }
   .label-currently { color: var(--orange); }
   .label-wewant { color: var(--olive); }
@@ -47,8 +47,8 @@
   .badge-gcc { background: rgba(90,104,48,0.15); color: var(--olive); border: 1px solid rgba(90,104,48,0.3); }
 
   /* Arrow column */
-  .demand-arrow { display: flex; align-items: center; justify-content: center; background: rgba(26,18,8,0.04); text-decoration: none; transition: flex-basis 0.3s ease, background 0.3s ease; gap: 8px; overflow: hidden; cursor: pointer; flex: 0 0 48px; border-left: 1px solid rgba(26,18,8,0.1); border-radius: 0 8px 8px 0; }
-  .demand-row:hover .demand-arrow { flex-basis: 160px; background: var(--amber); }
+  .demand-arrow { display: flex; align-items: center; justify-content: center; background: rgba(26,18,8,0.04); text-decoration: none; transition: flex-basis 0.3s ease, background 0.3s ease; gap: 8px; overflow: hidden; cursor: pointer; flex: 0 0 48px; border: 2px solid var(--black); border-left: 1px solid rgba(26,18,8,0.1); border-radius: 0 10px 10px 0; }
+  .demand-row:hover .demand-arrow { flex-basis: 160px; background: var(--amber); border-left: 2px solid var(--black); }
   .demand-arrow-text { font-size: 0.78rem; font-weight: 600; color: var(--muted); white-space: nowrap; opacity: 0; max-width: 0; transition: opacity 0.3s ease, max-width 0.3s ease; font-family: var(--font-subheading); }
   .demand-row:hover .demand-arrow-text { opacity: 1; max-width: 100px; color: var(--black); }
   .demand-arrow-icon { font-size: 1.1rem; color: var(--muted); transition: color 0.3s ease; }
