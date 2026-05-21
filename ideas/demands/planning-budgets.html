@@ -3,7 +3,9 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Double planning department budgets — Glasgow YIMBY</title>
+<title>Double Planning Department Budgets — Glasgow YIMBY</title>
+<link rel="canonical" href="https://glasgowyimby.com/ideas/demands/planning-budgets.html">
+<meta name="description" content="Major housing applications in Scotland take more than double the statutory target. If the system insists on individual permission for every home, it should fund the teams that process them.">
 <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../../style.css">
 <style>
@@ -15,9 +17,37 @@
   .demand-title { font-family: var(--font-heading); font-size: clamp(2rem, 4vw, 3rem); font-weight: 900; line-height: 1.1; letter-spacing: 0.02em; color: var(--cream); margin-bottom: 1.25rem; }
   .demand-intro { font-size: 1.05rem; color: rgba(245,237,216,0.75); line-height: 1.75; }
   .content { max-width: 760px; margin: 0 auto; padding: 4rem 2rem; }
+  .content h2 { font-family: var(--font-heading); font-size: 1.6rem; font-weight: 900; letter-spacing: 0.02em; margin: 2.5rem 0 0.75rem; color: var(--black); }
+  .content h2:first-child { margin-top: 0; }
   .content p { font-size: 1rem; color: var(--muted); line-height: 1.8; margin-bottom: 1rem; }
-  .coming-soon { background: var(--amber); border: 2px solid var(--black); border-radius: 10px; padding: 2rem; text-align: center; margin: 2rem 0; }
-  .coming-soon p { color: var(--black); font-weight: 600; margin: 0; font-size: 1.05rem; }
+  .content p strong { color: var(--black); font-weight: 600; }
+  .callout { background: var(--amber); border: 2px solid var(--black); border-radius: 10px; padding: 1.5rem 1.75rem; margin: 2rem 0; }
+  .callout p { color: var(--black); margin: 0; font-weight: 500; line-height: 1.7; }
+  .chart-container { border: 2px solid var(--black); border-radius: 10px; padding: 1.5rem; margin: 2rem 0; background: var(--cream); }
+  .chart-title { font-family: var(--font-heading); font-size: 1rem; font-weight: 700; color: var(--black); margin-bottom: 0.25rem; }
+  .chart-sub { font-size: 0.8rem; color: var(--muted); margin-bottom: 1.25rem; }
+  .bar-group { margin-bottom: 2rem; }
+  .bar-group:last-child { margin-bottom: 0.5rem; }
+  .bar-label-row { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 0.4rem; }
+  .bar-label { font-size: 0.88rem; font-weight: 700; color: var(--black); font-family: var(--font-subheading); }
+  .bar-value { font-size: 0.82rem; color: var(--muted); }
+  .bar-track { position: relative; height: 32px; background: rgba(26,18,8,0.06); border-radius: 6px; overflow: visible; }
+  .bar-fill-over { position: absolute; left: 0; top: 0; bottom: 0; background: var(--orange); border-radius: 6px; opacity: 0.2; }
+  .bar-fill-target { position: absolute; left: 0; top: 0; bottom: 0; background: var(--orange); border-radius: 6px 0 0 6px; opacity: 0.45; }
+  .bar-marker { position: absolute; top: -5px; bottom: -5px; width: 2px; background: var(--black); border-radius: 1px; z-index: 2; }
+  .bar-marker-label { position: absolute; top: -20px; font-size: 0.68rem; font-weight: 700; color: var(--muted); transform: translateX(-50%); white-space: nowrap; letter-spacing: 0.04em; }
+  .bar-scale { display: flex; justify-content: space-between; margin-top: 0.35rem; }
+  .bar-scale span { font-size: 0.65rem; color: var(--muted); }
+  .bar-split-track { position: relative; height: 32px; border-radius: 6px; overflow: hidden; display: flex; }
+  .bar-split-on-time { background: rgba(90,104,48,0.3); display: flex; align-items: center; justify-content: center; font-size: 0.75rem; font-weight: 700; color: var(--olive); }
+  .bar-split-late { background: rgba(212,90,26,0.2); display: flex; align-items: center; justify-content: center; font-size: 0.75rem; font-weight: 700; color: var(--orange); }
+  .bar-split-marker { position: absolute; top: -5px; bottom: -5px; width: 2px; background: var(--black); border-radius: 1px; z-index: 2; }
+  .bar-split-marker-label { position: absolute; top: -20px; font-size: 0.68rem; font-weight: 700; color: var(--muted); transform: translateX(-50%); white-space: nowrap; letter-spacing: 0.04em; }
+  .evidence-card { border: 2px solid var(--black); border-radius: 10px; padding: 1.5rem; margin: 1.5rem 0; background: var(--cream); transition: transform 0.15s, box-shadow 0.15s; }
+  .evidence-card:hover { transform: translate(-2px,-2px); box-shadow: 4px 4px 0 var(--black); }
+  .evidence-card .source { font-size: 0.75rem; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: var(--orange); margin-bottom: 0.5rem; }
+  .evidence-card p { margin: 0; font-size: 0.95rem; color: var(--muted); line-height: 1.7; }
+  .evidence-card p strong { color: var(--black); }
   .demand-nav { border-top: 2px solid var(--black); padding: 3rem 2rem; max-width: 760px; margin: 0 auto; }
   .demand-nav a { text-decoration: none; font-weight: 600; font-size: 0.9rem; color: var(--orange); }
   .demand-nav a:hover { text-decoration: underline; }
@@ -43,15 +73,93 @@
 <div class="demand-hero">
   <div class="demand-hero-inner">
     <a href="../what-needs-to-change.html" class="back-link">← Back to all demands</a>
-    <div class="demand-label">Demand 5 — Scottish Government &amp; Glasgow City Council</div>
+    <div class="demand-label">Demand 6 — Scottish Government & Glasgow City Council</div>
     <div class="demand-title">Double planning department budgets</div>
-    <p class="demand-intro">Major housing applications in Scotland take an average of 37.7 weeks — more than double the 16-week statutory target. Only 40% of local housing applications are decided within the 8-week target.</p>
+    <p class="demand-intro">Scotland's planning system requires individual permission for every new home. The teams that process those permissions are funded to miss their own deadlines by a factor of two. This has a direct cost: fewer homes get built.</p>
   </div>
 </div>
 <div class="content">
-  <div class="coming-soon">
-    <p>Full argument and evidence coming soon.</p>
+
+  <h2>The system demands individual permission for every home</h2>
+  <p>Scotland's planning system requires every new home to go through an individual planning application, assessed on its merits by a planning officer, reviewed against national and local policy, and in many cases decided by a committee. This is a resource-intensive process. If the system insists on this level of scrutiny for every development, it should at least fund the teams that deliver it.</p>
+
+  <h2>The teams are not funded to do the job</h2>
+
+  <div class="chart-container">
+    <div class="chart-title">How long planning decisions actually take</div>
+    <div class="chart-sub">Scotland, 2024/25. Source: Scottish Government planning statistics.</div>
+
+    <div class="bar-group">
+      <div class="bar-label-row">
+        <span class="bar-label">Major housing applications</span>
+        <span class="bar-value">37.7 weeks average</span>
+      </div>
+      <div class="bar-track">
+        <div class="bar-fill-over" style="width: 100%;"></div>
+        <div class="bar-fill-target" style="width: 42.4%;"></div>
+        <div class="bar-marker" style="left: 42.4%;">
+          <div class="bar-marker-label">16-week target</div>
+        </div>
+      </div>
+      <div class="bar-scale">
+        <span>0</span><span>10</span><span>20</span><span>30</span><span>40 weeks</span>
+      </div>
+    </div>
+
+    <div class="bar-group">
+      <div class="bar-label-row">
+        <span class="bar-label">Local housing applications</span>
+        <span class="bar-value">Only 40% decided on time</span>
+      </div>
+      <div style="position: relative;">
+        <div class="bar-split-track">
+          <div class="bar-split-on-time" style="width: 40%;">40% on time</div>
+          <div class="bar-split-late" style="width: 60%;">60% late</div>
+        </div>
+        <div class="bar-split-marker" style="left: 40%;">
+          <div class="bar-split-marker-label">8-week target</div>
+        </div>
+      </div>
+      <div class="bar-scale">
+        <span>0%</span><span>25%</span><span>50%</span><span>75%</span><span>100%</span>
+      </div>
+    </div>
   </div>
+
+  <p>Planning departments across Scotland are handling live applications, writing new Local Development Plans, processing Section 75 agreements, discharging conditions, and responding to enforcement queries — all with the same staff. Glasgow's own planning service launched a three-year improvement plan in 2025 — an implicit admission that the service is not working.</p>
+
+  <h2>Every week of delay has a cost</h2>
+  <p>Developers must account for these delays before they begin. Every additional week in the planning process is a cost that must be factored into the financial appraisal of a scheme — site holding costs, financing charges, professional fees. On marginal sites, the additional cost can make the difference between a project that proceeds and one that does not. The result is fewer homes.</p>
+  <p>The delays also mean that only large developers with deep pockets can afford to absorb the time and cost of the planning process. Smaller builders — who should be increasing competition and bringing more diverse housing to market — are forced out. This is one reason why large housebuilders now account for 70% of registered new build transactions in Scotland, up from 42% ten years ago. The planning system's underfunding does not just slow delivery — it actively concentrates the market into fewer hands.</p>
+
+  <div class="callout">
+    <p>A planning system that takes more than double its own statutory timescale to make decisions is not a planning system that is working. It is a planning system that is rationing permission by delay — and the people who pay the price are the renters and buyers who need the homes that are not being built.</p>
+  </div>
+
+  <h2>What we are asking for</h2>
+  <p>The Scottish Government and Glasgow City Council should double the budget for planning departments. This is not an endorsement of the current system — Glasgow YIMBY's long-term goal is to move towards a rules-based system that would require far less individual assessment. But while the discretionary system exists, it should be funded to operate within its own statutory timescales.</p>
+  <p>Major applications should be decided in 16 weeks. Local applications should be decided in 8 weeks. These are not aspirational targets — they are the law. Whatever level of funding is required to meet them, that is what should be spent.</p>
+
+  <div class="evidence-card">
+    <div class="source">Scottish Government planning statistics, 2024/25</div>
+    <p>Major housing applications took an average of <strong>37.7 weeks</strong> to determine — more than double the 16-week statutory target. Only <strong>40% of local housing applications</strong> were decided within the 8-week target. <a href="https://www.gov.scot/publications/planning-performance-statistics-2024-2025-annual/" target="_blank" style="color:var(--orange);">Read the statistics →</a></p>
+  </div>
+
+  <div class="evidence-card">
+    <div class="source">Glasgow City Council, 2025 — Glasgow Planning Improvement Plan</div>
+    <p>Glasgow launched a <strong>three-year planning improvement plan</strong> in January 2025, with an update in January 2026. The plan covers staff development, process improvement, and digital innovation. Its existence is an acknowledgement that the service is underperforming — but it introduces no binding timescales for improvement.</p>
+  </div>
+
+  <div class="evidence-card">
+    <div class="source">Savills, Summer 2025 — Scotland Residential Development Market</div>
+    <p>Large housebuilders accounted for <strong>70% of registered new build transactions</strong> in Scotland in the year to March 2025, compared to 42% ten years ago. The planning system's cost and timescales disproportionately burden smaller builders, concentrating the market and reducing competition. <a href="https://www.savills.co.uk/research_articles/229130/378184-0" target="_blank" style="color:var(--orange);">Read the report →</a></p>
+  </div>
+
+  <div class="evidence-card">
+    <div class="source">Propertymark / Housing Planning Hub, 2025</div>
+    <p>The Scottish Government identified <strong>"lengthy negotiations of section 75 agreements"</strong> and <strong>"waits on decisions for major developments"</strong> as key reasons for delays in housing delivery. The Housing Planning Hub was created to tackle these blockages. <a href="https://www.propertymark.co.uk/resource/scotland-s-planning-reform-to-shake-up-the-delivery-of-new-homes.html" target="_blank" style="color:var(--orange);">Read the overview →</a></p>
+  </div>
+
 </div>
 <div class="demand-nav">
   <a href="../what-needs-to-change.html">← Back to all demands</a>
