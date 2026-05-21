@@ -16,7 +16,7 @@
   .step-label { display: inline-block; font-size: 0.72rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; padding: 0.3rem 0.75rem; border-radius: 100px; margin-bottom: 1.25rem; border: 1.5px solid rgba(232,160,32,0.4); background: rgba(232,160,32,0.15); color: var(--amber); }
   .idea-title { font-family: var(--font-heading); font-size: clamp(2rem, 4vw, 3rem); font-weight: 900; line-height: 1.1; letter-spacing: 0.02em; color: var(--cream); margin-bottom: 1.25rem; }
   .idea-intro { font-size: 1.05rem; color: rgba(245,237,216,0.75); line-height: 1.75; }
-  .content { max-width: 760px; margin: 0 auto; padding: 4rem 2rem; }
+  .content { max-width: 760px; margin: 0 auto; padding: 4rem 2rem; overflow: visible; }
   .content p { font-size: 1rem; color: var(--muted); line-height: 1.8; margin-bottom: 1rem; }
   .section-label { font-size: 0.72rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--orange); margin-bottom: 1.5rem; display: block; }
   .section-gap { margin-top: 3rem; }
@@ -30,12 +30,13 @@
   .toggle-btn + .toggle-btn { border-left: 2px solid var(--black); }
 
   /* Demand rows */
-  .demand-row { display: grid; grid-template-columns: 1fr 1fr 48px; gap: 0; border-radius: 10px; overflow: hidden; border: 2px solid var(--black); margin-bottom: 1rem; transition: grid-template-columns 0.3s ease; }
-  .demand-row:hover { grid-template-columns: 0.85fr 0.85fr 160px; }
-  .demand-col { padding: 1.25rem; transition: opacity 0.3s ease; }
+  .demandCards-wrap { overflow: visible; }
+  .demand-row { display: flex; flex-wrap: nowrap; border-radius: 10px; margin-bottom: 1rem; position: relative; transition: transform 0.3s ease; overflow: visible; width: 100%; }
+  .demand-row:hover { transform: translateX(-112px); }
+  .demand-col { padding: 1.25rem; transition: opacity 0.3s ease; background: var(--cream); width: calc((100% - 48px) / 2); flex-shrink: 0; flex-grow: 0; border: 2px solid var(--black); border-right: none; }
   .demand-row:hover .demand-col { opacity: 0.35; }
-  .demand-col-currently { background: var(--cream); border-right: 1px solid rgba(26,18,8,0.1); }
-  .demand-col-wewant { background: var(--cream); border-right: 1px solid rgba(26,18,8,0.1); }
+  .demand-col-currently { border-right: 1px solid rgba(26,18,8,0.1); border-radius: 10px 0 0 10px; }
+  .demand-col-wewant { border-right: none; }
   .demand-col-label { font-size: 0.68rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 0.5rem; }
   .label-currently { color: var(--orange); }
   .label-wewant { color: var(--olive); }
@@ -46,9 +47,8 @@
   .badge-gcc { background: rgba(90,104,48,0.15); color: var(--olive); border: 1px solid rgba(90,104,48,0.3); }
 
   /* Arrow column */
-  .demand-arrow { display: flex; align-items: center; justify-content: center; background: rgba(26,18,8,0.04); text-decoration: none; transition: background 0.3s ease; gap: 8px; overflow: hidden; cursor: pointer; }
-  .demand-arrow:hover { background: rgba(26,18,8,0.08); }
-  .demand-row:hover .demand-arrow { background: var(--amber); }
+  .demand-arrow { display: flex; align-items: center; justify-content: center; background: rgba(26,18,8,0.04); text-decoration: none; transition: flex-basis 0.3s ease, background 0.3s ease; gap: 8px; overflow: hidden; cursor: pointer; flex: 0 0 48px; border: 2px solid var(--black); border-left: 1px solid rgba(26,18,8,0.1); border-radius: 0 10px 10px 0; }
+  .demand-row:hover .demand-arrow { flex-basis: 160px; background: var(--amber); border-left: 2px solid var(--black); }
   .demand-arrow-text { font-size: 0.78rem; font-weight: 600; color: var(--muted); white-space: nowrap; opacity: 0; max-width: 0; transition: opacity 0.3s ease, max-width 0.3s ease; font-family: var(--font-subheading); }
   .demand-row:hover .demand-arrow-text { opacity: 1; max-width: 100px; color: var(--black); }
   .demand-arrow-icon { font-size: 1.1rem; color: var(--muted); transition: color 0.3s ease; }
@@ -78,10 +78,12 @@
   @media (max-width: 768px) {
     .idea-hero { padding: 3rem 1.25rem 2.5rem; }
     .content { padding: 2.5rem 1.25rem; }
-    .demand-row { grid-template-columns: 1fr !important; }
-    .demand-row:hover { grid-template-columns: 1fr !important; }
+    .demand-row { flex-direction: column !important; }
+    .demand-row:hover { transform: none !important; }
     .demand-row:hover .demand-col { opacity: 1; }
-    .demand-arrow { padding: 0.75rem; justify-content: center; }
+    .demand-col { flex: 1 1 auto !important; }
+    .demand-arrow { flex: 0 0 auto !important; width: 100% !important; padding: 0.75rem; justify-content: center; border-left: none !important; border-top: 1px solid rgba(26,18,8,0.1); border-radius: 0 0 8px 8px !important; }
+    .demand-row:hover .demand-arrow { flex-basis: auto !important; }
     .demand-arrow-text { opacity: 1 !important; max-width: 100px !important; }
     .toggle-bar { flex-wrap: wrap; }
     .toggle-btn { min-width: 33%; }
@@ -136,6 +138,24 @@
         <p class="demand-col-desc">Amend Policy 16 so suitable sites can become housing whether or not they're in a decade-old plan.</p>
       </div>
       <a href="demands/windfall.html" class="demand-arrow">
+        <span class="demand-arrow-text">Read more</span>
+        <span class="demand-arrow-icon">→</span>
+      </a>
+    </div>
+
+    <div class="demand-row" data-target="sg">
+      <div class="demand-col demand-col-currently">
+        <span class="demand-badge badge-sg">Scottish Government</span>
+        <div class="demand-col-label label-currently">Currently</div>
+        <div class="demand-col-title">No consequence when councils fail to deliver enough homes</div>
+        <p class="demand-col-desc">NPF4 abolished the presumption in favour of sustainable development. Councils can miss targets indefinitely with no accountability. 16 of 18 recent appeals dismissed.</p>
+      </div>
+      <div class="demand-col demand-col-wewant">
+        <div class="demand-col-label label-wewant" style="padding-top: 1.4rem;">We want</div>
+        <div class="demand-col-title">Reinstate the presumption in favour of sustainable development</div>
+        <p class="demand-col-desc">When a council is failing to deliver, the balance should tilt in favour of approving new homes.</p>
+      </div>
+      <a href="demands/presumption.html" class="demand-arrow">
         <span class="demand-arrow-text">Read more</span>
         <span class="demand-arrow-icon">→</span>
       </a>
@@ -213,17 +233,17 @@
       </a>
     </div>
 
-    <div class="demand-row" data-target="gcc">
+    <div class="demand-row" data-target="sg">
       <div class="demand-col demand-col-currently">
-        <span class="demand-badge badge-gcc">Glasgow City Council</span>
+        <span class="demand-badge badge-sg">Scottish Government</span>
         <div class="demand-col-label label-currently">Currently</div>
-        <div class="demand-col-title">25% affordable housing on every site</div>
-        <p class="demand-col-desc">A flat requirement regardless of viability. On marginal sites, it kills the scheme — zero homes instead of some.</p>
+        <div class="demand-col-title">NPF4 mandates 25% affordable housing on every site</div>
+        <p class="demand-col-desc">A national requirement regardless of local viability. On marginal sites, it kills the scheme entirely. A tax on the one activity that could resolve the crisis.</p>
       </div>
       <div class="demand-col demand-col-wewant">
         <div class="demand-col-label label-wewant" style="padding-top: 1.4rem;">We want</div>
-        <div class="demand-col-title">A city-wide affordable housing target</div>
-        <p class="demand-col-desc">Same goal, better mechanism. Meet the target across the city, not by taxing every site at the same rate.</p>
+        <div class="demand-col-title">Remove the 25% per-site requirement</div>
+        <p class="demand-col-desc">Let councils set their own affordable housing policies. Fund subsidised housing through grants, not a tax on new construction.</p>
       </div>
       <a href="demands/affordable-housing.html" class="demand-arrow">
         <span class="demand-arrow-text">Read more</span>
@@ -313,11 +333,11 @@ function filterCards(filter) {
   rows.forEach(function(row) {
     var target = row.getAttribute('data-target');
     if (filter === 'all') {
-      row.style.display = 'grid';
+      row.style.display = 'flex';
     } else if (filter === 'sg') {
-      row.style.display = (target === 'sg' || target === 'both') ? 'grid' : 'none';
+      row.style.display = (target === 'sg' || target === 'both') ? 'flex' : 'none';
     } else if (filter === 'gcc') {
-      row.style.display = (target === 'gcc' || target === 'both') ? 'grid' : 'none';
+      row.style.display = (target === 'gcc' || target === 'both') ? 'flex' : 'none';
     }
   });
   document.querySelectorAll('.toggle-btn').forEach(function(btn) {
