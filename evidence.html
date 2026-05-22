@@ -6,71 +6,85 @@
 <title>Evidence: Cities That Built More Homes and Saw Rents Fall — Glasgow YIMBY</title>
 <link rel="canonical" href="https://glasgowyimby.com/evidence.html">
 <meta name="description" content="Five cities that changed their planning rules and measured what happened. Auckland, Minneapolis, Austin, Lower Hutt, Croydon. Every claim cited, every case sourced.">
-<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;900&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
 <style>
-  .ev-hero { background: var(--black); color: var(--cream); padding: 5rem 2rem 4rem; }
-  .ev-hero-inner { max-width: 620px; margin: 0 auto; }
-  .ev-hero-label { display: inline-block; font-size: 0.72rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; padding: 0.3rem 0.75rem; border-radius: 100px; margin-bottom: 1.25rem; border: 1.5px solid rgba(232,160,32,0.4); background: rgba(232,160,32,0.15); color: var(--amber); }
-  .ev-hero-title { font-family: var(--font-heading); font-size: clamp(2.2rem, 4vw, 3.2rem); font-weight: 900; line-height: 1.1; letter-spacing: 0.02em; color: var(--cream); margin-bottom: 1.25rem; }
-  .ev-hero-title em { font-style: italic; color: var(--amber); }
-  .ev-hero-intro { font-size: 1.05rem; color: rgba(245,237,216,0.75); line-height: 1.75; }
-  .content { max-width: 620px; margin: 0 auto; padding: 3rem 2rem 4rem; }
-  .section-head { font-family: var(--font-heading); font-size: 1.5rem; font-weight: 900; color: var(--black); margin-bottom: 0.5rem; }
-  .section-sub { font-size: 0.95rem; color: var(--muted); line-height: 1.7; margin-bottom: 2rem; }
-  .content-divider { border: none; border-top: 2px solid var(--black); margin: 3rem 0; }
-  .cabinet { background: #1A1208; border-radius: 14px; padding: 1.5rem; margin-bottom: 2rem; }
-  .cab-title { text-align: center; font-size: 11px; font-weight: 600; color: rgba(245,237,216,0.4); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 1.25rem; }
-  .screen { background: #0D0A04; border-radius: 10px; padding: 10px; margin-bottom: 1rem; border: 1px solid rgba(255,255,255,0.08); }
-  .reels-row { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 8px; }
-  .reel { background: #F5EDD8; border-radius: 6px; height: 96px; overflow: hidden; position: relative; }
-  .reel::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 22px; background: linear-gradient(to bottom, #F5EDD8, transparent); z-index: 3; pointer-events: none; }
-  .reel::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 22px; background: linear-gradient(to top, #F5EDD8, transparent); z-index: 3; pointer-events: none; }
-  .reel-strip { position: absolute; top: 0; left: 0; right: 0; }
-  .reel-cell { height: 96px; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 8px 6px; text-align: center; border-bottom: 0.5px solid rgba(26,18,8,0.06); box-sizing: border-box; }
-  .reel-lbl { font-size: 9px; font-weight: 600; color: #7A5C3E; text-transform: uppercase; letter-spacing: 0.07em; margin-bottom: 3px; }
-  .reel-val { font-size: 12px; font-weight: 500; color: #1A1208; line-height: 1.3; }
-  .reel-val.city { font-size: 16px; font-family: var(--font-heading); font-weight: 700; }
-  .reel-q { display: flex; align-items: center; justify-content: center; height: 96px; }
-  .win-bar { height: 3px; background: rgba(255,255,255,0.06); border-radius: 2px; margin: 0 0 1.25rem; transition: background 0.5s, box-shadow 0.5s; }
-  .win-bar.lit { background: #E8A020; box-shadow: 0 0 8px rgba(232,160,32,0.6); }
-  .cab-counter { text-align: center; font-size: 11px; color: rgba(245,237,216,0.35); letter-spacing: 0.06em; margin-bottom: 1rem; font-weight: 600; text-transform: uppercase; min-height: 16px; }
-  .pull-btn-wrap { display: flex; justify-content: center; }
-  .pull-btn { background: #E8A020; color: #1A1208; border: 3px solid #C47A10; border-radius: 10px; padding: 14px 52px; font-size: 16px; font-weight: 700; cursor: pointer; font-family: var(--font-heading); transition: background 0.15s, transform 0.1s; }
-  .pull-btn:hover { background: #D45A1A; color: #F5EDD8; border-color: #8B3A0E; }
-  .pull-btn:active { transform: scale(0.97); }
-  .pull-btn:disabled { opacity: 0.45; cursor: not-allowed; transform: none; }
-  .slot-card { background: var(--cream); border: 2px solid var(--black); border-radius: 10px; padding: 1.25rem; opacity: 0; transition: opacity 0.4s; margin-top: 1.5rem; min-height: 160px; display: none; }
-  .slot-card.used { display: block; }
-  .slot-card.show { opacity: 1; }
-  .slot-tag { display: inline-block; font-size: 11px; padding: 3px 10px; border-radius: 100px; margin-bottom: 8px; font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase; border: 1.5px solid var(--black); }
-  .tag-s { background: #D8E0B8; color: #3A4A20; }
-  .tag-w { background: var(--orange-light); color: #5A2808; }
-  .slot-city { font-family: var(--font-heading); font-size: 1.3rem; font-weight: 900; color: var(--black); margin-bottom: 3px; }
-  .slot-reform { font-size: 12px; color: var(--muted); margin-bottom: 10px; }
-  .slot-body { font-size: 0.9rem; color: var(--muted); line-height: 1.7; margin-bottom: 10px; }
-  .slot-src { font-size: 11px; color: #7A5C3E; border-top: 1px solid var(--border); padding-top: 8px; }
-  .slot-src a { color: var(--orange); text-decoration: none; }
-  .slot-src a:hover { text-decoration: underline; }
-  .cases-grid { display: grid; grid-template-columns: 1fr; gap: 1.25rem; }
-  .case-card { background: var(--cream); border: 2px solid var(--black); border-radius: 10px; padding: 1.5rem; transition: transform 0.15s, box-shadow 0.15s; }
-  .case-card:hover { transform: translate(-2px,-2px); box-shadow: 4px 4px 0 var(--black); }
-  .case-card-top { display: flex; align-items: flex-start; justify-content: space-between; gap: 1rem; margin-bottom: 0.75rem; flex-wrap: wrap; }
-  .case-card-title { font-family: var(--font-heading); font-size: 1.1rem; font-weight: 900; color: var(--black); }
-  .case-card-country { font-size: 11px; color: var(--muted); margin-top: 2px; }
-  .case-stat-pill { background: var(--black); color: var(--amber); font-family: var(--font-heading); font-size: 1rem; font-weight: 900; padding: 4px 14px; border-radius: 100px; white-space: nowrap; flex-shrink: 0; }
-  .case-card-reform { font-size: 12px; font-weight: 600; color: var(--muted); text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 0.5rem; }
-  .case-card-body { font-size: 0.88rem; color: var(--muted); line-height: 1.7; margin-bottom: 0.75rem; }
-  .case-card-src { font-size: 11px; color: #7A5C3E; }
-  .case-card-src a { color: var(--orange); text-decoration: none; }
-  .case-card-src a:hover { text-decoration: underline; }
-  .case-card.warning { border-color: var(--orange); }
-  .case-card.warning .case-stat-pill { background: var(--orange); color: var(--cream); }
-  @media (max-width: 768px) {
-    .ev-hero { padding: 3rem 1.25rem 2.5rem; }
-    .content { padding: 2rem 1.25rem; }
-    .reels-row { gap: 5px; }
-    .reel-val.city { font-size: 13px; }
+  .ev-hero{background:var(--black);color:var(--cream);padding:5rem 2rem 4rem}
+  .ev-hero-inner{max-width:620px;margin:0 auto}
+  .ev-hero-label{display:inline-block;font-size:.72rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:.3rem .75rem;border-radius:100px;margin-bottom:1.25rem;border:1.5px solid rgba(232,160,32,.4);background:rgba(232,160,32,.15);color:var(--amber)}
+  .ev-hero-title{font-family:var(--font-heading);font-size:clamp(2.2rem,4vw,3.2rem);font-weight:900;line-height:1.1;letter-spacing:.02em;color:var(--cream);margin-bottom:1.25rem}
+  .ev-hero-title em{font-style:italic;color:var(--amber)}
+  .ev-hero-intro{font-size:1.05rem;color:rgba(245,237,216,.75);line-height:1.75}
+  .content{max-width:620px;margin:0 auto;padding:3rem 2rem 4rem}
+  .section-head{font-family:var(--font-heading);font-size:1.5rem;font-weight:900;color:var(--black);margin-bottom:.5rem}
+  .section-sub{font-size:.95rem;color:var(--muted);line-height:1.7;margin-bottom:2rem}
+  .content-divider{border:none;border-top:2px solid var(--black);margin:3rem 0}
+  .cabinet{background:#1A1208;border-radius:14px;padding:1.5rem;margin-bottom:2rem}
+  .cab-title{text-align:center;font-size:11px;font-weight:700;color:rgba(245,237,216,.4);letter-spacing:.1em;text-transform:uppercase;margin-bottom:1.25rem;font-family:var(--font-subheading)}
+  .screen{background:#0D0A04;border-radius:10px;padding:10px;margin-bottom:1rem;border:1px solid rgba(255,255,255,.08)}
+  .reels-row{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px}
+  .reel{background:#F5EDD8;border-radius:6px;height:96px;overflow:hidden;position:relative}
+  .reel::before{content:'';position:absolute;top:0;left:0;right:0;height:22px;background:linear-gradient(to bottom,#F5EDD8,transparent);z-index:3;pointer-events:none}
+  .reel::after{content:'';position:absolute;bottom:0;left:0;right:0;height:22px;background:linear-gradient(to top,#F5EDD8,transparent);z-index:3;pointer-events:none}
+  .reel-strip{position:absolute;top:0;left:0;right:0}
+  .reel-cell{height:96px;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:8px 6px;text-align:center;border-bottom:.5px solid rgba(26,18,8,.06);box-sizing:border-box}
+  .reel-lbl{font-size:9px;font-weight:700;color:#7A5C3E;text-transform:uppercase;letter-spacing:.07em;margin-bottom:3px;font-family:var(--font-subheading)}
+  .reel-val{font-size:12px;font-weight:600;color:#1A1208;line-height:1.3;font-family:var(--font-subheading)}
+  .reel-val.city{font-size:15px;font-family:var(--font-subheading);font-weight:900}
+  .reel-q{display:flex;align-items:center;justify-content:center;height:96px}
+  .win-bar{height:3px;background:rgba(255,255,255,.06);border-radius:2px;margin:0 0 1.25rem;transition:background .5s,box-shadow .5s}
+  .win-bar.lit{background:#E8A020;box-shadow:0 0 8px rgba(232,160,32,.6)}
+  .cab-counter{text-align:center;font-size:11px;color:rgba(245,237,216,.35);letter-spacing:.06em;margin-bottom:1rem;font-weight:600;text-transform:uppercase;min-height:16px;font-family:var(--font-subheading)}
+  .pull-btn-wrap{display:flex;justify-content:center}
+  .pull-btn{background:#E8A020;color:#1A1208;border:3px solid #C47A10;border-radius:10px;padding:14px 52px;font-size:16px;font-weight:900;cursor:pointer;font-family:var(--font-subheading);transition:background .15s,transform .1s;letter-spacing:.05em}
+  .pull-btn:hover{background:#D45A1A;color:#F5EDD8;border-color:#8B3A0E}
+  .pull-btn:active{transform:scale(.97)}
+  .pull-btn:disabled{opacity:.45;cursor:not-allowed;transform:none}
+  .slot-card{background:var(--cream);border:2px solid var(--black);border-radius:10px;padding:1.25rem;opacity:0;transition:opacity .4s;margin-top:1.5rem;min-height:160px;display:none}
+  .slot-card.used{display:block}
+  .slot-card.show{opacity:1}
+  .slot-tag{display:inline-block;font-size:11px;padding:3px 10px;border-radius:100px;margin-bottom:8px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;border:1.5px solid var(--black);font-family:var(--font-subheading)}
+  .tag-s{background:#D8E0B8;color:#3A4A20}
+  .tag-w{background:var(--orange-light);color:#5A2808}
+  .slot-city{font-family:var(--font-subheading);font-size:1.3rem;font-weight:900;color:var(--black);margin-bottom:3px}
+  .slot-reform{font-size:12px;color:var(--muted);margin-bottom:10px;font-weight:600;text-transform:uppercase;letter-spacing:.05em}
+  .slot-body{font-size:.9rem;color:var(--muted);line-height:1.7;margin-bottom:10px}
+  .slot-src{font-size:11px;color:#7A5C3E;border-top:1px solid rgba(26,18,8,.1);padding-top:8px}
+  .slot-src a{color:var(--orange);text-decoration:none}
+  .slot-src a:hover{text-decoration:underline}
+  .cases-grid{display:grid;grid-template-columns:1fr;gap:1.25rem}
+  .case-card{background:var(--cream);border:2px solid var(--black);border-radius:10px;overflow:hidden}
+  .case-card-header{padding:1.5rem;cursor:pointer;transition:background .15s;user-select:none}
+  .case-card-header:hover{background:rgba(26,18,8,.03)}
+  .case-card-top{display:flex;align-items:flex-start;justify-content:space-between;gap:1rem;margin-bottom:.75rem;flex-wrap:wrap}
+  .case-card-title{font-family:var(--font-subheading);font-size:1.2rem;font-weight:900;color:var(--black)}
+  .case-card-country{font-size:11px;color:var(--muted);margin-top:2px;font-weight:600}
+  .case-stat-pill{background:var(--black);color:var(--amber);font-family:var(--font-subheading);font-size:.95rem;font-weight:900;padding:4px 14px;border-radius:100px;white-space:nowrap;flex-shrink:0}
+  .case-card-reform{font-size:12px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;margin-bottom:.5rem}
+  .case-card-body{font-size:.88rem;color:var(--muted);line-height:1.7;margin-bottom:.5rem}
+  .case-card-toggle{display:flex;align-items:center;gap:.4rem;font-size:.8rem;font-weight:700;color:var(--orange);margin-top:.5rem}
+  .case-card-toggle .toggle-arrow{transition:transform .25s;display:inline-block}
+  .case-card-expanded{max-height:0;overflow:hidden;transition:max-height .4s ease}
+  .case-card.expanded .case-card-expanded{max-height:2400px}
+  .case-card-expanded-inner{padding:0 1.5rem 1.5rem;border-top:1px solid rgba(26,18,8,.1)}
+  .case-card-expanded-inner p{font-size:.92rem;color:var(--muted);line-height:1.8;margin-bottom:.9rem}
+  .case-card-expanded-inner p:last-of-type{margin-bottom:0}
+  .case-card-expanded-inner a{color:var(--orange);text-decoration:none}
+  .case-card-expanded-inner a:hover{text-decoration:underline}
+  .case-card-expanded-inner strong{color:var(--black);font-weight:600}
+  .case-chart{margin:1.25rem 0 .5rem;background:var(--black);border-radius:8px;padding:1rem}
+  .case-chart svg{width:100%;display:block}
+  .case-chart-caption{font-size:.75rem;color:var(--muted);margin-top:.5rem;line-height:1.5}
+  .case-src{font-size:.78rem;color:#7A5C3E;border-top:1px solid rgba(26,18,8,.1);padding-top:.75rem;margin-top:1rem;line-height:1.6}
+  .case-src a{color:var(--orange);text-decoration:none}
+  .case-src a:hover{text-decoration:underline}
+  .case-card.warning{border-color:var(--orange)}
+  .case-card.warning .case-stat-pill{background:var(--orange);color:var(--cream)}
+  @media(max-width:768px){
+    .ev-hero{padding:3rem 1.25rem 2.5rem}
+    .content{padding:2rem 1.25rem}
+    .reels-row{gap:5px}
+    .reel-val.city{font-size:12px}
   }
 </style>
 </head>
@@ -86,6 +100,7 @@
   </ul>
   <button class="nav-toggle" id="navToggle" onclick="toggleNav()">Menu</button>
 </nav>
+
 <div class="ev-hero">
   <div class="ev-hero-inner">
     <div class="ev-hero-label">The evidence</div>
@@ -93,9 +108,11 @@
     <p class="ev-hero-intro">YIMBY policies are not untested theory. From Auckland to Austin, cities that changed their planning rules saw rents fall, supply surge, and housing become more affordable. Here is the evidence — every case sourced, every claim cited.</p>
   </div>
 </div>
+
 <div class="content">
   <div class="section-head">Try your luck</div>
   <p class="section-sub">Spin the reels to land on a case study. Each pull gives you a city you haven't seen yet — once you've seen all five, the reels reset.</p>
+
   <div class="cabinet">
     <div class="cab-title">YIMBY evidence — cities that changed the rules</div>
     <div class="screen">
@@ -111,6 +128,7 @@
       <button class="pull-btn" id="pullBtn" onclick="doSpin()">Pull</button>
     </div>
   </div>
+
   <div class="slot-card" id="slotCard">
     <span class="slot-tag" id="slotTag"></span>
     <div class="slot-city" id="slotCity"></div>
@@ -118,46 +136,142 @@
     <div class="slot-body" id="slotBody"></div>
     <div class="slot-src" id="slotSrc"></div>
   </div>
+
   <hr class="content-divider">
+
   <div class="section-head">All five case studies</div>
-  <p class="section-sub">Five cities that changed their planning rules. Four success stories and one cautionary tale — which shows just as clearly that the policies work.</p>
+  <p class="section-sub">Five cities that changed their planning rules. Four success stories and one cautionary tale. Click any card to read the full evidence.</p>
+
   <div class="cases-grid">
-    <div class="case-card">
-      <div class="case-card-top"><div><div class="case-card-title">Auckland</div><div class="case-card-country">New Zealand</div></div><div class="case-stat-pill">Rents 28% lower</div></div>
-      <div class="case-card-reform">Upzoned 75% of residential land — 2016</div>
-      <div class="case-card-body">In 2016 Auckland upzoned three-quarters of its residential land, allowing medium and high-density housing across the city. Construction records were broken. Rents in Auckland rose 22% from 2017 to 2024, compared to 34% nationally and 36% in Wellington. Research estimates rents are now 28% lower than they would otherwise have been without the reform.</div>
-      <div class="case-card-src">Greenaway-McGrevy & So (2024), University of Auckland. <a href="https://www.royalsociety.org.nz/research/will-upzoning-deliver-housing-affordability-for-everyone-evidence-from-auckland" target="_blank">Read the research →</a></div>
+
+    <div class="case-card" id="card-auckland">
+      <div class="case-card-header" onclick="toggleCard('card-auckland')">
+        <div class="case-card-top">
+          <div><div class="case-card-title">Auckland</div><div class="case-card-country">New Zealand</div></div>
+          <div class="case-stat-pill">Rents 28% lower</div>
+        </div>
+        <div class="case-card-reform">Upzoned 75% of residential land — 2016</div>
+        <div class="case-card-body">In 2016 Auckland upzoned three-quarters of its residential land, allowing medium and high-density housing across the city. Construction records were broken. Rents in Auckland rose 22% from 2017 to 2024, compared to 34% nationally and 36% in Wellington. Research estimates rents are now 28% lower than they would otherwise have been without the reform.</div>
+        <div class="case-card-toggle">Read the full evidence <span class="toggle-arrow">↓</span></div>
+      </div>
+      <div class="case-card-expanded">
+        <div class="case-card-expanded-inner">
+          <p>Auckland's <a href="https://www.aucklandcouncil.govt.nz/plans-projects-policies-reports-bylaws/our-plans-strategies/unitary-plan/Pages/default.aspx" target="_blank">2016 Unitary Plan</a> upzoned approximately three-quarters of the city's residential land, permitting medium and high-density housing where previously only detached houses were allowed. The effect on construction was immediate. <a href="https://ourauckland.aucklandcouncil.govt.nz/news/2024/03/auckland-upzoning-sparks-more-homes-and-improved-affordability/" target="_blank">Research from the University of Auckland</a> found that around <strong>22,000 new homes consented between 2016 and 2021 were a direct result of the upzoning</strong> — one third of all homes consented in residential areas, equivalent to 50% more dwellings than would otherwise have been built.</p>
+          <p>By February 2024, Auckland's housing stock had grown by around <strong>80,000 units — a 15% increase</strong> — since the plan became operative. <a href="https://www.cis.org.au/publication/less-crowded-houses-the-success-of-nzs-housing-policy-reforms-and-implications-for-australia/" target="_blank">The population aged 20 to 34 grew most strongly in the most upzoned areas</a>, suggesting young people disproportionately benefited.</p>
+          <p>The rent effect was clear. Between 2017 and 2024, rents in Auckland rose <strong>22%</strong>, compared to <strong>34% nationally</strong> and <strong>36% in Wellington</strong>. <a href="https://www.royalsociety.org.nz/research/will-upzoning-deliver-housing-affordability-for-everyone-evidence-from-auckland" target="_blank">Research by Greenaway-McGrevy and So</a> estimates rents are now 28% lower than they would have been without the reform — equivalent to hundreds of dollars per month for the average Auckland renter.</p>
+          <p>Auckland housing is still expensive, and the researchers are clear that <a href="https://architecturenow.co.nz/articles/auckland-upzoning-under-the-microscope/" target="_blank">upzoning is not a silver bullet</a>. The ratio of adults to dwellings remains higher than it was in 2000 — more building is still needed. But the evidence is unambiguous: the reform produced more homes, more homes produced slower rent growth, and the cities that did not reform saw faster rises.</p>
+          <div class="case-chart"><svg viewBox="0 0 560 170" id="aucklandChart"></svg></div>
+          <div class="case-chart-caption">Cumulative rent growth 2017–2024: Auckland vs Wellington vs New Zealand national average. Source: University of Auckland / Auckland Council.</div>
+          <div class="case-src">Greenaway-McGrevy, R. & So, Y. (2024). Can Zoning Reform Reduce Housing Costs? Evidence from Rents in Auckland. University of Auckland Economic Policy Centre. <a href="https://www.royalsociety.org.nz/research/will-upzoning-deliver-housing-affordability-for-everyone-evidence-from-auckland" target="_blank">Read the research →</a></div>
+        </div>
+      </div>
     </div>
-    <div class="case-card">
-      <div class="case-card-top"><div><div class="case-card-title">Lower Hutt</div><div class="case-card-country">New Zealand</div></div><div class="case-stat-pill">Rents down 21%</div></div>
-      <div class="case-card-reform">Citywide upzoning by a single council — from 2017</div>
-      <div class="case-card-body">Lower Hutt (population 114,000) acted alone, upzoning 80% of residential land from 2017 without waiting for national reform. Construction tripled. Rents fell 21% relative to comparable cities that did not reform.</div>
-      <div class="case-card-src">Maltman & Greenaway-McGrevy (2024), Journal of Housing Economics. <a href="https://www.sciencedirect.com/science/article/pii/S1051137724000512" target="_blank">Read the research →</a></div>
+
+    <div class="case-card" id="card-lowerhutt">
+      <div class="case-card-header" onclick="toggleCard('card-lowerhutt')">
+        <div class="case-card-top">
+          <div><div class="case-card-title">Lower Hutt</div><div class="case-card-country">New Zealand</div></div>
+          <div class="case-stat-pill">Rents down 21%</div>
+        </div>
+        <div class="case-card-reform">Citywide upzoning by a single council — from 2017</div>
+        <div class="case-card-body">Lower Hutt (population 114,000) acted alone, upzoning 80% of residential land from 2017 without waiting for national reform. Construction tripled. Rents fell 21% relative to comparable cities that did not reform.</div>
+        <div class="case-card-toggle">Read the full evidence <span class="toggle-arrow">↓</span></div>
+      </div>
+      <div class="case-card-expanded">
+        <div class="case-card-expanded-inner">
+          <p>Lower Hutt is the most important case study in the global evidence base, because it acted alone. Auckland's reform was city-wide and nationally coordinated. <strong>Lower Hutt — a city of 114,000 people in the Wellington metropolitan area — implemented its own sequence of zoning changes from 2016 onwards, without waiting for national reform or neighbouring councils.</strong></p>
+          <p>The changes included <a href="https://betterthingsarepossible.substack.com/p/development-insights-lower-hutt-housing" target="_blank">reducing then abolishing parking minimums</a>, targeted medium-density upzoning in central areas, and a later blanket high- and medium-density upzoning across 80% of residential land. Hutt City Council removed parking minimums entirely in September 2020, well ahead of the national deadline.</p>
+          <p>The results, <a href="https://www.sciencedirect.com/science/article/pii/S1051137724000512" target="_blank">published in the Journal of Housing Economics</a>, are striking. Housing starts nearly tripled. Around <strong>3,000 additional housing units</strong> were generated — 61.8% of total permits — that would not have been built without the zoning changes. <strong>Rents fell 21% relative to comparable cities</strong> that did not reform. The region-wide housing stock increased by 10 to 18%.</p>
+          <p>Lower Hutt demonstrates something that matters directly for Glasgow: <strong>you do not need national reform to act.</strong> A single council, willing to change its own planning rules, can produce measurable results. The evidence is peer-reviewed and published. The only ingredient Lower Hutt had that Glasgow currently lacks is political will.</p>
+          <div class="case-chart"><svg viewBox="0 0 560 170" id="lowerHuttChart"></svg></div>
+          <div class="case-chart-caption">Housing consents per 1,000 residents in Lower Hutt: actual vs synthetic counterfactual (what would have happened without reform). Source: Maltman & Greenaway-McGrevy (2024).</div>
+          <div class="case-src">Maltman, M. & Greenaway-McGrevy, R. (2024). Going it Alone: The Impact of Upzoning on Housing Construction in Lower Hutt. <em>Journal of Housing Economics</em>. <a href="https://www.sciencedirect.com/science/article/pii/S1051137724000512" target="_blank">Read the paper →</a></div>
+        </div>
+      </div>
     </div>
-    <div class="case-card">
-      <div class="case-card-top"><div><div class="case-card-title">Minneapolis</div><div class="case-card-country">USA</div></div><div class="case-stat-pill">+1% vs +14% elsewhere</div></div>
-      <div class="case-card-reform">Eliminated single-family zoning citywide — 2020</div>
-      <div class="case-card-body">Minneapolis became the first major US city to end single-family-only zoning. From 2017 to 2022 it permitted 21,000 new units. Rents rose just 1% while the rest of Minnesota saw a 14% increase.</div>
-      <div class="case-card-src">Pew Charitable Trusts (2023). <a href="https://www.cbsnews.com/news/affordable-housing-shortage-yimby-movement/" target="_blank">Read the evidence →</a></div>
+
+    <div class="case-card" id="card-minneapolis">
+      <div class="case-card-header" onclick="toggleCard('card-minneapolis')">
+        <div class="case-card-top">
+          <div><div class="case-card-title">Minneapolis</div><div class="case-card-country">USA</div></div>
+          <div class="case-stat-pill">+1% vs +14% elsewhere</div>
+        </div>
+        <div class="case-card-reform">Eliminated single-family zoning citywide — 2020</div>
+        <div class="case-card-body">Minneapolis became the first major US city to end single-family-only zoning. From 2017 to 2022 it permitted 21,000 new units. Rents rose just 1% while the rest of Minnesota saw a 14% increase.</div>
+        <div class="case-card-toggle">Read the full evidence <span class="toggle-arrow">↓</span></div>
+      </div>
+      <div class="case-card-expanded">
+        <div class="case-card-expanded-inner">
+          <p>Minneapolis in 2018 adopted <a href="https://minneapolis2040.com/" target="_blank">Minneapolis 2040</a>, eliminating single-family zoning across the city — the first major US city to do so. But the headline reform was not the main driver of results. The more important changes were the <strong>elimination of parking minimums</strong> (phased out from 2009 and fully abolished by 2021) and <strong>automatic administrative approval</strong> for apartment buildings near transit or in commercial corridors. These unlocked a wave of multifamily construction that the duplex and triplex rezoning alone would not have produced.</p>
+          <p><a href="https://www.planetizen.com/news/2024/01/126989-zoning-reform-working-minneapolis" target="_blank">Pew Charitable Trusts analysis</a> found that from 2017 to 2022, Minneapolis increased its housing stock by <strong>12%</strong>, while rents rose just <strong>1%</strong>. The rest of Minnesota saw a <strong>14%</strong> rent increase over the same period. Minneapolis had the slowest rent growth rate among the country's major growing cities.</p>
+          <p>The <a href="https://www.minneapolisfed.org/article/2025/unpacking-supply-and-demand-in-rent-trends-since-the-minneapolis-2040-plan" target="_blank">Federal Reserve Bank of Minneapolis</a> confirmed the city added over 18,000 new units in multifamily buildings from 2018 to 2022 — more than any five-year period in recent history. Homelessness in Minneapolis declined over the same period, against a statewide trend of rising homelessness.</p>
+          <p>The lesson for Glasgow is not simply "end single-family zoning." It is that <strong>parking reform, streamlined permitting near transit, and predictable approval processes together produced results.</strong> Each of those reforms maps directly onto what Glasgow should be doing.</p>
+          <div class="case-chart"><svg viewBox="0 0 560 170" id="minneapolisChart"></svg></div>
+          <div class="case-chart-caption">Cumulative rent growth 2017–2022: Minneapolis vs rest of Minnesota. Source: Pew Charitable Trusts (2023).</div>
+          <div class="case-src">Pew Charitable Trusts (2023). Four Cities That Changed Their Zoning. <a href="https://www.cbsnews.com/news/affordable-housing-shortage-yimby-movement/" target="_blank">Read the evidence →</a> &nbsp;|&nbsp; Planetizen (2024). <a href="https://www.planetizen.com/news/2024/01/126989-zoning-reform-working-minneapolis" target="_blank">Zoning Reform Is Working in Minneapolis →</a></div>
+        </div>
+      </div>
     </div>
-    <div class="case-card">
-      <div class="case-card-top"><div><div class="case-card-title">Austin</div><div class="case-card-country">USA</div></div><div class="case-stat-pill">Rents fell</div></div>
-      <div class="case-card-reform">Zoning liberalisation and planning reform — from 2019</div>
-      <div class="case-card-body">Austin overhauled its zoning codes, removed parking minimums, and streamlined permitting. It became one of the top US cities for apartment construction per capita. Rents fell while continuing to rise in most comparable American cities.</div>
-      <div class="case-card-src">Pew Charitable Trusts / multiple sources. <a href="https://www.wvik.org/npr-top-stories/2026-02-24/is-the-yimby-movement-doomed" target="_blank">Read the evidence →</a></div>
+
+    <div class="case-card" id="card-austin">
+      <div class="case-card-header" onclick="toggleCard('card-austin')">
+        <div class="case-card-top">
+          <div><div class="case-card-title">Austin</div><div class="case-card-country">USA</div></div>
+          <div class="case-stat-pill">Rents down 16%</div>
+        </div>
+        <div class="case-card-reform">Zoning liberalisation and planning reform — from 2015</div>
+        <div class="case-card-body">Austin overhauled its zoning codes, removed parking minimums, and streamlined permitting. From 2021 to 2026, median rent fell more than 16% — even as the city's population continued to grow.</div>
+        <div class="case-card-toggle">Read the full evidence <span class="toggle-arrow">↓</span></div>
+      </div>
+      <div class="case-card-expanded">
+        <div class="case-card-expanded-inner">
+          <p>Austin's housing story is the most dramatic in the current evidence base. From 2010 to 2019, <a href="https://www.pew.org/en/research-and-analysis/articles/2026/03/18/austins-surge-of-new-housing-construction-drove-down-rents" target="_blank">rents rose 93%</a> — more than any other major US city. In response, Austin reformed its zoning codes from 2015: allowing large apartment buildings near employment hubs, dramatically expanding <a href="https://davisvanguard.org/2026/04/austin-housing-supply-rent-decline/" target="_blank">accessory dwelling unit eligibility</a>, and in 2023 becoming the largest US city to eliminate parking requirements for nearly every property type.</p>
+          <p>From 2015 to 2024, the city added approximately <strong>120,000 new homes — a 30% increase</strong> in housing stock, far exceeding the national growth rate of 9%. Between 2021 and 2023, Austin permitted <strong>957 apartments per 100,000 residents</strong>, more than any other major US metro.</p>
+          <p>The rent effect was immediate and sustained. By January 2026, <a href="https://www.pew.org/en/research-and-analysis/articles/2026/03/18/austins-surge-of-new-housing-construction-drove-down-rents" target="_blank">Austin's median rent had fallen to $1,296</a> — 4% below the US national median, having been 15% above it in December 2021. <strong>Rents in apartment buildings with 50 or more units fell 7% from 2023 to 2024</strong> — the steepest decline recorded in any large US metro. In <a href="https://www.kut.org/austin/2024-02-29/construction-boomed-in-austin-and-rents-went-down-now-some-builders-are-dismantling-the-cranes" target="_blank">older, non-luxury Class C buildings</a> — those housing lower-income renters — rents fell 11%. From 2021 to 2026, median rent fell more than 16%.</p>
+          <p>This happened as the city population continued to grow. <a href="https://www.nmhc.org/news/research-corner/2025/austins-rent-drop-isnt-weird-its-economics/" target="_blank">The National Multifamily Housing Council concluded</a>: "Austin is not an exception to the rule; Austin is the rule." Supply was the variable that changed. Everything else followed.</p>
+          <div class="case-chart"><svg viewBox="0 0 560 170" id="austinChart"></svg></div>
+          <div class="case-chart-caption">Austin median rent index vs US national median, December 2021 = 100. Source: Pew Charitable Trusts (2026).</div>
+          <div class="case-src">Pew Charitable Trusts (March 2026). Austin's Surge of New Housing Construction Drove Down Rents. <a href="https://www.pew.org/en/research-and-analysis/articles/2026/03/18/austins-surge-of-new-housing-construction-drove-down-rents" target="_blank">Read the full report →</a></div>
+        </div>
+      </div>
     </div>
-    <div class="case-card warning">
-      <div class="case-card-top"><div><div class="case-card-title">Croydon</div><div class="case-card-country">London</div></div><div class="case-stat-pill">4x homes — then reversed</div></div>
-      <div class="case-card-reform">Suburban Design Guidance — 2019 to 2022 (cautionary tale)</div>
-      <div class="case-card-body">Croydon introduced Suburban Design Guidance in 2019. Net new homes quadrupled. A new mayor scrapped it. Delivery immediately returned to pre-2019 levels — proof that YIMBY policies work, and that reversing them has an immediate cost.</div>
-      <div class="case-card-src">Architects Journal (2026). <a href="https://www.architectsjournal.co.uk/news/opinion/we-will-only-build-the-housing-london-needs-with-the-publics-support" target="_blank">Read the evidence →</a></div>
+
+    <div class="case-card warning" id="card-croydon">
+      <div class="case-card-header" onclick="toggleCard('card-croydon')">
+        <div class="case-card-top">
+          <div><div class="case-card-title">Croydon</div><div class="case-card-country">London</div></div>
+          <div class="case-stat-pill">4× homes — then reversed</div>
+        </div>
+        <div class="case-card-reform">Suburban Design Guidance — 2019 to 2022 (cautionary tale)</div>
+        <div class="case-card-body">Croydon introduced Suburban Design Guidance in 2019. Net new homes quadrupled. A new mayor scrapped it. Delivery immediately returned to pre-2019 levels — proof that YIMBY policies work, and that reversing them has an immediate cost.</div>
+        <div class="case-card-toggle">Read the full evidence <span class="toggle-arrow">↓</span></div>
+      </div>
+      <div class="case-card-expanded">
+        <div class="case-card-expanded-inner">
+          <p>Croydon is the cautionary tale, and it is just as instructive as the successes. In 2019 the London Borough of Croydon adopted a <a href="https://www.planningresource.co.uk/article/1580940/croydon-adopts-suburban-densification-planning-document" target="_blank">Suburban Design Guide</a> that provided clear, rules-based guidance on what could be built on small sites across the borough. Rather than requiring case-by-case planning judgments, the guide set out in advance what was and was not acceptable on suburban windfall sites. <a href="https://issuu.com/brianwaters1/docs/issuu_edition_pil123_october-december_2022/s/17081498" target="_blank">The guide won a Planning Award in 2019.</a></p>
+          <p>The effect was immediate: <a href="https://www.centreforcities.org/publication/croydon-calling-lessons-on-rules-based-planning/" target="_blank">housebuilding on small sites in Croydon reached its highest level since records began</a> — the highest of any London borough. <strong>Net new homes quadrupled.</strong></p>
+          <p>In May 2022, Croydon elected its first Executive Mayor, Jason Perry, on a manifesto pledge to revoke what he called the "dreaded" guide, claiming it had <a href="https://news.croydon.gov.uk/croydon-moves-to-protect-local-character-by-revoking-planning-design-guidance/" target="_blank">"destroyed" Croydon's character</a>. The guide was <a href="https://croydon.moderngov.co.uk/mgAi.aspx?ID=15904" target="_blank">revoked by council vote</a> in July 2022. <strong>Delivery immediately returned to pre-2019 levels.</strong></p>
+          <p>The <a href="https://www.centreforcities.org/publication/croydon-calling-lessons-on-rules-based-planning/" target="_blank">Centre for Cities, in a February 2026 briefing</a>, described the Croydon guide as a successful experiment in rules-based planning — and its revocation as an object lesson in how quickly political decisions undo housing progress. The arguments used against Croydon's guide — character, density, aesthetics — are identical to the arguments used against new development in Glasgow today.</p>
+          <div class="case-chart"><svg viewBox="0 0 560 170" id="croydonChart"></svg></div>
+          <div class="case-chart-caption">Illustrative representation of small-site housebuilding in Croydon. Guide adopted April 2019, revoked July 2022. Source: Centre for Cities (2026).</div>
+          <div class="case-src">Centre for Cities (February 2026). Croydon Calling: Lessons on Rules-Based Planning. <a href="https://www.centreforcities.org/publication/croydon-calling-lessons-on-rules-based-planning/" target="_blank">Read the briefing →</a></div>
+        </div>
+      </div>
     </div>
+
   </div>
 </div>
+
 <div id="site-footer"></div>
 <script src="footer.js"></script>
 <script>
-const CASES=[{city:'Auckland',country:'New Zealand',what:'Upzoned 75% of land (2016)',result:'Rents 28% lower than without reform',type:'success',reform:'Upzoned 75% of residential land — 2016',body:'In 2016 Auckland upzoned three-quarters of its residential land. Rents rose 22% from 2017 to 2024, compared to 34% nationally and 36% in Wellington.',src:'Greenaway-McGrevy & So (2024). <a href="https://www.royalsociety.org.nz/research/will-upzoning-deliver-housing-affordability-for-everyone-evidence-from-auckland" target="_blank">Read →</a>'},{city:'Lower Hutt',country:'New Zealand',what:'One council upzoned 80% of land (2017)',result:'Construction tripled, rents fell 21%',type:'success',reform:'Citywide upzoning — from 2017',body:'Lower Hutt acted alone, upzoning 80% of residential land from 2017. Construction tripled. Rents fell 21% relative to comparable cities.',src:'Maltman & Greenaway-McGrevy (2024). <a href="https://www.sciencedirect.com/science/article/pii/S1051137724000512" target="_blank">Read →</a>'},{city:'Minneapolis',country:'USA',what:'Ended single-family zoning (2020)',result:'+1% rents vs +14% rest of Minnesota',type:'success',reform:'Eliminated single-family zoning — 2020',body:'Minneapolis ended single-family-only zoning and removed parking minimums. Rents rose just 1% while the rest of Minnesota saw a 14% increase.',src:'Pew Charitable Trusts (2023). <a href="https://www.cbsnews.com/news/affordable-housing-shortage-yimby-movement/" target="_blank">Read →</a>'},{city:'Austin',country:'USA',what:'Zoning reform + planning streamlined (2019)',result:'Rents fell while rising elsewhere',type:'success',reform:'Zoning liberalisation — from 2019',body:'Austin overhauled its zoning codes and removed parking minimums. Rents fell while continuing to rise in most comparable American cities.',src:'Pew / multiple sources. <a href="https://www.wvik.org/npr-top-stories/2026-02-24/is-the-yimby-movement-doomed" target="_blank">Read →</a>'},{city:'Croydon',country:'London',what:'Permissive suburban design guidance (2019)',result:'Homes quadrupled — then reversed',type:'warning',reform:'Suburban Design Guidance — 2019 to 2022',body:'Croydon introduced permissive design guidance. Net new homes quadrupled. A new mayor scrapped it. Delivery immediately returned to pre-2019 levels.',src:'Architects Journal (2026). <a href="https://www.architectsjournal.co.uk/news/opinion/we-will-only-build-the-housing-london-needs-with-the-publics-support" target="_blank">Read →</a>'}];
+const CASES=[
+  {city:'Auckland',country:'New Zealand',what:'Upzoned 75% of land (2016)',result:'Rents 28% lower than without reform',type:'success',reform:'Upzoned 75% of residential land — 2016',body:'In 2016 Auckland upzoned three-quarters of its residential land. Rents rose 22% from 2017 to 2024, compared to 34% nationally and 36% in Wellington.',src:'Greenaway-McGrevy & So (2024). <a href="https://www.royalsociety.org.nz/research/will-upzoning-deliver-housing-affordability-for-everyone-evidence-from-auckland" target="_blank">Read →</a>'},
+  {city:'Lower Hutt',country:'New Zealand',what:'One council upzoned 80% of land (2017)',result:'Construction tripled, rents fell 21%',type:'success',reform:'Citywide upzoning — from 2017',body:'Lower Hutt acted alone, upzoning 80% of residential land from 2017. Construction tripled. Rents fell 21% relative to comparable cities.',src:'Maltman & Greenaway-McGrevy (2024). <a href="https://www.sciencedirect.com/science/article/pii/S1051137724000512" target="_blank">Read →</a>'},
+  {city:'Minneapolis',country:'USA',what:'Ended single-family zoning (2020)',result:'+1% rents vs +14% rest of Minnesota',type:'success',reform:'Eliminated single-family zoning — 2020',body:'Minneapolis ended single-family-only zoning and removed parking minimums. Rents rose just 1% while the rest of Minnesota saw a 14% increase.',src:'Pew Charitable Trusts (2023). <a href="https://www.cbsnews.com/news/affordable-housing-shortage-yimby-movement/" target="_blank">Read →</a>'},
+  {city:'Austin',country:'USA',what:'Zoning reform + planning streamlined (2015)',result:'Rents fell 16% from peak',type:'success',reform:'Zoning liberalisation — from 2015',body:'Austin overhauled its zoning codes and removed parking minimums. From 2021 to 2026, median rent fell more than 16% while the city population continued to grow.',src:'Pew Charitable Trusts (2026). <a href="https://www.pew.org/en/research-and-analysis/articles/2026/03/18/austins-surge-of-new-housing-construction-drove-down-rents" target="_blank">Read →</a>'},
+  {city:'Croydon',country:'London',what:'Permissive suburban design guidance (2019)',result:'Homes quadrupled — then reversed',type:'warning',reform:'Suburban Design Guidance — 2019 to 2022',body:'Croydon introduced permissive design guidance. Net new homes quadrupled. A new mayor scrapped it. Delivery immediately returned to pre-2019 levels.',src:'Centre for Cities (2026). <a href="https://www.centreforcities.org/publication/croydon-calling-lessons-on-rules-based-planning/" target="_blank">Read →</a>'}
+];
 const N=CASES.length,CELL_H=96;
 const COLS=[c=>({lbl:c.country,val:c.city,city:true}),c=>({lbl:'what changed',val:c.what,city:false}),c=>({lbl:'result',val:c.result,city:false})];
 const Q_SVG=`<svg width="44" height="54" viewBox="0 0 44 54" fill="none"><rect x="1" y="1" width="42" height="42" rx="8" fill="#E8A020" stroke="#1A1208" stroke-width="2"/><text x="22" y="31" text-anchor="middle" font-size="28" font-weight="900" fill="#1A1208">?</text><rect x="15" y="47" width="14" height="6" rx="3" fill="#E8A020" stroke="#1A1208" stroke-width="2"/></svg>`;
@@ -172,8 +286,111 @@ function buildSpinStrip(col,target){const s=document.getElementById('strip'+col)
 function spinOne(col,target,dur){return new Promise(r=>{const n=buildSpinStrip(col,target),s=document.getElementById('strip'+col),t=-((n-1)*CELL_H);requestAnimationFrame(()=>requestAnimationFrame(()=>{s.style.transition=`top ${dur}ms cubic-bezier(0.25,0.1,0.05,1)`;s.style.top=t+'px';setTimeout(r,dur+50);}));});}
 async function doSpin(){if(spinning)return;spinning=true;document.getElementById('pullBtn').disabled=true;document.getElementById('slotCard').classList.remove('show');document.getElementById('winBar').classList.remove('lit');const target=nextFromQueue();pullCount++;await Promise.all([spinOne(0,target,1400),new Promise(r=>setTimeout(()=>spinOne(1,target,1500).then(r),300)),new Promise(r=>setTimeout(()=>spinOne(2,target,1600).then(r),600))]);document.getElementById('winBar').classList.add('lit');spinning=false;document.getElementById('pullBtn').disabled=false;updateCounter();showCard(target);}
 function showCard(i){const c=CASES[i],card=document.getElementById('slotCard');document.getElementById('slotTag').textContent=c.type==='success'?'Success story':'Cautionary tale';document.getElementById('slotTag').className='slot-tag '+(c.type==='success'?'tag-s':'tag-w');document.getElementById('slotCity').textContent=c.city+', '+c.country;document.getElementById('slotReform').textContent=c.reform;document.getElementById('slotBody').textContent=c.body;document.getElementById('slotSrc').innerHTML=c.src;card.classList.add('used');setTimeout(()=>card.classList.add('show'),80);}
-function toggleNav(){const l=document.getElementById('navLinks'),t=document.getElementById('navToggle');const o=l.classList.toggle('open');t.textContent=o?'Close':'Menu';}
 buildInitialReels();updateCounter();
+
+function toggleCard(id){
+  const card=document.getElementById(id);
+  const wasExpanded=card.classList.contains('expanded');
+  card.classList.toggle('expanded');
+  const toggle=card.querySelector('.case-card-toggle');
+  if(card.classList.contains('expanded')){
+    toggle.innerHTML='Close <span class="toggle-arrow" style="transform:rotate(180deg);display:inline-block">↓</span>';
+    if(!wasExpanded)setTimeout(()=>drawChart(id),80);
+  } else {
+    toggle.innerHTML='Read the full evidence <span class="toggle-arrow">↓</span>';
+  }
+}
+
+function toggleNav(){const l=document.getElementById('navLinks'),t=document.getElementById('navToggle');const o=l.classList.toggle('open');t.textContent=o?'Close':'Menu';}
+
+const drawnCharts=new Set();
+function drawChart(cardId){
+  if(drawnCharts.has(cardId))return;
+  drawnCharts.add(cardId);
+  const map={'card-auckland':drawAuckland,'card-lowerhutt':drawLowerHutt,'card-minneapolis':drawMinneapolis,'card-austin':drawAustin,'card-croydon':drawCroydon};
+  if(map[cardId])map[cardId]();
+}
+
+const NS='http://www.w3.org/2000/svg';
+function sel(tag,a,p){const e=document.createElementNS(NS,tag);Object.entries(a).forEach(([k,v])=>e.setAttribute(k,v));if(p)p.appendChild(e);return e;}
+function txt(p,x,y,s,a={}){const t=sel('text',{x,y,fill:'rgba(245,237,216,0.55)','font-size':'10','font-family':'Outfit,sans-serif','text-anchor':'middle',...a},p);t.textContent=s;return t;}
+
+function lineChart(svgId,series,yMin,yMax,xLabels,reformIdx){
+  const svg=document.getElementById(svgId);if(!svg)return;
+  const W=560,H=170,pl=42,pr=50,pt=24,pb=34;
+  const iW=W-pl-pr,iH=H-pt-pb,n=xLabels.length;
+  const xP=i=>pl+i/(n-1)*iW;
+  const yP=v=>pt+(1-(v-yMin)/(yMax-yMin))*iH;
+  [0,25,50,75,100].forEach(p=>{const y=yP(yMin+(yMax-yMin)*p/100);sel('line',{x1:pl,x2:pl+iW,y1:y,y2:y,stroke:'rgba(255,255,255,0.07)','stroke-width':'1'},svg);});
+  if(reformIdx!==undefined){
+    const rx=xP(reformIdx);
+    sel('line',{x1:rx,x2:rx,y1:pt,y2:pt+iH,stroke:'rgba(232,160,32,0.35)','stroke-width':'1.5','stroke-dasharray':'4,3'},svg);
+    txt(svg,rx,pt-6,'Reform',{'font-size':'8','fill':'rgba(232,160,32,0.7)'});
+  }
+  series.forEach(s=>{
+    const pts=s.data.map((v,i)=>xP(i)+','+yP(v)).join(' ');
+    sel('polyline',{points:pts,fill:'none',stroke:s.color,'stroke-width':s.w||'2','stroke-linejoin':'round','stroke-linecap':'round','stroke-dasharray':s.dash||''},svg);
+    const lv=s.data[s.data.length-1];
+    txt(svg,xP(n-1)+6,yP(lv)+3,s.label,{'text-anchor':'start','fill':s.color,'font-size':'9','font-weight':'700'});
+  });
+  xLabels.forEach((l,i)=>txt(svg,xP(i),pt+iH+14,l,{'font-size':'9','fill':'rgba(245,237,216,0.4)'}));
+  [yMin,Math.round((yMin+yMax)/2),yMax].forEach(v=>txt(svg,pl-4,yP(v)+3,v+'%',{'text-anchor':'end','fill':'rgba(245,237,216,0.35)','font-size':'9'}));
+}
+
+function drawAuckland(){
+  lineChart('aucklandChart',[
+    {data:[0,3,6,9,12,16,19,22],color:'#E8A020',w:'2.5',label:'Auckland +22%'},
+    {data:[0,4,8,12,16,22,28,34],color:'rgba(245,237,216,0.45)',w:'1.5',dash:'4,3',label:'NZ national +34%'},
+    {data:[0,5,9,13,18,24,30,36],color:'rgba(212,90,26,0.7)',w:'1.5',dash:'4,3',label:'Wellington +36%'},
+  ],0,42,['2017','2018','2019','2020','2021','2022','2023','2024']);
+}
+
+function drawLowerHutt(){
+  lineChart('lowerHuttChart',[
+    {data:[2.2,2.8,4.5,5.6,5.8,9.5,12.2,5.9],color:'#E8A020',w:'2.5',label:'Actual'},
+    {data:[2.1,2.0,2.0,2.02,2.33,2.94,3.15,1.95],color:'rgba(245,237,216,0.45)',w:'1.5',dash:'4,3',label:'Without reform'},
+  ],0,14,['2016','2017','2018','2019','2020','2021','2022','2023'],2);
+  const svg=document.getElementById('lowerHuttChart');
+  if(svg)txt(svg,42-4,24+146+3,'0',{'text-anchor':'end','fill':'rgba(245,237,216,0.35)','font-size':'9'});
+}
+
+function drawMinneapolis(){
+  lineChart('minneapolisChart',[
+    {data:[0,0.5,1,0.8,0.9,1],color:'#E8A020',w:'2.5',label:'Minneapolis +1%'},
+    {data:[0,2,5,7,10,14],color:'rgba(245,237,216,0.45)',w:'1.5',dash:'4,3',label:'Rest of MN +14%'},
+  ],0,16,['2017','2018','2019','2020','2021','2022']);
+}
+
+function drawAustin(){
+  lineChart('austinChart',[
+    {data:[100,108,112,105,98,84],color:'#E8A020',w:'2.5',label:'Austin −16%'},
+    {data:[100,106,110,112,111,110],color:'rgba(245,237,216,0.45)',w:'1.5',dash:'4,3',label:'US national'},
+  ],75,120,['Dec 21','2022','2023','2024','2025','Jan 26']);
+}
+
+function drawCroydon(){
+  const svg=document.getElementById('croydonChart');if(!svg)return;
+  const W=560,H=170,pl=10,pr=10,pt=24,pb=34;
+  const iW=W-pl-pr,iH=H-pt-pb;
+  const data=[20,22,55,85,95,88,22];
+  const xl=['2017','2018','2019','2020','2021','2022','2023'];
+  const n=data.length;
+  const xP=i=>pl+i/(n-1)*iW;
+  const yP=v=>pt+(1-v/110)*iH;
+  const ns=NS;
+  const defs=document.createElementNS(ns,'defs');
+  defs.innerHTML=`<linearGradient id="cg2" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#E8A020" stop-opacity="0.3"/><stop offset="100%" stop-color="#E8A020" stop-opacity="0.02"/></linearGradient>`;
+  svg.appendChild(defs);
+  [[2,'rgba(232,160,32,0.4)','Guide adopted'],[5,'rgba(212,90,26,0.5)','Guide revoked']].forEach(([xi,col,lbl])=>{
+    sel('line',{x1:xP(xi),x2:xP(xi),y1:pt,y2:pt+iH,stroke:col,'stroke-width':'1.5','stroke-dasharray':'4,3'},svg);
+    txt(svg,xP(xi),pt-6,lbl,{'font-size':'8','fill':col.replace('0.4','0.8').replace('0.5','0.9')});
+  });
+  const pts=data.map((v,i)=>xP(i)+','+yP(v)).join(' ');
+  sel('polygon',{points:`${xP(0)},${yP(0)} ${pts} ${xP(n-1)},${yP(0)}`,fill:'url(#cg2)'},svg);
+  sel('polyline',{points:pts,fill:'none',stroke:'#E8A020','stroke-width':'2.5','stroke-linejoin':'round','stroke-linecap':'round'},svg);
+  sel('line',{x1:pl,x2:pl+iW,y1:pt+iH,y2:pt+iH,stroke:'rgba(255,255,255,0.1)','stroke-width':'1'},svg);
+  xl.forEach((l,i)=>txt(svg,xP(i),pt+iH+14,l,{'font-size':'9','fill':'rgba(245,237,216,0.4)'}));
+}
 </script>
 </body>
 </html>
