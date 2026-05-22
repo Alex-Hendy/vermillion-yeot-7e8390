@@ -233,17 +233,17 @@
       </a>
     </div>
 
-    <div class="demand-row" data-target="sg">
+    <div class="demand-row" data-target="gcc">
       <div class="demand-col demand-col-currently">
-        <span class="demand-badge badge-sg">Scottish Government</span>
+        <span class="demand-badge badge-gcc">Glasgow City Council</span>
         <div class="demand-col-label label-currently">Currently</div>
-        <div class="demand-col-title">NPF4 mandates 25% affordable housing on every site</div>
-        <p class="demand-col-desc">A national requirement regardless of local viability. On marginal sites, it kills the scheme entirely. A tax on the one activity that could resolve the crisis.</p>
+        <div class="demand-col-title">25% affordable housing on every site</div>
+        <p class="demand-col-desc">A flat requirement regardless of viability. On marginal sites, it kills the scheme — zero homes instead of some.</p>
       </div>
       <div class="demand-col demand-col-wewant">
         <div class="demand-col-label label-wewant" style="padding-top: 1.4rem;">We want</div>
-        <div class="demand-col-title">Remove the 25% per-site requirement</div>
-        <p class="demand-col-desc">Let councils set their own affordable housing policies. Fund subsidised housing through grants, not a tax on new construction.</p>
+        <div class="demand-col-title">A city-wide affordable housing target</div>
+        <p class="demand-col-desc">Same goal, better mechanism. Meet the target across the city, not by taxing every site at the same rate.</p>
       </div>
       <a href="demands/affordable-housing.html" class="demand-arrow">
         <span class="demand-arrow-text">Read more</span>
@@ -317,33 +317,14 @@
   <a href="barriers.html">← Previous: The barriers</a>
   <a href="index.html">Back to all ideas</a>
 </div>
-<footer>
-  <strong>Glasgow YIMBY</strong> — a grassroots campaign for more homes in Glasgow &nbsp;|&nbsp;
-  <a href="mailto:hello@glasgowyimby.com">hello@glasgowyimby.com</a>
-</footer>
+<div id="site-footer"></div>
+<script src="../footer.js"></script>
 <script>
 function toggleNav() {
   var links = document.getElementById('navLinks');
   var toggle = document.getElementById('navToggle');
   var open = links.classList.toggle('open');
   toggle.textContent = open ? 'Close' : 'Menu';
-}
-function filterCards(filter) {
-  var rows = document.querySelectorAll('.demand-row');
-  rows.forEach(function(row) {
-    var target = row.getAttribute('data-target');
-    if (filter === 'all') {
-      row.style.display = 'flex';
-    } else if (filter === 'sg') {
-      row.style.display = (target === 'sg' || target === 'both') ? 'flex' : 'none';
-    } else if (filter === 'gcc') {
-      row.style.display = (target === 'gcc' || target === 'both') ? 'flex' : 'none';
-    }
-  });
-  document.querySelectorAll('.toggle-btn').forEach(function(btn) {
-    btn.classList.remove('active');
-  });
-  document.getElementById('btn-' + filter).classList.add('active');
 }
 </script>
 </body>

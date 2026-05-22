@@ -109,15 +109,13 @@
   <a href="index.html">All myths</a>
   <a href="empty-homes.html">Myth 5: Empty homes →</a>
 </div>
-<footer>
-  <strong>Glasgow YIMBY</strong> — a grassroots campaign for more homes in Glasgow &nbsp;|&nbsp;
-  <a href="mailto:hello@glasgowyimby.com">hello@glasgowyimby.com</a>
-</footer>
+<div id="site-footer"></div>
+<script src="../footer.js"></script>
 <script>
 function toggleNav() {
-  const links = document.getElementById('navLinks');
-  const toggle = document.getElementById('navToggle');
-  const open = links.classList.toggle('open');
+  var links = document.getElementById('navLinks');
+  var toggle = document.getElementById('navToggle');
+  var open = links.classList.toggle('open');
   toggle.textContent = open ? 'Close' : 'Menu';
 }
 </script>
