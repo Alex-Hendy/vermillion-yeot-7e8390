@@ -32,8 +32,6 @@
   .stat-desc { font-size: 0.62rem; color: rgba(245,237,216,0.7); font-weight: 500; display: block; margin-top: 3px; }
   .chart-source { font-size: 0.5rem; color: rgba(245,237,216,0.35); margin-top: 0.5rem; line-height: 1.5; display: block; }
   section { max-width: 1100px; margin: 0 auto; padding: 4rem 2rem; }
-
-  /* IDEAS SECTION */
   #ideasWrapper { position: relative; padding: 6px; margin: -6px; }
   #stepsGrid { display: flex; flex-direction: column; gap: 1.25rem; padding-right: 96px; }
   .step-card { background: var(--cream); border: 2px solid var(--black); border-radius: 10px; padding: 1.5rem; text-decoration: none; display: block; transition: opacity 0.3s ease, transform 0.35s ease; }
@@ -51,8 +49,6 @@
   #ideasWrapper.hovered #expandedLabel { opacity: 1; transition: opacity 0.2s 0.15s; }
   .demands-label { font-size: 0.72rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--amber); margin-bottom: 0.6rem; }
   .demands-text { font-size: 0.92rem; color: var(--cream); line-height: 1.5; }
-
-  /* MYTHS SECTION */
   .myth-outer { padding: 0 2rem 4rem; max-width: 1100px; margin: 0 auto; }
   .myth-section { background: var(--black); color: var(--cream); border-radius: 12px; padding: 3.5rem; border: 2px solid var(--black); }
   .myth-section .section-title { color: var(--cream); margin-bottom: 2rem; }
@@ -70,8 +66,6 @@
   .myth-all-title { font-size: 0.95rem; font-weight: 700; color: rgba(245,237,216,0.9); line-height: 1.4; margin-bottom: 0.7rem; }
   .myth-all-sub { font-size: 0.95rem; color: rgba(245,237,216,0.55); line-height: 1.55; }
   .myth-all-link { font-size: 0.8rem; color: var(--amber); font-weight: 600; display: inline-block; margin-top: 0.75rem; }
-
-  /* JOIN SECTION */
   .join-outer { background: var(--amber); border-top: 2px solid var(--black); border-bottom: 2px solid var(--black); }
   .join-section { text-align: center; padding: 5rem 2rem; max-width: 640px; margin: 0 auto; }
   .join-section .section-title { margin-bottom: 1rem; color: var(--black); }
@@ -80,11 +74,9 @@
   .email-form input { flex: 1; padding: 0.875rem 1rem; border: 2px solid var(--black); border-radius: 4px; font-size: 0.95rem; font-family: inherit; background: var(--cream); color: var(--black); outline: none; }
   .email-form input:focus { border-color: var(--orange); }
   .email-form input::placeholder { color: #9A7840; }
-
   @keyframes fadeUp { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
   .hero-text { animation: fadeUp 0.55s ease both; }
   .hero-visual { animation: fadeUp 0.55s 0.12s ease both; }
-
   @media (max-width: 768px) {
     .hero { grid-template-columns: 1fr; gap: 2rem; padding: 2.5rem 1.25rem 2rem; }
     .hero h1 { font-size: 2.2rem; }
@@ -107,7 +99,6 @@
 </style>
 </head>
 <body>
-
 <nav>
   <a href="index.html" class="logo"><img src="glasgow-yimby-logo-navbar.svg" alt="Glasgow YIMBY"></a>
   <ul class="nav-links" id="navLinks">
@@ -147,7 +138,6 @@
   <div class="label">What we believe</div>
   <div class="section-title">The YIMBY case for Glasgow</div>
   <div class="section-intro">YIMBY — Yes In My Back Yard — is the belief that building more homes, in more places, is how cities solve housing crises. Here is the argument for Glasgow, step by step.</div>
-
   <div id="ideasWrapper">
     <div id="stepsGrid">
       <a href="ideas/the-crisis.html" class="step-card">
@@ -169,7 +159,6 @@
         <span class="step-link">Read about the barriers →</span>
       </a>
     </div>
-
     <a id="demandsBtn" href="ideas/what-needs-to-change.html">
       <div id="collapsedLabel">Our demands</div>
       <div id="expandedLabel">
@@ -234,11 +223,8 @@
   </div>
 </div>
 
-<footer>
-  <strong>Glasgow YIMBY</strong> — a grassroots campaign for more homes in Glasgow &nbsp;|&nbsp;
-  <a href="mailto:hello@glasgowyimby.scot">hello@glasgowyimby.scot</a>
-</footer>
-
+<div id="site-footer"></div>
+<script src="footer.js"></script>
 <script>
 (function() {
   const data = [
@@ -293,8 +279,6 @@
   tLast.setAttribute('fill', '#E8A020'); tLast.setAttribute('font-size', '11');
   tLast.setAttribute('font-weight', '600'); tLast.setAttribute('font-family', 'Outfit,sans-serif');
   tLast.textContent = '£1,275'; svg.appendChild(tLast);
-
-  // Chart subtitle
   const tTitle = document.createElementNS(ns, 'text');
   tTitle.setAttribute('x', W/2); tTitle.setAttribute('y', H-2);
   tTitle.setAttribute('text-anchor', 'middle');
@@ -305,7 +289,7 @@
   tTitle.setAttribute('fill', 'rgba(245,237,216,0.35)');
   tTitle.textContent = 'AVERAGE MONTHLY RENT — GREATER GLASGOW 2-BED';
   svg.appendChild(tTitle);
-})()
+})();
 </script>
 <script>
 function toggleNav() {
@@ -313,10 +297,6 @@ function toggleNav() {
   const toggle = document.getElementById('navToggle');
   const open = links.classList.toggle('open');
   toggle.textContent = open ? 'Close' : 'Menu';
-}
-function closeNav() {
-  document.getElementById('navLinks').classList.remove('open');
-  document.getElementById('navToggle').textContent = 'Menu';
 }
 function handleSignup() {
   const email = document.getElementById('emailInput').value;
