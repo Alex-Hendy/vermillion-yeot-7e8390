@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Our Funding — Glasgow YIMBY</title>
+<link rel="canonical" href="https://glasgowyimby.com/about/funding.html">
+<meta name="description" content="Glasgow YIMBY is entirely volunteer-run and has received no external funding or donations.">
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../style.css">
+<style>
+  .about-hero { background: var(--black); color: var(--cream); padding: 5rem 2rem 4rem; }
+  .about-hero-inner { max-width: 760px; margin: 0 auto; }
+  .about-label { display: inline-block; font-size: 0.72rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; padding: 0.3rem 0.75rem; border-radius: 100px; margin-bottom: 1.25rem; border: 1.5px solid rgba(232,160,32,0.4); background: rgba(232,160,32,0.15); color: var(--amber); }
+  .about-title { font-family: var(--font-heading); font-size: clamp(2rem, 4vw, 3rem); font-weight: 900; line-height: 1.1; letter-spacing: 0.02em; color: var(--cream); margin-bottom: 1.25rem; }
+  .about-intro { font-size: 1.05rem; color: rgba(245,237,216,0.75); line-height: 1.75; }
+  .content { max-width: 760px; margin: 0 auto; padding: 4rem 2rem; }
+  .content h2 { font-family: var(--font-heading); font-size: 1.6rem; font-weight: 900; letter-spacing: 0.02em; margin: 2.5rem 0 0.75rem; color: var(--black); }
+  .content h2:first-child { margin-top: 0; }
+  .content p { font-size: 1rem; color: var(--muted); line-height: 1.8; margin-bottom: 1rem; }
+  .content p strong { color: var(--black); font-weight: 600; }
+  .content a { color: var(--orange); }
+  .funding-table { width: 100%; border-collapse: collapse; margin: 1.5rem 0; font-size: 0.95rem; }
+  .funding-table th { text-align: left; font-weight: 700; color: var(--black); border-bottom: 2px solid var(--black); padding: 0.6rem 0.75rem; font-family: var(--font-subheading); }
+  .funding-table td { padding: 0.6rem 0.75rem; color: var(--muted); border-bottom: 1px solid rgba(26,18,8,0.1); }
+  @media (max-width: 768px) {
+    .about-hero { padding: 3rem 1.25rem 2.5rem; }
+    .content { padding: 2.5rem 1.25rem; }
+  }
+</style>
+</head>
+<body>
+<nav>
+  <a href="../index.html" class="logo"><img src="../glasgow-yimby-logo-navbar.svg" alt="Glasgow YIMBY" height="72"></a>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="../ideas/index.html">The ideas</a></li>
+    <li><a href="../myths/index.html">Myths</a></li>
+    <li><a href="../evidence.html">Evidence</a></li>
+    <li><a href="../news.html">News</a></li>
+    <li><a href="../get-involved.html" class="nav-cta">Get involved</a></li>
+  </ul>
+  <button class="nav-toggle" id="navToggle" onclick="toggleNav()">Menu</button>
+</nav>
+<div class="about-hero">
+  <div class="about-hero-inner">
+    <div class="about-label">Transparency</div>
+    <div class="about-title">Our funding</div>
+    <p class="about-intro">Glasgow YIMBY has received no external funding or donations. The campaign is run entirely by volunteers, with small running costs covered personally by the people involved.</p>
+  </div>
+</div>
+<div class="content">
+  <h2>The full picture</h2>
+  <p>Glasgow YIMBY has never received money from a developer, a political party, an industry body, or any other external source. We have accepted no donations. Nobody is paying us to make these arguments.</p>
+  <p>The only costs the campaign has incurred are small operational expenses — domain registration and hosting — which have been covered out of pocket by volunteers. These costs amount to a modest annual sum and confer no influence over what we say or who we say it for.</p>
+
+  <table class="funding-table">
+    <thead>
+      <tr>
+        <th>Item</th>
+        <th>Cost</th>
+        <th>Paid by</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Domain registration (glasgowyimby.com)</td>
+        <td>~£15/year</td>
+        <td>Volunteer (personal)</td>
+      </tr>
+      <tr>
+        <td>Website hosting</td>
+        <td>£0 (GitHub Pages)</td>
+        <td>n/a</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h2>External donations</h2>
+  <p>We are working on setting up a mechanism to accept donations. If and when we do, every donation above a de minimis threshold will be recorded on this page. We will never accept money from anyone with a direct financial interest in planning decisions or housing development in Glasgow.</p>
+  <p>If you'd like to support the campaign in the meantime, the best thing you can do is <a href="../get-involved.html">get involved</a>.</p>
+</div>
+<div id="site-footer"></div>
+<script src="../footer.js"></script>
+<script>
+function toggleNav() {
+  var links = document.getElementById('navLinks');
+  var toggle = document.getElementById('navToggle');
+  var open = links.classList.toggle('open');
+  toggle.textContent = open ? 'Close' : 'Menu';
+}
+</script>
+</body>
+</html>

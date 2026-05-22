@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Privacy Policy — Glasgow YIMBY</title>
+<link rel="canonical" href="https://glasgowyimby.com/about/privacy.html">
+<meta name="description" content="Glasgow YIMBY's privacy policy. We collect minimal data and will never sell or share your information.">
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../style.css">
+<style>
+  .about-hero { background: var(--black); color: var(--cream); padding: 5rem 2rem 4rem; }
+  .about-hero-inner { max-width: 760px; margin: 0 auto; }
+  .about-label { display: inline-block; font-size: 0.72rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; padding: 0.3rem 0.75rem; border-radius: 100px; margin-bottom: 1.25rem; border: 1.5px solid rgba(232,160,32,0.4); background: rgba(232,160,32,0.15); color: var(--amber); }
+  .about-title { font-family: var(--font-heading); font-size: clamp(2rem, 4vw, 3rem); font-weight: 900; line-height: 1.1; letter-spacing: 0.02em; color: var(--cream); margin-bottom: 1.25rem; }
+  .about-intro { font-size: 1.05rem; color: rgba(245,237,216,0.75); line-height: 1.75; }
+  .content { max-width: 760px; margin: 0 auto; padding: 4rem 2rem; }
+  .content h2 { font-family: var(--font-heading); font-size: 1.6rem; font-weight: 900; letter-spacing: 0.02em; margin: 2.5rem 0 0.75rem; color: var(--black); }
+  .content h2:first-child { margin-top: 0; }
+  .content p { font-size: 1rem; color: var(--muted); line-height: 1.8; margin-bottom: 1rem; }
+  .content a { color: var(--orange); }
+  @media (max-width: 768px) {
+    .about-hero { padding: 3rem 1.25rem 2.5rem; }
+    .content { padding: 2.5rem 1.25rem; }
+  }
+</style>
+</head>
+<body>
+<nav>
+  <a href="../index.html" class="logo"><img src="../glasgow-yimby-logo-navbar.svg" alt="Glasgow YIMBY" height="72"></a>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="../ideas/index.html">The ideas</a></li>
+    <li><a href="../myths/index.html">Myths</a></li>
+    <li><a href="../evidence.html">Evidence</a></li>
+    <li><a href="../news.html">News</a></li>
+    <li><a href="../get-involved.html" class="nav-cta">Get involved</a></li>
+  </ul>
+  <button class="nav-toggle" id="navToggle" onclick="toggleNav()">Menu</button>
+</nav>
+<div class="about-hero">
+  <div class="about-hero-inner">
+    <div class="about-label">Legal</div>
+    <div class="about-title">Privacy policy</div>
+    <p class="about-intro">Glasgow YIMBY collects minimal data. We will never sell or share your information with third parties.</p>
+  </div>
+</div>
+<div class="content">
+  <h2>What we collect</h2>
+  <p>If you sign up to our mailing list via the get-involved page, we collect your email address. We use this only to send you updates about the campaign: events, planning consultations to respond to, and significant news. We do not send marketing material, share your address with anyone else, or use it for any purpose other than campaign communications.</p>
+  <p>This website does not use cookies beyond those required for basic functionality. We do not use advertising cookies or tracking pixels.</p>
+  <h2>Hosting and analytics</h2>
+  <p>Glasgow YIMBY is hosted on GitHub Pages. GitHub may collect standard server log data (IP addresses, page requests, browser information) in accordance with <a href="https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement" target="_blank">GitHub's privacy policy</a>. We do not use Google Analytics or any other third-party analytics service.</p>
+  <h2>Your rights</h2>
+  <p>Under UK GDPR, you have the right to access the personal data we hold about you, request its deletion, and withdraw consent for us to contact you at any time. To exercise any of these rights, email us at <a href="mailto:hello@glasgowyimby.com">hello@glasgowyimby.com</a> and we will respond within 30 days.</p>
+  <h2>Contact</h2>
+  <p>Questions about this policy can be directed to <a href="mailto:hello@glasgowyimby.com">hello@glasgowyimby.com</a>.</p>
+  <p style="font-size:0.85rem; color: var(--muted); margin-top: 2rem;">Last updated: May 2026</p>
+</div>
+<div id="site-footer"></div>
+<script src="../footer.js"></script>
+<script>
+function toggleNav() {
+  var links = document.getElementById('navLinks');
+  var toggle = document.getElementById('navToggle');
+  var open = links.classList.toggle('open');
+  toggle.textContent = open ? 'Close' : 'Menu';
+}
+</script>
+</body>
+</html>
