@@ -118,7 +118,7 @@
     'font-family: Outfit, sans-serif',
     'font-size: 0.82rem',
     'line-height: 1.6',
-    'box-shadow: 0 4px 16px rgba(0,0,0,0.25), 0 0 0 1.5px rgba(232,160,32,0.4)',
+    'box-shadow: 0 4px 16px rgba(0,0,0,0.25)',
     'pointer-events: none',
     'opacity: 0',
     'transition: opacity 0.15s ease',
@@ -226,7 +226,7 @@
         'cursor: help',
         'text-decoration: underline',
         'text-decoration-style: dotted',
-        'text-decoration-color: #E8A020',
+        'text-decoration-color: #F0B030',
         'text-underline-offset: 3px'
       ].join(';');
 
