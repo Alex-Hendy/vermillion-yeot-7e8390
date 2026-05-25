@@ -89,6 +89,14 @@
     'yimby': {
       short: 'Yes In My Back Yard. A term for people who support building more homes in their local area, in contrast to NIMBYism.',
       anchor: 'yimby'
+    },
+    'upzoning': {
+      short: 'Changing planning or zoning rules to allow more homes to be built in an area — for example, permitting taller buildings or more units per plot.',
+      anchor: null
+    },
+    'housing-stock': {
+      short: 'The total number of homes in an area, including all tenures — owner-occupied, private rented, social rented, and empty properties.',
+      anchor: null
     }
   };
 
