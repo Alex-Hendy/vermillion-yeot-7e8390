@@ -107,7 +107,7 @@
       anchor: 'planning-system'
     },
     'sme-builders': {
-      short: 'Small and medium-sized housebuilders, typically building fewer than 100 homes per year. SME builders historically delivered a significant share of Scotland's new homes.',
+      short: 'Small and medium-sized housebuilders, typically building fewer than 100 homes per year. SME builders historically delivered a significant share of new homes in Scotland.',
       anchor: null
     },
     'backlogs': {
