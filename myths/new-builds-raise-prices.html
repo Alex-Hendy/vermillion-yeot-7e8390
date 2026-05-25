@@ -15,7 +15,7 @@
   .back-link:hover { text-decoration: underline; }
   .myth-label { display: inline-block; font-size: 0.72rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; padding: 0.3rem 0.75rem; border-radius: 100px; margin-bottom: 1.25rem; border: 1.5px solid var(--orange-light); background: var(--orange); color: var(--cream); }
   .myth-claim { font-family: var(--font-heading); font-size: clamp(1.8rem, 4vw, 2.8rem); font-weight: 900; line-height: 1.15; letter-spacing: 0.02em; color: var(--cream); margin-bottom: 1.25rem; font-style: italic; }
-  .myth-verdict { font-size: 1.05rem; color: rgba(245,237,216,0.75); line-height: 1.75; max-width: 640px; }
+  .myth-verdict { font-size: 1.05rem; color: rgba(245,237,216,0.75); line-height: 1.75; }
   .myth-verdict strong { color: var(--amber); font-weight: 600; }
   .content { max-width: 760px; margin: 0 auto; padding: 4rem 2rem; }
   .content h2 { font-family: var(--font-heading); font-size: 1.6rem; font-weight: 900; letter-spacing: 0.02em; margin: 2.5rem 0 0.75rem; color: var(--black); }
@@ -65,7 +65,7 @@
 </div>
 <div class="content">
   <h2>Why the myth persists</h2>
-  <p>The intuition behind the myth is understandable. New developments often arrive in areas that are already improving — better cafes, better transport links, rising demand. Prices go up around the same time as new buildings appear, so people assume one caused the other.</p>
+  <p>The intuition behind the myth is understandable. New developments often arrive in areas that are already improving — better cafes, better transport links, rising <span class="glossary-term" data-term="demand">demand</span>. Prices go up around the same time as new buildings appear, so people assume one caused the other.</p>
   <p>But this confuses correlation with causation. The neighbourhood was already attracting investment. The new homes didn't cause the price rise — the underlying demand did. And crucially, without those new homes, prices would have risen even faster.</p>
   <div class="evidence-card">
     <div class="source">NYU Furman Center, 2024 — "Supply Skepticism Revisited" (Been, Ellen & O'Regan)</div>
@@ -105,15 +105,18 @@
   <a href="index.html">All myths</a>
   <a href="only-social-housing.html">Myth 2: Only build social housing →</a>
 </div>
-<div id="site-footer"></div>
-<script src="../footer.js"></script>
+<footer>
+  <strong>Glasgow YIMBY</strong> — a grassroots campaign for more homes in Glasgow &nbsp;|&nbsp;
+  <a href="mailto:hello@glasgowyimby.com">hello@glasgowyimby.com</a>
+</footer>
 <script>
 function toggleNav() {
-  var links = document.getElementById('navLinks');
-  var toggle = document.getElementById('navToggle');
-  var open = links.classList.toggle('open');
+  const links = document.getElementById('navLinks');
+  const toggle = document.getElementById('navToggle');
+  const open = links.classList.toggle('open');
   toggle.textContent = open ? 'Close' : 'Menu';
 }
 </script>
+<script src="../tooltip.js"></script>
 </body>
 </html>
