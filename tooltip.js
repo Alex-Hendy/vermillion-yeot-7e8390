@@ -122,7 +122,7 @@
     'pointer-events: none',
     'opacity: 0',
     'transition: opacity 0.15s ease',
-    'border-top: 2px solid #E8A020'
+    'border: 2px solid #E8A020'
   ].join(';');
 
   var tooltipArrow = document.createElement('div');
@@ -226,7 +226,7 @@
         'cursor: help',
         'text-decoration: underline',
         'text-decoration-style: dotted',
-        'text-decoration-color: #F0B030',
+        'text-decoration-color: #D45A1A',
         'text-underline-offset: 3px'
       ].join(';');
 
