@@ -136,7 +136,7 @@
     var depth = window.location.pathname.split('/').length - 2;
     var prefix = '';
     for (var i = 0; i < depth; i++) prefix += '../';
-    return prefix + 'glossary.html';
+    return prefix + 'about/glossary.html';
   }
 
   // Create the tooltip element
