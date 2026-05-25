@@ -38,28 +38,83 @@
   .letter-section { margin-bottom: 2rem; }
   .letter-heading { font-family: var(--font-heading); font-size: 1.8rem; font-weight: 900; color: var(--amber); margin-bottom: 1rem; padding-bottom: 0.5rem; border-bottom: 2px solid var(--black); }
 
-  /* Cards */
-  .glossary-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; }
-  .glossary-card { border: 2px solid var(--black); border-radius: 10px; padding: 1.25rem; background: var(--cream); transition: transform 0.15s, box-shadow 0.15s; }
-  .glossary-card:hover { transform: translate(-2px,-2px); box-shadow: 4px 4px 0 var(--black); }
-  .glossary-card.highlighted { border-color: var(--amber); background: #FAEEDA; animation: highlight-flash 1.5s ease forwards; }
-  @keyframes highlight-flash {
-    0% { background: var(--amber); box-shadow: 0 0 0 4px rgba(232,160,32,0.3); }
-    100% { background: #FAEEDA; box-shadow: none; }
+  /* Accordion grid */
+  .glossary-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0;
+    border: 2px solid var(--black);
+    border-radius: 10px;
+    overflow: hidden;
   }
-  .glossary-term { font-family: var(--font-subheading); font-size: 0.95rem; font-weight: 700; color: var(--black); margin-bottom: 0.5rem; line-height: 1.3; }
-  .glossary-def { font-size: 0.88rem; color: var(--muted); line-height: 1.7; margin-bottom: 0; }
-  .glossary-def strong { color: var(--black); }
-  .glossary-link { display: inline-block; margin-top: 0.6rem; font-size: 0.82rem; font-weight: 600; color: var(--orange); text-decoration: none; }
-  .glossary-link:hover { text-decoration: underline; }
+
+  .glossary-item {
+    border-right: 1px solid rgba(26,18,8,0.12);
+    border-bottom: 1px solid rgba(26,18,8,0.12);
+  }
+  .glossary-item:nth-child(3n) { border-right: none; }
+
+  .glossary-term-btn {
+    width: 100%;
+    text-align: left;
+    background: var(--cream);
+    border: none;
+    padding: 0.9rem 1rem;
+    font-family: var(--font-subheading);
+    font-size: 0.88rem;
+    font-weight: 700;
+    color: var(--black);
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: background 0.15s;
+    line-height: 1.3;
+  }
+  .glossary-term-btn:hover { background: #FAEEDA; }
+  .glossary-term-btn.open { background: var(--black); color: var(--cream); }
+  .glossary-term-btn .chevron { font-size: 0.7rem; opacity: 0.5; flex-shrink: 0; margin-left: 0.5rem; transition: transform 0.2s; }
+  .glossary-term-btn.open .chevron { transform: rotate(180deg); opacity: 1; color: var(--amber); }
+
+  /* Expanded definition — spans full width */
+  .glossary-def-panel {
+    display: none;
+    grid-column: 1 / -1;
+    background: var(--black);
+    color: var(--cream);
+    padding: 1.25rem 1.5rem;
+    font-size: 0.9rem;
+    line-height: 1.75;
+    border-bottom: 1px solid rgba(26,18,8,0.12);
+    border-top: 2px solid var(--amber);
+  }
+  .glossary-def-panel.open { display: block; }
+  .glossary-def-panel p { margin: 0 0 0.5rem; color: rgba(245,237,216,0.85); }
+  .glossary-def-panel p:last-child { margin-bottom: 0; }
+  .glossary-def-panel a { color: var(--amber); font-weight: 600; font-size: 0.82rem; text-decoration: none; }
+  .glossary-def-panel a:hover { text-decoration: underline; }
+
+  /* Highlighted term (from anchor) */
+  .glossary-term-btn.highlighted { background: var(--amber); color: var(--black); animation: highlight-flash 1.5s ease forwards; }
+  @keyframes highlight-flash {
+    0% { background: var(--amber); }
+    70% { background: var(--amber); }
+    100% { background: var(--black); color: var(--cream); }
+  }
 
   /* No results */
   .no-results { text-align: center; padding: 3rem; color: var(--muted); font-size: 0.95rem; display: none; }
 
-  @media (max-width: 768px) {
+  @media (max-width: 900px) {
+    .glossary-grid { grid-template-columns: repeat(2, 1fr); }
+    .glossary-item:nth-child(3n) { border-right: 1px solid rgba(26,18,8,0.12); }
+    .glossary-item:nth-child(2n) { border-right: none; }
+  }
+  @media (max-width: 540px) {
+    .glossary-grid { grid-template-columns: 1fr; }
+    .glossary-item { border-right: none; }
     .about-hero { padding: 3rem 1.25rem 2.5rem; }
     .content { padding: 2rem 1.25rem; }
-    .glossary-grid { grid-template-columns: 1fr; }
     .az-filter { gap: 3px; }
     .az-btn { padding: 0.25rem 0.5rem; font-size: 0.75rem; }
   }
@@ -87,17 +142,14 @@
 </div>
 
 <div class="content">
-
   <div class="search-bar">
     <span class="search-icon">🔍</span>
     <input type="text" id="searchInput" placeholder="Search terms…" oninput="filterGlossary()">
   </div>
-
   <div class="az-filter" id="azFilter"></div>
   <div class="term-count" id="termCount"></div>
   <div id="glossaryContent"></div>
   <div class="no-results" id="noResults">No terms match your search.</div>
-
 </div>
 
 <footer>
@@ -114,157 +166,39 @@ function toggleNav() {
 }
 
 var terms = [
-  {
-    id: 'ahsp',
-    term: 'AHSP — Affordable Housing Supply Programme',
-    letter: 'A',
-    def: 'The Scottish Government\'s main grant programme for funding the construction of affordable homes. Money flows through the AHSP to housing associations and councils, who use it to build social rent and mid-market rent homes. ',
-    link: null
-  },
-  {
-    id: 'cdp2',
-    term: 'CDP2 — City Development Plan 2',
-    letter: 'C',
-    def: 'Glasgow City Council\'s replacement Local Development Plan, currently in preparation. CDP2 is expected to be adopted in 2027, replacing the current plan from 2017. It sets out where and what can be built in Glasgow for the next decade, including housing targets and site allocations. Its indicative housing land requirement of 22,569 homes over ten years barely exceeds the Scottish Government\'s minimum.',
-    link: null
-  },
-  {
-    id: 'cil',
-    term: 'CIL — Community Infrastructure Levy',
-    letter: 'C',
-    def: 'A fixed, non-negotiable charge per square metre of new development used in England to fund local infrastructure — roads, schools, parks, flood defences. Unlike Section 75, CIL rates are published in advance so developers know the cost before they begin. Scotland considered introducing an equivalent under powers in the 2019 Planning Act, then decided not to proceed in November 2024, leaving Section 75 as the sole mechanism for securing developer contributions.',
-    link: null
-  },
-  {
-    id: 'filtering',
-    term: 'Filtering',
-    letter: 'F',
-    def: 'The process by which new homes at any price point benefit renters and buyers across the income spectrum. When someone moves into a new, more expensive home, they vacate a cheaper one. That vacancy cascades down the market until it reaches the oldest, most affordable stock. Research consistently shows the largest rent reductions from new supply are felt at the bottom of the market, not the top.',
-    link: 'myths/luxury-flats.html'
-  },
-  {
-    id: 'ldp',
-    term: 'LDP — Local Development Plan',
-    letter: 'L',
-    def: 'The document produced by each Scottish council that sets out where and what can be built in its area for the next decade. Planning applications are assessed against the LDP. 22 of Scotland\'s 34 LDPs are currently out of date. Under NPF4, housing can only be built on sites allocated in the LDP — making out-of-date plans a major bottleneck for housing supply.',
-    link: null
-  },
-  {
-    id: 'mathlr',
-    term: 'MATHLR — Minimum All-Tenure Housing Land Requirement',
-    letter: 'M',
-    def: 'The minimum number of homes each Scottish council must allocate land for in its Local Development Plan, set by the Scottish Government using household projections and existing need estimates. Glasgow\'s MATHLR is 21,350 homes over ten years.',
-    link: null
-  },
-  {
-    id: 'nbhs',
-    term: 'New Build Heat Standard (NBHS)',
-    letter: 'N',
-    def: 'A Scottish building regulation, in force from April 2024, that bans the installation of gas boilers in new homes. New homes must instead use zero direct emissions heating systems such as heat pumps. The standard adds significant cost to new development, particularly on sites where gas connections were previously the cheapest heating solution.',
-    link: null
-  },
-  {
-    id: 'npf4',
-    term: 'NPF4 — National Planning Framework 4',
-    letter: 'N',
-    def: 'Scotland\'s national planning policy document, adopted in February 2023. NPF4 replaced the previous Scottish Planning Policy and sets the framework within which all planning decisions in Scotland are made. It introduced Policy 16 and removed the presumption in favour of sustainable development.',
-    link: null
-  },
-  {
-    id: 'npf4-policy-16',
-    term: 'NPF4 Policy 16',
-    letter: 'N',
-    def: 'A provision of NPF4 restricting new housing to sites allocated in the Local Development Plan. Policy 16 states that housing proposals on non-allocated sites will only be supported "in limited circumstances." The 2024 Mossend court ruling confirmed that Policy 16 overrides older land release policies.',
-    link: 'ideas/demands/windfall.html'
-  },
-  {
-    id: 'passivhaus',
-    term: 'Passivhaus',
-    letter: 'P',
-    def: 'A German building standard requiring very high levels of insulation, airtightness, and mechanical ventilation with heat recovery. Passivhaus buildings use very little energy for heating and cooling. Scotland is introducing a Passivhaus equivalent standard for new homes — voluntary from 2026 and mandatory from 2028. The standard adds to the cost of construction.',
-    link: null
-  },
-  {
-    id: 'presumption',
-    term: 'Presumption in favour of sustainable development',
-    letter: 'P',
-    def: 'A mechanism that existed in Scottish planning policy from 2014 to 2023. When a council was failing to deliver enough homes, the presumption tilted planning decisions in favour of approving new housing — the council had to show that adverse impacts "significantly and demonstrably" outweighed the benefits to refuse. NPF4 abolished it in 2023.',
-    link: 'ideas/demands/presumption.html'
-  },
-  {
-    id: 'rent-controls',
-    term: 'Rent controls',
-    letter: 'R',
-    def: 'Policies that cap the rents landlords can charge. They are designed to protect tenants from rapid rent increases, particularly where housing supply is constrained.',
-    link: 'myths/rent-controls.html'
-  },
-  {
-    id: 'social-housing',
-    term: 'Social housing',
-    letter: 'S',
-    def: 'Homes let at below-market rents by councils or housing associations to people who cannot afford private rents. Social housing is allocated on the basis of need rather than the ability to pay. In Scotland it includes council housing and homes managed by housing associations.',
-    link: null
-  },
-  {
-    id: 'waiting-list',
-    term: 'Social housing waiting list',
-    letter: 'S',
-    def: 'A register of households who have applied for social housing and are waiting for a suitable home to become available. In Glasgow, over 14,000 households are currently on the waiting list. The length of the list reflects both demand for social homes and the overall shortage of housing.',
-    link: null
-  },
-  {
-    id: 'housing-association',
-    term: 'Housing association',
-    letter: 'H',
-    def: 'A not-for-profit organisation that builds and manages affordable and social housing. Housing associations are regulated by the Scottish Housing Regulator and are the main providers of new social housing in Scotland. They are also known as registered social landlords.',
-    link: null
-  },
-  {
-    id: 'planning-system',
-    term: 'Planning system',
-    letter: 'P',
-    def: 'The legal framework governing what can be built, where, and under what conditions. In Scotland, the planning system is discretionary — every new development requires individual planning permission, assessed by planning officers and in many cases decided by a committee, against national and local planning policy.',
-    link: null
-  },
-  {
-    id: 'section-75',
-    term: 'Section 75 agreement',
-    letter: 'S',
-    def: 'A legal agreement between a developer and a planning authority, required as a condition of planning permission. Section 75 agreements cover affordable housing contributions, infrastructure payments, transport, education, open space, and other planning obligations. The agreement must be signed before building can begin.',
-    link: 'ideas/demands/section-75.html'
-  },
-  {
-    id: 'ship',
-    term: 'SHIP — Strategic Housing Investment Plan',
-    letter: 'S',
-    def: 'A five-year plan produced by each council setting out how it intends to deliver affordable housing and what funding it needs from the Scottish Government to do so. Glasgow\'s current SHIP (2026/27 to 2030/31) identifies a need for £890 million from the Scottish Government to deliver over 6,000 affordable homes.',
-    link: null
-  },
-  {
-    id: 'windfall',
-    term: 'Windfall development',
-    letter: 'W',
-    def: 'Housing built on sites not specifically allocated in the Local Development Plan. Before NPF4, windfall sites delivered two thirds of all consented homes in Scotland — developers could propose housing on suitable unallocated sites (disused car parks, gap sites, former offices) and applications would be assessed on their merits. Whether a windfall application is approved depends on its compliance with planning policy at the time of the application.',
-    link: 'ideas/demands/windfall.html'
-  },
-  {
-    id: 'yimby',
-    term: 'YIMBY',
-    letter: 'Y',
-    def: '<strong>Yes In My Back Yard.</strong> A direct response to NIMBYism — the tendency of people who already have homes to oppose the building of new ones. YIMBYs typically argue that increasing housing supply is the primary mechanism for making homes more affordable.',
-    link: 'ideas/index.html'
-  }
+  { id: 'ahsp', term: 'AHSP — Affordable Housing Supply Programme', letter: 'A', def: 'The Scottish Government\'s main grant programme for funding the construction of affordable homes. Money flows through the AHSP to housing associations and councils, who use it to build social rent and mid-market rent homes.', link: null },
+  { id: 'cdp2', term: 'CDP2 — City Development Plan 2', letter: 'C', def: 'Glasgow City Council\'s replacement Local Development Plan, currently in preparation. CDP2 is expected to be adopted in 2027, replacing the current plan from 2017. It sets out where and what can be built in Glasgow for the next decade, including housing targets and site allocations.', link: null },
+  { id: 'cil', term: 'CIL — Community Infrastructure Levy', letter: 'C', def: 'A fixed, non-negotiable charge per square metre of new development used in England to fund local infrastructure — roads, schools, parks, flood defences. Unlike Section 75, CIL rates are published in advance so developers know the cost before they begin. Scotland does not have an equivalent.', link: null },
+  { id: 'demand', term: 'Demand', letter: 'D', def: 'In housing economics, demand refers to the number of people seeking homes at a given price. When demand exceeds supply, prices rise. Demand is affected by population growth, household formation, income levels, and the availability of mortgage finance.', link: null },
+  { id: 'filtering', term: 'Filtering', letter: 'F', def: 'The process by which new homes at any price point benefit renters and buyers across the income spectrum. When someone moves into a new, more expensive home, they vacate a cheaper one. That vacancy cascades down the market until it reaches the oldest, most affordable stock.', link: '../myths/luxury-flats.html' },
+  { id: 'housing-association', term: 'Housing association', letter: 'H', def: 'A not-for-profit organisation that builds and manages affordable and social housing. Housing associations are regulated by the Scottish Housing Regulator and are the main providers of new social housing in Scotland. They are also known as registered social landlords.', link: null },
+  { id: 'housing-stock', term: 'Housing stock', letter: 'H', def: 'The total number of homes in an area, including all tenures — owner-occupied, private rented, social rented, and empty properties. The UK has one of the lowest levels of housing stock per person of any comparable developed country.', link: null },
+  { id: 'ldp', term: 'LDP — Local Development Plan', letter: 'L', def: 'The document produced by each Scottish council that sets out where and what can be built in its area for the next decade. Planning applications are assessed against the LDP. 22 of Scotland\'s 34 LDPs are currently out of date.', link: null },
+  { id: 'mathlr', term: 'MATHLR — Minimum All-Tenure Housing Land Requirement', letter: 'M', def: 'The minimum number of homes each Scottish council must allocate land for in its Local Development Plan, calculated by the Scottish Government using household projections, existing housing need estimates, and a flexibility allowance. Glasgow\'s MATHLR is 21,350 homes over ten years.', link: null },
+  { id: 'nbhs', term: 'New Build Heat Standard (NBHS)', letter: 'N', def: 'A Scottish building regulation, in force from April 2024, that bans the installation of gas boilers in new homes. New homes must instead use zero direct emissions heating systems such as heat pumps.', link: null },
+  { id: 'npf4', term: 'NPF4 — National Planning Framework 4', letter: 'N', def: 'Scotland\'s national planning policy document, adopted in February 2023. NPF4 replaced Scottish Planning Policy and sets the framework within which all planning decisions in Scotland are made. It introduced Policy 16 and removed the presumption in favour of sustainable development.', link: null },
+  { id: 'npf4-policy-16', term: 'NPF4 Policy 16', letter: 'N', def: 'A provision of NPF4 restricting new housing to sites allocated in the Local Development Plan. Policy 16 states that housing proposals on non-allocated sites will only be supported "in limited circumstances." The 2024 Mossend court ruling confirmed that Policy 16 overrides older land release policies.', link: '../ideas/demands/windfall.html' },
+  { id: 'passivhaus', term: 'Passivhaus', letter: 'P', def: 'A German building standard requiring very high levels of insulation, airtightness, and mechanical ventilation with heat recovery. Passivhaus buildings use very little energy for heating and cooling. Scotland is introducing a Passivhaus equivalent standard for new homes, voluntary from 2026 and mandatory from 2028.', link: null },
+  { id: 'planning-system', term: 'Planning system', letter: 'P', def: 'The legal framework governing what can be built, where, and under what conditions. In Scotland, the planning system is discretionary — every new development requires individual planning permission, assessed by planning officers and in many cases decided by a committee, against national and local planning policy.', link: null },
+  { id: 'presumption', term: 'Presumption in favour of sustainable development', letter: 'P', def: 'A mechanism that existed in Scottish planning policy from 2014 to 2023. When a council could not demonstrate a five-year supply of effective housing land, the presumption tilted planning decisions in favour of approving new housing. To refuse, the council had to show that adverse impacts "significantly and demonstrably" outweighed the benefits. NPF4 abolished it in 2023.', link: '../ideas/demands/presumption.html' },
+  { id: 'rent-controls', term: 'Rent controls', letter: 'R', def: 'Policies that cap or limit the rents landlords can charge, designed to protect tenants from rapid rent increases, particularly where housing supply is constrained.', link: '../myths/rent-controls.html' },
+  { id: 'section-75', term: 'Section 75 agreement', letter: 'S', def: 'A legal agreement between a developer and a planning authority, signed as a condition of planning permission. Section 75 agreements set out the developer\'s obligations — affordable housing contributions, payments towards schools and transport infrastructure, open space, and public realm improvements. The agreement must be signed before building can begin.', link: '../ideas/demands/section-75.html' },
+  { id: 'ship', term: 'SHIP — Strategic Housing Investment Plan', letter: 'S', def: 'A five-year plan produced by each council setting out how it intends to deliver affordable housing and what funding it needs from the Scottish Government to do so. Glasgow\'s current SHIP (2026/27 to 2030/31) identifies a need for £890 million from the Scottish Government to deliver over 6,000 affordable homes.', link: null },
+  { id: 'social-housing', term: 'Social housing', letter: 'S', def: 'Homes let at below-market rents by councils or housing associations to people who cannot afford private rents. Social housing is allocated on the basis of need rather than the ability to pay. In Scotland it includes council housing and homes managed by housing associations.', link: null },
+  { id: 'supply', term: 'Supply', letter: 'S', def: 'In housing economics, supply refers to the number of homes available for rent or purchase. When supply falls short of demand, prices and rents rise. Supply is constrained by the planning system, construction costs, land availability, and financing conditions.', link: null },
+  { id: 'upzoning', term: 'Upzoning', letter: 'U', def: 'Changing planning or zoning rules to allow more homes to be built in an area — for example, permitting taller buildings, more units per plot, or residential use where it was previously restricted. Auckland upzoned 75% of its residential land in 2016, after which housing construction surged and rent growth slowed significantly.', link: null },
+  { id: 'waiting-list', term: 'Waiting list (social housing)', letter: 'W', def: 'A register of households who have applied for social housing and are waiting for a suitable home to become available. In Glasgow, over 14,000 households are currently on the waiting list.', link: null },
+  { id: 'windfall', term: 'Windfall development', letter: 'W', def: 'Housing built on sites not specifically allocated in the Local Development Plan. Developers identify suitable unallocated sites — disused car parks, gap sites, former office buildings — and submit planning applications which are assessed on their merits against planning policy.', link: '../ideas/demands/windfall.html' },
+  { id: 'yimby', term: 'YIMBY', letter: 'Y', def: '<strong>Yes In My Back Yard.</strong> A term for people who support building more homes in their local area, in direct contrast to NIMBYism (Not In My Back Yard). YIMBYs typically argue that increasing housing supply is the primary mechanism for making homes more affordable.', link: '../ideas/index.html' }
 ];
 
-// Get all letters present
 var lettersPresent = [];
-terms.forEach(function(t) {
-  if (lettersPresent.indexOf(t.letter) === -1) lettersPresent.push(t.letter);
-});
+terms.forEach(function(t) { if (lettersPresent.indexOf(t.letter) === -1) lettersPresent.push(t.letter); });
 
 var allLetters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('');
 var activeFilter = 'ALL';
 var searchQuery = '';
+var openId = null;
 
 // Build A-Z filter
 var azEl = document.getElementById('azFilter');
@@ -287,6 +221,7 @@ function setFilter(letter) {
   activeFilter = letter;
   document.getElementById('searchInput').value = '';
   searchQuery = '';
+  openId = null;
   document.querySelectorAll('.az-btn').forEach(function(btn) {
     btn.classList.toggle('active', btn.textContent === (letter === 'ALL' ? 'All' : letter));
   });
@@ -297,6 +232,7 @@ function filterGlossary() {
   searchQuery = document.getElementById('searchInput').value.toLowerCase();
   if (searchQuery) {
     activeFilter = 'ALL';
+    openId = null;
     document.querySelectorAll('.az-btn').forEach(function(btn) {
       btn.classList.toggle('active', btn.textContent === 'All');
     });
@@ -304,87 +240,96 @@ function filterGlossary() {
   renderGlossary();
 }
 
+function toggleTerm(id) {
+  openId = (openId === id) ? null : id;
+  // Update open/closed state without full re-render
+  document.querySelectorAll('.glossary-term-btn').forEach(function(btn) {
+    var isOpen = btn.getAttribute('data-id') === openId;
+    btn.classList.toggle('open', isOpen);
+  });
+  document.querySelectorAll('.glossary-def-panel').forEach(function(panel) {
+    var isOpen = panel.getAttribute('data-id') === openId;
+    panel.classList.toggle('open', isOpen);
+    // Update grid positioning for expanded panel
+    if (isOpen) {
+      // Find the button's position in the grid to insert after the right row
+      positionPanel(panel, openId);
+    }
+  });
+}
+
+function positionPanel(panel, id) {
+  // The panel is already in the DOM after its term button's item
+  // CSS grid-column: 1 / -1 handles the spanning
+}
+
 function renderGlossary() {
   var filtered = terms.filter(function(t) {
     var matchesLetter = activeFilter === 'ALL' || t.letter === activeFilter;
-    var matchesSearch = !searchQuery ||
-      t.term.toLowerCase().includes(searchQuery) ||
-      t.def.toLowerCase().includes(searchQuery);
+    var matchesSearch = !searchQuery || t.term.toLowerCase().includes(searchQuery) || t.def.toLowerCase().includes(searchQuery);
     return matchesLetter && matchesSearch;
   });
 
   var container = document.getElementById('glossaryContent');
   var noResults = document.getElementById('noResults');
-  var countEl = document.getElementById('termCount');
+  document.getElementById('termCount').textContent = filtered.length + ' term' + (filtered.length !== 1 ? 's' : '');
 
-  countEl.textContent = filtered.length + ' term' + (filtered.length !== 1 ? 's' : '');
-
-  if (filtered.length === 0) {
-    container.innerHTML = '';
-    noResults.style.display = 'block';
-    return;
-  }
+  if (filtered.length === 0) { container.innerHTML = ''; noResults.style.display = 'block'; return; }
   noResults.style.display = 'none';
 
-  // Group by letter
   var byLetter = {};
-  filtered.forEach(function(t) {
-    if (!byLetter[t.letter]) byLetter[t.letter] = [];
-    byLetter[t.letter].push(t);
-  });
+  filtered.forEach(function(t) { if (!byLetter[t.letter]) byLetter[t.letter] = []; byLetter[t.letter].push(t); });
 
   var html = '';
   Object.keys(byLetter).sort().forEach(function(letter) {
-    html += '<div class="letter-section">';
-    html += '<div class="letter-heading">' + letter + '</div>';
+    html += '<div class="letter-section"><div class="letter-heading">' + letter + '</div>';
     html += '<div class="glossary-grid">';
     byLetter[letter].forEach(function(t) {
-      html += '<div class="glossary-card" id="' + t.id + '">';
-      html += '<div class="glossary-term">' + t.term + '</div>';
-      html += '<div class="glossary-def">' + t.def + '</div>';
-      if (t.link) {
-        html += '<a href="' + t.link + '" class="glossary-link">Read more →</a>';
-      }
+      var isOpen = t.id === openId;
+      html += '<div class="glossary-item">';
+      html += '<button class="glossary-term-btn' + (isOpen ? ' open' : '') + '" data-id="' + t.id + '" onclick="toggleTerm(\'' + t.id + '\')">';
+      html += '<span>' + t.term + '</span><span class="chevron">▼</span></button></div>';
+    });
+    // Insert definition panels — after each row of 3
+    var cols = window.innerWidth <= 540 ? 1 : (window.innerWidth <= 900 ? 2 : 3);
+    byLetter[letter].forEach(function(t, i) {
+      var isOpen = t.id === openId;
+      // Insert panel after each item — CSS grid-column: 1/-1 will span it
+      html += '<div class="glossary-def-panel' + (isOpen ? ' open' : '') + '" data-id="' + t.id + '">';
+      html += '<p>' + t.def + '</p>';
+      if (t.link) html += '<a href="' + t.link + '">Read more →</a>';
       html += '</div>';
     });
     html += '</div></div>';
   });
 
   container.innerHTML = html;
-
-  // Highlight anchored term if present
   highlightAnchor();
 }
 
 function highlightAnchor() {
   var hash = window.location.hash.replace('#', '');
   if (!hash) return;
-  var el = document.getElementById(hash);
-  if (el) {
-    el.classList.add('highlighted');
-    setTimeout(function() {
-      el.scrollIntoView({ behavior: 'smooth', block: 'center' });
-    }, 100);
-  }
+  openId = hash;
+  renderGlossary();
+  setTimeout(function() {
+    var btn = document.querySelector('.glossary-term-btn[data-id="' + hash + '"]');
+    if (btn) {
+      btn.classList.add('highlighted');
+      btn.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }
+  }, 100);
 }
 
-// Initial render
 renderGlossary();
 
-// Handle hash changes (e.g. from tooltip links)
 window.addEventListener('hashchange', function() {
-  // Remove existing highlights
-  document.querySelectorAll('.glossary-card.highlighted').forEach(function(el) {
-    el.classList.remove('highlighted');
-  });
-  // Reset to all terms and re-render
+  openId = null;
   activeFilter = 'ALL';
   searchQuery = '';
   document.getElementById('searchInput').value = '';
-  document.querySelectorAll('.az-btn').forEach(function(btn) {
-    btn.classList.toggle('active', btn.textContent === 'All');
-  });
-  renderGlossary();
+  document.querySelectorAll('.az-btn').forEach(function(btn) { btn.classList.toggle('active', btn.textContent === 'All'); });
+  highlightAnchor();
 });
 </script>
 </body>
