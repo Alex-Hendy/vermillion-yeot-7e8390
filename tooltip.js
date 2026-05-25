@@ -120,11 +120,15 @@
     },
     'upzoning': {
       short: 'Changing planning or zoning rules to allow more homes to be built in an area — for example, permitting taller buildings or more units per plot.',
-      anchor: null
+      anchor: 'upzoning'
+    },
+    'supply': {
+      short: 'In housing economics, supply refers to the number of homes available. When supply falls short of demand, prices and rents rise.',
+      anchor: 'supply'
     },
     'housing-stock': {
       short: 'The total number of homes in an area, including all tenures — owner-occupied, private rented, social rented, and empty properties.',
-      anchor: null
+      anchor: 'housing-stock'
     }
   };
 
