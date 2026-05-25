@@ -8,7 +8,7 @@
  * The glossary page path is set by GLOSSARY_PATH below — set per page if needed
  * by adding data-glossary-path="/path/to/glossary.html" on the body element.
  */
-
+ 
 (function() {
   'use strict';
 
