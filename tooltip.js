@@ -8,7 +8,7 @@
  * The glossary page path is set by GLOSSARY_PATH below — set per page if needed
  * by adding data-glossary-path="/path/to/glossary.html" on the body element.
  */
- 
+
 (function() {
   'use strict';
 
@@ -28,7 +28,7 @@
     },
     'demand': {
       short: 'In housing economics, demand refers to the number of people seeking homes at a given price. When demand exceeds supply, prices rise.',
-      anchor: null
+      anchor: 'demand'
     },
     'filtering': {
       short: 'The process by which new homes at any price point free up older, cheaper homes through a chain of moves, benefiting renters across the income spectrum.',
