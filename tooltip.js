@@ -66,6 +66,26 @@
       short: 'A mechanism in Scottish planning policy (2014–2023) that tilted decisions in favour of housing when a council could not demonstrate a five-year land supply.',
       anchor: 'presumption'
     },
+    'tenure': {
+      short: 'The legal basis on which someone occupies a home — owner-occupied, private rented, social rented, or other. Different tenures have different rights and obligations.',
+      anchor: 'tenure'
+    },
+    'vacancy-rate': {
+      short: 'The percentage of homes in an area that are empty at a given time. A low vacancy rate indicates high demand relative to supply; a high rate indicates the opposite.',
+      anchor: 'vacancy-rate'
+    },
+    'incumbent-tenants': {
+      short: 'Tenants already renting a property when rent controls are introduced. They benefit from below-market rents as long as they stay, but lose the protection if they move.',
+      anchor: 'incumbent-tenants'
+    },
+    'planning-permission': {
+      short: 'Formal approval from a planning authority allowing a development to proceed. In Scotland, every new home requires individual planning permission assessed against national and local planning policy.',
+      anchor: 'planning-system'
+    },
+    'gentrification': {
+      short: 'The process by which an area becomes more affluent, often accompanied by rising rents and the displacement of lower-income residents. The relationship between new housing and gentrification is widely debated.',
+      anchor: null
+    },
     'rent-controls': {
       short: 'Policies that cap or limit the rents landlords can charge, designed to protect tenants from rapid rent increases.',
       anchor: 'rent-controls'
