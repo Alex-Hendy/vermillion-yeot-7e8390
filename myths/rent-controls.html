@@ -15,7 +15,7 @@
   .back-link:hover { text-decoration: underline; }
   .myth-label { display: inline-block; font-size: 0.72rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; padding: 0.3rem 0.75rem; border-radius: 100px; margin-bottom: 1.25rem; border: 1.5px solid var(--orange-light); background: var(--orange); color: var(--cream); }
   .myth-claim { font-family: var(--font-heading); font-size: clamp(1.8rem, 4vw, 2.8rem); font-weight: 900; line-height: 1.15; letter-spacing: 0.02em; color: var(--cream); margin-bottom: 1.25rem; font-style: italic; }
-  .myth-verdict { font-size: 1.05rem; color: rgba(245,237,216,0.75); line-height: 1.75; max-width: 640px; }
+  .myth-verdict { font-size: 1.05rem; color: rgba(245,237,216,0.75); line-height: 1.75; }
   .myth-verdict strong { color: var(--amber); font-weight: 600; }
   .content { max-width: 760px; margin: 0 auto; padding: 4rem 2rem; }
   .content h2 { font-family: var(--font-heading); font-size: 1.6rem; font-weight: 900; letter-spacing: 0.02em; margin: 2.5rem 0 0.75rem; color: var(--black); }
@@ -73,7 +73,7 @@
   }
 </style>
 </head>
-<body>
+<body data-glossary-path="../about/glossary.html">
 
 <nav>
   <a href="../index.html" class="logo"><img src="../glasgow-yimby-logo-navbar.svg" alt="Glasgow YIMBY" height="72"></a>
@@ -92,7 +92,7 @@
     <a href="index.html" class="back-link">← Back to all myths</a>
     <div class="myth-label">Myth 3</div>
     <div class="myth-claim">"Rent controls are the answer to Glasgow's housing crisis."</div>
-    <p class="myth-verdict">Rent controls always face an inescapable dilemma: <strong>go universal and supply collapses; go partial and you just pick winners and losers.</strong> Either way, you have not built a single home. The evidence from over a century of attempts bears this out.</p>
+    <p class="myth-verdict">Rent controls are one of the most studied policies in economics, and the evidence against them is unusually consistent. <strong>They do not solve the housing crisis. They redistribute access to existing homes from future renters to current ones.</strong> They shrink the rental market over time as landlords convert, sell up, or let properties fall into disrepair. And every city that has tried them at scale has ended up with worse outcomes for the people they were meant to help.</p>
   </div>
 </div>
 
@@ -104,11 +104,11 @@
   <div class="dilemma-grid">
     <div class="dilemma-card universal">
       <h3>Universal coverage</h3>
-      <p>Controls apply to all or nearly all private rented properties. Every landlord faces constrained returns. The financially marginal ones sell up. The rental market shrinks. Fewer homes, same demand — and the market tightens further with each passing year as the pool of available homes contracts.</p>
+      <p>Controls apply to all or nearly all private rented properties. Every landlord faces constrained returns. The financially marginal ones sell up. The rental market shrinks. Fewer homes, same <span class="glossary-term" data-term="demand">demand</span> — and the market tightens further with each passing year as the pool of available homes contracts.</p>
     </div>
     <div class="dilemma-card partial">
       <h3>Partial coverage</h3>
-      <p>Controls apply to some properties but not others. The rent-controlled homes stay controlled — a fixed pool of lucky tenants paying below-market rents. But all the unmet demand that cannot access controlled homes concentrates into the uncontrolled segment. Rents spike there. The city divides into big winners and big losers, and the gap only grows over time as the two markets diverge further.</p>
+      <p>Controls apply to some properties but not others. The rent-controlled homes stay controlled — a fixed pool of lucky tenants paying below-market rents. But all the unmet <span class="glossary-term" data-term="demand">demand</span> that cannot access controlled homes concentrates into the uncontrolled segment. Rents spike there. The city divides into big winners and big losers, and the gap only grows over time as the two markets diverge further.</p>
     </div>
   </div>
 
@@ -116,11 +116,11 @@
 
   <h2>The zero-sum reality</h2>
   <p>The clearest illustration of the dilemma comes from San Francisco. When strict rent control was extended to small multi-family buildings in 1994, existing tenants in those buildings saved $2.9 billion in rent over the following sixteen years. But renters who moved to San Francisco after controls were introduced paid an extra $2.9 billion over the same period — exactly what existing tenants saved.</p>
-  <p>Rent control did not reduce the total cost of renting in San Francisco. It redistributed it: from future renters to current ones, from those who came later to those who happened to be in place when controls were introduced. This shows how rent control does not help all renters — only a few. Anyone who needs to move loses out.</p>
+  <p><span class="glossary-term" data-term="rent-controls">Rent control</span> did not reduce the total cost of renting in San Francisco. It redistributed it: from future renters to current ones, from those who came later to those who happened to be in place when controls were introduced. This shows how rent control does not help all renters — only a few. Anyone who needs to move loses out.</p>
   <p>And that is the hidden trap. Under rent control, anyone who ever needs to move — for a new job, for more space, to leave a relationship — faces the full force of the uncontrolled market. Their controlled rent is not portable. Once they leave, it is gone. The result is that tenants become trapped: staying in homes that no longer suit them, because the cost of leaving is prohibitive. Rent control does not give renters security. It gives them a cage with a low rent.</p>
 
   <div class="callout">
-    <p>Rent control changes the system for rationing scarce homes from price to luck — specifically, the luck of who happened to be renting when controls were introduced. It does not make housing more available. It makes access to good housing a matter of incumbency rather than need, freezing in place whoever was there first and penalising everyone who comes after.</p>
+    <p>Rent control changes the system for rationing scarce homes from price to luck — specifically, the luck of who happened to be renting when controls were introduced. It does not make housing more available. It makes access to good housing a matter of <span class="glossary-term" data-term="tenure">tenure</span> luck rather than need, freezing in place whoever was there first and penalising everyone who comes after.</p>
   </div>
 
   <h2>The knock-on effects nobody talks about</h2>
@@ -132,22 +132,22 @@
 
   <div class="evidence-card">
     <div class="source">New York City — decades of universal rent control</div>
-    <p>New York prioritised rent control over housebuilding for decades. The result: rent-controlled luxury apartments in elite Manhattan neighbourhoods have rented for decades at under £100 a month, while average one-bedroom apartments without rent control in working-class parts of Brooklyn cost over £1,300 a month. The policy created enormous benefits for long-term incumbent tenants — and severe shortages for everyone trying to enter the market. New York City has lost 152,000 units of rent-stabilised housing since 1993 as landlords converted to condominiums.</p>
+    <p>New York prioritised rent control over housebuilding for decades. The result: rent-controlled luxury apartments in elite Manhattan neighbourhoods have rented for decades at under £100 a month, while average one-bedroom apartments without rent control in working-class parts of Brooklyn cost over £1,300 a month. The policy created enormous benefits for long-term incumbent tenants — and severe shortages for everyone trying to enter the market. New York City has lost 152,000 units of rent-stabilised <span class="glossary-term" data-term="housing-stock">housing stock</span> since 1993 as landlords converted to condominiums.</p>
   </div>
 
   <div class="evidence-card">
     <div class="source">Stockholm — universal rent control since the 1940s</div>
-    <p>Stockholm has had near-universal rent control since the 1940s. The result is a queue, not a market: residents wait decades — sometimes their entire working lives — for a rent-controlled flat. The black market for tenancy transfers is large and well-documented. New arrivals to the city have no realistic prospect of accessing the controlled sector and must rely on a small, expensive uncontrolled segment.</p>
+    <p>Stockholm has had near-universal rent control since the 1940s. The result — with a near-zero <span class="glossary-term" data-term="vacancy-rate">vacancy rate</span> — is a queue, not a market: residents wait decades — sometimes their entire working lives — for a rent-controlled flat. The black market for tenancy transfers is large and well-documented. New arrivals to the city have no realistic prospect of accessing the controlled sector and must rely on a small, expensive uncontrolled segment.</p>
   </div>
 
   <div class="evidence-card">
     <div class="source">Berlin — partial rent control from 2015, freeze in 2020</div>
-    <p>Berlin introduced a rent brake in 2015 limiting increases to 10% above local averages, then a full rent freeze in 2020. The freeze was struck down by Germany's constitutional court in 2021 after 18 months. During that period, rents in the controlled sector fell modestly — but rents in the uncontrolled sector, where new builds and some exempt properties sat, spiked significantly. The policy did not achieve its stated goal of stopping gentrification. When the freeze was lifted, rents in the previously controlled sector rose sharply.</p>
+    <p>Berlin introduced a rent brake in 2015 limiting increases to 10% above local averages, then a full rent freeze in 2020. The freeze was struck down by Germany's constitutional court in 2021 after 18 months. During that period, rents in the controlled sector fell modestly — but rents in the uncontrolled sector, where new builds and some exempt properties sat, spiked significantly. The policy did not achieve its stated goal of stopping <span class="glossary-term" data-term="gentrification">gentrification</span>. When the freeze was lifted, rents in the previously controlled sector rose sharply.</p>
   </div>
 
   <div class="evidence-card">
     <div class="source">Diamond, McQuade & Qian (2019) — San Francisco academic study</div>
-    <p>The most rigorous modern study of rent control, using a natural experiment from San Francisco's 1994 reform. Rent control <strong>reduced rental housing supply by 15%</strong> as landlords converted properties to condominiums or redeveloped sites. The policy protected sitting tenants but transferred wealth away from future renters, who faced a smaller and more expensive market. Long-run rents rose citywide. <a href="https://www.aeaweb.org/articles?id=10.1257/aer.20181289" target="_blank" style="color:var(--orange);">Read the paper →</a></p>
+    <p>The most rigorous modern study of rent control, using a natural experiment from San Francisco's 1994 reform. Rent control <strong>reduced rental housing supply by 15%</strong> as landlords converted properties to condominiums or sought <span class="glossary-term" data-term="planning-permission">planning permission</span> to redevelop sites. The policy protected sitting tenants but transferred wealth away from future renters, who faced a smaller and more expensive market. Long-run rents rose citywide. <a href="https://www.aeaweb.org/articles?id=10.1257/aer.20181289" target="_blank" style="color:var(--orange);">Read the paper →</a></p>
   </div>
 
   <div class="evidence-card">
@@ -162,7 +162,7 @@
 
   <div class="nuance-box">
     <h3>Where we stand</h3>
-    <p>Rent controls are bad policy. The cities that have made housing affordable — Vienna, Helsinki, Auckland, Minneapolis — did so by building significantly more homes. That is what Glasgow needs. Not a system that entrenches the luck of who happened to be renting when controls were introduced.</p>
+    <p>Rent controls are bad policy. The cities that have made housing affordable — Vienna, Helsinki, Auckland, Minneapolis — did so by building significantly more homes. That is what Glasgow needs — not a system that entrenches the luck of who happened to be renting when controls were introduced, or lengthens the <span class="glossary-term" data-term="waiting-list">waiting list</span> for everyone who comes after.</p>
   </div>
 
   <div class="calc-link-box">
@@ -182,7 +182,7 @@
     <div class="who-card mixed">
       <div class="who-card-label"><span class="badge-mixed">MIXED</span></div>
       <h3>Sitting tenants</h3>
-      <p>Renters already in a controlled property pay below the market rate in the short run. But the protection comes with a hidden cost: moving means losing the controlled rent, so tenants become trapped in homes that may no longer suit them. And if the landlord eventually sells, they re-enter a market that has shrunk around them.</p>
+      <p>Renters already in a controlled property — <span class="glossary-term" data-term="incumbent-tenants">incumbent tenants</span> — pay below the market rate in the short run. But the protection comes with a hidden cost: moving means losing the controlled rent, so tenants become trapped in homes that may no longer suit them. And if the landlord eventually sells, they re-enter a market that has shrunk around them.</p>
     </div>
     <div class="who-card loses">
       <div class="who-card-label"><span class="badge-lose">LOSING</span></div>
@@ -204,11 +204,8 @@
   <a href="luxury-flats.html">Myth 4: Luxury flats →</a>
 </div>
 
-<footer>
-  <strong>Glasgow YIMBY</strong> — a grassroots campaign for more homes in Glasgow &nbsp;|&nbsp;
-  <a href="mailto:hello@glasgowyimby.com">hello@glasgowyimby.com</a>
-</footer>
-
+<div id="site-footer"></div>
+<script src="../footer.js"></script>
 <script>
 function toggleNav() {
   const links = document.getElementById('navLinks');
@@ -217,5 +214,6 @@ function toggleNav() {
   toggle.textContent = open ? 'Close' : 'Menu';
 }
 </script>
+<script src="../tooltip.js"></script>
 </body>
 </html>
