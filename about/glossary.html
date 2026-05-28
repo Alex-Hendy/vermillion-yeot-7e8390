@@ -331,9 +331,12 @@ function highlightAnchor() {
   renderGlossary();
   setTimeout(function() {
     var btn = document.querySelector('.glossary-term-btn[data-id="' + hash + '"]');
-    if (btn) {
-      btn.classList.add('highlighted');
-      btn.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    var panel = document.querySelector('.glossary-def-panel.open[data-id="' + hash + '"]');
+    if (btn) btn.classList.add('highlighted');
+    var target = panel || btn;
+    if (target) {
+      var top = target.getBoundingClientRect().top + window.scrollY - 80;
+      window.scrollTo({ top: top, behavior: 'smooth' });
     }
   }, 300);
 }
