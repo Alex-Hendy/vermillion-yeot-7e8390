@@ -15,7 +15,7 @@
   .back-link:hover { text-decoration: underline; }
   .myth-label { display: inline-block; font-size: 0.72rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; padding: 0.3rem 0.75rem; border-radius: 100px; margin-bottom: 1.25rem; border: 1.5px solid var(--orange-light); background: var(--orange); color: var(--cream); }
   .myth-claim { font-family: var(--font-heading); font-size: clamp(1.8rem, 4vw, 2.8rem); font-weight: 900; line-height: 1.15; letter-spacing: 0.02em; color: var(--cream); margin-bottom: 1.25rem; font-style: italic; }
-  .myth-verdict { font-size: 1.05rem; color: rgba(245,237,216,0.75); line-height: 1.75; max-width: 640px; }
+  .myth-verdict { font-size: 1.05rem; color: rgba(245,237,216,0.75); line-height: 1.75; }
   .myth-verdict strong { color: var(--amber); font-weight: 600; }
   .content { max-width: 760px; margin: 0 auto; padding: 4rem 2rem; }
   .content h2 { font-family: var(--font-heading); font-size: 1.6rem; font-weight: 900; letter-spacing: 0.02em; margin: 2.5rem 0 0.75rem; color: var(--black); }
@@ -43,12 +43,12 @@
   }
 </style>
 </head>
-<body>
+<body data-glossary-path="../about/glossary.html">
 <nav>
   <a href="../index.html" class="logo"><img src="../glasgow-yimby-logo-navbar.svg" alt="Glasgow YIMBY" height="72"></a>
   <ul class="nav-links" id="navLinks">
     <li><a href="../ideas/index.html">The ideas</a></li>
-    <li><a href="index.html">Myths</a></li>
+    <li><a href="../myths/index.html">Myths</a></li>
     <li><a href="../evidence.html">Evidence</a></li>
     <li><a href="../news.html">News</a></li>
     <li><a href="../get-involved.html" class="nav-cta">Get involved</a></li>
@@ -66,7 +66,7 @@
 <div class="content">
   <h2>This is not a monopoly market</h2>
   <p>The housebuilding market in Britain is genuinely fragmented. According to the Competition and Markets Authority's 2024 market study, the largest single developer — Barratt — has just 8% of the market. Persimmon and Taylor Wimpey each have 6%. A full 61% of all new homes are built by firms outside the top 11. No single company, or group of companies, has the market power to set house prices nationally.</p>
-  <p>For landbanking to systematically drive up prices, developers would need the ability to restrict supply across entire markets. In a market where the majority of homes are built by hundreds of different firms, this is not possible.</p>
+  <p>For landbanking to systematically drive up prices, developers would need the ability to restrict <span class="glossary-term" data-term="supply">supply</span> across entire markets. In a market where the majority of homes are built by hundreds of different firms, this is not possible.</p>
   <div class="callout">
     <span class="callout-stat">61%</span>
     <p>of all new homes in Britain are built by firms outside the top 11 developers. Source: CMA Housebuilding Market Study, 2024.</p>
@@ -80,10 +80,10 @@
   </div>
   <div class="evidence-card">
     <div class="source">Centre for Cities, 2020</div>
-    <p><strong>Where landbanking does occur, the planning system itself is the cause.</strong> Because planning permission is so uncertain and expensive to obtain, developers must hold large land banks simply to maintain a pipeline of buildable sites. If planning were faster and more certain, land banks would shrink — because developers would not need to hold so much land in reserve just to keep building.</p>
+    <p><strong>Where landbanking does occur, the <span class="glossary-term" data-term="planning-system">planning system</span> itself is the cause.</strong> Because planning permission is so uncertain and expensive to obtain, developers must hold large land banks simply to maintain a pipeline of buildable sites. If planning were faster and more certain, land banks would shrink — because developers would not need to hold so much land in reserve just to keep building.</p>
   </div>
   <h2>The real bottleneck is planning</h2>
-  <p>A site that receives planning permission does not become a buildable home overnight. It typically takes three to five years to move from acquiring land to opening a site and starting construction — through detailed planning, infrastructure agreements, discharge of planning conditions, and procurement. A land bank is not a hoard: it is the pipeline a developer needs to keep its workforce employed and its business running.</p>
+  <p>A site that receives <span class="glossary-term" data-term="planning-permission">planning permission</span> does not become a buildable home overnight. It typically takes three to five years to move from acquiring land to opening a site and starting construction — through detailed planning, infrastructure agreements, discharge of planning conditions, and procurement. A land bank is not a hoard: it is the pipeline a developer needs to keep its workforce employed and its business running.</p>
   <p>The solution to slow build-out is faster, more certain planning — more land allocated, fewer conditions, quicker decisions. Blaming developers for rational behaviour in a dysfunctional planning system misdiagnoses the problem and lets the real cause off the hook.</p>
   <div class="nuance-box">
     <h3>Where we stand</h3>
@@ -99,11 +99,12 @@
 <script src="../footer.js"></script>
 <script>
 function toggleNav() {
-  var links = document.getElementById('navLinks');
-  var toggle = document.getElementById('navToggle');
-  var open = links.classList.toggle('open');
+  const links = document.getElementById('navLinks');
+  const toggle = document.getElementById('navToggle');
+  const open = links.classList.toggle('open');
   toggle.textContent = open ? 'Close' : 'Menu';
 }
 </script>
+<script src="../tooltip.js"></script>
 </body>
 </html>
