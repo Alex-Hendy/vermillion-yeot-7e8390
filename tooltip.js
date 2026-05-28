@@ -66,6 +66,14 @@
       short: 'A mechanism in Scottish planning policy (2014–2023) that tilted decisions in favour of housing when a council could not demonstrate a five-year land supply.',
       anchor: 'presumption'
     },
+    'probate': {
+      short: 'The legal process of administering a deceased person\'s estate, including transferring ownership of property. Homes can sit empty for months or years while probate is resolved.',
+      anchor: 'probate'
+    },
+    'oecd': {
+      short: 'The Organisation for Economic Co-operation and Development — a group of 38 mostly high-income countries that publish comparative data on housing, economics, and public policy.',
+      anchor: 'oecd'
+    },
     'tenure': {
       short: 'The legal basis on which someone occupies a home — owner-occupied, private rented, social rented, or other. Different tenures have different rights and obligations.',
       anchor: 'tenure'
