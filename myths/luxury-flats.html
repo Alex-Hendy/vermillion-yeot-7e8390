@@ -15,7 +15,7 @@
   .back-link:hover { text-decoration: underline; }
   .myth-label { display: inline-block; font-size: 0.72rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; padding: 0.3rem 0.75rem; border-radius: 100px; margin-bottom: 1.25rem; border: 1.5px solid var(--orange-light); background: var(--orange); color: var(--cream); }
   .myth-claim { font-family: var(--font-heading); font-size: clamp(1.8rem, 4vw, 2.8rem); font-weight: 900; line-height: 1.15; letter-spacing: 0.02em; color: var(--cream); margin-bottom: 1.25rem; font-style: italic; }
-  .myth-verdict { font-size: 1.05rem; color: rgba(245,237,216,0.75); line-height: 1.75; max-width: 640px; }
+  .myth-verdict { font-size: 1.05rem; color: rgba(245,237,216,0.75); line-height: 1.75; }
   .myth-verdict strong { color: var(--amber); font-weight: 600; }
   .content { max-width: 760px; margin: 0 auto; padding: 4rem 2rem; }
   .content h2 { font-family: var(--font-heading); font-size: 1.6rem; font-weight: 900; letter-spacing: 0.02em; margin: 2.5rem 0 0.75rem; color: var(--black); }
@@ -46,7 +46,7 @@
   }
 </style>
 </head>
-<body>
+<body data-glossary-path="../about/glossary.html">
 <nav>
   <a href="../index.html" class="logo"><img src="../glasgow-yimby-logo-navbar.svg" alt="Glasgow YIMBY" height="72"></a>
   <ul class="nav-links" id="navLinks">
@@ -69,7 +69,7 @@
 <div class="content">
   <h2>How housing markets actually work</h2>
   <p>When a new, more expensive flat is built and someone moves in, that person vacates a home somewhere else in the city. The household that moves into their old home vacates another one. And so on down the chain, until the final move creates a vacancy in an older, cheaper property that a lower-income household can now access.</p>
-  <p>This process — called "filtering" in the academic literature — is how new supply at any price point benefits renters and buyers across the income spectrum. It is not a theoretical abstraction; it is how housing markets have always worked, and there is now substantial empirical evidence confirming it.</p>
+  <p>This process — called <span class="glossary-term" data-term="filtering">filtering</span> in the academic literature — is how new supply at any price point benefits renters and buyers across the income spectrum. It is not a theoretical abstraction — it is how housing markets have always worked, and new <span class="glossary-term" data-term="supply">supply</span> at any price point benefits renters across the income spectrum.</p>
   <div class="hermit-box">
     <h3>The hermit crab analogy</h3>
     <p>Imagine a line of hermit crabs, each too large for their shell. Place one large empty shell among them: the biggest crab moves in, the next crab moves into the shell it vacated, and so on, until even the smallest crab has a better shell. Building expensive new homes works the same way — the chain of moves benefits households at every income level.</p>
@@ -94,14 +94,14 @@
     <p>The reduction in nearby rents associated with new market-rate apartment buildings, according to research by Asquith and Mast covering 11 major US cities. New buildings slow local rent increases rather than accelerate them.</p>
   </div>
   <h2>Who does filtering help most?</h2>
-  <p>The evidence is clear: filtering delivers the largest rent reductions for renters in the oldest and cheapest homes. Research by Mast (2023) tracked the chain of moves triggered by new construction in US cities and found that vacancies cascaded down the income ladder, with the strongest effects on Class C stock — the oldest, most affordable privately rented homes. Renters at the bottom of the market benefited most.</p>
+  <p>The evidence is clear: filtering delivers the largest rent reductions for renters in the oldest and cheapest homes. Research by Mast (2023) tracked the chain of moves triggered by new construction in US cities and found that vacancies cascaded down the income ladder, with the strongest effects on Class C <span class="glossary-term" data-term="housing-stock">housing stock</span> — the oldest, most affordable privately rented homes. Renters at the bottom of the market benefited most.</p>
   <p>This is the opposite of the critics' claim. New homes built for higher-income households do not just help people who can already afford them. They free up cheaper homes for everyone below them on the income ladder, and the effect is largest at the cheapest end of the market.</p>
   <div class="nuance-box">
     <h3>Where we stand</h3>
     <p>Glasgow YIMBY believes the evidence. New homes of all types — including those built for higher-income households — benefit everyone, and the biggest beneficiaries are the poorest renters. That is why we endorse policies designed to make it easier to build more homes: planning reform, reduced regulatory barriers, and faster approvals. The evidence shows this is the most effective way to reduce rents and improve housing conditions for the people who need it most.</p>
   </div>
   <h2>The alternative is worse</h2>
-  <p>When cities block or restrict new private development, the high-income households who would have moved into new builds instead compete for existing housing — bidding up rents and prices for everyone below them on the income ladder. Restricting supply at the top is not a strategy that helps people at the bottom. It just compresses the competition into an already-undersupplied market.</p>
+  <p>When cities block or restrict new private development, the high-income households who would have moved into new builds instead compete for existing housing — adding to <span class="glossary-term" data-term="demand">demand</span> and bidding up rents and prices for everyone below them on the income ladder. Restricting supply at the top is not a strategy that helps people at the bottom. It just compresses the competition into an already-undersupplied market.</p>
   <p>The filtering evidence shows that even homes built for higher-income households contribute to affordability across the board.</p>
 </div>
 <div class="myth-nav">
@@ -113,11 +113,12 @@
 <script src="../footer.js"></script>
 <script>
 function toggleNav() {
-  var links = document.getElementById('navLinks');
-  var toggle = document.getElementById('navToggle');
-  var open = links.classList.toggle('open');
+  const links = document.getElementById('navLinks');
+  const toggle = document.getElementById('navToggle');
+  const open = links.classList.toggle('open');
   toggle.textContent = open ? 'Close' : 'Menu';
 }
 </script>
+<script src="../tooltip.js"></script>
 </body>
 </html>
