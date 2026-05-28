@@ -335,14 +335,14 @@ function highlightAnchor() {
       btn.classList.add('highlighted');
       btn.scrollIntoView({ behavior: 'smooth', block: 'center' });
     }
-  }, 100);
+  }, 300);
 }
 
 renderGlossary();
 
 // Handle anchor on page load with slight delay to ensure render is complete
 if (window.location.hash) {
-  setTimeout(highlightAnchor, 50);
+  setTimeout(highlightAnchor, 200);
 }
 
 window.addEventListener('hashchange', function() {
