@@ -15,7 +15,7 @@
   .back-link:hover { text-decoration: underline; }
   .myth-label { display: inline-block; font-size: 0.72rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; padding: 0.3rem 0.75rem; border-radius: 100px; margin-bottom: 1.25rem; border: 1.5px solid var(--orange-light); background: var(--orange); color: var(--cream); }
   .myth-claim { font-family: var(--font-heading); font-size: clamp(1.8rem, 4vw, 2.8rem); font-weight: 900; line-height: 1.15; letter-spacing: 0.02em; color: var(--cream); margin-bottom: 1.25rem; font-style: italic; }
-  .myth-verdict { font-size: 1.05rem; color: rgba(245,237,216,0.75); line-height: 1.75; max-width: 640px; }
+  .myth-verdict { font-size: 1.05rem; color: rgba(245,237,216,0.75); line-height: 1.75; }
   .myth-verdict strong { color: var(--amber); font-weight: 600; }
   .content { max-width: 760px; margin: 0 auto; padding: 4rem 2rem; }
   .content h2 { font-family: var(--font-heading); font-size: 1.6rem; font-weight: 900; letter-spacing: 0.02em; margin: 2.5rem 0 0.75rem; color: var(--black); }
@@ -40,7 +40,7 @@
   }
 </style>
 </head>
-<body>
+<body data-glossary-path="../about/glossary.html">
 <nav>
   <a href="../index.html" class="logo"><img src="../glasgow-yimby-logo-navbar.svg" alt="Glasgow YIMBY" height="72"></a>
   <ul class="nav-links" id="navLinks">
@@ -68,7 +68,7 @@
   <p>A Glasgow landlord could list a two-bed flat at £5,000 a month. They would get no takers, because tenants have other options at £1,200. So they lower the price. They keep lowering it until someone says yes. The price they end up at is not a number they chose — it is the number the market dictated. And the market is determined by one thing: how many homes are available relative to how many people need one.</p>
 
   <h2>Greed does not determine rents</h2>
-  <p>Did Austin's rents fall 9.5% in twelve months because its landlords had a change of heart and became less greedy? Did office rents collapse during Covid because commercial landlords became more generous? Obviously not. Rents fell because the balance of supply and demand shifted.</p>
+  <p>Did Austin's rents fall 9.5% in twelve months because its landlords had a change of heart and became less greedy? Did office rents collapse during Covid because commercial landlords became more generous? Obviously not. Rents fell because the balance of <span class="glossary-term" data-term="supply">supply</span> and <span class="glossary-term" data-term="demand">demand</span> shifted.</p>
   <p>Landlords are predictable profit-maximisers. They charge the highest rent the market will bear — no more, no less. In a well-supplied market, the highest rent the market will bear is low, because tenants have alternatives. In an undersupplied market, the highest rent the market will bear is high, because they do not.</p>
   <p>The moral character of landlords has no bearing on the level of rents. What determines rents is how many homes are available relative to the number of people who need them. Increase supply, and landlords must compete for tenants. Restrict supply, and tenants must compete for landlords. That is the entire mechanism.</p>
 
@@ -77,7 +77,7 @@
 
   <h2>So why are Glasgow rents so high?</h2>
   <p>If landlords cannot charge more than the market allows, and the market is determined by supply and demand, then the question becomes: why does the Glasgow market allow average rents of £1,275 for a two-bed flat?</p>
-  <p>The answer is that Glasgow has a severe shortage of homes. The city's vacancy rate is near zero, and properties are being let within around 25 days — very fast by most standards. Whenever a flat becomes available, there is a large unmet demand competing for it — lots of prospective tenants looking for a home. In that environment, the market is tilted heavily in favour of landlords — tenants have few alternatives, competition between them is fierce, and the market rate is pushed upward as a result.</p>
+  <p>The answer is that Glasgow has a severe shortage of homes. The city's <span class="glossary-term" data-term="vacancy-rate">vacancy rate</span> is near zero, and properties are being let within around 25 days — very fast by most standards. Whenever a flat becomes available, there is a large unmet demand competing for it — lots of prospective tenants looking for a home. In that environment, the market is tilted heavily in favour of landlords — tenants have few alternatives, competition between them is fierce, and the market rate is pushed upward as a result.</p>
   <p>There is no evidence that Glasgow's landlords are greedier or less generous than landlords in cities where rents are lower. What Glasgow has is far fewer homes relative to the number of people who need them. The difference is supply, not character.</p>
 
   <div class="evidence-card">
@@ -109,11 +109,12 @@
 <script src="../footer.js"></script>
 <script>
 function toggleNav() {
-  var links = document.getElementById('navLinks');
-  var toggle = document.getElementById('navToggle');
-  var open = links.classList.toggle('open');
+  const links = document.getElementById('navLinks');
+  const toggle = document.getElementById('navToggle');
+  const open = links.classList.toggle('open');
   toggle.textContent = open ? 'Close' : 'Menu';
 }
 </script>
+<script src="../tooltip.js"></script>
 </body>
 </html>
