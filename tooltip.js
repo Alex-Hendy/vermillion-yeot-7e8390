@@ -66,6 +66,10 @@
       short: 'A mechanism in Scottish planning policy (2014–2023) that tilted decisions in favour of housing when a council could not demonstrate a five-year land supply.',
       anchor: 'presumption'
     },
+    'build-out': {
+      short: 'The rate at which a developer constructs homes on a site that already has planning permission. Slow build-out is sometimes cited as evidence of landbanking, but is usually explained by planning conditions, infrastructure delays, and market absorption rates.',
+      anchor: null
+    },
     'probate': {
       short: 'The legal process of administering a deceased person\'s estate, including transferring ownership of property. Homes can sit empty for months or years while probate is resolved.',
       anchor: 'probate'
