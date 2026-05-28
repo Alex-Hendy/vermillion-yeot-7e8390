@@ -65,14 +65,14 @@
 </div>
 <div class="content">
   <h2>The UK has almost no empty homes</h2>
-  <p>Only 2.7% of English <span class="glossary-term" data-term="housing-stock">housing stock</span> is vacant — one of the lowest rates in the <span class="glossary-term" data-term="oecd">OECD</span>. France and Germany both have vacancy rates of around 8%. Japan's is 13.6%. The countries people point to as having better, more affordable housing tend to have more empty homes, not fewer.</p>
+  <p>Scotland has a total <span class="glossary-term" data-term="vacancy-rate">vacancy rate</span> of just 3.0% — one of the lowest in the <span class="glossary-term" data-term="oecd">OECD</span>. England's is similar at 2.7%. France and Germany both have vacancy rates of around 8%. Japan's is 13.6%. The countries people point to as having better, more affordable housing tend to have more empty homes, not fewer.</p>
   <p>This is not a coincidence. A well-functioning housing market needs a buffer of available homes. When not enough homes are built — when <span class="glossary-term" data-term="supply">supply</span> falls short of <span class="glossary-term" data-term="demand">demand</span> — renters and buyers have no choice but to accept whatever is offered, at whatever price, and vacancy rates fall. The UK's near-zero vacancy rate is a sign of a market under extreme pressure, not a pool of untapped supply waiting to be released.</p>
 
   <div class="chart-container">
     <div class="chart-title">Vacant homes as a share of total housing stock</div>
     <div class="chart-sub">Selected OECD countries, 2022 or latest available year. Source: OECD Affordable Housing Database.</div>
     <canvas id="barChart" width="700" height="380" style="width:100%;height:auto;"></canvas>
-    <p style="font-size:0.72rem;color:var(--muted);margin-top:0.5rem;margin-bottom:0;">Vacancy rates exclude seasonal and holiday homes where data allows disaggregation. England data from DLUHC; other countries from national statistical institutes via OECD.</p>
+    <p style="font-size:0.72rem;color:var(--muted);margin-top:0.5rem;margin-bottom:0;">Vacancy rates exclude seasonal and holiday homes where data allows disaggregation. Scotland data from Scottish Government (March 2025, total vacancy rate); other countries from national statistical institutes via OECD.</p>
   </div>
 
   <div class="chart-container">
@@ -96,7 +96,7 @@
 
   <div class="evidence-card">
     <div class="source">IEA / OECD data</div>
-    <p><strong>England has the lowest vacancy rate in the developed world</strong>, at 2.7% of housing stock. Countries with higher vacancy rates — France (8%), Germany (8%), Japan (13.6%) — consistently have more affordable housing than the UK. The data points in one direction: more supply, including more vacant homes, correlates with lower prices.</p>
+    <p><strong>Scotland and England have among the lowest vacancy rates in the developed world</strong>, at 3.0% and 2.7% respectively. Countries with higher vacancy rates — France (8%), Germany (8%), Japan (13.6%) — consistently have more affordable housing. The data points in one direction: more supply, including more vacant homes, correlates with lower prices.</p>
   </div>
 
   <div class="evidence-card">
@@ -139,8 +139,8 @@ function toggleNav() {
     ['Australia', 6.0],
     ['New Zealand', 5.0],
     ['Ireland', 4.5],
-    ['Netherlands', 2.0],
-    ['England', 2.7]
+    ['Scotland', 3.0],
+    ['Netherlands', 2.0]
   ];
 
   const canvas = document.getElementById('barChart');
@@ -176,14 +176,14 @@ function toggleNav() {
       var bw = barW - gap;
       var y = toY(c[1]);
       var bh = toY(0) - y;
-      var isEngland = c[0] === 'England';
+      var isScotland = c[0] === 'Scotland';
       var isHover = i === hoverIdx;
 
-      ctx.fillStyle = isEngland ? '#D45A1A' : isHover ? '#E8A020' : 'rgba(26,18,8,0.25)';
+      ctx.fillStyle = isScotland ? '#D45A1A' : isHover ? '#E8A020' : 'rgba(26,18,8,0.25)';
       ctx.fillRect(x, y, bw, bh);
 
       // Value label above bar
-      if (isHover || isEngland) {
+      if (isHover || isScotland) {
         ctx.fillStyle = '#1A1208';
         ctx.font = 'bold 11px Outfit, sans-serif';
         ctx.textAlign = 'center';
@@ -194,8 +194,8 @@ function toggleNav() {
       ctx.save();
       ctx.translate(x + bw / 2, toY(0) + 12);
       ctx.rotate(-Math.PI / 4);
-      ctx.fillStyle = isEngland ? '#D45A1A' : isHover ? '#1A1208' : 'rgba(26,18,8,0.5)';
-      ctx.font = (isEngland || isHover ? 'bold ' : '') + '11px Outfit, sans-serif';
+      ctx.fillStyle = isScotland ? '#D45A1A' : isHover ? '#1A1208' : 'rgba(26,18,8,0.5)';
+      ctx.font = (isScotland || isHover ? 'bold ' : '') + '11px Outfit, sans-serif';
       ctx.textAlign = 'right';
       ctx.fillText(c[0], 0, 0);
       ctx.restore();
