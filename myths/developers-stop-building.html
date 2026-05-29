@@ -50,17 +50,10 @@
 </style>
 </head>
 <body data-glossary-path="../about/glossary.html">
-<nav>
-  <a href="../index.html" class="logo"><img src="../glasgow-yimby-logo-navbar.svg" alt="YIMBY Glasgow" height="72"></a>
-  <ul class="nav-links" id="navLinks">
-    <li><a href="../ideas/index.html">The ideas</a></li>
-    <li><a href="index.html">Myths</a></li>
-    <li><a href="../evidence.html">Evidence</a></li>
-    <li><a href="../news.html">News</a></li>
-    <li><a href="../get-involved.html" class="nav-cta">Get involved</a></li>
-  </ul>
-  <button class="nav-toggle" id="navToggle" onclick="toggleNav()">Menu</button>
-</nav>
+
+<div id="site-nav"></div>
+<script src="../nav.js"></script>
+
 <div class="myth-hero">
   <div class="myth-hero-inner">
     <a href="index.html" class="back-link">← Back to myths</a>
@@ -118,13 +111,6 @@
 </div>
 <div id="site-footer"></div>
 <script src="../footer.js"></script>
-<script>
-function toggleNav() {
-  const links = document.getElementById('navLinks');
-  const open = links.classList.toggle('open');
-  document.getElementById('navToggle').textContent = open ? 'Close' : 'Menu';
-}
-</script>
 <script src="../tooltip.js"></script>
 </body>
 </html>

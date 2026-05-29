@@ -46,17 +46,10 @@
 </style>
 </head>
 <body data-glossary-path="../about/glossary.html">
-<nav>
-  <a href="../index.html" class="logo"><img src="../glasgow-yimby-logo-navbar.svg" alt="YIMBY Glasgow" height="72"></a>
-  <ul class="nav-links" id="navLinks">
-    <li><a href="../ideas/index.html">The ideas</a></li>
-    <li><a href="../myths/index.html">Myths</a></li>
-    <li><a href="../evidence.html">Evidence</a></li>
-    <li><a href="../news.html">News</a></li>
-    <li><a href="../get-involved.html" class="nav-cta">Get involved</a></li>
-  </ul>
-  <button class="nav-toggle" id="navToggle" onclick="toggleNav()">Menu</button>
-</nav>
+
+<div id="site-nav"></div>
+<script src="../nav.js"></script>
+
 <div class="myth-hero">
   <div class="myth-hero-inner">
     <a href="index.html" class="back-link">← Back to all myths</a>
@@ -85,11 +78,11 @@
   <h2>The waiting list is a symptom, not the diagnosis</h2>
   <p>It is tempting to look at Glasgow's social housing <span class="glossary-term" data-term="waiting-list">waiting list</span> — over 14,000 households — and conclude that the answer is simply more social housing. But that misreads the evidence.</p>
   <p>The reason so many people are on waiting lists is that market-rate housing has become unaffordable. Rents in Greater Glasgow have risen 75% since 2010. House prices have risen 70% since 2015. People who a generation ago would have rented or bought privately can no longer afford to, so they turn to social housing as the only option left. The waiting list is not evidence of insufficient social housing. It is evidence of insufficient housing, full stop.</p>
-  <p>Build enough homes to bring market-rate rents and prices back to affordable levels, and the pressure on social housing eases dramatically — not because social housing becomes less important, but because fewer people are forced to rely on it. <a href="../ideas/the-crisis.html" class="idea-link">Read more about Glasgow’s housing crisis →</a></p>
+  <p>Build enough homes to bring market-rate rents and prices back to affordable levels, and the pressure on social housing eases dramatically — not because social housing becomes less important, but because fewer people are forced to rely on it. <a href="../ideas/the-crisis.html" class="idea-link">Read more about Glasgow's housing crisis →</a></p>
 
   <h2>The scale of the gap is beyond what public money can fill</h2>
   <p>Scotland is estimated to be short by around 250,000 homes. If the government were to close that gap entirely through social housing, at an average cost of £195,000 per home — the <a href="https://www.sfha.co.uk/our-work/report-warns-multi-billion-pound-funding-gap-tackle-housing-emergency-amid-surging" target="_blank" style="color:var(--orange);">Scottish Federation of Housing Associations</a>' 2025 figure, with some specialist or rural homes costing up to £300,000 — the bill would be approximately <strong>£49 billion</strong>.</p>
-  <p>The Scottish Government’s annual budget for the <span class="glossary-term" data-term="ahsp">Affordable Housing Supply Programme</span> is around £600 million — and falling. In 2024/25, the budget was cut by £163 million, a 22% real-terms reduction. At current funding levels, it would take around 80 years to close the gap through public spending alone. And that assumes no further growth in demand, no construction cost inflation, and no further cuts — none of which is realistic.</p>
+  <p>The Scottish Government's annual budget for the <span class="glossary-term" data-term="ahsp">Affordable Housing Supply Programme</span> is around £600 million — and falling. In 2024/25, the budget was cut by £163 million, a 22% real-terms reduction. At current funding levels, it would take around 80 years to close the gap through public spending alone. And that assumes no further growth in demand, no construction cost inflation, and no further cuts — none of which is realistic.</p>
   <p>Centre for Cities research makes the point even more starkly at UK level: Britain has a backlog of 4.3 million missing homes compared to the European average. The idea that public funding alone can close a gap of this size is not a serious policy position. It is a way of sounding radical while guaranteeing that nothing gets built.</p>
 
   <div class="callout">
@@ -137,14 +130,6 @@
 </div>
 <div id="site-footer"></div>
 <script src="../footer.js"></script>
-<script>
-function toggleNav() {
-  const links = document.getElementById('navLinks');
-  const toggle = document.getElementById('navToggle');
-  const open = links.classList.toggle('open');
-  toggle.textContent = open ? 'Close' : 'Menu';
-}
-</script>
 <script src="../tooltip.js"></script>
 </body>
 </html>
