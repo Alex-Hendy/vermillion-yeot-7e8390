@@ -89,17 +89,9 @@
 </style>
 </head>
 <body>
-<nav>
-  <a href="index.html" class="logo"><img src="glasgow-yimby-logo-navbar.svg" alt="YIMBY Glasgow" height="72"></a>
-  <ul class="nav-links" id="navLinks">
-    <li><a href="ideas/index.html">The ideas</a></li>
-    <li><a href="myths/index.html">Myths</a></li>
-    <li><a href="evidence.html">Evidence</a></li>
-    <li><a href="news.html">News</a></li>
-    <li><a href="get-involved.html" class="nav-cta">Get involved</a></li>
-  </ul>
-  <button class="nav-toggle" id="navToggle" onclick="toggleNav()">Menu</button>
-</nav>
+
+<div id="site-nav"></div>
+<script src="nav.js"></script>
 
 <div class="ev-hero">
   <div class="ev-hero-inner">
@@ -301,8 +293,6 @@ function toggleCard(id){
   }
 }
 
-function toggleNav(){const l=document.getElementById('navLinks'),t=document.getElementById('navToggle');const o=l.classList.toggle('open');t.textContent=o?'Close':'Menu';}
-
 const drawnCharts=new Set();
 function drawChart(cardId){
   if(drawnCharts.has(cardId))return;
@@ -394,27 +384,22 @@ function drawCroydon(){
   function pX(i){return PAD.left+i/(purleyPrices.length-1)*chartW;}
   function pY(v){return PAD.top+topH+gap+botH-((v-65)/40)*botH;}
   ctx.clearRect(0,0,W,H);
-  // TOP PANEL title
   ctx.fillStyle=DARK;ctx.font='bold 11px Outfit,sans-serif';ctx.textAlign='left';
   ctx.fillText('New small-site completions (annual)',PAD.left,PAD.top-6);
-  // Gridlines top
   [0,200,400,600].forEach(function(v){
     var y=sY(v);ctx.strokeStyle='rgba(26,18,8,0.07)';ctx.lineWidth=1;
     ctx.beginPath();ctx.moveTo(PAD.left,y);ctx.lineTo(W-PAD.right+20,y);ctx.stroke();
     ctx.fillStyle=MUTED;ctx.textAlign='right';ctx.font='10px Outfit,sans-serif';
     ctx.fillText(v,PAD.left-5,y+3);
   });
-  // Other boroughs
   otherBoroughs.forEach(function(s){
     ctx.beginPath();ctx.strokeStyle='rgba(91,141,184,0.22)';ctx.lineWidth=1.5;
     s.forEach(function(v,i){i===0?ctx.moveTo(sX(i),sY(v)):ctx.lineTo(sX(i),sY(v));});
     ctx.stroke();
   });
-  // Croydon
   ctx.beginPath();ctx.strokeStyle=AMBER;ctx.lineWidth=2.5;
   croydonSupply.forEach(function(v,i){i===0?ctx.moveTo(sX(i),sY(v)):ctx.lineTo(sX(i),sY(v));});
   ctx.stroke();
-  // Guide markers top panel
   var gX=sX(14),rX=sX(17);
   ctx.setLineDash([4,3]);
   ctx.strokeStyle='rgba(232,160,32,0.6)';ctx.lineWidth=1.5;
@@ -425,29 +410,24 @@ function drawCroydon(){
   ctx.font='bold 9px Outfit,sans-serif';ctx.textAlign='center';
   ctx.fillStyle='rgba(232,160,32,0.9)';ctx.fillText('Guide adopted',gX,PAD.top-4);
   ctx.fillStyle='rgba(212,90,26,0.9)';ctx.fillText('Guide revoked',rX,PAD.top-4);
-  // Labels top
   ctx.fillStyle=AMBER;ctx.font='bold 10px Outfit,sans-serif';ctx.textAlign='left';
   ctx.fillText('Croydon',W-PAD.right+4,sY(600));
   ctx.fillStyle=BLUE;ctx.font='10px Outfit,sans-serif';
   ctx.fillText('Other London',W-PAD.right+4,sY(135));ctx.fillText('boroughs',W-PAD.right+4,sY(135)+13);
-  // X labels top
   [2005,2010,2015,2020].forEach(function(yr){
     var i=supplyYears.indexOf(yr);
     if(i>=0){ctx.fillStyle=MUTED;ctx.textAlign='center';ctx.font='10px Outfit,sans-serif';
     ctx.fillText(yr,sX(i),PAD.top+topH+14);}
   });
-  // BOTTOM PANEL title
   var botTop=PAD.top+topH+gap;
   ctx.fillStyle=DARK;ctx.font='bold 11px Outfit,sans-serif';ctx.textAlign='left';
   ctx.fillText('Relative change in real house prices (March 2020 = 100)',PAD.left,botTop-4);
-  // Gridlines bottom
   [70,80,90,100].forEach(function(v){
     var y=pY(v);ctx.strokeStyle='rgba(26,18,8,0.07)';ctx.lineWidth=1;
     ctx.beginPath();ctx.moveTo(PAD.left,y);ctx.lineTo(W-PAD.right+20,y);ctx.stroke();
     ctx.fillStyle=MUTED;ctx.textAlign='right';ctx.font='10px Outfit,sans-serif';
     ctx.fillText(v,PAD.left-5,y+3);
   });
-  // Guide markers bottom
   var gXb=pX(Math.round((2019.25-2013)*4)),rXb=pX(Math.round((2022.5-2013)*4));
   ctx.setLineDash([4,3]);
   ctx.strokeStyle='rgba(232,160,32,0.5)';ctx.lineWidth=1.5;
@@ -455,19 +435,16 @@ function drawCroydon(){
   ctx.strokeStyle='rgba(212,90,26,0.6)';
   ctx.beginPath();ctx.moveTo(rXb,botTop);ctx.lineTo(rXb,botTop+botH);ctx.stroke();
   ctx.setLineDash([]);
-  // Lines
   ctx.beginPath();ctx.strokeStyle=BLUE;ctx.lineWidth=2.5;
   londonPrices.forEach(function(v,i){i===0?ctx.moveTo(pX(i),pY(v)):ctx.lineTo(pX(i),pY(v));});
   ctx.stroke();
   ctx.beginPath();ctx.strokeStyle=ORANGE;ctx.lineWidth=2.5;
   purleyPrices.forEach(function(v,i){i===0?ctx.moveTo(pX(i),pY(v)):ctx.lineTo(pX(i),pY(v));});
   ctx.stroke();
-  // Labels bottom
   ctx.fillStyle=BLUE;ctx.font='bold 10px Outfit,sans-serif';ctx.textAlign='left';
   ctx.fillText('Rest of London',W-PAD.right+4,pY(96));
   ctx.fillStyle=ORANGE;
   ctx.fillText('Purley,',W-PAD.right+4,pY(80));ctx.fillText('Croydon',W-PAD.right+4,pY(80)+13);
-  // X labels bottom
   [2014,2016,2018,2020,2022].forEach(function(yr){
     var i=Math.round((yr-2013)*4);
     if(i<purleyPrices.length){ctx.fillStyle=MUTED;ctx.textAlign='center';ctx.font='10px Outfit,sans-serif';
