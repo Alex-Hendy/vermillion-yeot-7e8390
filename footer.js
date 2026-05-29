@@ -2,7 +2,7 @@ document.getElementById('site-footer').innerHTML = `
 <footer>
   <div class="footer-inner">
     <div class="footer-main">
-      <strong>Glasgow YIMBY</strong> — a grassroots campaign for more homes in Glasgow
+      <strong>YIMBY Glasgow</strong> — a grassroots campaign for more homes in Glasgow
     </div>
     <div class="footer-links">
       <a href="/get-involved.html">Get involved</a>
