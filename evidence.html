@@ -252,8 +252,8 @@
           <p>The effect was immediate: <a href="https://www.centreforcities.org/publication/croydon-calling-lessons-on-rules-based-planning/" target="_blank">housebuilding on small sites in Croydon reached its highest level since records began</a> — the highest of any London borough. <strong>Net new homes quadrupled.</strong></p>
           <p>In May 2022, Croydon elected its first Executive Mayor, Jason Perry, on a manifesto pledge to revoke what he called the "dreaded" guide, claiming it had <a href="https://news.croydon.gov.uk/croydon-moves-to-protect-local-character-by-revoking-planning-design-guidance/" target="_blank">"destroyed" Croydon's character</a>. The guide was <a href="https://croydon.moderngov.co.uk/mgAi.aspx?ID=15904" target="_blank">revoked by council vote</a> in July 2022. <strong>Delivery immediately returned to pre-2019 levels.</strong></p>
           <p>The <a href="https://www.centreforcities.org/publication/croydon-calling-lessons-on-rules-based-planning/" target="_blank">Centre for Cities, in a February 2026 briefing</a>, described the Croydon guide as a successful experiment in rules-based planning — and its revocation as an object lesson in how quickly political decisions undo housing progress. The arguments used against Croydon's guide — character, density, aesthetics — are identical to the arguments used against new development in Glasgow today.</p>
-          <div class="case-chart"><svg viewBox="0 0 560 170" id="croydonChart"></svg></div>
-          <div class="case-chart-caption">Illustrative representation of small-site housebuilding in Croydon. Guide adopted April 2019, revoked July 2022. Source: Centre for Cities (2026).</div>
+          <div class="case-chart"><canvas id="croydonChart" width="560" height="440" style="width:100%;height:auto;border-radius:6px;"></canvas></div>
+          <div class="case-chart-caption">Top: annual completions of 1–9 unit developments, Croydon vs other London boroughs. Bottom: relative change in real house prices, March 2020 = 100. Guide adopted April 2019, revoked July 2022. Sources: GLA Planning London Datahub; HM Land Registry Price Paid Dataset. Based on analysis by John Burn-Murdoch / FT.</div>
           <div class="case-src">Centre for Cities (February 2026). Croydon Calling: Lessons on Rules-Based Planning. <a href="https://www.centreforcities.org/publication/croydon-calling-lessons-on-rules-based-planning/" target="_blank">Read the briefing →</a></div>
         </div>
       </div>
@@ -369,27 +369,110 @@ function drawAustin(){
 }
 
 function drawCroydon(){
-  const svg=document.getElementById('croydonChart');if(!svg)return;
-  const W=560,H=170,pl=10,pr=10,pt=24,pb=34;
-  const iW=W-pl-pr,iH=H-pt-pb;
-  const data=[20,22,55,85,95,88,22];
-  const xl=['2017','2018','2019','2020','2021','2022','2023'];
-  const n=data.length;
-  const xP=i=>pl+i/(n-1)*iW;
-  const yP=v=>pt+(1-v/110)*iH;
-  const ns=NS;
-  const defs=document.createElementNS(ns,'defs');
-  defs.innerHTML=`<linearGradient id="cg2" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#E8A020" stop-opacity="0.3"/><stop offset="100%" stop-color="#E8A020" stop-opacity="0.02"/></linearGradient>`;
-  svg.appendChild(defs);
-  [[2,'rgba(232,160,32,0.4)','Guide adopted'],[5,'rgba(212,90,26,0.5)','Guide revoked']].forEach(([xi,col,lbl])=>{
-    sel('line',{x1:xP(xi),x2:xP(xi),y1:pt,y2:pt+iH,stroke:col,'stroke-width':'1.5','stroke-dasharray':'4,3'},svg);
-    txt(svg,xP(xi),pt-6,lbl,{'font-size':'8','fill':col.replace('0.4','0.8').replace('0.5','0.9')});
+  var canvas=document.getElementById('croydonChart');
+  if(!canvas||!(canvas.getContext))return;
+  var ctx=canvas.getContext('2d');
+  var W=560,H=440;
+  var supplyYears=[2005,2006,2007,2008,2009,2010,2011,2012,2013,2014,2015,2016,2017,2018,2019,2020,2021,2022];
+  var croydonSupply=[150,170,180,130,110,130,160,145,155,165,175,190,200,215,220,310,650,610];
+  var otherBoroughs=[
+    [120,125,130,100,90,105,115,110,120,125,130,135,140,145,150,145,155,150],
+    [100,110,105,85,80,95,100,98,105,108,115,118,122,125,128,120,130,125],
+    [80,85,90,70,65,75,82,80,85,88,92,95,98,100,102,98,105,100],
+    [140,145,150,115,105,120,130,125,135,140,145,150,155,160,162,155,165,160],
+    [90,95,98,75,70,82,88,85,90,94,98,102,105,108,110,105,112,108],
+    [110,115,120,92,85,98,106,103,110,113,118,122,126,129,132,127,135,130]
+  ];
+  var purleyPrices=[69,70,71,72,73,74,76,78,79,81,83,85,87,88,89,90,91,92,93,93,93,94,94,95,95,95,96,97,97,98,99,100,100,99,98,97,96,94,92,90,87,84,81,79];
+  var londonPrices=[76,77,78,79,80,81,82,83,85,86,87,88,89,90,91,91,92,92,93,93,93,94,94,95,95,95,96,96,97,97,98,99,99,100,100,100,100,100,99,99,98,97,97,96];
+  var AMBER='#E8A020',ORANGE='#D45A1A',BLUE='#5B8DB8',DARK='#1A1208',MUTED='rgba(26,18,8,0.4)';
+  var PAD={top:22,right:105,bottom:28,left:44};
+  var topH=Math.floor(H*0.44),botH=Math.floor(H*0.44),gap=H-topH-botH-PAD.top-PAD.bottom;
+  var chartW=W-PAD.left-PAD.right;
+  function sX(i){return PAD.left+i/(supplyYears.length-1)*chartW;}
+  function sY(v){return PAD.top+topH-(v/700)*topH;}
+  function pX(i){return PAD.left+i/(purleyPrices.length-1)*chartW;}
+  function pY(v){return PAD.top+topH+gap+botH-((v-65)/40)*botH;}
+  ctx.clearRect(0,0,W,H);
+  // TOP PANEL title
+  ctx.fillStyle=DARK;ctx.font='bold 11px Outfit,sans-serif';ctx.textAlign='left';
+  ctx.fillText('New small-site completions (annual)',PAD.left,PAD.top-6);
+  // Gridlines top
+  [0,200,400,600].forEach(function(v){
+    var y=sY(v);ctx.strokeStyle='rgba(26,18,8,0.07)';ctx.lineWidth=1;
+    ctx.beginPath();ctx.moveTo(PAD.left,y);ctx.lineTo(W-PAD.right+20,y);ctx.stroke();
+    ctx.fillStyle=MUTED;ctx.textAlign='right';ctx.font='10px Outfit,sans-serif';
+    ctx.fillText(v,PAD.left-5,y+3);
   });
-  const pts=data.map((v,i)=>xP(i)+','+yP(v)).join(' ');
-  sel('polygon',{points:`${xP(0)},${yP(0)} ${pts} ${xP(n-1)},${yP(0)}`,fill:'url(#cg2)'},svg);
-  sel('polyline',{points:pts,fill:'none',stroke:'#E8A020','stroke-width':'2.5','stroke-linejoin':'round','stroke-linecap':'round'},svg);
-  sel('line',{x1:pl,x2:pl+iW,y1:pt+iH,y2:pt+iH,stroke:'rgba(255,255,255,0.1)','stroke-width':'1'},svg);
-  xl.forEach((l,i)=>txt(svg,xP(i),pt+iH+14,l,{'font-size':'9','fill':'rgba(245,237,216,0.4)'}));
+  // Other boroughs
+  otherBoroughs.forEach(function(s){
+    ctx.beginPath();ctx.strokeStyle='rgba(91,141,184,0.22)';ctx.lineWidth=1.5;
+    s.forEach(function(v,i){i===0?ctx.moveTo(sX(i),sY(v)):ctx.lineTo(sX(i),sY(v));});
+    ctx.stroke();
+  });
+  // Croydon
+  ctx.beginPath();ctx.strokeStyle=AMBER;ctx.lineWidth=2.5;
+  croydonSupply.forEach(function(v,i){i===0?ctx.moveTo(sX(i),sY(v)):ctx.lineTo(sX(i),sY(v));});
+  ctx.stroke();
+  // Guide markers top panel
+  var gX=sX(14),rX=sX(17);
+  ctx.setLineDash([4,3]);
+  ctx.strokeStyle='rgba(232,160,32,0.6)';ctx.lineWidth=1.5;
+  ctx.beginPath();ctx.moveTo(gX,PAD.top);ctx.lineTo(gX,PAD.top+topH);ctx.stroke();
+  ctx.strokeStyle='rgba(212,90,26,0.7)';
+  ctx.beginPath();ctx.moveTo(rX,PAD.top);ctx.lineTo(rX,PAD.top+topH);ctx.stroke();
+  ctx.setLineDash([]);
+  ctx.font='bold 9px Outfit,sans-serif';ctx.textAlign='center';
+  ctx.fillStyle='rgba(232,160,32,0.9)';ctx.fillText('Guide adopted',gX,PAD.top-4);
+  ctx.fillStyle='rgba(212,90,26,0.9)';ctx.fillText('Guide revoked',rX,PAD.top-4);
+  // Labels top
+  ctx.fillStyle=AMBER;ctx.font='bold 10px Outfit,sans-serif';ctx.textAlign='left';
+  ctx.fillText('Croydon',W-PAD.right+4,sY(600));
+  ctx.fillStyle=BLUE;ctx.font='10px Outfit,sans-serif';
+  ctx.fillText('Other London',W-PAD.right+4,sY(135));ctx.fillText('boroughs',W-PAD.right+4,sY(135)+13);
+  // X labels top
+  [2005,2010,2015,2020].forEach(function(yr){
+    var i=supplyYears.indexOf(yr);
+    if(i>=0){ctx.fillStyle=MUTED;ctx.textAlign='center';ctx.font='10px Outfit,sans-serif';
+    ctx.fillText(yr,sX(i),PAD.top+topH+14);}
+  });
+  // BOTTOM PANEL title
+  var botTop=PAD.top+topH+gap;
+  ctx.fillStyle=DARK;ctx.font='bold 11px Outfit,sans-serif';ctx.textAlign='left';
+  ctx.fillText('Relative change in real house prices (March 2020 = 100)',PAD.left,botTop-4);
+  // Gridlines bottom
+  [70,80,90,100].forEach(function(v){
+    var y=pY(v);ctx.strokeStyle='rgba(26,18,8,0.07)';ctx.lineWidth=1;
+    ctx.beginPath();ctx.moveTo(PAD.left,y);ctx.lineTo(W-PAD.right+20,y);ctx.stroke();
+    ctx.fillStyle=MUTED;ctx.textAlign='right';ctx.font='10px Outfit,sans-serif';
+    ctx.fillText(v,PAD.left-5,y+3);
+  });
+  // Guide markers bottom
+  var gXb=pX(Math.round((2019.25-2013)*4)),rXb=pX(Math.round((2022.5-2013)*4));
+  ctx.setLineDash([4,3]);
+  ctx.strokeStyle='rgba(232,160,32,0.5)';ctx.lineWidth=1.5;
+  ctx.beginPath();ctx.moveTo(gXb,botTop);ctx.lineTo(gXb,botTop+botH);ctx.stroke();
+  ctx.strokeStyle='rgba(212,90,26,0.6)';
+  ctx.beginPath();ctx.moveTo(rXb,botTop);ctx.lineTo(rXb,botTop+botH);ctx.stroke();
+  ctx.setLineDash([]);
+  // Lines
+  ctx.beginPath();ctx.strokeStyle=BLUE;ctx.lineWidth=2.5;
+  londonPrices.forEach(function(v,i){i===0?ctx.moveTo(pX(i),pY(v)):ctx.lineTo(pX(i),pY(v));});
+  ctx.stroke();
+  ctx.beginPath();ctx.strokeStyle=ORANGE;ctx.lineWidth=2.5;
+  purleyPrices.forEach(function(v,i){i===0?ctx.moveTo(pX(i),pY(v)):ctx.lineTo(pX(i),pY(v));});
+  ctx.stroke();
+  // Labels bottom
+  ctx.fillStyle=BLUE;ctx.font='bold 10px Outfit,sans-serif';ctx.textAlign='left';
+  ctx.fillText('Rest of London',W-PAD.right+4,pY(96));
+  ctx.fillStyle=ORANGE;
+  ctx.fillText('Purley,',W-PAD.right+4,pY(80));ctx.fillText('Croydon',W-PAD.right+4,pY(80)+13);
+  // X labels bottom
+  [2014,2016,2018,2020,2022].forEach(function(yr){
+    var i=Math.round((yr-2013)*4);
+    if(i<purleyPrices.length){ctx.fillStyle=MUTED;ctx.textAlign='center';ctx.font='10px Outfit,sans-serif';
+    ctx.fillText(yr,pX(i),botTop+botH+14);}
+  });
 }
 </script>
 </body>
