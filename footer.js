@@ -6,7 +6,7 @@ document.getElementById('site-footer').innerHTML = `
     </div>
     <div class="footer-links">
       <a href="/get-involved.html">Get involved</a>
-      <a href="mailto:hello@glasgowyimby.com">hello@glasgowyimby.com</a>
+      <a href="mailto:hello@yimbyglasgow.com">hello@yimbyglasgow.com</a>
     </div>
     <div class="footer-links footer-links-secondary">
       <a href="/about/who-we-are.html">Who we are</a>
