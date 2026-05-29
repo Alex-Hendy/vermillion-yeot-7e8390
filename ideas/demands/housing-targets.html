@@ -44,17 +44,10 @@
 </style>
 </head>
 <body>
-<nav>
-  <a href="../../index.html" class="logo"><img src="../../glasgow-yimby-logo-navbar.svg" alt="YIMBY Glasgow" height="72"></a>
-  <ul class="nav-links" id="navLinks">
-    <li><a href="../index.html">The ideas</a></li>
-    <li><a href="../../myths/index.html">Myths</a></li>
-    <li><a href="../../evidence.html">Evidence</a></li>
-    <li><a href="../../news.html">News</a></li>
-    <li><a href="../../get-involved.html" class="nav-cta">Get involved</a></li>
-  </ul>
-  <button class="nav-toggle" id="navToggle" onclick="toggleNav()">Menu</button>
-</nav>
+
+<div id="site-nav"></div>
+<script src="../../nav.js"></script>
+
 <div class="demand-hero">
   <div class="demand-hero-inner">
     <a href="../what-needs-to-change.html" class="back-link">← Back to all demands</a>
@@ -119,27 +112,22 @@
 
   <div class="evidence-card">
     <div class="source">Professor Glen Bramley, cited in Red Brick Blog, October 2022</div>
-    <p>"If household growth has been artificially suppressed by the undersupply of new housing, then <strong>basing future need calculations on those lower growth figures will by necessity under-estimate that need.</strong>" The MATHLR methodology uses 2018-based household projections that reflect the suppressed demand of a housing crisis. <a href="https://redbrickblog.co.uk/2022/10/housing-targets-will-be-critical-for-scotland/" target="_blank" style="color:var(--orange);">Read the article →</a></p>
+    <p>"If household growth has been artificially suppressed by the undersupply of new housing, then <strong>basing future need calculations on those lower growth figures will by necessity under-estimate that need.</strong>" <a href="https://redbrickblog.co.uk/2022/10/housing-targets-will-be-critical-for-scotland/" target="_blank" style="color:var(--orange);">Read the article →</a></p>
   </div>
 
   <div class="evidence-card">
     <div class="source">ONS Families and Households, 2024</div>
-    <p><strong>28% of people aged 20–34 in the UK live with their parents</strong>, up from 25.6% in 2014. A third (33.7%) of men aged 20–34 live at home. The age at which fewer than half of young men have left the parental home has risen from 24 to 25 in a decade. The ONS explicitly links this to "increased costs in renting or buying a home." <a href="https://www.ons.gov.uk/peoplepopulationandcommunity/birthsdeathsandmarriages/families/bulletins/familiesandhouseholds/2024" target="_blank" style="color:var(--orange);">Read the data →</a></p>
+    <p><strong>28% of people aged 20–34 in the UK live with their parents</strong>, up from 25.6% in 2014. A third (33.7%) of men aged 20–34 live at home. The ONS explicitly links this to "increased costs in renting or buying a home." <a href="https://www.ons.gov.uk/peoplepopulationandcommunity/birthsdeathsandmarriages/families/bulletins/familiesandhouseholds/2024" target="_blank" style="color:var(--orange);">Read the data →</a></p>
   </div>
 
   <div class="evidence-card">
     <div class="source">Savills, Summer 2025 — Scotland Residential Development Market</div>
-    <p>Large housebuilders accounted for <strong>70% of registered new build transactions</strong> in Scotland in the year to March 2025, compared to 42% ten years ago. The planning system's concentration of allocations on large strategic sites has shut out SME builders and reduced competition. <a href="https://www.savills.co.uk/research_articles/229130/378184-0" target="_blank" style="color:var(--orange);">Read the report →</a></p>
+    <p>Large housebuilders accounted for <strong>70% of registered new build transactions</strong> in Scotland in the year to March 2025, compared to 42% ten years ago. <a href="https://www.savills.co.uk/research_articles/229130/378184-0" target="_blank" style="color:var(--orange);">Read the report →</a></p>
   </div>
 
   <div class="evidence-card">
     <div class="source">Lichfields, February 2026 — "Will Planning Policy in Scotland deliver the homes we need?"</div>
-    <p><strong>55% of allocated housing units in Scotland are on sites of 250+ homes.</strong> Less than a quarter are on sites under 100 units. The concentration of allocations on large sites reduces competition, slows delivery, and shuts out smaller builders who cannot absorb the risk and upfront costs of major developments. <a href="https://lichfields.uk/blog/2026/february/05/will-planning-policy-in-scotland-deliver-the-homes-we-need" target="_blank" style="color:var(--orange);">Read the analysis →</a></p>
-  </div>
-
-  <div class="evidence-card">
-    <div class="source">Scottish Government NPF4 consultation analysis, November 2022</div>
-    <p>During consultation on the MATHLR, <strong>most respondents viewed the initial default estimates as low</strong>, requiring an uplift to reflect local circumstances and aspirations. Homes for Scotland proposed higher figures. The Scottish Property Federation called for upward adjustments. Colliers suggested 250,000 homes over ten years Scotland-wide. The government largely retained its lower figures. <a href="https://www.gov.scot/publications/draft-fourth-national-planning-framework-analysis-responses-consultation-exercise-analysis-report/pages/13/" target="_blank" style="color:var(--orange);">Read the consultation analysis →</a></p>
+    <p><strong>55% of allocated housing units in Scotland are on sites of 250+ homes.</strong> Less than a quarter are on sites under 100 units. <a href="https://lichfields.uk/blog/2026/february/05/will-planning-policy-in-scotland-deliver-the-homes-we-need" target="_blank" style="color:var(--orange);">Read the analysis →</a></p>
   </div>
 
 </div>
@@ -148,13 +136,5 @@
 </div>
 <div id="site-footer"></div>
 <script src="../../footer.js"></script>
-<script>
-function toggleNav() {
-  var links = document.getElementById('navLinks');
-  var toggle = document.getElementById('navToggle');
-  var open = links.classList.toggle('open');
-  toggle.textContent = open ? 'Close' : 'Menu';
-}
-</script>
 </body>
 </html>

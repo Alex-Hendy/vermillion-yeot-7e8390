@@ -44,17 +44,10 @@
 </style>
 </head>
 <body>
-<nav>
-  <a href="../../index.html" class="logo"><img src="../../glasgow-yimby-logo-navbar.svg" alt="YIMBY Glasgow" height="72"></a>
-  <ul class="nav-links" id="navLinks">
-    <li><a href="../index.html">The ideas</a></li>
-    <li><a href="../../myths/index.html">Myths</a></li>
-    <li><a href="../../evidence.html">Evidence</a></li>
-    <li><a href="../../news.html">News</a></li>
-    <li><a href="../../get-involved.html" class="nav-cta">Get involved</a></li>
-  </ul>
-  <button class="nav-toggle" id="navToggle" onclick="toggleNav()">Menu</button>
-</nav>
+
+<div id="site-nav"></div>
+<script src="../../nav.js"></script>
+
 <div class="demand-hero">
   <div class="demand-hero-inner">
     <a href="../what-needs-to-change.html" class="back-link">← Back to all demands</a>
@@ -106,26 +99,20 @@
   <h2>What we are asking for</h2>
   <p>Councils should publish standard contribution rates for all common Section 75 obligations — education, transport, affordable housing, open space — set as a fixed amount per unit or per square metre, varied by zone if needed. Developers pay the published rate automatically. Section 75 negotiation is reserved only for genuinely site-specific matters that cannot be standardised.</p>
   <p>A statutory backstop deadline should apply: if agreement on any remaining site-specific matters is not reached within a fixed period, standard terms apply automatically. The developer can proceed. The council receives its contributions. The homes get built.</p>
-  <p>The Law Society of Scotland has already recommended that councils publish model planning obligations with standard clauses. Edinburgh's own planners have asked for tariff-based contributions. Renfrewshire has shown it works in practice. The demand is to make the exception the rule — backed by statute.</p>
 
   <div class="evidence-card">
     <div class="source">LSE & University of Sheffield (commissioned by Scottish Government), 2021</div>
-    <p>Comprehensive study of Section 75 in Scotland. Found that speed is <strong>"affected by legal delays, and large complex schemes with multiple landowners were noted as being particularly slow."</strong> The range of obligations secured through Section 75 has been expanding, and the ease of negotiation "depends significantly on the clarity of local plans" — with <strong>"far less" clarity about non-housing infrastructure</strong> than about affordable housing. <a href="https://www.gov.scot/publications/value-incidence-impact-developer-contributions-scotland/" target="_blank" style="color:var(--orange);">Read the research →</a></p>
+    <p>Speed is <strong>"affected by legal delays, and large complex schemes with multiple landowners were noted as being particularly slow."</strong> The range of obligations secured through Section 75 has been expanding, and the ease of negotiation "depends significantly on the clarity of local plans." <a href="https://www.gov.scot/publications/value-incidence-impact-developer-contributions-scotland/" target="_blank" style="color:var(--orange);">Read the research →</a></p>
   </div>
 
   <div class="evidence-card">
     <div class="source">Edinburgh Council evidence to LSE/Sheffield study, 2021</div>
-    <p>Edinburgh's own planners said that <strong>"a city-wide tariff or area-based tariffs could enable the council to be more proactive with infrastructure"</strong> and would "provide more certainty for developers and the public purse as well as reduce land speculation." The council acknowledged that CIL "may be a better mechanism" than the case-by-case approach for transport contributions. <a href="https://www.gov.scot/publications/value-incidence-impact-developer-contributions-scotland/pages/15/" target="_blank" style="color:var(--orange);">Read the case studies →</a></p>
+    <p>Edinburgh's own planners said that <strong>"a city-wide tariff or area-based tariffs could enable the council to be more proactive with infrastructure"</strong> and would "provide more certainty for developers and the public purse as well as reduce land speculation." <a href="https://www.gov.scot/publications/value-incidence-impact-developer-contributions-scotland/pages/15/" target="_blank" style="color:var(--orange);">Read the case studies →</a></p>
   </div>
 
   <div class="evidence-card">
     <div class="source">Renfrewshire Council — template Section 75 approach</div>
-    <p>Renfrewshire developed a <strong>template Section 75 agreement in collaboration with Homes for Scotland and several housebuilders</strong>. The council principally uses planning conditions rather than Section 75 to define infrastructure requirements, and has an Infrastructure Constraints Map identifying existing capacity so that contribution requirements are known in advance. Timescales for securing developer contributions are "reduced" as a result. <a href="https://www.gov.scot/publications/value-incidence-impact-developer-contributions-scotland/pages/15/" target="_blank" style="color:var(--orange);">Read the case study →</a></p>
-  </div>
-
-  <div class="evidence-card">
-    <div class="source">Law Society of Scotland, 2020</div>
-    <p>Recommended that planning authorities <strong>"consult on and publish a model planning obligation"</strong> with standard clauses developed for common matters. Emphasised the need for efficiency while recognising the role of flexibility for genuinely complex sites. <a href="https://www.lawscot.org.uk/members/journal/issues/vol-65-issue-09/planning-obligations-seeking-better-practice/" target="_blank" style="color:var(--orange);">Read the recommendations →</a></p>
+    <p>Renfrewshire developed a <strong>template Section 75 agreement in collaboration with Homes for Scotland and several housebuilders</strong>. The council principally uses planning conditions rather than Section 75 to define infrastructure requirements, and has an Infrastructure Constraints Map identifying existing capacity so that contribution requirements are known in advance. <a href="https://www.gov.scot/publications/value-incidence-impact-developer-contributions-scotland/pages/15/" target="_blank" style="color:var(--orange);">Read the case study →</a></p>
   </div>
 
   <div class="evidence-card">
@@ -134,13 +121,8 @@
   </div>
 
   <div class="evidence-card">
-    <div class="source">Planning Circular 4/2025, December 2025</div>
-    <p>Replaced Circular 3/2012 after <strong>thirteen years without an update</strong>. Reflects NPF4, the housing emergency, and current market conditions. Seeks to "expand the use of viability assessments and improve procedure to streamline the negotiation process and speed up consenting." But introduces no statutory deadlines and no standard contribution rates.</p>
-  </div>
-
-  <div class="evidence-card">
     <div class="source">Scottish Government infrastructure levy decision, November 2024</div>
-    <p>Despite powers in the 2019 Planning Act to create a Community Infrastructure Levy equivalent, the Scottish Government <strong>decided not to proceed</strong>. Scotland remains reliant on the negotiated Section 75 process as the sole mechanism for securing developer contributions — the slowest and most uncertain option available.</p>
+    <p>Despite powers in the 2019 Planning Act to create a Community Infrastructure Levy equivalent, the Scottish Government <strong>decided not to proceed</strong>. Scotland remains reliant on the negotiated Section 75 process as the sole mechanism for securing developer contributions.</p>
   </div>
 
 </div>
@@ -149,13 +131,5 @@
 </div>
 <div id="site-footer"></div>
 <script src="../../footer.js"></script>
-<script>
-function toggleNav() {
-  var links = document.getElementById('navLinks');
-  var toggle = document.getElementById('navToggle');
-  var open = links.classList.toggle('open');
-  toggle.textContent = open ? 'Close' : 'Menu';
-}
-</script>
 </body>
 </html>
