@@ -1,5 +1,5 @@
 /**
- * Glasgow YIMBY — Glossary Tooltip System
+ * YIMBY Glasgow — Glossary Tooltip System
  *
  * Usage: Add class="glossary-term" and data-term="term-id" to any span.
  * Example: <span class="glossary-term" data-term="windfall">windfall development</span>
@@ -109,10 +109,6 @@
     'ship': {
       short: 'A five-year plan produced by each council setting out how it intends to deliver affordable housing and what Scottish Government funding it needs.',
       anchor: 'ship'
-    },
-    'supply': {
-      short: 'In housing economics, supply refers to the number of homes available. When supply falls short of demand, prices and rents rise.',
-      anchor: null
     },
     'windfall': {
       short: 'Housing built on sites not allocated in the Local Development Plan — such as disused car parks, gap sites, or former office buildings.',
