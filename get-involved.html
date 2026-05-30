@@ -176,6 +176,11 @@
 function handleSignup() {
   var email = document.getElementById('emailInput').value;
   if (email && email.includes('@')) {
+    fetch('https://hook.eu1.make.com/e9zt543zm6fn23u9tvbviptb64itjheq', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ email: email })
+    });
     document.querySelector('.email-section p').textContent = 'Thanks for signing up! We\'ll be in touch.';
     document.querySelector('.email-form').style.display = 'none';
   } else {
