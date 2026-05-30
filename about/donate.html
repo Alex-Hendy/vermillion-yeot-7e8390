@@ -7,7 +7,7 @@
 <link rel="canonical" href="https://glasgowyimby.com/about/donate.html">
 <meta name="description" content="Support YIMBY Glasgow's campaign for more homes in Glasgow. Donation mechanism coming soon.">
 <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="../style.cssh">
+<link rel="stylesheet" href="../style.css">
 <style>
   .about-hero { background: var(--amber); border-bottom: 2px solid var(--black); padding: 5rem 2rem 4rem; }
   .about-hero-inner { max-width: 760px; margin: 0 auto; }
@@ -30,17 +30,10 @@
 </style>
 </head>
 <body>
-<nav>
-  <a href="../index.html" class="logo"><img src="../glasgow-yimby-logo-navbar.svg" alt="YIMBY Glasgow" height="72"></a>
-  <ul class="nav-links" id="navLinks">
-    <li><a href="../ideas/index.html">The ideas</a></li>
-    <li><a href="../myths/index.html">Myths</a></li>
-    <li><a href="../evidence.html">Evidence</a></li>
-    <li><a href="../news.html">News</a></li>
-    <li><a href="../get-involved.html" class="nav-cta">Get involved</a></li>
-  </ul>
-  <button class="nav-toggle" id="navToggle" onclick="toggleNav()">Menu</button>
-</nav>
+
+<div id="site-nav"></div>
+<script src="../nav.js"></script>
+
 <div class="about-hero">
   <div class="about-hero-inner">
     <div class="about-label">Support us</div>
@@ -51,7 +44,7 @@
 <div class="content">
   <div class="coming-soon">
     <p><strong>Donation mechanism coming soon.</strong></p>
-    <p>We're working on setting up a way to accept donations. In the meantime, if you'd like to support the campaign, <a href="mailto:hello@glasgowyimby.com" style="color:var(--amber);">drop us an email</a> and we'll let you know when it's ready.</p>
+    <p>We're working on setting up a way to accept donations. In the meantime, if you'd like to support the campaign, <a href="mailto:hello@yimbyglasgow.com" style="color:var(--amber);">drop us an email</a> and we'll let you know when it's ready.</p>
   </div>
   <h2>How donations will be used</h2>
   <p>YIMBY Glasgow's running costs are currently minimal — domain registration and small operational expenses, covered personally by volunteers. Donations would go toward expanding the campaign: events, printed materials, outreach, and eventually paid coordination time so the campaign can grow beyond what volunteers alone can sustain.</p>
@@ -61,13 +54,5 @@
 </div>
 <div id="site-footer"></div>
 <script src="../footer.js"></script>
-<script>
-function toggleNav() {
-  var links = document.getElementById('navLinks');
-  var toggle = document.getElementById('navToggle');
-  var open = links.classList.toggle('open');
-  toggle.textContent = open ? 'Close' : 'Menu';
-}
-</script>
 </body>
 </html>

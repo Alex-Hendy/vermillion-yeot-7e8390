@@ -26,17 +26,10 @@
 </style>
 </head>
 <body>
-<nav>
-  <a href="../index.html" class="logo"><img src="../glasgow-yimby-logo-navbar.svg" alt="YIMBY Glasgow" height="72"></a>
-  <ul class="nav-links" id="navLinks">
-    <li><a href="../ideas/index.html">The ideas</a></li>
-    <li><a href="../myths/index.html">Myths</a></li>
-    <li><a href="../evidence.html">Evidence</a></li>
-    <li><a href="../news.html">News</a></li>
-    <li><a href="../get-involved.html" class="nav-cta">Get involved</a></li>
-  </ul>
-  <button class="nav-toggle" id="navToggle" onclick="toggleNav()">Menu</button>
-</nav>
+
+<div id="site-nav"></div>
+<script src="../nav.js"></script>
+
 <div class="about-hero">
   <div class="about-hero-inner">
     <div class="about-label">Legal</div>
@@ -51,20 +44,12 @@
   <h2>Hosting and analytics</h2>
   <p>YIMBY Glasgow is hosted on GitHub Pages. GitHub may collect standard server log data (IP addresses, page requests, browser information) in accordance with <a href="https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement" target="_blank">GitHub's privacy policy</a>. We do not use Google Analytics or any other third-party analytics service.</p>
   <h2>Your rights</h2>
-  <p>Under UK GDPR, you have the right to access the personal data we hold about you, request its deletion, and withdraw consent for us to contact you at any time. To exercise any of these rights, email us at <a href="mailto:hello@glasgowyimby.com">hello@glasgowyimby.com</a> and we will respond within 30 days.</p>
+  <p>Under UK GDPR, you have the right to access the personal data we hold about you, request its deletion, and withdraw consent for us to contact you at any time. To exercise any of these rights, email us at <a href="mailto:hello@yimbyglasgow.com">hello@yimbyglasgow.com</a> and we will respond within 30 days.</p>
   <h2>Contact</h2>
-  <p>Questions about this policy can be directed to <a href="mailto:hello@glasgowyimby.com">hello@glasgowyimby.com</a>.</p>
+  <p>Questions about this policy can be directed to <a href="mailto:hello@yimbyglasgow.com">hello@yimbyglasgow.com</a>.</p>
   <p style="font-size:0.85rem; color: var(--muted); margin-top: 2rem;">Last updated: May 2026</p>
 </div>
 <div id="site-footer"></div>
 <script src="../footer.js"></script>
-<script>
-function toggleNav() {
-  var links = document.getElementById('navLinks');
-  var toggle = document.getElementById('navToggle');
-  var open = links.classList.toggle('open');
-  toggle.textContent = open ? 'Close' : 'Menu';
-}
-</script>
 </body>
 </html>

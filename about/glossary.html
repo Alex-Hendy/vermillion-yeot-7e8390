@@ -88,7 +88,7 @@
   .glossary-term-btn .chevron { font-size: 0.7rem; opacity: 0.5; flex-shrink: 0; margin-left: 0.5rem; transition: transform 0.2s; }
   .glossary-term-btn.open .chevron { transform: rotate(180deg); opacity: 1; color: var(--amber); }
 
-  /* Expanded definition — sibling of .glossary-grid */
+  /* Expanded definition */
   .glossary-def-panel {
     display: none;
     background: var(--black);
@@ -134,17 +134,9 @@
 </style>
 </head>
 <body>
-<nav>
-  <a href="../index.html" class="logo"><img src="../glasgow-yimby-logo-navbar.svg" alt="YIMBY Glasgow" height="72"></a>
-  <ul class="nav-links" id="navLinks">
-    <li><a href="../ideas/index.html">The ideas</a></li>
-    <li><a href="../myths/index.html">Myths</a></li>
-    <li><a href="../evidence.html">Evidence</a></li>
-    <li><a href="../news.html">News</a></li>
-    <li><a href="../get-involved.html" class="nav-cta">Get involved</a></li>
-  </ul>
-  <button class="nav-toggle" id="navToggle" onclick="toggleNav()">Menu</button>
-</nav>
+
+<div id="site-nav"></div>
+<script src="../nav.js"></script>
 
 <div class="about-hero">
   <div class="about-hero-inner">
@@ -165,19 +157,10 @@
   <div class="no-results" id="noResults">No terms match your search.</div>
 </div>
 
-<footer>
-  <strong>YIMBY Glasgow</strong> — a grassroots campaign for more homes in Glasgow &nbsp;|&nbsp;
-  <a href="mailto:hello@glasgowyimby.com">hello@glasgowyimby.com</a>
-</footer>
+<div id="site-footer"></div>
+<script src="../footer.js"></script>
 
 <script>
-function toggleNav() {
-  var links = document.getElementById('navLinks');
-  var toggle = document.getElementById('navToggle');
-  var open = links.classList.toggle('open');
-  toggle.textContent = open ? 'Close' : 'Menu';
-}
-
 var terms = [
   { id: 'ahsp', term: 'AHSP — Affordable Housing Supply Programme', letter: 'A', def: 'The Scottish Government\'s main grant programme for funding the construction of affordable homes. Money flows through the AHSP to housing associations and councils, who use it to build social rent and mid-market rent homes.', link: null },
   { id: 'build-out', term: 'Build-out rate', letter: 'B', def: 'The rate at which a developer constructs homes on a site that already has planning permission. A slow build-out rate is sometimes cited as evidence of landbanking, but is more commonly explained by planning conditions that must be discharged, infrastructure that must be in place before construction can begin, and the pace at which the local market can absorb new homes.', link: null },
@@ -262,7 +245,6 @@ function filterGlossary() {
 
 function toggleTerm(id) {
   openId = (openId === id) ? null : id;
-  // Update open/closed state without full re-render
   document.querySelectorAll('.glossary-term-btn').forEach(function(btn) {
     var isOpen = btn.getAttribute('data-id') === openId;
     btn.classList.toggle('open', isOpen);
@@ -270,17 +252,7 @@ function toggleTerm(id) {
   document.querySelectorAll('.glossary-def-panel').forEach(function(panel) {
     var isOpen = panel.getAttribute('data-id') === openId;
     panel.classList.toggle('open', isOpen);
-    // Update grid positioning for expanded panel
-    if (isOpen) {
-      // Find the button's position in the grid to insert after the right row
-      positionPanel(panel, openId);
-    }
   });
-}
-
-function positionPanel(panel, id) {
-  // The panel is already in the DOM after its term button's item
-  // CSS grid-column: 1 / -1 handles the spanning
 }
 
 function renderGlossary() {
@@ -310,11 +282,8 @@ function renderGlossary() {
       html += '<button class="glossary-term-btn' + (isOpen ? ' open' : '') + '" data-id="' + t.id + '" onclick="toggleTerm(\'' + t.id + '\')">';
       html += '<span>' + t.term + '</span><span class="chevron">▼</span></button></div>';
     });
-    // Insert definition panels — after each row of 3
-    var cols = window.innerWidth <= 540 ? 1 : (window.innerWidth <= 900 ? 2 : 3);
-    byLetter[letter].forEach(function(t, i) {
+    byLetter[letter].forEach(function(t) {
       var isOpen = t.id === openId;
-      // Insert panel after each item — CSS grid-column: 1/-1 will span it
       html += '<div class="glossary-def-panel' + (isOpen ? ' open' : '') + '" data-id="' + t.id + '">';
       html += '<p>' + t.def + '</p>';
       if (t.link) html += '<a href="' + t.link + '">Read more →</a>';
@@ -346,7 +315,6 @@ function highlightAnchor() {
 
 renderGlossary();
 
-// Handle anchor on page load with slight delay to ensure render is complete
 if (window.location.hash) {
   setTimeout(highlightAnchor, 200);
 }
