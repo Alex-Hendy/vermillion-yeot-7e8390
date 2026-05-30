@@ -302,13 +302,18 @@ function closeNav() {
   document.getElementById('navToggle').textContent = 'Menu';
 }
 function handleSignup() {
-  const email = document.getElementById('emailInput').value;
+  var email = document.getElementById('emailInput').value;
   if (email && email.includes('@')) {
+    fetch('https://hook.eu1.make.com/e9zt543zm6fn23u9tvbviptb64itjheq', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ email: email })
+    });
     document.querySelector('.join-section p').textContent = 'Thanks for signing up! We\'ll be in touch.';
     document.querySelector('.email-form').style.display = 'none';
   } else {
     document.getElementById('emailInput').style.borderColor = '#D45A1A';
-    setTimeout(() => { document.getElementById('emailInput').style.borderColor = ''; }, 1500);
+    setTimeout(function() { document.getElementById('emailInput').style.borderColor = ''; }, 1500);
   }
 }
 </script>
