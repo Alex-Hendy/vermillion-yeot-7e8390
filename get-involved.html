@@ -34,20 +34,32 @@
   .action-link:hover { text-decoration: underline; }
   .action-card.dark .action-link { color: var(--amber); }
   .divider { border: none; border-top: 2px solid var(--black); margin: 3rem 0; }
-  .email-section { text-align: center; padding: 3rem 2rem; background: var(--black); border-radius: 12px; margin-bottom: 3rem; }
-  .email-section-title { font-family: var(--font-heading); font-size: 1.6rem; font-weight: 900; color: var(--cream); margin-bottom: 0.75rem; }
-  .email-section p { font-size: 1rem; color: rgba(245,237,216,0.7); margin-bottom: 2rem; line-height: 1.75; }
-  .email-form { display: flex; gap: 0.75rem; max-width: 420px; margin: 0 auto; }
-  .email-form input { flex: 1; padding: 0.875rem 1rem; border: 2px solid rgba(255,255,255,0.2); border-radius: 4px; font-size: 0.95rem; font-family: inherit; background: rgba(255,255,255,0.08); color: var(--cream); outline: none; }
+
+  /* Two-column signup tiles */
+  .signup-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem; margin-bottom: 3rem; }
+  .signup-tile { border-radius: 12px; padding: 2rem; border: 2px solid var(--black); }
+  .signup-tile.dark { background: var(--black); }
+  .signup-tile.amber { background: var(--amber); }
+  .signup-tile-title { font-family: var(--font-heading); font-size: 1.3rem; font-weight: 900; margin-bottom: 0.75rem; }
+  .signup-tile.dark .signup-tile-title { color: var(--cream); }
+  .signup-tile.amber .signup-tile-title { color: var(--black); }
+  .signup-tile p { font-size: 0.92rem; line-height: 1.75; margin-bottom: 1.5rem; }
+  .signup-tile.dark p { color: rgba(245,237,216,0.7); }
+  .signup-tile.amber p { color: #3A2808; }
+  .email-form { display: flex; flex-direction: column; gap: 0.75rem; }
+  .email-form input { padding: 0.875rem 1rem; border: 2px solid rgba(255,255,255,0.2); border-radius: 4px; font-size: 0.95rem; font-family: inherit; background: rgba(255,255,255,0.08); color: var(--cream); outline: none; }
   .email-form input:focus { border-color: var(--amber); }
   .email-form input::placeholder { color: rgba(245,237,216,0.4); }
-  .btn-primary { background: var(--amber); color: var(--black); border: 2px solid var(--amber); padding: 0.875rem 1.5rem; border-radius: 4px; font-size: 0.95rem; font-weight: 600; cursor: pointer; font-family: inherit; white-space: nowrap; }
+  .btn-primary { background: var(--amber); color: var(--black); border: 2px solid var(--amber); padding: 0.875rem 1.5rem; border-radius: 4px; font-size: 0.95rem; font-weight: 600; cursor: pointer; font-family: inherit; white-space: nowrap; text-align: center; }
   .btn-primary:hover { background: var(--orange); border-color: var(--orange); color: var(--cream); }
+  .btn-secondary-dark { display: inline-block; background: transparent; color: var(--black); border: 2px solid var(--black); padding: 0.875rem 1.5rem; border-radius: 4px; font-size: 0.95rem; font-weight: 600; cursor: pointer; font-family: inherit; text-decoration: none; text-align: center; width: 100%; box-sizing: border-box; }
+  .btn-secondary-dark:hover { background: var(--black); color: var(--amber); }
+
   @media (max-width: 768px) {
     .gi-hero { padding: 3rem 1.25rem 2.5rem; }
     .content { padding: 2.5rem 1.25rem; }
+    .signup-grid { grid-template-columns: 1fr; }
     .email-form { flex-direction: column; }
-    .email-section { padding: 2rem 1.25rem; }
   }
 </style>
 </head>
@@ -63,15 +75,26 @@
     <p class="gi-hero-intro">Glasgow's housing crisis won't fix itself. The people who benefit from high house prices and restricted supply are organised and vocal. We need to be too. Here is how you can help.</p>
   </div>
 </div>
+
 <div class="content">
-  <div class="email-section">
-    <div class="email-section-title">Sign up first</div>
-    <p>Get notified about events, consultations to respond to, and planning applications to support. No spam.</p>
-    <div class="email-form">
-      <input type="email" placeholder="your@email.com" id="emailInput">
-      <button class="btn-primary" onclick="handleSignup()">Sign up</button>
+
+  <!-- TWO-COLUMN SIGNUP TILES -->
+  <div class="signup-grid">
+    <div class="signup-tile dark">
+      <div class="signup-tile-title">Stay in the loop</div>
+      <p>Get notified about events, consultations to respond to, and planning applications to support. No spam.</p>
+      <div class="email-form">
+        <input type="email" placeholder="your@email.com" id="emailInput">
+        <button class="btn-primary" onclick="handleSignup()">Sign up</button>
+      </div>
+    </div>
+    <div class="signup-tile amber">
+      <div class="signup-tile-title">Join the campaign</div>
+      <p>Want to do more than receive emails? We're a small volunteer group and we need people willing to help shape the campaign, attend events, respond to consultations, and generally get stuck in.</p>
+      <a href="mailto:hello@yimbyglasgow.com?subject=I want to get involved with YIMBY Glasgow" class="btn-secondary-dark">Get in touch →</a>
     </div>
   </div>
+
   <div class="action-section">
     <div class="action-section-title">Contact your representatives</div>
     <div class="action-section-intro">The most direct way to change housing policy is to make your views known to the people who make decisions. Councillors and MSPs hear far more from those opposing new homes than from those who support them.</div>
@@ -94,7 +117,9 @@
       </div>
     </div>
   </div>
+
   <div class="divider"></div>
+
   <div class="action-section">
     <div class="action-section-title">Respond to planning applications</div>
     <div class="action-section-intro">When a new development is proposed, planning authorities invite public comments. Objections from neighbours often outnumber letters of support by ten to one, even when the silent majority supports building. Submitting a short letter of support takes five minutes and makes a real difference.</div>
@@ -116,7 +141,9 @@
       </div>
     </div>
   </div>
+
   <div class="divider"></div>
+
   <div class="action-section">
     <div class="action-section-title">Respond to consultations</div>
     <div class="action-section-intro">The Scottish Government and Glasgow City Council regularly run consultations on planning policy, local development plans, and housing strategy. These shape the rules that govern what gets built. Responding takes time but has lasting impact.</div>
@@ -139,7 +166,9 @@
       </div>
     </div>
   </div>
+
   <div class="divider"></div>
+
   <div class="action-section">
     <div class="action-section-title">Share and spread the word</div>
     <div class="action-section-intro">The YIMBY argument wins when more people hear it. Share our myth-busting pages, the rent control calculator, and the case for building more homes with people in your networks.</div>
@@ -169,7 +198,9 @@
       </div>
     </div>
   </div>
+
 </div>
+
 <div id="site-footer"></div>
 <script src="footer.js"></script>
 <script>
@@ -181,7 +212,7 @@ function handleSignup() {
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ email: email })
     });
-    document.querySelector('.email-section p').textContent = 'Thanks for signing up! We\'ll be in touch.';
+    document.querySelector('.signup-tile.dark p').textContent = 'Thanks for signing up! We\'ll be in touch.';
     document.querySelector('.email-form').style.display = 'none';
   } else {
     document.getElementById('emailInput').style.borderColor = '#D45A1A';
