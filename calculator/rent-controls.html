@@ -3,9 +3,9 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Rent Control Supply Calculator: Model the Impact on Glasgow — Glasgow YIMBY</title>
+<title>Rent Controls Calculator — What Would They Do to Glasgow?</title>
 <link rel="canonical" href="https://glasgowyimby.com/calculator/rent-controls.html">
-<meta name="description" content="Interactive calculator modelling how rent controls would affect Glasgow's rental supply. Adjust the rent cap, years in force, and coverage to see the projected impact on rental homes.">
+<meta name="description" content="Model the impact of rent controls on Glasgow's rental supply. Based on peer-reviewed research from Sweden, New York, and San Francisco. Every number cited.">
 <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../style.css">
 <style>
@@ -24,8 +24,6 @@
   .rc-toggle { display: flex; gap: 8px; margin-bottom: 1.5rem; }
   .rc-toggle button { padding: 6px 18px; border-radius: 4px; border: 2px solid var(--black); background: var(--cream); color: var(--black); font-size: 13px; font-weight: 600; cursor: pointer; font-family: inherit; }
   .rc-toggle button.active { background: var(--black); color: var(--cream); }
-
-  /* SLIDER ROWS WITH TOOLTIPS */
   .rc-row { display: flex; align-items: center; gap: 12px; margin-bottom: 0.875rem; position: relative; }
   .rc-row label { font-size: 13px; color: var(--muted); min-width: 200px; font-weight: 500; display: flex; align-items: center; gap: 6px; cursor: default; }
   .rc-info { display: inline-flex; align-items: center; justify-content: center; width: 15px; height: 15px; border-radius: 100px; background: var(--muted); color: var(--cream); font-size: 9px; font-weight: 700; cursor: help; flex-shrink: 0; position: relative; }
@@ -34,7 +32,6 @@
   .rc-info:hover .rc-tooltip { opacity: 1; }
   .rc-row input[type=range] { flex: 1; accent-color: var(--black); }
   .rc-row .rc-val { font-size: 14px; font-weight: 600; min-width: 52px; text-align: right; color: var(--black); font-family: var(--font-heading); }
-
   .rc-cards { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-bottom: 1.5rem; }
   .rc-card { background: var(--cream); border: 2px solid var(--black); border-radius: 8px; padding: 12px 14px; }
   .rc-card-label { font-size: 11px; font-weight: 600; color: var(--muted); text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 4px; }
@@ -232,10 +229,8 @@
 
 </div>
 
-<footer>
-  <strong>Glasgow YIMBY</strong> — a grassroots campaign for more homes in Glasgow &nbsp;|&nbsp;
-  <a href="mailto:hello@glasgowyimby.com">hello@glasgowyimby.com</a>
-</footer>
+<div id="site-footer"></div>
+<script src="../footer.js"></script>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
 <script>
