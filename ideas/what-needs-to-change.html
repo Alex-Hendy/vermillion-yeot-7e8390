@@ -26,13 +26,12 @@
   .toggle-btn:not(.active) { background: var(--cream); color: var(--muted); }
   .toggle-btn:not(.active):hover { background: var(--amber); color: var(--black); }
   .toggle-btn + .toggle-btn { border-left: 2px solid var(--black); }
-  .demandCards-wrap { overflow: hidden; }
-  .demand-row { display: flex; flex-wrap: nowrap; border-radius: 10px; margin-bottom: 1rem; position: relative; transition: transform 0.35s ease; width: calc(100% + 112px); }
-  .demand-row:hover { transform: translateX(-112px); }
-  .demand-col { padding: 1.25rem; transition: opacity 0.3s ease; background: var(--cream); flex: 1 1 50%; min-width: 0; border: 2px solid var(--black); border-right: none; flex-shrink: 0; }
-  .demand-row:hover .demand-col { opacity: 0.35; }
-  .demand-col-currently { border-right: 1px solid rgba(26,18,8,0.1); border-radius: 10px 0 0 10px; }
-  .demand-col-wewant { border-right: none; }
+  .demand-row { display: flex; gap: 0.75rem; margin-bottom: 1rem; align-items: stretch; }
+  .demand-main { display: flex; flex: 1 1 auto; border-radius: 10px; border: 2px solid var(--black); overflow: hidden; transition: transform 0.35s ease, opacity 0.3s ease; min-width: 0; }
+  .demand-row:hover .demand-main { transform: translateX(-12px); opacity: 0.4; }
+  .demand-col { padding: 1.25rem; flex: 1 1 0; min-width: 0; background: var(--cream); }
+  .demand-col-currently { border-right: 1px solid rgba(26,18,8,0.12); }
+  .demand-col-wewant { }
   .demand-col-label { font-size: 0.68rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 0.5rem; }
   .label-currently { color: var(--orange); }
   .label-wewant { color: var(--olive); }
@@ -41,12 +40,11 @@
   .demand-badge { display: inline-block; font-size: 0.62rem; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; padding: 2px 8px; border-radius: 100px; margin-bottom: 0.6rem; margin-right: 4px; }
   .badge-sg { background: rgba(232,160,32,0.2); color: #7A4A00; border: 1px solid rgba(232,160,32,0.4); }
   .badge-gcc { background: rgba(90,104,48,0.15); color: var(--olive); border: 1px solid rgba(90,104,48,0.3); }
-  .demand-arrow { display: flex; align-items: center; justify-content: center; background: rgba(26,18,8,0.04); text-decoration: none; transition: background 0.3s ease, border-left-color 0.3s ease; gap: 8px; overflow: hidden; cursor: pointer; flex: 0 0 168px; border: 2px solid var(--black); border-left: 1px solid rgba(26,18,8,0.1); border-radius: 0 10px 10px 0; flex-shrink: 0; }
-  .demand-row:hover .demand-arrow { background: var(--amber); border-left-color: var(--black); }
-  .demand-arrow-text { font-size: 0.78rem; font-weight: 600; color: var(--black); white-space: nowrap; opacity: 0; transition: opacity 0.2s ease 0.1s; font-family: var(--font-subheading); }
-  .demand-row:hover .demand-arrow-text { opacity: 1; }
-  .demand-arrow-icon { font-size: 1.1rem; color: var(--muted); transition: color 0.3s ease; flex-shrink: 0; }
-  .demand-row:hover .demand-arrow-icon { color: var(--black); }
+  .demand-read { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 0.5rem; flex: 0 0 56px; background: var(--black); border: 2px solid var(--black); border-radius: 10px; text-decoration: none; overflow: hidden; transition: flex-basis 0.35s ease; cursor: pointer; }
+  .demand-row:hover .demand-read { flex-basis: 160px; }
+  .demand-read-text { font-size: 0.82rem; font-weight: 700; color: var(--amber); white-space: nowrap; opacity: 0; transition: opacity 0.2s ease 0.1s; font-family: var(--font-subheading); }
+  .demand-row:hover .demand-read-text { opacity: 1; }
+  .demand-read-icon { font-size: 1.1rem; color: var(--amber); flex-shrink: 0; }
   .lt-card { background: var(--black); border-radius: 10px; padding: 2rem; margin-bottom: 1.5rem; }
   .lt-card h3 { font-family: var(--font-heading); font-size: 1.3rem; font-weight: 900; color: var(--cream); margin-bottom: 0.75rem; line-height: 1.2; }
   .lt-card p { font-size: 0.95rem; color: rgba(245,237,216,0.7); line-height: 1.75; margin: 0 0 0.75rem; }
@@ -66,12 +64,13 @@
   @media (max-width: 768px) {
     .idea-hero { padding: 3rem 1.25rem 2.5rem; }
     .content { padding: 2.5rem 1.25rem; }
-    .demand-row { flex-direction: column !important; width: 100% !important; transform: none !important; }
+    .demand-row { flex-direction: column !important; }
     .demand-row:hover { transform: none !important; }
-    .demand-row:hover .demand-col { opacity: 1; }
-    .demand-col { flex: 1 1 auto !important; flex-shrink: 1 !important; }
-    .demand-arrow { flex: 0 0 auto !important; width: 100% !important; padding: 0.75rem; justify-content: center; border-left: none !important; border-top: 1px solid rgba(26,18,8,0.1); border-radius: 0 0 8px 8px !important; }
-    .demand-arrow-text { opacity: 1 !important; }
+    .demand-row:hover .demand-main { transform: none !important; opacity: 1 !important; }
+    .demand-main { border-radius: 10px !important; }
+    .demand-read { flex: 0 0 48px !important; flex-direction: row !important; justify-content: center; border-radius: 10px !important; }
+    .demand-row:hover .demand-read { flex-basis: 48px !important; }
+    .demand-read-text { opacity: 1 !important; }
     .toggle-bar { flex-wrap: wrap; }
     .toggle-btn { min-width: 33%; }
     .idea-nav { padding: 2rem 1.25rem; flex-direction: column; align-items: flex-start; }
@@ -106,146 +105,162 @@
   <div id="demandCards">
 
     <div class="demand-row" data-target="sg">
-      <div class="demand-col demand-col-currently">
-        <span class="demand-badge badge-sg">Scottish Government</span>
-        <div class="demand-col-label label-currently">Currently</div>
-        <div class="demand-col-title">NPF4 Policy 16 blocks windfall housing</div>
-        <p class="demand-col-desc">If a site isn't in the council's development plan, it can't become housing — even if it's obviously suitable. Planning approvals are down 66%.</p>
+      <div class="demand-main">
+        <div class="demand-col demand-col-currently">
+          <span class="demand-badge badge-sg">Scottish Government</span>
+          <div class="demand-col-label label-currently">Currently</div>
+          <div class="demand-col-title">NPF4 Policy 16 blocks windfall housing</div>
+          <p class="demand-col-desc">If a site isn't in the council's development plan, it can't become housing — even if it's obviously suitable. Planning approvals are down 66%.</p>
+        </div>
+        <div class="demand-col demand-col-wewant">
+          <div class="demand-col-label label-wewant" style="padding-top: 1.4rem;">We want</div>
+          <div class="demand-col-title">Restore windfall development</div>
+          <p class="demand-col-desc">Amend Policy 16 so suitable sites can become housing whether or not they're in a decade-old plan.</p>
+        </div>
       </div>
-      <div class="demand-col demand-col-wewant">
-        <div class="demand-col-label label-wewant" style="padding-top: 1.4rem;">We want</div>
-        <div class="demand-col-title">Restore windfall development</div>
-        <p class="demand-col-desc">Amend Policy 16 so suitable sites can become housing whether or not they're in a decade-old plan.</p>
-      </div>
-      <a href="demands/windfall.html" class="demand-arrow">
-        <span class="demand-arrow-text">Read more</span>
-        <span class="demand-arrow-icon">→</span>
+      <a href="demands/windfall.html" class="demand-read">
+        <span class="demand-read-text">Read more</span>
+        <span class="demand-read-icon">→</span>
       </a>
     </div>
 
     <div class="demand-row" data-target="sg">
-      <div class="demand-col demand-col-currently">
-        <span class="demand-badge badge-sg">Scottish Government</span>
-        <div class="demand-col-label label-currently">Currently</div>
-        <div class="demand-col-title">No consequence when councils fail to deliver enough homes</div>
-        <p class="demand-col-desc">NPF4 abolished the presumption in favour of sustainable development. Councils can miss targets indefinitely with no accountability. 16 of 18 recent appeals dismissed.</p>
+      <div class="demand-main">
+        <div class="demand-col demand-col-currently">
+          <span class="demand-badge badge-sg">Scottish Government</span>
+          <div class="demand-col-label label-currently">Currently</div>
+          <div class="demand-col-title">No consequence when councils fail to deliver enough homes</div>
+          <p class="demand-col-desc">NPF4 abolished the presumption in favour of sustainable development. Councils can miss targets indefinitely with no accountability. 16 of 18 recent appeals dismissed.</p>
+        </div>
+        <div class="demand-col demand-col-wewant">
+          <div class="demand-col-label label-wewant" style="padding-top: 1.4rem;">We want</div>
+          <div class="demand-col-title">Reinstate the presumption in favour of sustainable development</div>
+          <p class="demand-col-desc">When a council is failing to deliver, the balance should tilt in favour of approving new homes.</p>
+        </div>
       </div>
-      <div class="demand-col demand-col-wewant">
-        <div class="demand-col-label label-wewant" style="padding-top: 1.4rem;">We want</div>
-        <div class="demand-col-title">Reinstate the presumption in favour of sustainable development</div>
-        <p class="demand-col-desc">When a council is failing to deliver, the balance should tilt in favour of approving new homes.</p>
-      </div>
-      <a href="demands/presumption.html" class="demand-arrow">
-        <span class="demand-arrow-text">Read more</span>
-        <span class="demand-arrow-icon">→</span>
+      <a href="demands/presumption.html" class="demand-read">
+        <span class="demand-read-text">Read more</span>
+        <span class="demand-read-icon">→</span>
       </a>
     </div>
 
     <div class="demand-row" data-target="gcc">
-      <div class="demand-col demand-col-currently">
-        <span class="demand-badge badge-gcc">Glasgow City Council</span>
-        <div class="demand-col-label label-currently">Currently</div>
-        <div class="demand-col-title">Glasgow's development plan is nine years out of date</div>
-        <p class="demand-col-desc">Adopted in 2017, replacement not expected until 2027. Viable sites used up, no new ones coming forward.</p>
+      <div class="demand-main">
+        <div class="demand-col demand-col-currently">
+          <span class="demand-badge badge-gcc">Glasgow City Council</span>
+          <div class="demand-col-label label-currently">Currently</div>
+          <div class="demand-col-title">Glasgow's development plan is nine years out of date</div>
+          <p class="demand-col-desc">Adopted in 2017, replacement not expected until 2027. Viable sites used up, no new ones coming forward.</p>
+        </div>
+        <div class="demand-col demand-col-wewant">
+          <div class="demand-col-label label-wewant" style="padding-top: 1.4rem;">We want</div>
+          <div class="demand-col-title">Much higher targets, more and smaller sites</div>
+          <p class="demand-col-desc">Set targets well above projected need. Allocate generously and let the market decide which get built.</p>
+        </div>
       </div>
-      <div class="demand-col demand-col-wewant">
-        <div class="demand-col-label label-wewant" style="padding-top: 1.4rem;">We want</div>
-        <div class="demand-col-title">Much higher targets, more and smaller sites</div>
-        <p class="demand-col-desc">Set targets well above projected need. Allocate generously and let the market decide which get built.</p>
-      </div>
-      <a href="demands/housing-targets.html" class="demand-arrow">
-        <span class="demand-arrow-text">Read more</span>
-        <span class="demand-arrow-icon">→</span>
+      <a href="demands/housing-targets.html" class="demand-read">
+        <span class="demand-read-text">Read more</span>
+        <span class="demand-read-icon">→</span>
       </a>
     </div>
 
     <div class="demand-row" data-target="sg">
-      <div class="demand-col demand-col-currently">
-        <span class="demand-badge badge-sg">Scottish Government</span>
-        <div class="demand-col-label label-currently">Currently</div>
-        <div class="demand-col-title">Section 75 negotiations drag on for months or years</div>
-        <p class="demand-col-desc">Open-ended legal negotiations over contributions delay building indefinitely after permission is granted.</p>
+      <div class="demand-main">
+        <div class="demand-col demand-col-currently">
+          <span class="demand-badge badge-sg">Scottish Government</span>
+          <div class="demand-col-label label-currently">Currently</div>
+          <div class="demand-col-title">Section 75 negotiations drag on for months or years</div>
+          <p class="demand-col-desc">Open-ended legal negotiations over contributions delay building indefinitely after permission is granted.</p>
+        </div>
+        <div class="demand-col demand-col-wewant">
+          <div class="demand-col-label label-wewant" style="padding-top: 1.4rem;">We want</div>
+          <div class="demand-col-title">Statutory timelines for Section 75</div>
+          <p class="demand-col-desc">Binding deadline. If agreement isn't reached in time, standard terms apply automatically.</p>
+        </div>
       </div>
-      <div class="demand-col demand-col-wewant">
-        <div class="demand-col-label label-wewant" style="padding-top: 1.4rem;">We want</div>
-        <div class="demand-col-title">Statutory timelines for Section 75</div>
-        <p class="demand-col-desc">Binding deadline. If agreement isn't reached in time, standard terms apply automatically.</p>
-      </div>
-      <a href="demands/section-75.html" class="demand-arrow">
-        <span class="demand-arrow-text">Read more</span>
-        <span class="demand-arrow-icon">→</span>
+      <a href="demands/section-75.html" class="demand-read">
+        <span class="demand-read-text">Read more</span>
+        <span class="demand-read-icon">→</span>
       </a>
     </div>
 
     <div class="demand-row" data-target="gcc">
-      <div class="demand-col demand-col-currently">
-        <span class="demand-badge badge-gcc">Glasgow City Council</span>
-        <div class="demand-col-label label-currently">Currently</div>
-        <div class="demand-col-title">1 parking space required per home</div>
-        <p class="demand-col-desc">SG 11 mandates parking on every development — adding cost, reducing density, locking in car dependency with no evidence base.</p>
+      <div class="demand-main">
+        <div class="demand-col demand-col-currently">
+          <span class="demand-badge badge-gcc">Glasgow City Council</span>
+          <div class="demand-col-label label-currently">Currently</div>
+          <div class="demand-col-title">1 parking space required per home</div>
+          <p class="demand-col-desc">SG 11 mandates parking on every development — adding cost, reducing density, locking in car dependency with no evidence base.</p>
+        </div>
+        <div class="demand-col demand-col-wewant">
+          <div class="demand-col-label label-wewant" style="padding-top: 1.4rem;">We want</div>
+          <div class="demand-col-title">Abolish parking minimums</div>
+          <p class="demand-col-desc">Let developers decide how much parking their customers need. Today's concrete won't age well.</p>
+        </div>
       </div>
-      <div class="demand-col demand-col-wewant">
-        <div class="demand-col-label label-wewant" style="padding-top: 1.4rem;">We want</div>
-        <div class="demand-col-title">Abolish parking minimums</div>
-        <p class="demand-col-desc">Let developers decide how much parking their customers need. Today's concrete won't age well.</p>
-      </div>
-      <a href="demands/parking.html" class="demand-arrow">
-        <span class="demand-arrow-text">Read more</span>
-        <span class="demand-arrow-icon">→</span>
+      <a href="demands/parking.html" class="demand-read">
+        <span class="demand-read-text">Read more</span>
+        <span class="demand-read-icon">→</span>
       </a>
     </div>
 
     <div class="demand-row" data-target="both">
-      <div class="demand-col demand-col-currently">
-        <span class="demand-badge badge-sg">SG</span><span class="demand-badge badge-gcc">GCC</span>
-        <div class="demand-col-label label-currently">Currently</div>
-        <div class="demand-col-title">Planning decisions take more than double the target</div>
-        <p class="demand-col-desc">Major applications average 37.7 weeks against a 16-week target. Only 40% of local applications meet the 8-week deadline.</p>
+      <div class="demand-main">
+        <div class="demand-col demand-col-currently">
+          <span class="demand-badge badge-sg">SG</span><span class="demand-badge badge-gcc">GCC</span>
+          <div class="demand-col-label label-currently">Currently</div>
+          <div class="demand-col-title">Planning decisions take more than double the target</div>
+          <p class="demand-col-desc">Major applications average 37.7 weeks against a 16-week target. Only 40% of local applications meet the 8-week deadline.</p>
+        </div>
+        <div class="demand-col demand-col-wewant">
+          <div class="demand-col-label label-wewant" style="padding-top: 1.4rem;">We want</div>
+          <div class="demand-col-title">Double planning department budgets</div>
+          <p class="demand-col-desc">If the system demands individual permission for every home, fund the teams to process them on time.</p>
+        </div>
       </div>
-      <div class="demand-col demand-col-wewant">
-        <div class="demand-col-label label-wewant" style="padding-top: 1.4rem;">We want</div>
-        <div class="demand-col-title">Double planning department budgets</div>
-        <p class="demand-col-desc">If the system demands individual permission for every home, fund the teams to process them on time.</p>
-      </div>
-      <a href="demands/planning-budgets.html" class="demand-arrow">
-        <span class="demand-arrow-text">Read more</span>
-        <span class="demand-arrow-icon">→</span>
+      <a href="demands/planning-budgets.html" class="demand-read">
+        <span class="demand-read-text">Read more</span>
+        <span class="demand-read-icon">→</span>
       </a>
     </div>
 
     <div class="demand-row" data-target="gcc">
-      <div class="demand-col demand-col-currently">
-        <span class="demand-badge badge-gcc">Glasgow City Council</span>
-        <div class="demand-col-label label-currently">Currently</div>
-        <div class="demand-col-title">25% affordable housing on every site</div>
-        <p class="demand-col-desc">A flat requirement regardless of viability. On marginal sites, it kills the scheme — zero homes instead of some.</p>
+      <div class="demand-main">
+        <div class="demand-col demand-col-currently">
+          <span class="demand-badge badge-gcc">Glasgow City Council</span>
+          <div class="demand-col-label label-currently">Currently</div>
+          <div class="demand-col-title">25% affordable housing on every site</div>
+          <p class="demand-col-desc">A flat requirement regardless of viability. On marginal sites, it kills the scheme — zero homes instead of some.</p>
+        </div>
+        <div class="demand-col demand-col-wewant">
+          <div class="demand-col-label label-wewant" style="padding-top: 1.4rem;">We want</div>
+          <div class="demand-col-title">A city-wide affordable housing target</div>
+          <p class="demand-col-desc">Same goal, better mechanism. Meet the target across the city, not by taxing every site at the same rate.</p>
+        </div>
       </div>
-      <div class="demand-col demand-col-wewant">
-        <div class="demand-col-label label-wewant" style="padding-top: 1.4rem;">We want</div>
-        <div class="demand-col-title">A city-wide affordable housing target</div>
-        <p class="demand-col-desc">Same goal, better mechanism. Meet the target across the city, not by taxing every site at the same rate.</p>
-      </div>
-      <a href="demands/affordable-housing.html" class="demand-arrow">
-        <span class="demand-arrow-text">Read more</span>
-        <span class="demand-arrow-icon">→</span>
+      <a href="demands/affordable-housing.html" class="demand-read">
+        <span class="demand-read-text">Read more</span>
+        <span class="demand-read-icon">→</span>
       </a>
     </div>
 
     <div class="demand-row" data-target="sg">
-      <div class="demand-col demand-col-currently">
-        <span class="demand-badge badge-sg">Scottish Government</span>
-        <div class="demand-col-label label-currently">Currently</div>
-        <div class="demand-col-title">Scotland's building code adds layers of cost</div>
-        <p class="demand-col-desc">Energy standards approaching Passivhaus, minimum space standards, enhanced accessibility — each individually defensible, cumulatively making many sites unviable.</p>
+      <div class="demand-main">
+        <div class="demand-col demand-col-currently">
+          <span class="demand-badge badge-sg">Scottish Government</span>
+          <div class="demand-col-label label-currently">Currently</div>
+          <div class="demand-col-title">Scotland's building code adds layers of cost</div>
+          <p class="demand-col-desc">Energy standards approaching Passivhaus, minimum space standards, enhanced accessibility — each individually defensible, cumulatively making many sites unviable.</p>
+        </div>
+        <div class="demand-col demand-col-wewant">
+          <div class="demand-col-label label-wewant" style="padding-top: 1.4rem;">We want</div>
+          <div class="demand-col-title">A cumulative viability assessment of the building code</div>
+          <p class="demand-col-desc">Suspend or simplify any requirement whose cost is disproportionate to its benefit during a declared housing emergency.</p>
+        </div>
       </div>
-      <div class="demand-col demand-col-wewant">
-        <div class="demand-col-label label-wewant" style="padding-top: 1.4rem;">We want</div>
-        <div class="demand-col-title">A cumulative viability assessment of the building code</div>
-        <p class="demand-col-desc">Suspend or simplify any requirement whose cost is disproportionate to its benefit during a declared housing emergency.</p>
-      </div>
-      <a href="demands/building-code.html" class="demand-arrow">
-        <span class="demand-arrow-text">Read more</span>
-        <span class="demand-arrow-icon">→</span>
+      <a href="demands/building-code.html" class="demand-read">
+        <span class="demand-read-text">Read more</span>
+        <span class="demand-read-icon">→</span>
       </a>
     </div>
 
