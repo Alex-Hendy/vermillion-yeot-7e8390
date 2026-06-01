@@ -3,16 +3,16 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Glasgow YIMBY — Build More Homes in Glasgow</title>
-<meta property="og:title" content="Glasgow YIMBY — Build More Homes in Glasgow">
-<meta property="og:description" content="Glasgow YIMBY is a grassroots campaign for more homes in Glasgow. Rising rents, long waiting lists, young people priced out. The solution is to build more homes.">
+<title>YIMBY Glasgow — Yes to More Homes in Glasgow</title>
+<meta property="og:title" content="YIMBY Glasgow — Yes to More Homes in Glasgow">
+<meta property="og:description" content="Glasgow's housing crisis is solvable. YIMBY Glasgow is a grassroots campaign making the evidence-based case for building more homes across the city.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://glasgowyimby.com">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Glasgow YIMBY — Build More Homes in Glasgow">
-<meta name="twitter:description" content="Glasgow YIMBY is a grassroots campaign for more homes in Glasgow. Rising rents, long waiting lists, young people priced out. The solution is to build more homes.">
+<meta name="twitter:title" content="YIMBY Glasgow — Yes to More Homes in Glasgow">
+<meta name="twitter:description" content="Glasgow's housing crisis is solvable. YIMBY Glasgow is a grassroots campaign making the evidence-based case for building more homes across the city.">
 <link rel="canonical" href="https://glasgowyimby.com">
-<meta name="description" content="Glasgow YIMBY is a grassroots campaign for more homes in Glasgow. Rising rents, long waiting lists, young people priced out. The solution is to build more homes.">
+<meta name="description" content="Glasgow's housing crisis is solvable. YIMBY Glasgow is a grassroots campaign making the evidence-based case for building more homes across the city.">
 <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
 <style>
@@ -77,27 +77,9 @@
   .join-section .section-title { margin-bottom: 1rem; color: var(--black); }
   .join-section p { color: #3A2808; margin-bottom: 2.5rem; font-size: 1rem; line-height: 1.75; }
   .email-form { display: flex; gap: 0.75rem; max-width: 420px; margin: 0 auto; }
-
-  .email-form input[type="email"] { flex: 1; padding: 0.875rem 1rem; border: 2px solid var(--black); border-radius: 4px; font-size: 0.95rem; font-family: inherit; background: var(--cream); color: var(--black); outline: none; }
-  .email-form input[type="email"]:focus { border-color: var(--orange); }
-  .email-form input[type="email"]::placeholder { color: #9A7840; }
-  /* Consent modal */
-  .consent-modal-overlay { display: none; position: fixed; inset: 0; background: rgba(26,18,8,0.7); z-index: 1000; align-items: center; justify-content: center; padding: 1.5rem; }
-  .consent-modal-overlay.open { display: flex; }
-  .consent-modal { background: var(--cream); border: 2px solid var(--black); border-radius: 12px; padding: 2rem; max-width: 420px; width: 100%; }
-  .consent-modal h3 { font-family: var(--font-heading); font-size: 1.3rem; font-weight: 900; color: var(--black); margin-bottom: 0.75rem; }
-  .consent-modal p { font-size: 0.9rem; color: var(--muted); line-height: 1.7; margin-bottom: 1.25rem; }
-  .consent-check-row { display: flex; align-items: flex-start; gap: 0.6rem; margin-bottom: 1.5rem; cursor: pointer; }
-  .consent-check-row input[type="checkbox"] { margin-top: 3px; flex-shrink: 0; accent-color: var(--black); width: 16px; height: 16px; cursor: pointer; }
-  .consent-check-row span { font-size: 0.85rem; color: var(--black); line-height: 1.55; }
-  .consent-check-row a { color: var(--orange); font-weight: 600; text-decoration: none; }
-  .consent-check-row a:hover { text-decoration: underline; }
-  .consent-modal-btns { display: flex; gap: 0.75rem; }
-  .consent-modal-btns button { flex: 1; padding: 0.75rem 1rem; border-radius: 4px; font-size: 0.95rem; font-weight: 600; cursor: pointer; font-family: inherit; border: 2px solid var(--black); }
-  .consent-confirm { background: var(--black); color: var(--cream); }
-  .consent-confirm:hover { background: var(--amber); color: var(--black); border-color: var(--black); }
-  .consent-cancel { background: transparent; color: var(--black); }
-  .consent-cancel:hover { background: rgba(26,18,8,0.08); }
+  .email-form input { flex: 1; padding: 0.875rem 1rem; border: 2px solid var(--black); border-radius: 4px; font-size: 0.95rem; font-family: inherit; background: var(--cream); color: var(--black); outline: none; }
+  .email-form input:focus { border-color: var(--orange); }
+  .email-form input::placeholder { color: #9A7840; }
 
   @keyframes fadeUp { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
   .hero-text { animation: fadeUp 0.55s ease both; }
@@ -115,13 +97,30 @@
     .myth-section { padding: 2rem 1.25rem; }
     .myths-grid { grid-template-columns: 1fr; }
     .join-section { padding: 3rem 1.25rem; }
-    .email-form-row { flex-direction: column; }
+    .email-form { flex-direction: column; }
   }
   @media (min-width: 769px) and (max-width: 1024px) {
     .hero { padding: 3rem 1.5rem; gap: 2rem; }
     .myth-outer { padding: 0 1.5rem 4rem; }
     section { padding: 3.5rem 1.5rem; }
   }
+
+  /* CONSENT MODAL */
+  .consent-overlay { display: none; position: fixed; inset: 0; background: rgba(26,18,8,0.7); z-index: 1000; align-items: center; justify-content: center; padding: 1.5rem; }
+  .consent-overlay.open { display: flex; }
+  .consent-modal { background: var(--cream); border: 2px solid var(--black); border-radius: 12px; padding: 2rem; max-width: 420px; width: 100%; }
+  .consent-modal h3 { font-family: var(--font-heading); font-size: 1.3rem; font-weight: 900; color: var(--black); margin-bottom: 0.75rem; }
+  .consent-modal p { font-size: 0.9rem; color: var(--muted); line-height: 1.7; margin-bottom: 1.25rem; }
+  .consent-check-row { display: flex; align-items: flex-start; gap: 0.6rem; margin-bottom: 1.5rem; }
+  .consent-check-row input[type="checkbox"] { margin-top: 3px; flex-shrink: 0; accent-color: var(--black); width: 16px; height: 16px; cursor: pointer; }
+  .consent-check-row span { font-size: 0.85rem; color: var(--black); line-height: 1.55; }
+  .consent-check-row a { color: var(--orange); font-weight: 600; text-decoration: none; }
+  .consent-btns { display: flex; gap: 0.75rem; }
+  .consent-btns button { flex: 1; padding: 0.75rem 1rem; border-radius: 4px; font-size: 0.95rem; font-weight: 600; cursor: pointer; font-family: inherit; border: 2px solid var(--black); }
+  .consent-confirm { background: var(--black); color: var(--cream); }
+  .consent-confirm:hover { background: var(--amber); color: var(--black); }
+  .consent-cancel { background: transparent; color: var(--black); }
+  .consent-cancel:hover { background: rgba(26,18,8,0.08); }
 </style>
 </head>
 <body>
@@ -146,6 +145,7 @@
         <div class="stat"><span class="stat-num">+70%</span><span class="stat-desc">house price rise since 2015</span></div>
         <div class="stat"><span class="stat-num">+75%</span><span class="stat-desc">rent rise since 2010</span></div>
         <div class="stat"><span class="stat-num">2×</span><span class="stat-desc">homes needed vs built</span></div>
+      </div>
       <div class="chart-source">Sources: Scottish Government Private Sector Rent Statistics; Registers of Scotland / UK House Price Index; Understanding Glasgow; Chalmers Properties 2026</div>
     </div>
   </div>
@@ -183,6 +183,7 @@
       <div id="expandedLabel">
         <div class="demands-label">Our demands</div>
         <div class="demands-text">How we'd solve Glasgow's housing crisis →</div>
+      </div>
     </a>
   </div>
 </section>
@@ -223,6 +224,7 @@
       <div>
         <div style="font-size:0.72rem;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--amber);margin-bottom:0.35rem;">Interactive tool</div>
         <div style="font-size:0.95rem;color:rgba(245,237,216,0.8);line-height:1.5;">Model what rent controls would do to Glasgow's rental supply — with the evidence behind every number.</div>
+      </div>
       <a href="calculator/rent-controls.html" style="background:var(--amber);color:var(--black);padding:0.6rem 1.25rem;border-radius:4px;font-weight:600;font-size:0.9rem;text-decoration:none;white-space:nowrap;border:2px solid var(--amber);flex-shrink:0;transition:background 0.15s,color 0.15s;" onmouseover="this.style.background='var(--orange)';this.style.color='var(--cream)'" onmouseout="this.style.background='var(--amber)';this.style.color='var(--black)'">Open the calculator →</a>
     </div>
   </div>
@@ -236,22 +238,6 @@
     <div class="email-form">
       <input type="email" placeholder="your@email.com" id="emailInput" />
       <button class="btn-primary" onclick="handleSignup()">Sign up</button>
-    </div>
-  </div>
-</div>
-
-<!-- Consent modal -->
-<div class="consent-modal-overlay" id="consentModal">
-  <div class="consent-modal">
-    <h3>One quick thing</h3>
-    <p>Before we add you to the list, please confirm you're happy to receive campaign emails from YIMBY Glasgow.</p>
-    <label class="consent-check-row">
-      <input type="checkbox" id="consentCheck">
-      <span>I agree to receive campaign emails from YIMBY Glasgow. You can unsubscribe at any time. See our <a href="about/privacy.html">privacy policy</a>.</span>
-    </label>
-    <div class="consent-modal-btns">
-      <button class="consent-cancel" onclick="closeConsentModal()">Cancel</button>
-      <button class="consent-confirm" onclick="confirmSignup()">Confirm sign up</button>
     </div>
   </div>
 </div>
@@ -330,23 +316,23 @@ function closeNav() {
   document.getElementById('navLinks').classList.remove('open');
   document.getElementById('navToggle').textContent = 'Menu';
 }
-var pendingEmail = '';
+var _pendingEmail = '';
 
 function handleSignup() {
   var email = document.getElementById('emailInput').value;
   if (email && email.includes('@')) {
-    pendingEmail = email;
+    _pendingEmail = email;
     document.getElementById('consentCheck').checked = false;
-    document.getElementById('consentModal').classList.add('open');
+    document.getElementById('consentOverlay').classList.add('open');
   } else {
     document.getElementById('emailInput').style.borderColor = '#D45A1A';
     setTimeout(function() { document.getElementById('emailInput').style.borderColor = ''; }, 1500);
   }
 }
 
-function closeConsentModal() {
-  document.getElementById('consentModal').classList.remove('open');
-  pendingEmail = '';
+function closeConsent() {
+  document.getElementById('consentOverlay').classList.remove('open');
+  _pendingEmail = '';
 }
 
 function confirmSignup() {
@@ -358,12 +344,12 @@ function confirmSignup() {
   fetch('https://hook.eu1.make.com/e9zt543zm6fn23u9tvbviptb64itjheq', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ email: pendingEmail })
+    body: JSON.stringify({ email: _pendingEmail })
   });
-  document.getElementById('consentModal').classList.remove('open');
+  document.getElementById('consentOverlay').classList.remove('open');
   document.querySelector('.join-section p').textContent = 'Thanks for signing up! We\'ll be in touch.';
   document.querySelector('.email-form').style.display = 'none';
-  pendingEmail = '';
+  _pendingEmail = '';
 }
 </script>
 <script>
@@ -376,5 +362,22 @@ function confirmSignup() {
   }
 })();
 </script>
+
+<!-- Consent modal — fixed overlay, outside all layout divs -->
+<div class="consent-overlay" id="consentOverlay">
+  <div class="consent-modal">
+    <h3>One quick thing</h3>
+    <p>Before we add you to the list, please confirm you're happy to receive campaign emails from YIMBY Glasgow.</p>
+    <label class="consent-check-row">
+      <input type="checkbox" id="consentCheck">
+      <span>I agree to receive campaign emails from YIMBY Glasgow. You can unsubscribe at any time. See our <a href="about/privacy.html">privacy policy</a>.</span>
+    </label>
+    <div class="consent-btns">
+      <button class="consent-cancel" onclick="closeConsent()">Cancel</button>
+      <button class="consent-confirm" onclick="confirmSignup()">Confirm sign up</button>
+    </div>
+  </div>
+</div>
+
 </body>
 </html>
