@@ -27,7 +27,7 @@
   .toggle-btn:not(.active):hover { background: var(--amber); color: var(--black); }
   .toggle-btn + .toggle-btn { border-left: 2px solid var(--black); }
   .demand-row { display: flex; gap: 0.75rem; margin-bottom: 1rem; align-items: stretch; overflow: visible; }
-  .demand-main { display: flex; flex: 1 0 auto; border-radius: 10px; border: 2px solid var(--black); overflow: hidden; transition: transform 0.35s ease, opacity 0.3s ease; }
+  .demand-main { display: flex; flex: 0 0 calc(100% - 56px - 0.75rem); width: calc(100% - 56px - 0.75rem); border-radius: 10px; border: 2px solid var(--black); overflow: hidden; transition: transform 0.35s ease, opacity 0.3s ease; }
   .demand-row:hover .demand-main { transform: translateX(-104px); opacity: 0.4; }
   .demand-col { padding: 1.25rem; flex: 1 1 0; min-width: 0; background: var(--cream); }
   .demand-col-currently { border-right: 1px solid rgba(26,18,8,0.12); }
