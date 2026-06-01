@@ -20,6 +20,8 @@
   .content p { font-size: 1rem; color: var(--muted); line-height: 1.8; margin-bottom: 1rem; }
   .section-label { font-size: 0.72rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--orange); margin-bottom: 1.5rem; display: block; }
   .section-gap { margin-top: 3rem; }
+
+  /* FILTER TOGGLE */
   .toggle-bar { display: flex; gap: 0; margin-bottom: 1.5rem; border-radius: 4px; overflow: hidden; border: 2px solid var(--black); }
   .toggle-btn { flex: 1; padding: 0.65rem 1rem; font-size: 0.82rem; font-weight: 700; cursor: pointer; border: none; font-family: var(--font-subheading); transition: all 0.15s; text-align: center; }
   .toggle-btn.active { background: var(--black); color: var(--cream); }
@@ -27,19 +29,28 @@
   .toggle-btn:not(.active):hover { background: var(--amber); color: var(--black); }
   .toggle-btn + .toggle-btn { border-left: 2px solid var(--black); }
 
-  /* DEMAND TABLE */
-  .demand-table { width: 100%; border-collapse: collapse; margin-bottom: 2rem; }
-  .demand-table th { font-size: 0.68rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; padding: 0.6rem 1rem; border: 2px solid var(--black); background: var(--black); color: var(--amber); text-align: left; }
-  .demand-table td { padding: 1rem; border: 2px solid var(--black); font-size: 0.88rem; color: var(--muted); line-height: 1.6; vertical-align: top; background: var(--cream); }
-  .demand-table tr:hover td { background: rgba(232,160,32,0.07); }
-  .demand-table td:last-child { width: 120px; text-align: center; white-space: nowrap; }
-  .demand-table td strong { display: block; font-size: 0.92rem; color: var(--black); font-weight: 700; margin-bottom: 0.25rem; font-family: var(--font-subheading); }
-  .demand-link { display: inline-block; font-size: 0.82rem; font-weight: 700; color: var(--orange); text-decoration: none; }
-  .demand-link:hover { text-decoration: underline; }
-  .demand-badge { display: inline-block; font-size: 0.62rem; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; padding: 2px 8px; border-radius: 100px; margin-bottom: 0.5rem; margin-right: 4px; }
-  .badge-sg { background: rgba(232,160,32,0.2); color: #7A4A00; border: 1px solid rgba(232,160,32,0.4); }
-  .badge-gcc { background: rgba(90,104,48,0.15); color: var(--olive); border: 1px solid rgba(90,104,48,0.3); }
+  /* FLIP CARDS */
+  .cards-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; margin-bottom: 2rem; }
+  .card-outer { height: 185px; perspective: 1000px; }
+  .card-inner { width: 100%; height: 100%; position: relative; transform-style: preserve-3d; transition: transform 0.55s cubic-bezier(0.4,0.2,0.2,1); }
+  .card-outer.flipped .card-inner { transform: rotateY(180deg); }
+  .card-face { position: absolute; inset: 0; border-radius: 10px; padding: 1rem; box-sizing: border-box; display: flex; flex-direction: column; -webkit-backface-visibility: hidden; backface-visibility: hidden; overflow: hidden; }
+  .card-front { background: var(--black); border: 1px solid rgba(255,255,255,0.07); cursor: pointer; }
+  .card-back { background: #2d4a1a; border: 1px solid rgba(255,255,255,0.07); transform: rotateY(180deg); }
+  .demand-badge { display: inline-block; font-size: 0.62rem; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; padding: 2px 8px; border-radius: 100px; margin-bottom: 8px; margin-right: 4px; }
+  .badge-sg { background: rgba(232,160,32,0.2); color: var(--amber); border: 1px solid rgba(232,160,32,0.4); }
+  .badge-gcc { background: rgba(90,104,48,0.25); color: #90d060; border: 1px solid rgba(90,104,48,0.45); }
+  .card-problem { font-size: 0.84rem; font-weight: 600; color: var(--cream); line-height: 1.45; flex: 1; margin: 0; font-family: var(--font-subheading); }
+  .card-flip-hint { font-size: 0.68rem; color: rgba(245,237,216,0.3); margin-top: 8px; }
+  .card-back-label { font-size: 0.62rem; font-weight: 700; letter-spacing: 0.07em; text-transform: uppercase; color: rgba(180,230,130,0.55); margin-bottom: 6px; }
+  .card-solution { font-size: 0.82rem; color: rgba(245,237,216,0.85); line-height: 1.5; flex: 1; margin: 0; }
+  .card-back-footer { display: flex; align-items: center; justify-content: space-between; margin-top: 10px; }
+  .card-flip-back { font-size: 0.68rem; color: rgba(180,230,130,0.35); cursor: pointer; background: none; border: none; font-family: var(--font-subheading); padding: 0; }
+  .card-flip-back:hover { color: rgba(180,230,130,0.6); }
+  .card-read-more { display: inline-block; background: var(--amber); color: var(--black); font-size: 0.75rem; font-weight: 700; font-family: var(--font-subheading); padding: 0.35rem 0.85rem; border-radius: 4px; text-decoration: none; white-space: nowrap; transition: background 0.15s; }
+  .card-read-more:hover { background: var(--orange); color: var(--cream); }
 
+  /* LONG-TERM SECTION */
   .lt-card { background: var(--black); border-radius: 10px; padding: 2rem; margin-bottom: 1.5rem; }
   .lt-card h3 { font-family: var(--font-heading); font-size: 1.3rem; font-weight: 900; color: var(--cream); margin-bottom: 0.75rem; line-height: 1.2; }
   .lt-card p { font-size: 0.95rem; color: rgba(245,237,216,0.7); line-height: 1.75; margin: 0 0 0.75rem; }
@@ -60,10 +71,8 @@
   @media (max-width: 768px) {
     .idea-hero { padding: 3rem 1.25rem 2.5rem; }
     .content { padding: 2.5rem 1.25rem; }
-    .demand-table thead { display: none; }
-    .demand-table td { display: block; border-bottom: none; }
-    .demand-table tr { display: block; border: 2px solid var(--black); border-radius: 8px; margin-bottom: 1rem; overflow: hidden; }
-    .demand-table td:last-child { width: auto; text-align: left; border-top: 1px solid rgba(26,18,8,0.1); }
+    .cards-grid { grid-template-columns: 1fr; }
+    .card-outer { height: auto; min-height: 160px; }
     .toggle-bar { flex-wrap: wrap; }
     .toggle-btn { min-width: 33%; }
     .idea-nav { padding: 2rem 1.25rem; flex-direction: column; align-items: flex-start; }
@@ -96,57 +105,7 @@
     <button class="toggle-btn" id="btn-gcc" onclick="filterCards('gcc')">Glasgow City Council</button>
   </div>
 
-  <table class="demand-table" id="demandCards">
-    <thead>
-      <tr>
-        <th>Currently</th>
-        <th>We want</th>
-        <th></th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr data-target="sg">
-        <td><span class="demand-badge badge-sg">Scottish Government</span><strong>NPF4 Policy 16 blocks windfall housing</strong>If a site isn't in the council's development plan, it can't become housing — even if it's obviously suitable. Planning approvals are down 66%.</td>
-        <td><strong>Restore windfall development</strong>Amend Policy 16 so suitable sites can become housing whether or not they're in a decade-old plan.</td>
-        <td><a href="demands/windfall.html" class="demand-link">Read more →</a></td>
-      </tr>
-      <tr data-target="sg">
-        <td><span class="demand-badge badge-sg">Scottish Government</span><strong>No consequence when councils fail to deliver enough homes</strong>NPF4 abolished the presumption in favour of sustainable development. Councils can miss targets indefinitely with no accountability. 16 of 18 recent appeals dismissed.</td>
-        <td><strong>Reinstate the presumption in favour of sustainable development</strong>When a council is failing to deliver, the balance should tilt in favour of approving new homes.</td>
-        <td><a href="demands/presumption.html" class="demand-link">Read more →</a></td>
-      </tr>
-      <tr data-target="gcc">
-        <td><span class="demand-badge badge-gcc">Glasgow City Council</span><strong>Glasgow's development plan is nine years out of date</strong>Adopted in 2017, replacement not expected until 2027. Viable sites used up, no new ones coming forward.</td>
-        <td><strong>Much higher targets, more and smaller sites</strong>Set targets well above projected need. Allocate generously and let the market decide which get built.</td>
-        <td><a href="demands/housing-targets.html" class="demand-link">Read more →</a></td>
-      </tr>
-      <tr data-target="sg">
-        <td><span class="demand-badge badge-sg">Scottish Government</span><strong>Section 75 negotiations drag on for months or years</strong>Open-ended legal negotiations over contributions delay building indefinitely after permission is granted.</td>
-        <td><strong>Statutory timelines for Section 75</strong>Binding deadline. If agreement isn't reached in time, standard terms apply automatically.</td>
-        <td><a href="demands/section-75.html" class="demand-link">Read more →</a></td>
-      </tr>
-      <tr data-target="gcc">
-        <td><span class="demand-badge badge-gcc">Glasgow City Council</span><strong>1 parking space required per home</strong>SG 11 mandates parking on every development — adding cost, reducing density, locking in car dependency with no evidence base.</td>
-        <td><strong>Abolish parking minimums</strong>Let developers decide how much parking their customers need. Today's concrete won't age well.</td>
-        <td><a href="demands/parking.html" class="demand-link">Read more →</a></td>
-      </tr>
-      <tr data-target="both">
-        <td><span class="demand-badge badge-sg">SG</span><span class="demand-badge badge-gcc">GCC</span><strong>Planning decisions take more than double the target</strong>Major applications average 37.7 weeks against a 16-week target. Only 40% of local applications meet the 8-week deadline.</td>
-        <td><strong>Double planning department budgets</strong>If the system demands individual permission for every home, fund the teams to process them on time.</td>
-        <td><a href="demands/planning-budgets.html" class="demand-link">Read more →</a></td>
-      </tr>
-      <tr data-target="gcc">
-        <td><span class="demand-badge badge-gcc">Glasgow City Council</span><strong>25% affordable housing on every site</strong>A flat requirement regardless of viability. On marginal sites, it kills the scheme — zero homes instead of some.</td>
-        <td><strong>A city-wide affordable housing target</strong>Same goal, better mechanism. Meet the target across the city, not by taxing every site at the same rate.</td>
-        <td><a href="demands/affordable-housing.html" class="demand-link">Read more →</a></td>
-      </tr>
-      <tr data-target="sg">
-        <td><span class="demand-badge badge-sg">Scottish Government</span><strong>Scotland's building code adds layers of cost</strong>Energy standards approaching Passivhaus, minimum space standards, enhanced accessibility — each individually defensible, cumulatively making many sites unviable.</td>
-        <td><strong>A cumulative viability assessment of the building code</strong>Suspend or simplify any requirement whose cost is disproportionate to its benefit during a declared housing emergency.</td>
-        <td><a href="demands/building-code.html" class="demand-link">Read more →</a></td>
-      </tr>
-    </tbody>
-  </table>
+  <div class="cards-grid" id="demandCards"></div>
 
   <div class="section-gap"></div>
   <span class="section-label">The long-term goal</span>
@@ -199,14 +158,123 @@
 <div id="site-footer"></div>
 <script src="../footer.js"></script>
 <script>
-function filterCards(target) {
-  document.querySelectorAll('.toggle-btn').forEach(b => b.classList.remove('active'));
-  document.getElementById('btn-' + target).classList.add('active');
-  document.querySelectorAll('#demandCards tbody tr').forEach(row => {
-    const t = row.dataset.target;
-    row.style.display = (target === 'all' || t === target || t === 'both') ? '' : 'none';
+var demands = [
+  {
+    target: 'sg',
+    badgeClass: 'badge-sg',
+    badgeLabel: 'Scottish Government',
+    problem: 'NPF4 Policy 16 blocks the windfall housing mechanism, and thousands of homes',
+    solution: 'Amend Policy 16 so suitable sites not in local plans can become housing with council\'s permission.',
+    link: 'demands/windfall.html'
+  },
+  {
+    target: 'sg',
+    badgeClass: 'badge-sg',
+    badgeLabel: 'Scottish Government',
+    problem: 'No consequence when NIMBY councils fail residents, and block housing',
+    solution: 'Reinstate the presumption in favour of sustainable development. When a council is failing to deliver, the balance should tilt in favour of approving new homes.',
+    link: 'demands/presumption.html'
+  },
+  {
+    target: 'gcc',
+    badgeClass: 'badge-gcc',
+    badgeLabel: 'Glasgow City Council',
+    problem: 'Glasgow\'s development plan is nine years out of date',
+    solution: 'Set targets well above projected need. Allocate generously and let the market decide which get built.',
+    link: 'demands/housing-targets.html'
+  },
+  {
+    target: 'sg',
+    badgeClass: 'badge-sg',
+    badgeLabel: 'Scottish Government',
+    problem: 'Section 75 negotiations drag on for months or years, adding cost and boxing out small builders',
+    solution: 'Binding deadline. If agreement is not reached in time, standard terms apply automatically.',
+    link: 'demands/section-75.html'
+  },
+  {
+    target: 'gcc',
+    badgeClass: 'badge-gcc',
+    badgeLabel: 'Glasgow City Council',
+    problem: 'Inflexible parking rules that no tenement would meet',
+    solution: 'Return to letting the market decide parking provision — it produced Glasgow\'s best tenement neighbourhoods.',
+    link: 'demands/parking.html'
+  },
+  {
+    target: 'both',
+    badgeClass: 'badge-sg',
+    badgeLabel: 'SG + GCC',
+    problem: 'Planning decisions take more than double the target time',
+    solution: 'Double planning department budgets. Fund the teams to process applications on time.',
+    link: 'demands/planning-budgets.html'
+  },
+  {
+    target: 'gcc',
+    badgeClass: 'badge-gcc',
+    badgeLabel: 'Glasgow City Council',
+    problem: 'Affordable housing quotas make sites financially non-viable, meaning no homes get built instead',
+    solution: 'A city-wide affordable housing target. Flexibility gives councils more options to say \'Yes\'.',
+    link: 'demands/affordable-housing.html'
+  },
+  {
+    target: 'sg',
+    badgeClass: 'badge-sg',
+    badgeLabel: 'Scottish Government',
+    problem: 'Scotland\'s building code adds layers of cost, and stops us building beautiful',
+    solution: 'A cumulative viability assessment with international comparisons. Suspend any requirement whose cost is disproportionate to its benefit.',
+    link: 'demands/building-code.html'
+  }
+];
+
+function makeCard(d, i) {
+  var div = document.createElement('div');
+  div.className = 'card-outer';
+  div.id = 'card-' + i;
+  div.innerHTML =
+    '<div class="card-inner">' +
+      '<div class="card-face card-front" onclick="flipCard(' + i + ')">' +
+        '<span class="demand-badge ' + d.badgeClass + '">' + d.badgeLabel + '</span>' +
+        '<p class="card-problem">' + d.problem + '</p>' +
+        '<div class="card-flip-hint">Click to see our ask</div>' +
+      '</div>' +
+      '<div class="card-face card-back">' +
+        '<div class="card-back-label">What we want</div>' +
+        '<p class="card-solution">' + d.solution + '</p>' +
+        '<div class="card-back-footer">' +
+          '<button class="card-flip-back" onclick="flipCard(' + i + ')">← Flip back</button>' +
+          '<a class="card-read-more" href="' + d.link + '">Read more →</a>' +
+        '</div>' +
+      '</div>' +
+    '</div>';
+  return div;
+}
+
+function flipCard(i) {
+  var card = document.getElementById('card-' + i);
+  if (card) card.classList.toggle('flipped');
+}
+
+var currentFilter = 'all';
+
+function filterCards(type) {
+  currentFilter = type;
+  ['all', 'sg', 'gcc'].forEach(function(t) {
+    var b = document.getElementById('btn-' + t);
+    if (b) b.classList.toggle('active', t === type);
+  });
+  renderCards();
+}
+
+function renderCards() {
+  var grid = document.getElementById('demandCards');
+  grid.innerHTML = '';
+  demands.forEach(function(d, i) {
+    if (currentFilter === 'all' || d.target === currentFilter || d.target === 'both') {
+      grid.appendChild(makeCard(d, i));
+    }
   });
 }
+
+renderCards();
 </script>
 </body>
 </html>
