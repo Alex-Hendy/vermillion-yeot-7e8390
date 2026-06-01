@@ -31,22 +31,22 @@
 
   /* FLIP CARDS */
   .cards-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; margin-bottom: 2rem; }
-  .card-outer { height: 185px; perspective: 1000px; }
-  .card-inner { width: 100%; height: 100%; position: relative; transform-style: preserve-3d; transition: transform 0.55s cubic-bezier(0.4,0.2,0.2,1); }
+  .card-outer { perspective: 1000px; }
+  .card-inner { width: 100%; position: relative; transform-style: preserve-3d; transition: transform 0.55s cubic-bezier(0.4,0.2,0.2,1); }
   .card-outer.flipped .card-inner { transform: rotateY(180deg); }
-  .card-face { position: absolute; inset: 0; border-radius: 10px; padding: 1rem; box-sizing: border-box; display: flex; flex-direction: column; -webkit-backface-visibility: hidden; backface-visibility: hidden; overflow: hidden; }
-  .card-front { background: var(--black); border: 1px solid rgba(255,255,255,0.07); cursor: pointer; }
-  .card-back { background: #2d4a1a; border: 1px solid rgba(255,255,255,0.07); transform: rotateY(180deg); }
+  .card-face { border-radius: 10px; padding: 1rem; box-sizing: border-box; display: flex; flex-direction: column; -webkit-backface-visibility: hidden; backface-visibility: hidden; }
+  .card-front { background: var(--black); border: 1px solid rgba(255,255,255,0.1); cursor: pointer; }
+  .card-back { position: absolute; inset: 0; background: #2d4a1a; border: 1px solid rgba(255,255,255,0.1); transform: rotateY(180deg); }
   .demand-badge { display: inline-block; font-size: 0.62rem; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; padding: 2px 8px; border-radius: 100px; margin-bottom: 8px; margin-right: 4px; }
-  .badge-sg { background: rgba(232,160,32,0.2); color: var(--amber); border: 1px solid rgba(232,160,32,0.4); }
-  .badge-gcc { background: rgba(90,104,48,0.25); color: #90d060; border: 1px solid rgba(90,104,48,0.45); }
-  .card-problem { font-size: 0.84rem; font-weight: 600; color: var(--cream); line-height: 1.45; flex: 1; margin: 0; font-family: var(--font-subheading); }
-  .card-flip-hint { font-size: 0.68rem; color: rgba(245,237,216,0.3); margin-top: 8px; }
-  .card-back-label { font-size: 0.62rem; font-weight: 700; letter-spacing: 0.07em; text-transform: uppercase; color: rgba(180,230,130,0.55); margin-bottom: 6px; }
-  .card-solution { font-size: 0.82rem; color: rgba(245,237,216,0.85); line-height: 1.5; flex: 1; margin: 0; }
-  .card-back-footer { display: flex; align-items: center; justify-content: space-between; margin-top: 10px; }
-  .card-flip-back { font-size: 0.68rem; color: rgba(180,230,130,0.35); cursor: pointer; background: none; border: none; font-family: var(--font-subheading); padding: 0; }
-  .card-flip-back:hover { color: rgba(180,230,130,0.6); }
+  .badge-sg { background: rgba(232,160,32,0.2); color: #f0b030; border: 1px solid rgba(232,160,32,0.4); }
+  .badge-gcc { background: rgba(90,104,48,0.25); color: #a0d060; border: 1px solid rgba(90,104,48,0.45); }
+  .card-problem { font-size: 0.87rem; font-weight: 600; color: #f0e8d0; line-height: 1.5; flex: 1; margin: 0 0 8px; font-family: var(--font-subheading); }
+  .card-flip-hint { font-size: 0.68rem; color: rgba(240,232,208,0.45); }
+  .card-back-label { font-size: 0.62rem; font-weight: 700; letter-spacing: 0.07em; text-transform: uppercase; color: #b8e888; margin-bottom: 8px; }
+  .card-solution { font-size: 0.85rem; color: #dff0c0; line-height: 1.55; flex: 1; margin: 0 0 12px; }
+  .card-back-footer { display: flex; align-items: center; justify-content: space-between; padding-top: 8px; border-top: 1px solid rgba(255,255,255,0.1); margin-top: auto; }
+  .card-flip-back { font-size: 0.68rem; color: rgba(184,232,136,0.5); cursor: pointer; background: none; border: none; font-family: var(--font-subheading); padding: 0; }
+  .card-flip-back:hover { color: rgba(184,232,136,0.8); }
   .card-read-more { display: inline-block; background: var(--amber); color: var(--black); font-size: 0.75rem; font-weight: 700; font-family: var(--font-subheading); padding: 0.35rem 0.85rem; border-radius: 4px; text-decoration: none; white-space: nowrap; transition: background 0.15s; }
   .card-read-more:hover { background: var(--orange); color: var(--cream); }
 
@@ -72,7 +72,6 @@
     .idea-hero { padding: 3rem 1.25rem 2.5rem; }
     .content { padding: 2.5rem 1.25rem; }
     .cards-grid { grid-template-columns: 1fr; }
-    .card-outer { height: auto; min-height: 160px; }
     .toggle-bar { flex-wrap: wrap; }
     .toggle-btn { min-width: 33%; }
     .idea-nav { padding: 2rem 1.25rem; flex-direction: column; align-items: flex-start; }
@@ -159,70 +158,14 @@
 <script src="../footer.js"></script>
 <script>
 var demands = [
-  {
-    target: 'sg',
-    badgeClass: 'badge-sg',
-    badgeLabel: 'Scottish Government',
-    problem: 'NPF4 Policy 16 blocks the windfall housing mechanism, and thousands of homes',
-    solution: 'Amend Policy 16 so suitable sites not in local plans can become housing with council\'s permission.',
-    link: 'demands/windfall.html'
-  },
-  {
-    target: 'sg',
-    badgeClass: 'badge-sg',
-    badgeLabel: 'Scottish Government',
-    problem: 'No consequence when NIMBY councils fail residents, and block housing',
-    solution: 'Reinstate the presumption in favour of sustainable development. When a council is failing to deliver, the balance should tilt in favour of approving new homes.',
-    link: 'demands/presumption.html'
-  },
-  {
-    target: 'gcc',
-    badgeClass: 'badge-gcc',
-    badgeLabel: 'Glasgow City Council',
-    problem: 'Glasgow\'s development plan is nine years out of date',
-    solution: 'Set targets well above projected need. Allocate generously and let the market decide which get built.',
-    link: 'demands/housing-targets.html'
-  },
-  {
-    target: 'sg',
-    badgeClass: 'badge-sg',
-    badgeLabel: 'Scottish Government',
-    problem: 'Section 75 negotiations drag on for months or years, adding cost and boxing out small builders',
-    solution: 'Binding deadline. If agreement is not reached in time, standard terms apply automatically.',
-    link: 'demands/section-75.html'
-  },
-  {
-    target: 'gcc',
-    badgeClass: 'badge-gcc',
-    badgeLabel: 'Glasgow City Council',
-    problem: 'Inflexible parking rules that no tenement would meet',
-    solution: 'Return to letting the market decide parking provision — it produced Glasgow\'s best tenement neighbourhoods.',
-    link: 'demands/parking.html'
-  },
-  {
-    target: 'both',
-    badgeClass: 'badge-sg',
-    badgeLabel: 'SG + GCC',
-    problem: 'Planning decisions take more than double the target time',
-    solution: 'Double planning department budgets. Fund the teams to process applications on time.',
-    link: 'demands/planning-budgets.html'
-  },
-  {
-    target: 'gcc',
-    badgeClass: 'badge-gcc',
-    badgeLabel: 'Glasgow City Council',
-    problem: 'Affordable housing quotas make sites financially non-viable, meaning no homes get built instead',
-    solution: 'A city-wide affordable housing target. Flexibility gives councils more options to say \'Yes\'.',
-    link: 'demands/affordable-housing.html'
-  },
-  {
-    target: 'sg',
-    badgeClass: 'badge-sg',
-    badgeLabel: 'Scottish Government',
-    problem: 'Scotland\'s building code adds layers of cost, and stops us building beautiful',
-    solution: 'A cumulative viability assessment with international comparisons. Suspend any requirement whose cost is disproportionate to its benefit.',
-    link: 'demands/building-code.html'
-  }
+  { target: 'sg', badgeClass: 'badge-sg', badgeLabel: 'Scottish Government', problem: 'NPF4 Policy 16 blocks the windfall housing mechanism, and thousands of homes', solution: 'Amend Policy 16 so suitable sites not in local plans can become housing with council\'s permission.', link: 'demands/windfall.html' },
+  { target: 'sg', badgeClass: 'badge-sg', badgeLabel: 'Scottish Government', problem: 'No consequence when NIMBY councils fail residents, and block housing', solution: 'Reinstate the presumption in favour of sustainable development. When a council is failing to deliver, the balance should tilt in favour of approving new homes.', link: 'demands/presumption.html' },
+  { target: 'gcc', badgeClass: 'badge-gcc', badgeLabel: 'Glasgow City Council', problem: 'Glasgow\'s development plan is nine years out of date', solution: 'Set targets well above projected need. Allocate generously and let the market decide which get built.', link: 'demands/housing-targets.html' },
+  { target: 'sg', badgeClass: 'badge-sg', badgeLabel: 'Scottish Government', problem: 'Section 75 negotiations drag on for months or years, adding cost and boxing out small builders', solution: 'Binding deadline. If agreement is not reached in time, standard terms apply automatically.', link: 'demands/section-75.html' },
+  { target: 'gcc', badgeClass: 'badge-gcc', badgeLabel: 'Glasgow City Council', problem: 'Inflexible parking rules that no tenement would meet', solution: 'Return to letting the market decide parking provision — it produced Glasgow\'s best tenement neighbourhoods.', link: 'demands/parking.html' },
+  { target: 'both', badgeClass: 'badge-sg', badgeLabel: 'SG + GCC', problem: 'Planning decisions take more than double the target time', solution: 'Double planning department budgets. Fund the teams to process applications on time.', link: 'demands/planning-budgets.html' },
+  { target: 'gcc', badgeClass: 'badge-gcc', badgeLabel: 'Glasgow City Council', problem: 'Affordable housing quotas make sites financially non-viable, meaning no homes get built instead', solution: 'A city-wide affordable housing target. Flexibility gives councils more options to say \'Yes\'.', link: 'demands/affordable-housing.html' },
+  { target: 'sg', badgeClass: 'badge-sg', badgeLabel: 'Scottish Government', problem: 'Scotland\'s building code adds layers of cost, and stops us building beautiful', solution: 'A cumulative viability assessment with international comparisons. Suspend any requirement whose cost is disproportionate to its benefit.', link: 'demands/building-code.html' }
 ];
 
 function makeCard(d, i) {
@@ -246,6 +189,22 @@ function makeCard(d, i) {
       '</div>' +
     '</div>';
   return div;
+}
+
+function syncHeights() {
+  document.querySelectorAll('.card-outer').forEach(function(outer) {
+    var front = outer.querySelector('.card-front');
+    var back = outer.querySelector('.card-back');
+    var inner = outer.querySelector('.card-inner');
+    if (!front || !back || !inner) return;
+    front.style.minHeight = '';
+    back.style.minHeight = '';
+    inner.style.height = '';
+    var h = Math.max(front.scrollHeight, back.scrollHeight);
+    front.style.minHeight = h + 'px';
+    back.style.minHeight = h + 'px';
+    inner.style.height = h + 'px';
+  });
 }
 
 function flipCard(i) {
@@ -272,9 +231,11 @@ function renderCards() {
       grid.appendChild(makeCard(d, i));
     }
   });
+  setTimeout(syncHeights, 80);
 }
 
 renderCards();
+window.addEventListener('resize', syncHeights);
 </script>
 </body>
 </html>
