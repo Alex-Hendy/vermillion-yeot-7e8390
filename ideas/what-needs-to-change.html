@@ -26,9 +26,11 @@
   .toggle-btn:not(.active) { background: var(--cream); color: var(--muted); }
   .toggle-btn:not(.active):hover { background: var(--amber); color: var(--black); }
   .toggle-btn + .toggle-btn { border-left: 2px solid var(--black); }
-  .demand-row { display: flex; gap: 0.75rem; margin-bottom: 1rem; align-items: stretch; overflow: visible; justify-content: flex-end; }
-  .demand-main { display: flex; flex: 0 0 calc(100% - 56px - 0.75rem); width: calc(100% - 56px - 0.75rem); border-radius: 10px; border: 2px solid var(--black); overflow: hidden; transition: transform 0.35s ease, opacity 0.3s ease; }
-  .demand-row:hover .demand-main { transform: translateX(-104px); opacity: 0.4; }
+  .demandCards-wrap { position: relative; overflow: hidden; padding-right: 4px; }
+  .demand-row { display: flex; flex-direction: row; gap: 0.75rem; margin-bottom: 1rem; align-items: stretch; width: calc(100% + 104px); overflow: visible; transition: transform 0.35s ease; }
+  .demand-row:hover { transform: translateX(-104px); }
+  .demand-main { display: flex; flex: 1 1 auto; min-width: 0; border-radius: 10px; border: 2px solid var(--black); overflow: hidden; }
+  .demand-row:hover .demand-main { opacity: 0.4; }
   .demand-col { padding: 1.25rem; flex: 1 1 0; min-width: 0; background: var(--cream); }
   .demand-col-currently { border-right: 1px solid rgba(26,18,8,0.12); }
   .demand-col-wewant { }
@@ -40,8 +42,7 @@
   .demand-badge { display: inline-block; font-size: 0.62rem; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; padding: 2px 8px; border-radius: 100px; margin-bottom: 0.6rem; margin-right: 4px; }
   .badge-sg { background: rgba(232,160,32,0.2); color: #7A4A00; border: 1px solid rgba(232,160,32,0.4); }
   .badge-gcc { background: rgba(90,104,48,0.15); color: var(--olive); border: 1px solid rgba(90,104,48,0.3); }
-  .demand-read { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 0.5rem; flex: 0 0 56px; flex-shrink: 0; background: var(--black); border: 2px solid var(--black); border-radius: 10px; text-decoration: none; overflow: hidden; transition: flex-basis 0.35s ease; cursor: pointer; }
-  .demand-row:hover .demand-read { flex-basis: 160px; }
+  .demand-read { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 0.5rem; flex: 0 0 160px; flex-shrink: 0; background: var(--black); border: 2px solid var(--black); border-radius: 10px; text-decoration: none; overflow: hidden; cursor: pointer; }
   .demand-read-text { font-size: 0.82rem; font-weight: 700; color: var(--amber); white-space: nowrap; opacity: 0; transition: opacity 0.2s ease 0.1s; font-family: var(--font-subheading); }
   .demand-row:hover .demand-read-text { opacity: 1; }
   .demand-read-icon { font-size: 1.1rem; color: var(--amber); flex-shrink: 0; }
