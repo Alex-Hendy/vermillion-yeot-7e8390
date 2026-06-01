@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>YIMBY Glasgow's Demands: How to Fix the Housing Crisis</title>
+<link rel="canonical" href="https://glasgowyimby.com/ideas/what-needs-to-change.html">
+<meta name="description" content="Nine specific policy changes — to NPF4, Glasgow City Council, and Scotland's building code — that would unlock the homes Glasgow desperately needs.">
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../style.css">
+<style>
+  .idea-hero { background: var(--black); color: var(--cream); padding: 5rem 2rem 4rem; }
+  .idea-hero-inner { max-width: 760px; margin: 0 auto; }
+  .back-link { color: var(--amber); text-decoration: none; font-size: 0.85rem; font-weight: 600; display: inline-flex; align-items: center; gap: 0.4rem; margin-bottom: 2rem; }
+  .back-link:hover { text-decoration: underline; }
+  .step-label { display: inline-block; font-size: 0.72rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; padding: 0.3rem 0.75rem; border-radius: 100px; margin-bottom: 1.25rem; border: 1.5px solid rgba(232,160,32,0.4); background: rgba(232,160,32,0.15); color: var(--amber); }
+  .idea-title { font-family: var(--font-heading); font-size: clamp(2rem, 4vw, 3rem); font-weight: 900; line-height: 1.1; letter-spacing: 0.02em; color: var(--cream); margin-bottom: 1.25rem; }
+  .idea-intro { font-size: 1.05rem; color: rgba(245,237,216,0.75); line-height: 1.75; }
+  .content { max-width: 760px; margin: 0 auto; padding: 4rem 2rem; }
+  .content p { font-size: 1rem; color: var(--muted); line-height: 1.8; margin-bottom: 1rem; }
+  .section-label { font-size: 0.72rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--orange); margin-bottom: 1.5rem; display: block; }
+  .section-gap { margin-top: 3rem; }
+
+  /* FILTER TOGGLE */
+  .toggle-bar { display: flex; gap: 0; margin-bottom: 1.5rem; border-radius: 4px; overflow: hidden; border: 2px solid var(--black); }
+  .toggle-btn { flex: 1; padding: 0.65rem 1rem; font-size: 0.82rem; font-weight: 700; cursor: pointer; border: none; font-family: var(--font-subheading); transition: all 0.15s; text-align: center; }
+  .toggle-btn.active { background: var(--black); color: var(--cream); }
+  .toggle-btn:not(.active) { background: var(--cream); color: var(--muted); }
+  .toggle-btn:not(.active):hover { background: var(--amber); color: var(--black); }
+  .toggle-btn + .toggle-btn { border-left: 2px solid var(--black); }
+
+  /* FLIP CARDS */
+  .cards-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; margin-bottom: 2rem; }
+  .card-outer { height: 185px; perspective: 1000px; }
+  .card-inner { width: 100%; height: 100%; position: relative; transform-style: preserve-3d; transition: transform 0.55s cubic-bezier(0.4,0.2,0.2,1); }
+  .card-outer.flipped .card-inner { transform: rotateY(180deg); }
+  .card-face { position: absolute; inset: 0; border-radius: 10px; padding: 1rem; box-sizing: border-box; display: flex; flex-direction: column; -webkit-backface-visibility: hidden; backface-visibility: hidden; overflow: hidden; }
+  .card-front { background: var(--black); border: 1px solid rgba(255,255,255,0.07); cursor: pointer; }
+  .card-back { background: #2d4a1a; border: 1px solid rgba(255,255,255,0.07); transform: rotateY(180deg); }
+  .demand-badge { display: inline-block; font-size: 0.62rem; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; padding: 2px 8px; border-radius: 100px; margin-bottom: 8px; margin-right: 4px; }
+  .badge-sg { background: rgba(232,160,32,0.2); color: var(--amber); border: 1px solid rgba(232,160,32,0.4); }
+  .badge-gcc { background: rgba(90,104,48,0.25); color: #90d060; border: 1px solid rgba(90,104,48,0.45); }
+  .card-problem { font-size: 0.84rem; font-weight: 600; color: var(--cream); line-height: 1.45; flex: 1; margin: 0; font-family: var(--font-subheading); }
+  .card-flip-hint { font-size: 0.68rem; color: rgba(245,237,216,0.3); margin-top: 8px; }
+  .card-back-label { font-size: 0.62rem; font-weight: 700; letter-spacing: 0.07em; text-transform: uppercase; color: rgba(180,230,130,0.55); margin-bottom: 6px; }
+  .card-solution { font-size: 0.82rem; color: rgba(245,237,216,0.85); line-height: 1.5; flex: 1; margin: 0; }
+  .card-back-footer { display: flex; align-items: center; justify-content: space-between; margin-top: 10px; }
+  .card-flip-back { font-size: 0.68rem; color: rgba(180,230,130,0.35); cursor: pointer; background: none; border: none; font-family: var(--font-subheading); padding: 0; }
+  .card-flip-back:hover { color: rgba(180,230,130,0.6); }
+  .card-read-more { display: inline-block; background: var(--amber); color: var(--black); font-size: 0.75rem; font-weight: 700; font-family: var(--font-subheading); padding: 0.35rem 0.85rem; border-radius: 4px; text-decoration: none; white-space: nowrap; transition: background 0.15s; }
+  .card-read-more:hover { background: var(--orange); color: var(--cream); }
+
+  /* LONG-TERM SECTION */
+  .lt-card { background: var(--black); border-radius: 10px; padding: 2rem; margin-bottom: 1.5rem; }
+  .lt-card h3 { font-family: var(--font-heading); font-size: 1.3rem; font-weight: 900; color: var(--cream); margin-bottom: 0.75rem; line-height: 1.2; }
+  .lt-card p { font-size: 0.95rem; color: rgba(245,237,216,0.7); line-height: 1.75; margin: 0 0 0.75rem; }
+  .lt-card p:last-child { margin-bottom: 0; }
+  .lt-feature { border-left: 3px solid var(--amber); padding: 1rem 1.25rem; margin: 1rem 0; background: rgba(232,160,32,0.06); border-radius: 0 8px 8px 0; }
+  .lt-feature h4 { font-family: var(--font-subheading); font-size: 0.95rem; font-weight: 700; color: var(--black); margin-bottom: 0.35rem; }
+  .lt-feature p { font-size: 0.9rem; color: var(--muted); line-height: 1.7; margin: 0; }
+  .lt-link { display: inline-block; margin-top: 0.75rem; font-size: 0.85rem; font-weight: 600; color: var(--orange); text-decoration: none; }
+  .lt-link:hover { text-decoration: underline; }
+  .cta-box { background: var(--black); border-radius: 10px; padding: 2rem; margin-top: 3rem; display: flex; align-items: center; justify-content: space-between; gap: 1.5rem; flex-wrap: wrap; }
+  .cta-box p { color: rgba(245,237,216,0.8); margin: 0; font-size: 0.95rem; line-height: 1.65; flex: 1; }
+  .cta-box a { background: var(--amber); color: var(--black); padding: 0.75rem 1.5rem; border-radius: 4px; font-weight: 700; font-size: 0.9rem; text-decoration: none; white-space: nowrap; flex-shrink: 0; }
+  .cta-box a:hover { background: var(--orange); color: var(--cream); }
+  .idea-nav { border-top: 2px solid var(--black); padding: 3rem 2rem; max-width: 760px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; }
+  .idea-nav a { text-decoration: none; font-weight: 600; font-size: 0.9rem; color: var(--orange); }
+  .idea-nav a:hover { text-decoration: underline; }
+
+  @media (max-width: 768px) {
+    .idea-hero { padding: 3rem 1.25rem 2.5rem; }
+    .content { padding: 2.5rem 1.25rem; }
+    .cards-grid { grid-template-columns: 1fr; }
+    .card-outer { height: auto; min-height: 160px; }
+    .toggle-bar { flex-wrap: wrap; }
+    .toggle-btn { min-width: 33%; }
+    .idea-nav { padding: 2rem 1.25rem; flex-direction: column; align-items: flex-start; }
+  }
+</style>
+</head>
+<body>
+
+<div id="site-nav"></div>
+<script src="../nav.js"></script>
+
+<div class="idea-hero">
+  <div class="idea-hero-inner">
+    <a href="index.html" class="back-link">← Back to the ideas</a>
+    <div class="step-label">Step 4 of 4</div>
+    <div class="idea-title">What needs to change</div>
+    <p class="idea-intro">Glasgow's housing crisis is the result of a planning system that makes it too difficult, too slow, and too uncertain to build homes. Here is what we are asking for — reforms that can be made now within the existing system, and the longer-term changes needed to fix it properly.</p>
+  </div>
+</div>
+
+<div class="content">
+
+  <p>Scotland's planning system is centrally planned in a way that few comparable countries would recognise. The Scottish Government writes a national framework. Councils write local plans that allocate specific sites. If a site is not in the plan, it effectively cannot become housing — regardless of how obvious the need. The plans take a decade to produce and are out of date before they are adopted. The result is a system that cannot respond to demand, and a housing crisis that deepens every year it remains unreformed.</p>
+
+  <span class="section-label">What can be done now</span>
+
+  <div class="toggle-bar">
+    <button class="toggle-btn active" id="btn-all" onclick="filterCards('all')">All demands</button>
+    <button class="toggle-btn" id="btn-sg" onclick="filterCards('sg')">Scottish Government</button>
+    <button class="toggle-btn" id="btn-gcc" onclick="filterCards('gcc')">Glasgow City Council</button>
+  </div>
+
+  <div class="cards-grid" id="demandCards"></div>
+
+  <div class="section-gap"></div>
+  <span class="section-label">The long-term goal</span>
+
+  <div class="lt-card">
+    <h3>Replace discretionary planning with a rules-based system</h3>
+    <p>The demands above work within the existing plan-led system. But the deeper problem is the system itself. Scotland attempts to decide in advance exactly which sites should have homes, exactly how many, and exactly when. When the plans are late — and 70% of Scotland's Local Development Plans are currently out of date — when allocations are in the wrong places, and when a single court ruling can freeze windfall development overnight, the entire housing supply depends on a process that takes a decade and consistently fails to keep up with demand.</p>
+    <p>The long-term goal is to replace this with a rules-based system — the model used in Germany, Japan, and the cities that are actually building enough homes. Centre for Cities' 2025 "Planorama" report found that in Germany, France and Japan, local planning uses zones with clear rules. In England and Scotland, the system is discretionary — local authorities "effectively ask private actors to originate ideas and make bets on what the preferences of the authority might be." The result is wasted resources, developments never being proposed, and very low levels of housebuilding.</p>
+    <a href="demands/rules-based-system.html" class="lt-link">Read the full argument →</a>
+  </div>
+
+  <p>In a rules-based system:</p>
+
+  <div class="lt-feature">
+    <h4>Clear zoning rules replace discretionary assessment</h4>
+    <p>Areas are zoned with rules on height, density, setbacks, and design. If a proposal complies, it can be built — no committee vote, no negotiation. This is how it works in Germany, where a 2025 "Construction Turbo" law now allows municipalities to approve housing without any zoning plan at all.</p>
+  </div>
+
+  <div class="lt-feature">
+    <h4>Zones near transport permit dense housing by default</h4>
+    <p>Areas within walking distance of subway and rail stations are zoned to permit dense residential development as of right. The logic is obvious: people should be able to live near the places that connect them to work. This should not require special justification.</p>
+  </div>
+
+  <div class="lt-feature">
+    <h4>The development plan becomes a zoning map, not a decade-long project</h4>
+    <p>Instead of a comprehensive plan that takes ten years to produce and is out of date before adoption, the council sets zoning rules and updates them as needed. Japan uses 12 national zone types that cover the entire country. Every city uses the same categories. The rules are clear and the system works.</p>
+  </div>
+
+  <div class="lt-feature">
+    <h4>Community input shapes the rules, not individual decisions</h4>
+    <p>If a proposal meets the zoning rules, objections should not be able to override the decision. Community input should inform the rules when they are being set — not block individual applications that comply with them.</p>
+  </div>
+
+  <div class="lt-feature">
+    <h4>Compliant developments don't need individual planning permission</h4>
+    <p>Building warrants — covering structural integrity, fire safety, and energy standards — still apply. But the question of whether housing can be built on a site that is zoned for housing should not be a matter for discretionary assessment. The answer should already be yes.</p>
+  </div>
+
+  <div class="cta-box">
+    <p>These demands are the starting point for YIMBY Glasgow's campaigning work. If you want to help make them a reality, get involved.</p>
+    <a href="../get-involved.html">Get involved →</a>
+  </div>
+</div>
+
+<div class="idea-nav">
+  <a href="barriers.html">← Previous: The barriers</a>
+  <a href="index.html">Back to all ideas</a>
+</div>
+
+<div id="site-footer"></div>
+<script src="../footer.js"></script>
+<script>
+var demands = [
+  {
+    target: 'sg',
+    badgeClass: 'badge-sg',
+    badgeLabel: 'Scottish Government',
+    problem: 'NPF4 Policy 16 blocks the windfall housing mechanism, and thousands of homes',
+    solution: 'Amend Policy 16 so suitable sites not in local plans can become housing with council\'s permission.',
+    link: 'demands/windfall.html'
+  },
+  {
+    target: 'sg',
+    badgeClass: 'badge-sg',
+    badgeLabel: 'Scottish Government',
+    problem: 'No consequence when NIMBY councils fail residents, and block housing',
+    solution: 'Reinstate the presumption in favour of sustainable development. When a council is failing to deliver, the balance should tilt in favour of approving new homes.',
+    link: 'demands/presumption.html'
+  },
+  {
+    target: 'gcc',
+    badgeClass: 'badge-gcc',
+    badgeLabel: 'Glasgow City Council',
+    problem: 'Glasgow\'s development plan is nine years out of date',
+    solution: 'Set targets well above projected need. Allocate generously and let the market decide which get built.',
+    link: 'demands/housing-targets.html'
+  },
+  {
+    target: 'sg',
+    badgeClass: 'badge-sg',
+    badgeLabel: 'Scottish Government',
+    problem: 'Section 75 negotiations drag on for months or years, adding cost and boxing out small builders',
+    solution: 'Binding deadline. If agreement is not reached in time, standard terms apply automatically.',
+    link: 'demands/section-75.html'
+  },
+  {
+    target: 'gcc',
+    badgeClass: 'badge-gcc',
+    badgeLabel: 'Glasgow City Council',
+    problem: 'Inflexible parking rules that no tenement would meet',
+    solution: 'Return to letting the market decide parking provision — it produced Glasgow\'s best tenement neighbourhoods.',
+    link: 'demands/parking.html'
+  },
+  {
+    target: 'both',
+    badgeClass: 'badge-sg',
+    badgeLabel: 'SG + GCC',
+    problem: 'Planning decisions take more than double the target time',
+    solution: 'Double planning department budgets. Fund the teams to process applications on time.',
+    link: 'demands/planning-budgets.html'
+  },
+  {
+    target: 'gcc',
+    badgeClass: 'badge-gcc',
+    badgeLabel: 'Glasgow City Council',
+    problem: 'Affordable housing quotas make sites financially non-viable, meaning no homes get built instead',
+    solution: 'A city-wide affordable housing target. Flexibility gives councils more options to say \'Yes\'.',
+    link: 'demands/affordable-housing.html'
+  },
+  {
+    target: 'sg',
+    badgeClass: 'badge-sg',
+    badgeLabel: 'Scottish Government',
+    problem: 'Scotland\'s building code adds layers of cost, and stops us building beautiful',
+    solution: 'A cumulative viability assessment with international comparisons. Suspend any requirement whose cost is disproportionate to its benefit.',
+    link: 'demands/building-code.html'
+  }
+];
+
+function makeCard(d, i) {
+  var div = document.createElement('div');
+  div.className = 'card-outer';
+  div.id = 'card-' + i;
+  div.innerHTML =
+    '<div class="card-inner">' +
+      '<div class="card-face card-front" onclick="flipCard(' + i + ')">' +
+        '<span class="demand-badge ' + d.badgeClass + '">' + d.badgeLabel + '</span>' +
+        '<p class="card-problem">' + d.problem + '</p>' +
+        '<div class="card-flip-hint">Click to see our ask</div>' +
+      '</div>' +
+      '<div class="card-face card-back">' +
+        '<div class="card-back-label">What we want</div>' +
+        '<p class="card-solution">' + d.solution + '</p>' +
+        '<div class="card-back-footer">' +
+          '<button class="card-flip-back" onclick="flipCard(' + i + ')">← Flip back</button>' +
+          '<a class="card-read-more" href="' + d.link + '">Read more →</a>' +
+        '</div>' +
+      '</div>' +
+    '</div>';
+  return div;
+}
+
+function flipCard(i) {
+  var card = document.getElementById('card-' + i);
+  if (card) card.classList.toggle('flipped');
+}
+
+var currentFilter = 'all';
+
+function filterCards(type) {
+  currentFilter = type;
+  ['all', 'sg', 'gcc'].forEach(function(t) {
+    var b = document.getElementById('btn-' + t);
+    if (b) b.classList.toggle('active', t === type);
+  });
+  renderCards();
+}
+
+function renderCards() {
+  var grid = document.getElementById('demandCards');
+  grid.innerHTML = '';
+  demands.forEach(function(d, i) {
+    if (currentFilter === 'all' || d.target === currentFilter || d.target === 'both') {
+      grid.appendChild(makeCard(d, i));
+    }
+  });
+}
+
+renderCards();
+</script>
+</body>
+</html>
