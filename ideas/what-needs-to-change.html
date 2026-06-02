@@ -34,21 +34,22 @@
   .card-outer { perspective: 1000px; }
   .card-inner { width: 100%; position: relative; transform-style: preserve-3d; transition: transform 0.55s cubic-bezier(0.4,0.2,0.2,1); }
   .card-outer.flipped .card-inner { transform: rotateY(180deg); }
-  .card-face { border-radius: 10px; padding: 1rem; box-sizing: border-box; display: flex; flex-direction: column; -webkit-backface-visibility: hidden; backface-visibility: hidden; }
-  .card-front { background: var(--black); border: 1px solid rgba(255,255,255,0.1); cursor: pointer; }
-  .card-back { position: absolute; inset: 0; background: #2d4a1a; border: 1px solid rgba(255,255,255,0.1); transform: rotateY(180deg); }
+  /* both faces sit in normal flow; back is visually hidden via backface-visibility */
+  .card-face { border-radius: 10px; padding: 1rem; box-sizing: border-box; display: flex; flex-direction: column; -webkit-backface-visibility: hidden; backface-visibility: hidden; width: 100%; }
+  .card-front { background: var(--black); border: 2px solid rgba(255,255,255,0.08); cursor: pointer; }
+  .card-back { position: absolute; inset: 0; background: #f5edd8; border: 2px solid #1a1208; transform: rotateY(180deg); }
   .demand-badge { display: inline-block; font-size: 0.62rem; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; padding: 2px 8px; border-radius: 100px; margin-bottom: 8px; margin-right: 4px; }
   .badge-sg { background: rgba(232,160,32,0.2); color: #f0b030; border: 1px solid rgba(232,160,32,0.4); }
   .badge-gcc { background: rgba(90,104,48,0.25); color: #a0d060; border: 1px solid rgba(90,104,48,0.45); }
   .card-problem { font-size: 0.87rem; font-weight: 600; color: #f0e8d0; line-height: 1.5; flex: 1; margin: 0 0 8px; font-family: var(--font-subheading); }
   .card-flip-hint { font-size: 0.68rem; color: rgba(240,232,208,0.45); }
-  .card-back-label { font-size: 0.62rem; font-weight: 700; letter-spacing: 0.07em; text-transform: uppercase; color: #b8e888; margin-bottom: 8px; }
-  .card-solution { font-size: 0.85rem; color: #dff0c0; line-height: 1.55; flex: 1; margin: 0 0 12px; }
-  .card-back-footer { display: flex; align-items: center; justify-content: space-between; padding-top: 8px; border-top: 1px solid rgba(255,255,255,0.1); margin-top: auto; }
-  .card-flip-back { font-size: 0.68rem; color: rgba(184,232,136,0.5); cursor: pointer; background: none; border: none; font-family: var(--font-subheading); padding: 0; }
-  .card-flip-back:hover { color: rgba(184,232,136,0.8); }
-  .card-read-more { display: inline-block; background: var(--amber); color: var(--black); font-size: 0.75rem; font-weight: 700; font-family: var(--font-subheading); padding: 0.35rem 0.85rem; border-radius: 4px; text-decoration: none; white-space: nowrap; transition: background 0.15s; }
-  .card-read-more:hover { background: var(--orange); color: var(--cream); }
+  .card-back-label { font-size: 0.62rem; font-weight: 700; letter-spacing: 0.07em; text-transform: uppercase; color: var(--orange); margin-bottom: 8px; }
+  .card-solution { font-size: 0.87rem; color: #1a1208; line-height: 1.55; flex: 1; margin: 0 0 12px; }
+  .card-back-footer { display: flex; align-items: center; justify-content: space-between; padding-top: 8px; border-top: 1px solid rgba(26,18,8,0.15); margin-top: auto; }
+  .card-flip-back { font-size: 0.68rem; color: rgba(26,18,8,0.4); cursor: pointer; background: none; border: none; font-family: var(--font-subheading); padding: 0; }
+  .card-flip-back:hover { color: rgba(26,18,8,0.7); }
+  .card-read-more { display: inline-block; background: var(--orange); color: #f5edd8; font-size: 0.75rem; font-weight: 700; font-family: var(--font-subheading); padding: 0.35rem 0.85rem; border-radius: 4px; text-decoration: none; white-space: nowrap; transition: background 0.15s; }
+  .card-read-more:hover { background: #1a1208; color: #f5edd8; }
 
   /* LONG-TERM SECTION */
   .lt-card { background: var(--black); border-radius: 10px; padding: 2rem; margin-bottom: 1.5rem; }
@@ -197,10 +198,23 @@ function syncHeights() {
     var back = outer.querySelector('.card-back');
     var inner = outer.querySelector('.card-inner');
     if (!front || !back || !inner) return;
+    // reset
     front.style.minHeight = '';
     back.style.minHeight = '';
     inner.style.height = '';
-    var h = Math.max(front.scrollHeight, back.scrollHeight);
+    // measure front normally
+    var frontH = front.scrollHeight;
+    // measure back by cloning into normal flow temporarily
+    var clone = back.cloneNode(true);
+    clone.style.position = 'static';
+    clone.style.transform = 'none';
+    clone.style.visibility = 'hidden';
+    clone.style.pointerEvents = 'none';
+    clone.style.width = front.offsetWidth + 'px';
+    document.body.appendChild(clone);
+    var backH = clone.scrollHeight;
+    document.body.removeChild(clone);
+    var h = Math.max(frontH, backH);
     front.style.minHeight = h + 'px';
     back.style.minHeight = h + 'px';
     inner.style.height = h + 'px';
