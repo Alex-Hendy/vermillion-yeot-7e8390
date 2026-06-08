@@ -6,6 +6,13 @@
 <title>Get Involved With Glasgow's Housing Campaign — YIMBY Glasgow</title>
 <link rel="canonical" href="https://glasgowyimby.com/get-involved.html">
 <meta name="description" content="Help fix Glasgow's housing crisis. Respond to planning applications, contact your councillor, and join Scotland's growing YIMBY movement.">
+<meta property="og:title" content="Get Involved — YIMBY Glasgow">
+<meta property="og:description" content="Help fix Glasgow's housing crisis. Respond to planning applications, contact your councillor, and join Scotland's growing YIMBY movement.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://glasgowyimby.com/get-involved.html">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Get Involved — YIMBY Glasgow">
+<meta name="twitter:description" content="Help fix Glasgow's housing crisis. Respond to planning applications, contact your councillor, and join Scotland's growing YIMBY movement.">
 <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
 <style>
@@ -35,7 +42,6 @@
   .action-card.dark .action-link { color: var(--amber); }
   .divider { border: none; border-top: 2px solid var(--black); margin: 3rem 0; }
 
-  /* Two-column signup tiles */
   .signup-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem; margin-bottom: 3rem; }
   .signup-tile { border-radius: 12px; padding: 2rem; border: 2px solid var(--black); }
   .signup-tile.dark { background: var(--black); }
@@ -50,7 +56,6 @@
   .email-form input[type="email"] { padding: 0.875rem 1rem; border: 2px solid rgba(255,255,255,0.2); border-radius: 4px; font-size: 0.95rem; font-family: inherit; background: rgba(255,255,255,0.08); color: var(--cream); outline: none; }
   .email-form input[type="email"]:focus { border-color: var(--amber); }
   .email-form input[type="email"]::placeholder { color: rgba(245,237,216,0.4); }
-  /* Consent modal */
   .consent-modal-overlay { display: none; position: fixed; inset: 0; background: rgba(26,18,8,0.7); z-index: 1000; align-items: center; justify-content: center; padding: 1.5rem; }
   .consent-modal-overlay.open { display: flex; }
   .consent-modal { background: var(--cream); border: 2px solid var(--black); border-radius: 12px; padding: 2rem; max-width: 420px; width: 100%; }
@@ -95,7 +100,6 @@
 
 <div class="content">
 
-  <!-- TWO-COLUMN SIGNUP TILES -->
   <div class="signup-grid">
     <div class="signup-tile dark">
       <div class="signup-tile-title">Stay in the loop</div>
@@ -104,7 +108,6 @@
         <input type="email" placeholder="your@email.com" id="emailInput">
         <button class="btn-primary" onclick="handleSignup()">Sign up</button>
       </div>
-
     </div>
     <div class="signup-tile amber">
       <div class="signup-tile-title">Join the campaign</div>
@@ -219,7 +222,6 @@
 
 </div>
 
-<!-- Consent modal -->
 <div class="consent-modal-overlay" id="consentModal">
   <div class="consent-modal">
     <h3>One quick thing</h3>
