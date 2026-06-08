@@ -154,6 +154,22 @@
       short: 'In housing economics, supply refers to the number of homes available. When supply falls short of demand, prices and rents rise.',
       anchor: 'supply'
     },
+    'monopoly': {
+      short: 'A market where a single seller faces no meaningful competition and can set prices without losing customers. Classic examples are utility networks like water and rail infrastructure.',
+      anchor: 'monopoly'
+    },
+    'oligopoly': {
+      short: 'A market dominated by a small number of large firms. Unlike a monopoly, some competition exists — but it is limited. The UK supermarket sector is a common example.',
+      anchor: 'oligopoly'
+    },
+    'market-power': {
+      short: 'The ability of a seller to raise prices above the competitive level without losing customers to rivals. Requires either monopoly or significant market concentration.',
+      anchor: 'market-power'
+    },
+    'anti-trust': {
+      short: 'US term for competition law — the legal framework designed to prevent monopolies, cartels, and other abuses of market power. In the UK, enforced by the Competition and Markets Authority (CMA).',
+      anchor: 'anti-trust'
+    },
     'housing-stock': {
       short: 'The total number of homes in an area, including all tenures — owner-occupied, private rented, social rented, and empty properties.',
       anchor: 'housing-stock'
