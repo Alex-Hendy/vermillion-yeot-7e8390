@@ -19,7 +19,7 @@
     '</a>' +
     '<ul class="nav-links" id="navLinks">' +
       '<li><a href="' + prefix + 'ideas/index.html">The ideas</a></li>' +
-      '<li><a href="' + prefix + 'myths/index.html">Myths</a></li>' +
+      '<li><a href="' + prefix + 'myths/myths-index.html">Myths</a></li>' +
       '<li><a href="' + prefix + 'evidence.html">Evidence</a></li>' +
       '<li><a href="' + prefix + 'news.html">News</a></li>' +
       '<li><a href="' + prefix + 'get-involved.html" class="nav-cta">Get involved</a></li>' +
