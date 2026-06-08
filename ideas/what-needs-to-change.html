@@ -6,7 +6,7 @@
 <title>YIMBY Glasgow's Demands: How to Fix the Housing Crisis</title>
 <link rel="canonical" href="https://glasgowyimby.com/ideas/what-needs-to-change.html">
 <meta name="description" content="Nine specific policy changes — to NPF4, Glasgow City Council, and Scotland's building code — that would unlock the homes Glasgow desperately needs.">
-<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Bungee&family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../style.css">
 <style>
   .idea-hero { background: var(--black); color: var(--cream); padding: 5rem 2rem 4rem; }
@@ -16,6 +16,7 @@
   .step-label { display: inline-block; font-size: 0.72rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; padding: 0.3rem 0.75rem; border-radius: 100px; margin-bottom: 1.25rem; border: 1.5px solid rgba(232,160,32,0.4); background: rgba(232,160,32,0.15); color: var(--amber); }
   .idea-title { font-family: var(--font-heading); font-size: clamp(2rem, 4vw, 3rem); font-weight: 900; line-height: 1.1; letter-spacing: 0.02em; color: var(--cream); margin-bottom: 1.25rem; }
   .idea-intro { font-size: 1.05rem; color: rgba(245,237,216,0.75); line-height: 1.75; }
+
   .content { max-width: 760px; margin: 0 auto; padding: 4rem 2rem; }
   .content p { font-size: 1rem; color: var(--muted); line-height: 1.8; margin-bottom: 1rem; }
   .section-label { font-size: 0.72rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--orange); margin-bottom: 1.5rem; display: block; }
@@ -29,27 +30,37 @@
   .toggle-btn:not(.active):hover { background: var(--amber); color: var(--black); }
   .toggle-btn + .toggle-btn { border-left: 2px solid var(--black); }
 
-  /* FLIP CARDS */
-  .cards-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; margin-bottom: 2rem; }
-  .card-outer { perspective: 1000px; }
-  .card-inner { width: 100%; position: relative; transform-style: preserve-3d; transition: transform 0.55s cubic-bezier(0.4,0.2,0.2,1); }
-  .card-outer.flipped .card-inner { transform: rotateY(180deg); }
-  /* both faces sit in normal flow; back is visually hidden via backface-visibility */
-  .card-face { border-radius: 10px; padding: 1rem; box-sizing: border-box; display: flex; flex-direction: column; -webkit-backface-visibility: hidden; backface-visibility: hidden; width: 100%; }
-  .card-front { background: var(--black); border: 2px solid rgba(255,255,255,0.08); cursor: pointer; }
-  .card-back { position: absolute; inset: 0; background: #f5edd8; border: 2px solid #1a1208; transform: rotateY(180deg); }
-  .demand-badge { display: inline-block; font-size: 0.62rem; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; padding: 2px 8px; border-radius: 100px; margin-bottom: 8px; margin-right: 4px; }
-  .badge-sg { background: rgba(232,160,32,0.2); color: #f0b030; border: 1px solid rgba(232,160,32,0.4); }
-  .badge-gcc { background: rgba(90,104,48,0.25); color: #a0d060; border: 1px solid rgba(90,104,48,0.45); }
-  .card-problem { font-size: 0.87rem; font-weight: 600; color: #f0e8d0; line-height: 1.5; flex: 1; margin: 0 0 8px; font-family: var(--font-subheading); }
-  .card-flip-hint { font-size: 0.68rem; color: rgba(240,232,208,0.45); }
-  .card-back-label { font-size: 0.62rem; font-weight: 700; letter-spacing: 0.07em; text-transform: uppercase; color: var(--orange); margin-bottom: 8px; }
-  .card-solution { font-size: 0.87rem; color: #1a1208; line-height: 1.55; flex: 1; margin: 0 0 12px; }
-  .card-back-footer { display: flex; align-items: center; justify-content: space-between; padding-top: 8px; border-top: 1px solid rgba(26,18,8,0.15); margin-top: auto; }
-  .card-flip-back { font-size: 0.68rem; color: rgba(26,18,8,0.4); cursor: pointer; background: none; border: none; font-family: var(--font-subheading); padding: 0; }
-  .card-flip-back:hover { color: rgba(26,18,8,0.7); }
-  .card-read-more { display: inline-block; background: var(--orange); color: #f5edd8; font-size: 0.75rem; font-weight: 700; font-family: var(--font-subheading); padding: 0.35rem 0.85rem; border-radius: 4px; text-decoration: none; white-space: nowrap; transition: background 0.15s; }
-  .card-read-more:hover { background: #1a1208; color: #f5edd8; }
+  /* ACCORDION */
+  .accordion { border: 2px solid var(--black); border-radius: 6px; overflow: hidden; margin-bottom: 2rem; }
+  .accordion-item { border-bottom: 2px solid var(--black); }
+  .accordion-item:last-child { border-bottom: none; }
+  .accordion-item.hidden { display: none; }
+
+  .accordion-trigger { width: 100%; background: var(--cream); border: none; padding: 1rem 1.25rem; display: flex; align-items: flex-start; gap: 1rem; cursor: pointer; text-align: left; transition: background 0.15s; font-family: var(--font-subheading); }
+  .accordion-trigger:hover { background: var(--orange-light); }
+  .accordion-item.open .accordion-trigger { background: var(--black); }
+
+  .trigger-left { flex: 1; min-width: 0; }
+  .demand-badge { display: inline-block; font-size: 0.62rem; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; padding: 2px 8px; border-radius: 100px; margin-bottom: 6px; margin-right: 4px; }
+  .badge-sg { background: rgba(232,160,32,0.2); color: #7A4A00; border: 1px solid rgba(232,160,32,0.5); }
+  .badge-gcc { background: rgba(90,104,48,0.15); color: var(--olive); border: 1px solid rgba(90,104,48,0.35); }
+  .accordion-item.open .badge-sg { background: rgba(232,160,32,0.25); color: var(--amber); border-color: rgba(232,160,32,0.5); }
+  .accordion-item.open .badge-gcc { background: rgba(140,180,60,0.2); color: #a0d060; border-color: rgba(140,180,60,0.4); }
+
+  .accordion-problem { font-size: 0.95rem; font-weight: 700; color: var(--black); line-height: 1.4; margin: 0; font-family: var(--font-subheading); }
+  .accordion-item.open .accordion-problem { color: var(--cream); }
+
+  .accordion-icon { flex-shrink: 0; width: 28px; height: 28px; border-radius: 50%; border: 2px solid var(--black); display: flex; align-items: center; justify-content: center; margin-top: 2px; transition: transform 0.3s, background 0.15s, border-color 0.15s; font-size: 1rem; color: var(--black); font-weight: 700; }
+  .accordion-item.open .accordion-icon { transform: rotate(45deg); background: var(--orange); border-color: var(--orange); color: var(--cream); }
+
+  .accordion-body { max-height: 0; overflow: hidden; transition: max-height 0.35s cubic-bezier(0.4,0,0.2,1); background: var(--cream); }
+  .accordion-item.open .accordion-body { max-height: 400px; }
+  .accordion-body-inner { padding: 1.25rem 1.25rem 1.25rem; border-top: 2px solid var(--black); }
+
+  .solution-label { font-size: 0.68rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--orange); margin-bottom: 0.6rem; display: block; }
+  .accordion-solution { font-size: 0.95rem; color: var(--muted); line-height: 1.75; margin: 0 0 1rem; }
+  .accordion-read-more { display: inline-block; background: var(--black); color: var(--cream); font-size: 0.8rem; font-weight: 700; font-family: var(--font-subheading); padding: 0.4rem 1rem; border-radius: 4px; text-decoration: none; transition: background 0.15s; }
+  .accordion-read-more:hover { background: var(--orange); }
 
   /* LONG-TERM SECTION */
   .lt-card { background: var(--black); border-radius: 10px; padding: 2rem; margin-bottom: 1.5rem; }
@@ -65,6 +76,7 @@
   .cta-box p { color: rgba(245,237,216,0.8); margin: 0; font-size: 0.95rem; line-height: 1.65; flex: 1; }
   .cta-box a { background: var(--amber); color: var(--black); padding: 0.75rem 1.5rem; border-radius: 4px; font-weight: 700; font-size: 0.9rem; text-decoration: none; white-space: nowrap; flex-shrink: 0; }
   .cta-box a:hover { background: var(--orange); color: var(--cream); }
+
   .idea-nav { border-top: 2px solid var(--black); padding: 3rem 2rem; max-width: 760px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; }
   .idea-nav a { text-decoration: none; font-weight: 600; font-size: 0.9rem; color: var(--orange); }
   .idea-nav a:hover { text-decoration: underline; }
@@ -72,7 +84,6 @@
   @media (max-width: 768px) {
     .idea-hero { padding: 3rem 1.25rem 2.5rem; }
     .content { padding: 2.5rem 1.25rem; }
-    .cards-grid { grid-template-columns: 1fr; }
     .toggle-bar { flex-wrap: wrap; }
     .toggle-btn { min-width: 33%; }
     .idea-nav { padding: 2rem 1.25rem; flex-direction: column; align-items: flex-start; }
@@ -100,12 +111,12 @@
   <span class="section-label">What can be done now</span>
 
   <div class="toggle-bar">
-    <button class="toggle-btn active" id="btn-all" onclick="filterCards('all')">All demands</button>
-    <button class="toggle-btn" id="btn-sg" onclick="filterCards('sg')">Scottish Government</button>
-    <button class="toggle-btn" id="btn-gcc" onclick="filterCards('gcc')">Glasgow City Council</button>
+    <button class="toggle-btn active" id="btn-all" onclick="filterDemands('all')">All demands</button>
+    <button class="toggle-btn" id="btn-sg" onclick="filterDemands('sg')">Scottish Government</button>
+    <button class="toggle-btn" id="btn-gcc" onclick="filterDemands('gcc')">Glasgow City Council</button>
   </div>
 
-  <div class="cards-grid" id="demandCards"></div>
+  <div class="accordion" id="accordion"></div>
 
   <div class="section-gap"></div>
   <span class="section-label">The long-term goal</span>
@@ -159,97 +170,139 @@
 <script src="../footer.js"></script>
 <script>
 var demands = [
-  { target: 'sg', badgeClass: 'badge-sg', badgeLabel: 'Scottish Government', problem: 'NPF4 Policy 16 blocks the windfall housing mechanism, and thousands of homes', solution: 'Amend Policy 16 so suitable sites not in local plans can become housing with council\'s permission.', link: 'demands/windfall.html' },
-  { target: 'sg', badgeClass: 'badge-sg', badgeLabel: 'Scottish Government', problem: 'No consequence when NIMBY councils fail residents, and block housing', solution: 'Reinstate the presumption in favour of sustainable development. When a council is failing to deliver, the balance should tilt in favour of approving new homes.', link: 'demands/presumption.html' },
-  { target: 'gcc', badgeClass: 'badge-gcc', badgeLabel: 'Glasgow City Council', problem: 'Glasgow\'s development plan is nine years out of date', solution: 'Set targets well above projected need. Allocate generously and let the market decide which get built.', link: 'demands/housing-targets.html' },
-  { target: 'sg', badgeClass: 'badge-sg', badgeLabel: 'Scottish Government', problem: 'Section 75 negotiations drag on for months or years, adding cost and boxing out small builders', solution: 'Binding deadline. If agreement is not reached in time, standard terms apply automatically.', link: 'demands/section-75.html' },
-  { target: 'gcc', badgeClass: 'badge-gcc', badgeLabel: 'Glasgow City Council', problem: 'Inflexible parking rules that no tenement would meet', solution: 'Return to letting the market decide parking provision — it produced Glasgow\'s best tenement neighbourhoods.', link: 'demands/parking.html' },
-  { target: 'both', badgeClass: 'badge-sg', badgeLabel: 'SG + GCC', problem: 'Planning decisions take more than double the target time', solution: 'Double planning department budgets. Fund the teams to process applications on time.', link: 'demands/planning-budgets.html' },
-  { target: 'gcc', badgeClass: 'badge-gcc', badgeLabel: 'Glasgow City Council', problem: 'Affordable housing quotas make sites financially non-viable, meaning no homes get built instead', solution: 'A city-wide affordable housing target. Flexibility gives councils more options to say \'Yes\'.', link: 'demands/affordable-housing.html' },
-  { target: 'sg', badgeClass: 'badge-sg', badgeLabel: 'Scottish Government', problem: 'Scotland\'s building code adds layers of cost, and stops us building beautiful', solution: 'A cumulative viability assessment with international comparisons. Suspend any requirement whose cost is disproportionate to its benefit.', link: 'demands/building-code.html' }
+  {
+    target: 'sg',
+    badgeClass: 'badge-sg',
+    badgeLabel: 'Scottish Government',
+    problem: 'NPF4 Policy 16 blocks the windfall housing mechanism, and thousands of homes',
+    solution: 'Amend Policy 16 so suitable sites not in local plans can become housing with council\'s permission.',
+    link: 'demands/windfall.html'
+  },
+  {
+    target: 'sg',
+    badgeClass: 'badge-sg',
+    badgeLabel: 'Scottish Government',
+    problem: 'No consequence when NIMBY councils fail residents, and block housing',
+    solution: 'Reinstate the presumption in favour of sustainable development. When a council is failing to deliver, the balance should tilt in favour of approving new homes.',
+    link: 'demands/presumption.html'
+  },
+  {
+    target: 'gcc',
+    badgeClass: 'badge-gcc',
+    badgeLabel: 'Glasgow City Council',
+    problem: 'Glasgow\'s development plan is nine years out of date',
+    solution: 'Set targets well above projected need. Allocate generously and let the market decide which get built.',
+    link: 'demands/housing-targets.html'
+  },
+  {
+    target: 'sg',
+    badgeClass: 'badge-sg',
+    badgeLabel: 'Scottish Government',
+    problem: 'Section 75 negotiations drag on for months or years, adding cost and boxing out small builders',
+    solution: 'Binding deadline. If agreement is not reached in time, standard terms apply automatically.',
+    link: 'demands/section-75.html'
+  },
+  {
+    target: 'gcc',
+    badgeClass: 'badge-gcc',
+    badgeLabel: 'Glasgow City Council',
+    problem: 'Inflexible parking rules that no tenement would meet',
+    solution: 'Return to letting the market decide parking provision — it produced Glasgow\'s best tenement neighbourhoods.',
+    link: 'demands/parking.html'
+  },
+  {
+    target: 'both',
+    badgeClass: 'badge-sg',
+    badgeLabel: 'SG + GCC',
+    problem: 'Planning decisions take more than double the target time',
+    solution: 'Double planning department budgets. Fund the teams to process applications on time.',
+    link: 'demands/planning-budgets.html'
+  },
+  {
+    target: 'gcc',
+    badgeClass: 'badge-gcc',
+    badgeLabel: 'Glasgow City Council',
+    problem: 'Affordable housing quotas make sites financially non-viable, meaning no homes get built instead',
+    solution: 'A city-wide affordable housing target. Flexibility gives councils more options to say \'Yes\'.',
+    link: 'demands/affordable-housing.html'
+  },
+  {
+    target: 'sg',
+    badgeClass: 'badge-sg',
+    badgeLabel: 'Scottish Government',
+    problem: 'Scotland\'s building code adds layers of cost, and stops us building beautiful',
+    solution: 'A cumulative viability assessment with international comparisons. Suspend any requirement whose cost is disproportionate to its benefit.',
+    link: 'demands/building-code.html'
+  }
 ];
 
-function makeCard(d, i) {
-  var div = document.createElement('div');
-  div.className = 'card-outer';
-  div.id = 'card-' + i;
-  div.innerHTML =
-    '<div class="card-inner">' +
-      '<div class="card-face card-front" onclick="flipCard(' + i + ')">' +
+function makeItem(d, i) {
+  var item = document.createElement('div');
+  item.className = 'accordion-item';
+  item.dataset.target = d.target;
+  item.dataset.index = i;
+  item.innerHTML =
+    '<button class="accordion-trigger" onclick="toggleItem(this)" aria-expanded="false">' +
+      '<div class="trigger-left">' +
         '<span class="demand-badge ' + d.badgeClass + '">' + d.badgeLabel + '</span>' +
-        '<p class="card-problem">' + d.problem + '</p>' +
-        '<div class="card-flip-hint">Click to see our ask</div>' +
+        '<p class="accordion-problem">' + d.problem + '</p>' +
       '</div>' +
-      '<div class="card-face card-back">' +
-        '<div class="card-back-label">What we want</div>' +
-        '<p class="card-solution">' + d.solution + '</p>' +
-        '<div class="card-back-footer">' +
-          '<button class="card-flip-back" onclick="flipCard(' + i + ')">← Flip back</button>' +
-          '<a class="card-read-more" href="' + d.link + '">Read more →</a>' +
-        '</div>' +
+      '<span class="accordion-icon" aria-hidden="true">+</span>' +
+    '</button>' +
+    '<div class="accordion-body" role="region">' +
+      '<div class="accordion-body-inner">' +
+        '<span class="solution-label">What we want</span>' +
+        '<p class="accordion-solution">' + d.solution + '</p>' +
+        '<a class="accordion-read-more" href="' + d.link + '">Read more →</a>' +
       '</div>' +
     '</div>';
-  return div;
+  return item;
 }
 
-function syncHeights() {
-  document.querySelectorAll('.card-outer').forEach(function(outer) {
-    var front = outer.querySelector('.card-front');
-    var back = outer.querySelector('.card-back');
-    var inner = outer.querySelector('.card-inner');
-    if (!front || !back || !inner) return;
-    // reset
-    front.style.minHeight = '';
-    back.style.minHeight = '';
-    inner.style.height = '';
-    // measure front normally
-    var frontH = front.scrollHeight;
-    // measure back by cloning into normal flow temporarily
-    var clone = back.cloneNode(true);
-    clone.style.position = 'static';
-    clone.style.transform = 'none';
-    clone.style.visibility = 'hidden';
-    clone.style.pointerEvents = 'none';
-    clone.style.width = front.offsetWidth + 'px';
-    document.body.appendChild(clone);
-    var backH = clone.scrollHeight;
-    document.body.removeChild(clone);
-    var h = Math.max(frontH, backH);
-    front.style.minHeight = h + 'px';
-    back.style.minHeight = h + 'px';
-    inner.style.height = h + 'px';
+function toggleItem(trigger) {
+  var item = trigger.closest('.accordion-item');
+  var isOpen = item.classList.contains('open');
+  // close all
+  document.querySelectorAll('.accordion-item.open').forEach(function(el) {
+    el.classList.remove('open');
+    el.querySelector('.accordion-trigger').setAttribute('aria-expanded', 'false');
   });
-}
-
-function flipCard(i) {
-  var card = document.getElementById('card-' + i);
-  if (card) card.classList.toggle('flipped');
+  // open clicked if it was closed
+  if (!isOpen) {
+    item.classList.add('open');
+    trigger.setAttribute('aria-expanded', 'true');
+  }
 }
 
 var currentFilter = 'all';
 
-function filterCards(type) {
+function filterDemands(type) {
   currentFilter = type;
   ['all', 'sg', 'gcc'].forEach(function(t) {
     var b = document.getElementById('btn-' + t);
     if (b) b.classList.toggle('active', t === type);
   });
-  renderCards();
-}
-
-function renderCards() {
-  var grid = document.getElementById('demandCards');
-  grid.innerHTML = '';
-  demands.forEach(function(d, i) {
-    if (currentFilter === 'all' || d.target === currentFilter || d.target === 'both') {
-      grid.appendChild(makeCard(d, i));
-    }
+  // close any open item first
+  document.querySelectorAll('.accordion-item.open').forEach(function(el) {
+    el.classList.remove('open');
+    el.querySelector('.accordion-trigger').setAttribute('aria-expanded', 'false');
   });
-  setTimeout(syncHeights, 80);
+  document.querySelectorAll('.accordion-item').forEach(function(item) {
+    var t = item.dataset.target;
+    var show = (type === 'all' || t === type || t === 'both');
+    item.classList.toggle('hidden', !show);
+  });
 }
 
-renderCards();
-window.addEventListener('resize', syncHeights);
+function renderAccordion() {
+  var container = document.getElementById('accordion');
+  container.innerHTML = '';
+  demands.forEach(function(d, i) {
+    container.appendChild(makeItem(d, i));
+  });
+}
+
+renderAccordion();
 </script>
 </body>
 </html>
