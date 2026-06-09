@@ -85,6 +85,8 @@ nav { display: flex; justify-content: space-between; align-items: center; paddin
 .nav-links a:hover { color: var(--orange); }
 .nav-cta { background: var(--black) !important; color: var(--cream) !important; padding: 0.5rem 1.25rem; border-radius: 4px; font-size: 0.85rem !important; }
 .nav-cta:hover { background: var(--orange) !important; color: var(--cream) !important; }
+.nav-donate { background: var(--amber) !important; color: var(--black) !important; padding: 0.5rem 1.25rem !important; border-radius: 4px; font-size: 0.85rem !important; border: 2px solid var(--black) !important; }
+.nav-donate:hover { background: var(--black) !important; color: var(--amber) !important; }
 .nav-toggle { display: none; background: none; border: 2px solid var(--black); border-radius: 4px; padding: 0.35rem 0.6rem; cursor: pointer; font-size: 1rem; font-family: inherit; font-weight: 700; color: var(--black); }
 
 /* BUTTONS */
@@ -130,5 +132,6 @@ h2, h3, h4 { font-family: var(--font-subheading); font-weight: 700; }
   .nav-links li:last-child { border-bottom: none; }
   .nav-links a { font-size: 1rem; }
   .nav-cta { background: none !important; color: var(--black) !important; padding: 0 !important; border-radius: 0 !important; }
+  .nav-donate { background: none !important; color: var(--black) !important; padding: 0 !important; border-radius: 0 !important; border: none !important; }
   .nav-toggle { display: block; }
 }
