@@ -9,7 +9,7 @@
 
   el.innerHTML = '<nav>' +
     '<a href="' + prefix + 'index.html" class="logo">' +
-      '<svg xmlns="http://www.w3.org/2000/svg" viewBox="295 13 90 70" height="50" style="display:block;">' +
+      '<svg xmlns="http://www.w3.org/2000/svg" viewBox="295 13 90 70" height="65" style="display:block;">' +
         '<defs><style>@import url(\'https://fonts.googleapis.com/css2?family=Bungee&display=swap\');</style></defs>' +
         '<rect x="301" y="18" width="78" height="30" rx="2" fill="#2C2019"/>' +
         '<text x="340" y="38" font-family="\'Bungee\', \'Arial Black\', sans-serif" font-size="15" fill="#F5EDD8" letter-spacing="0.04em" text-anchor="middle">YIMBY</text>' +
