@@ -9,23 +9,32 @@
 <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../style.css">
 <style>
-  .about-hero { background: var(--amber); border-bottom: 2px solid var(--black); padding: 5rem 2rem 4rem; }
-  .about-hero-inner { max-width: 760px; margin: 0 auto; }
-  .about-label { display: inline-block; font-size: 0.72rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; padding: 0.3rem 0.75rem; border-radius: 100px; margin-bottom: 1.25rem; border: 2px solid var(--black); background: var(--black); color: var(--cream); }
-  .about-title { font-family: var(--font-heading); font-size: clamp(2rem, 4vw, 3rem); font-weight: 900; line-height: 1.1; letter-spacing: 0.02em; color: var(--black); margin-bottom: 1.25rem; }
-  .about-intro { font-size: 1.05rem; color: #3A2808; line-height: 1.75; }
+  .donate-hero { background: var(--amber); border-bottom: 2px solid var(--black); padding: 5rem 2rem 4rem; }
+  .donate-hero-inner { max-width: 760px; margin: 0 auto; }
+  .donate-label { display: inline-block; font-size: 0.72rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; padding: 0.3rem 0.75rem; border-radius: 100px; margin-bottom: 1.25rem; border: 2px solid var(--black); background: var(--black); color: var(--cream); }
+  .donate-title { font-family: var(--font-heading); font-size: clamp(2rem, 4vw, 3rem); font-weight: 900; line-height: 1.1; letter-spacing: 0.02em; color: var(--black); margin-bottom: 1.25rem; }
+  .donate-intro { font-size: 1.05rem; color: #3A2808; line-height: 1.75; max-width: 580px; }
   .content { max-width: 760px; margin: 0 auto; padding: 4rem 2rem; }
   .content h2 { font-family: var(--font-heading); font-size: 1.6rem; font-weight: 900; letter-spacing: 0.02em; margin: 2.5rem 0 0.75rem; color: var(--black); }
   .content h2:first-child { margin-top: 0; }
   .content p { font-size: 1rem; color: var(--muted); line-height: 1.8; margin-bottom: 1rem; }
-  .content a { color: var(--orange); }
-  .coming-soon { background: var(--black); border-radius: 10px; padding: 2.5rem 2rem; text-align: center; margin: 2rem 0; }
-  .coming-soon p { color: rgba(245,237,216,0.75); margin: 0 0 0.5rem; font-size: 1rem; line-height: 1.75; }
-  .coming-soon p:last-child { margin: 0; }
-  .coming-soon strong { color: var(--cream); }
+  .content a { color: var(--orange); font-weight: 600; }
+  .donate-box { background: var(--cream); border: 2px solid var(--black); border-radius: 12px; padding: 2rem; margin-bottom: 2.5rem; }
+  .donate-toggle { display: flex; gap: 0; margin-bottom: 1.5rem; border: 2px solid var(--black); border-radius: 4px; overflow: hidden; width: fit-content; }
+  .donate-toggle button { padding: 0.6rem 1.5rem; font-size: 0.95rem; font-weight: 700; font-family: inherit; border: none; cursor: pointer; background: transparent; color: var(--black); transition: background 0.15s, color 0.15s; }
+  .donate-toggle button.active { background: var(--black); color: var(--amber); }
+  .donate-amounts { display: flex; gap: 0.75rem; flex-wrap: wrap; margin-bottom: 1.5rem; }
+  .donate-amount { padding: 0.75rem 1.5rem; font-size: 1rem; font-weight: 700; font-family: inherit; border: 2px solid var(--black); border-radius: 4px; background: transparent; color: var(--black); cursor: pointer; transition: background 0.15s, color 0.15s; }
+  .donate-amount.active { background: var(--black); color: var(--amber); }
+  .donate-amount:hover:not(.active) { background: rgba(26,18,8,0.08); }
+  .donate-cta { display: inline-block; background: var(--amber); color: var(--black); border: 2px solid var(--black); padding: 0.875rem 2rem; border-radius: 4px; font-size: 1rem; font-weight: 700; font-family: inherit; text-decoration: none; transition: background 0.15s, color 0.15s; }
+  .donate-cta:hover { background: var(--black); color: var(--amber); border-color: var(--black); }
+  .donate-note { font-size: 0.82rem; color: var(--muted); margin-top: 0.75rem; }
   @media (max-width: 768px) {
-    .about-hero { padding: 3rem 1.25rem 2.5rem; }
+    .donate-hero { padding: 3rem 1.25rem 2.5rem; }
     .content { padding: 2.5rem 1.25rem; }
+    .donate-amounts { gap: 0.5rem; }
+    .donate-amount { padding: 0.65rem 1.1rem; }
   }
 </style>
 </head>
@@ -34,25 +43,81 @@
 <div id="site-nav"></div>
 <script src="../nav.js"></script>
 
-<div class="about-hero">
-  <div class="about-hero-inner">
-    <div class="about-label">Support us</div>
-    <div class="about-title">Donate to YIMBY Glasgow</div>
-    <p class="about-intro">YIMBY Glasgow is a volunteer-run campaign with no external funding. If you believe Glasgow needs more homes and that someone should be making that case loudly and publicly, we'd welcome your support.</p>
+<div class="donate-hero">
+  <div class="donate-hero-inner">
+    <div class="donate-label">Support us</div>
+    <div class="donate-title">Donate to YIMBY Glasgow</div>
+    <p class="donate-intro">YIMBY Glasgow is a volunteer-run campaign with no external funding. If you think Glasgow needs more homes, please consider supporting our work.</p>
   </div>
 </div>
+
 <div class="content">
-  <div class="coming-soon">
-    <p><strong>Donation mechanism coming soon.</strong></p>
-    <p>We're working on setting up a way to accept donations. In the meantime, if you'd like to support the campaign, <a href="mailto:hello@yimbyglasgow.com" style="color:var(--amber);">drop us an email</a> and we'll let you know when it's ready.</p>
+
+  <h2>Make a donation</h2>
+  <div class="donate-box">
+    <div class="donate-toggle">
+      <button class="active" onclick="setFrequency('one-off', this)">One-off</button>
+      <button onclick="setFrequency('monthly', this)">Monthly</button>
+    </div>
+    <div class="donate-amounts">
+      <button class="donate-amount active" onclick="setAmount(5, this)">£5</button>
+      <button class="donate-amount" onclick="setAmount(10, this)">£10</button>
+      <button class="donate-amount" onclick="setAmount(25, this)">£25</button>
+      <button class="donate-amount" onclick="setAmount(50, this)">£50</button>
+    </div>
+    <a id="donate-btn" href="https://buy.stripe.com/bJe7sL0uT3rfeby62R7AI00" target="_blank" class="donate-cta">Donate £5 →</a>
+    <p class="donate-note">You'll be taken to a secure Stripe payment page. We never see your card details.</p>
   </div>
-  <h2>How donations will be used</h2>
-  <p>YIMBY Glasgow's running costs are currently minimal — domain registration and small operational expenses, covered personally by volunteers. Donations would go toward expanding the campaign: events, printed materials, outreach, and eventually paid coordination time so the campaign can grow beyond what volunteers alone can sustain.</p>
+
+  <h2>How donations are used</h2>
+  <p>YIMBY Glasgow's running costs are currently minimal — domain registration and small operational expenses, covered personally by volunteers. Donations go toward expanding the campaign: events, printed materials, outreach, and eventually paid coordination time so the campaign can grow beyond what volunteers alone can sustain.</p>
   <p>Every donation will be recorded on our <a href="funding.html">funding page</a>. We will never accept money from anyone with a direct financial interest in planning decisions or housing development in Glasgow.</p>
+
   <h2>Other ways to help</h2>
   <p>The most valuable thing you can do right now costs nothing: respond to planning applications, write to your councillor, share the myth-busting pages, and talk to people. See our <a href="../get-involved.html">get involved page</a> for specifics.</p>
+
 </div>
+
 <div id="site-footer"></div>
 <script src="../footer.js"></script>
+<script>
+var STRIPE_LINKS = {
+  'one-off': {
+    5:  'https://buy.stripe.com/bJe7sL0uT3rfeby62R7AI00',
+    10: 'https://buy.stripe.com/fZuaEX91p2nbebygHv7AI01',
+    25: 'https://buy.stripe.com/00wcN5gtR7Hv1oM8aZ7AI02',
+    50: 'https://buy.stripe.com/7sYdR9dhF2nb8Re4YN7AI04'
+  },
+  'monthly': {
+    5:  'https://buy.stripe.com/9B64gzelJbXL1oM9f37AI05',
+    10: 'https://buy.stripe.com/3cIcN56Th7Hv6J6crf7AI06',
+    25: 'https://buy.stripe.com/cNiaEXelJf9Xd7u76V7AI07',
+    50: 'https://buy.stripe.com/9B69AT3H53rf6J69f37AI03'
+  }
+};
+var currentFrequency = 'one-off';
+var currentAmount = 5;
+
+function setFrequency(freq, btn) {
+  currentFrequency = freq;
+  document.querySelectorAll('.donate-toggle button').forEach(function(b) { b.classList.remove('active'); });
+  btn.classList.add('active');
+  updateDonateLink();
+}
+
+function setAmount(amount, btn) {
+  currentAmount = amount;
+  document.querySelectorAll('.donate-amount').forEach(function(b) { b.classList.remove('active'); });
+  btn.classList.add('active');
+  updateDonateLink();
+}
+
+function updateDonateLink() {
+  var btn = document.getElementById('donate-btn');
+  btn.href = STRIPE_LINKS[currentFrequency][currentAmount];
+  var label = currentFrequency === 'monthly' ? 'Donate £' + currentAmount + '/month →' : 'Donate £' + currentAmount + ' →';
+  btn.textContent = label;
+}
+</script>
 </body>
 </html>
