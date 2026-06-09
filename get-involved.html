@@ -56,13 +56,15 @@
   .email-form input[type="email"] { padding: 0.875rem 1rem; border: 2px solid rgba(255,255,255,0.2); border-radius: 4px; font-size: 0.95rem; font-family: inherit; background: rgba(255,255,255,0.08); color: var(--cream); outline: none; }
   .email-form input[type="email"]:focus { border-color: var(--amber); }
   .email-form input[type="email"]::placeholder { color: rgba(245,237,216,0.4); }
-  .donate-tile { background: var(--amber); border: 2px solid var(--black); border-radius: 12px; padding: 2rem; margin-top: 1.25rem; margin-bottom: 3rem; }
+  .donate-tile { background: var(--amber); border: 2px solid var(--black); border-radius: 12px; padding: 2rem; margin-top: 1.25rem; margin-bottom: 3rem; display: flex; gap: 2rem; align-items: center; }
+  .donate-tile-left { flex: 1; }
+  .donate-tile-right { flex-shrink: 0; display: flex; align-items: center; justify-content: center; }
   .donate-tile-title { font-family: var(--font-heading); font-size: 1.3rem; font-weight: 900; color: var(--black); margin-bottom: 0.5rem; }
   .donate-tile p { font-size: 0.92rem; color: #3A2808; line-height: 1.75; margin-bottom: 1.25rem; }
   .donate-toggle { display: flex; gap: 0; margin-bottom: 1.25rem; border: 2px solid var(--black); border-radius: 4px; overflow: hidden; width: fit-content; }
   .donate-toggle button { padding: 0.5rem 1.25rem; font-size: 0.88rem; font-weight: 700; font-family: inherit; border: none; cursor: pointer; background: transparent; color: var(--black); transition: background 0.15s, color 0.15s; }
   .donate-toggle button.active { background: var(--black); color: var(--amber); }
-  .donate-amounts { display: flex; gap: 0.75rem; flex-wrap: wrap; margin-bottom: 1.25rem; }
+  .donate-amounts { display: flex; gap: 0.75rem; flex-wrap: wrap; }
   .donate-amount { padding: 0.6rem 1.25rem; font-size: 0.95rem; font-weight: 700; font-family: inherit; border: 2px solid var(--black); border-radius: 4px; background: transparent; color: var(--black); cursor: pointer; transition: background 0.15s, color 0.15s; }
   .donate-amount.active { background: var(--black); color: var(--amber); }
   .donate-amount:hover:not(.active) { background: rgba(26,18,8,0.08); }
@@ -92,6 +94,8 @@
     .content { padding: 2.5rem 1.25rem; }
     .signup-grid { grid-template-columns: 1fr; }
     .email-form { flex-direction: column; }
+    .donate-tile { flex-direction: column; align-items: stretch; }
+    .donate-tile-right { justify-content: flex-start; }
   }
 </style>
 </head>
@@ -127,19 +131,23 @@
   </div>
 
   <div class="donate-tile">
-    <div class="donate-tile-title">Support the campaign</div>
-    <p>YIMBY Glasgow is volunteer-run with no external funding. If you think Glasgow needs more homes, please consider supporting our work.</p>
-    <div class="donate-toggle">
-      <button class="active" onclick="setFrequency('one-off', this)">One-off</button>
-      <button onclick="setFrequency('monthly', this)">Monthly</button>
+    <div class="donate-tile-left">
+      <div class="donate-tile-title">Support the campaign</div>
+      <p>YIMBY Glasgow is volunteer-run with no external funding. If you think Glasgow needs more homes, please consider supporting our work.</p>
+      <div class="donate-toggle">
+        <button class="active" onclick="setFrequency('one-off', this)">One-off</button>
+        <button onclick="setFrequency('monthly', this)">Monthly</button>
+      </div>
+      <div class="donate-amounts">
+        <button class="donate-amount active" onclick="setAmount(5, this)">£5</button>
+        <button class="donate-amount" onclick="setAmount(10, this)">£10</button>
+        <button class="donate-amount" onclick="setAmount(25, this)">£25</button>
+        <button class="donate-amount" onclick="setAmount(50, this)">£50</button>
+      </div>
     </div>
-    <div class="donate-amounts">
-      <button class="donate-amount active" onclick="setAmount(5, this)">£5</button>
-      <button class="donate-amount" onclick="setAmount(10, this)">£10</button>
-      <button class="donate-amount" onclick="setAmount(25, this)">£25</button>
-      <button class="donate-amount" onclick="setAmount(50, this)">£50</button>
+    <div class="donate-tile-right">
+      <a id="donate-btn" href="https://buy.stripe.com/bJe7sL0uT3rfeby62R7AI00" target="_blank" class="btn-secondary-dark" style="width:auto;display:inline-block;white-space:nowrap;">Donate £5 →</a>
     </div>
-    <a id="donate-btn" href="https://buy.stripe.com/bJe7sL0uT3rfeby62R7AI00" target="_blank" class="btn-secondary-dark" style="width:auto;display:inline-block;">Donate →</a>
   </div>
 
   <div class="action-section">
