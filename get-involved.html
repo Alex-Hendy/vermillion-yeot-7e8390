@@ -146,7 +146,7 @@
       </div>
     </div>
     <div class="donate-tile-right">
-      <a id="donate-btn" href="https://buy.stripe.com/bJe7sL0uT3rfeby62R7AI00" target="_blank" class="btn-secondary-dark" style="width:auto;display:inline-block;white-space:nowrap;">Donate £5 →</a>
+      <a id="donate-btn" href="https://buy.stripe.com/bJe7sL0uT3rfeby62R7AI00" target="_blank" class="btn-secondary-dark" style="width:140px;text-align:center;display:inline-block;white-space:nowrap;line-height:1.4;">Donate<br><span style="font-size:1.1rem;font-weight:900;">£5 one-off</span></a>
     </div>
   </div>
 
@@ -343,7 +343,10 @@ function setAmount(amount, btn) {
 }
 
 function updateDonateLink() {
-  document.getElementById('donate-btn').href = STRIPE_LINKS[currentFrequency][currentAmount];
+  var btn = document.getElementById('donate-btn');
+  btn.href = STRIPE_LINKS[currentFrequency][currentAmount];
+  var line2 = currentFrequency === 'monthly' ? '£' + currentAmount + ' / month' : '£' + currentAmount + ' one-off';
+  btn.innerHTML = 'Donate<br><span style="font-size:1.1rem;font-weight:900;">' + line2 + '</span>';
 }
 </script>
 </body>
