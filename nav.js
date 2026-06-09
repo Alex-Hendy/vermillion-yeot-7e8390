@@ -21,8 +21,8 @@
       '<li><a href="' + prefix + 'ideas/index.html">The ideas</a></li>' +
       '<li><a href="' + prefix + 'myths/myths-index.html">Myths</a></li>' +
       '<li><a href="' + prefix + 'evidence.html">Evidence</a></li>' +
-      '<li><a href="' + prefix + 'news.html">News</a></li>' +
       '<li><a href="' + prefix + 'get-involved.html" class="nav-cta">Get involved</a></li>' +
+      '<li><a href="' + prefix + 'about/donate.html" class="nav-donate">Donate</a></li>' +
     '</ul>' +
     '<button class="nav-toggle" id="navToggle" onclick="toggleNav()">Menu</button>' +
   '</nav>';
