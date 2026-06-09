@@ -56,12 +56,12 @@
   .email-form input[type="email"] { padding: 0.875rem 1rem; border: 2px solid rgba(255,255,255,0.2); border-radius: 4px; font-size: 0.95rem; font-family: inherit; background: rgba(255,255,255,0.08); color: var(--cream); outline: none; }
   .email-form input[type="email"]:focus { border-color: var(--amber); }
   .email-form input[type="email"]::placeholder { color: rgba(245,237,216,0.4); }
-  .donate-tile { background: var(--amber); border: 2px solid var(--black); border-radius: 12px; padding: 2rem; margin-top: 1.25rem; margin-bottom: 3rem; display: flex; gap: 2rem; align-items: center; }
-  .donate-tile-left { flex: 1; }
-  .donate-tile-right { flex-shrink: 0; display: flex; align-items: center; justify-content: center; }
+  .donate-tile { background: var(--amber); border: 2px solid var(--black); border-radius: 12px; padding: 2rem; margin-top: 1.25rem; margin-bottom: 3rem; display: flex; gap: 2rem; align-items: stretch; }
+  .donate-tile-left { flex: 1; display: flex; flex-direction: column; justify-content: space-between; }
+  .donate-tile-right { flex-shrink: 0; display: flex; align-items: center; justify-content: center; border-left: 2px solid var(--black); padding-left: 2rem; }
   .donate-tile-title { font-family: var(--font-heading); font-size: 1.3rem; font-weight: 900; color: var(--black); margin-bottom: 0.5rem; }
   .donate-tile p { font-size: 0.92rem; color: #3A2808; line-height: 1.75; margin-bottom: 1.25rem; }
-  .donate-toggle { display: flex; gap: 0; margin-bottom: 1.25rem; border: 2px solid var(--black); border-radius: 4px; overflow: hidden; width: fit-content; }
+  .donate-toggle { display: flex; gap: 0; margin-bottom: 0.75rem; border: 2px solid var(--black); border-radius: 4px; overflow: hidden; width: fit-content; }
   .donate-toggle button { padding: 0.5rem 1.25rem; font-size: 0.88rem; font-weight: 700; font-family: inherit; border: none; cursor: pointer; background: transparent; color: var(--black); transition: background 0.15s, color 0.15s; }
   .donate-toggle button.active { background: var(--black); color: var(--amber); }
   .donate-amounts { display: flex; gap: 0.75rem; flex-wrap: wrap; }
@@ -95,7 +95,7 @@
     .signup-grid { grid-template-columns: 1fr; }
     .email-form { flex-direction: column; }
     .donate-tile { flex-direction: column; align-items: stretch; }
-    .donate-tile-right { justify-content: flex-start; }
+    .donate-tile-right { justify-content: flex-start; border-left: none; padding-left: 0; border-top: 2px solid var(--black); padding-top: 1.5rem; }
   }
 </style>
 </head>
