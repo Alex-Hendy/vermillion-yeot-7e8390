@@ -19,20 +19,24 @@
   .content h2:first-child { margin-top: 0; }
   .content p { font-size: 1rem; color: var(--muted); line-height: 1.8; margin-bottom: 1rem; }
   .content a { color: var(--orange); font-weight: 600; }
-  .donate-box { background: var(--cream); border: 2px solid var(--black); border-radius: 12px; padding: 2rem; margin-bottom: 2.5rem; }
-  .donate-toggle { display: flex; gap: 0; margin-bottom: 1.5rem; border: 2px solid var(--black); border-radius: 4px; overflow: hidden; width: fit-content; }
+  .donate-box { background: var(--amber); border: 2px solid var(--black); border-radius: 12px; padding: 2rem; margin-bottom: 2.5rem; display: flex; gap: 2rem; align-items: stretch; }
+  .donate-box-left { flex: 1; display: flex; flex-direction: column; justify-content: space-between; }
+  .donate-box-right { flex-shrink: 0; display: flex; align-items: center; justify-content: center; border-left: 2px solid var(--black); padding-left: 2rem; }
+  .donate-toggle { display: flex; gap: 0; margin-bottom: 0.75rem; border: 2px solid var(--black); border-radius: 4px; overflow: hidden; width: fit-content; }
   .donate-toggle button { padding: 0.6rem 1.5rem; font-size: 0.95rem; font-weight: 700; font-family: inherit; border: none; cursor: pointer; background: transparent; color: var(--black); transition: background 0.15s, color 0.15s; }
   .donate-toggle button.active { background: var(--black); color: var(--amber); }
-  .donate-amounts { display: flex; gap: 0.75rem; flex-wrap: wrap; margin-bottom: 1.5rem; }
+  .donate-amounts { display: flex; gap: 0.75rem; flex-wrap: wrap; }
   .donate-amount { padding: 0.75rem 1.5rem; font-size: 1rem; font-weight: 700; font-family: inherit; border: 2px solid var(--black); border-radius: 4px; background: transparent; color: var(--black); cursor: pointer; transition: background 0.15s, color 0.15s; }
   .donate-amount.active { background: var(--black); color: var(--amber); }
   .donate-amount:hover:not(.active) { background: rgba(26,18,8,0.08); }
-  .donate-cta { display: inline-block; background: var(--amber); color: var(--black); border: 2px solid var(--black); padding: 0.875rem 2rem; border-radius: 4px; font-size: 1rem; font-weight: 700; font-family: inherit; text-decoration: none; transition: background 0.15s, color 0.15s; }
-  .donate-cta:hover { background: var(--black); color: var(--amber); border-color: var(--black); }
-  .donate-note { font-size: 0.82rem; color: var(--muted); margin-top: 0.75rem; }
+  .donate-cta { display: inline-block; background: var(--black); color: var(--amber); border: 2px solid var(--black); padding: 0.875rem 2rem; border-radius: 4px; font-size: 1rem; font-weight: 900; font-family: inherit; text-decoration: none; transition: background 0.15s, color 0.15s; width: 160px; text-align: center; line-height: 1.4; white-space: nowrap; }
+  .donate-cta:hover { background: var(--orange); border-color: var(--orange); color: var(--cream); }
+  .donate-note { font-size: 0.82rem; color: #3A2808; margin-top: 1rem; }
   @media (max-width: 768px) {
     .donate-hero { padding: 3rem 1.25rem 2.5rem; }
     .content { padding: 2.5rem 1.25rem; }
+    .donate-box { flex-direction: column; align-items: stretch; }
+    .donate-box-right { border-left: none; padding-left: 0; border-top: 2px solid var(--black); padding-top: 1.5rem; justify-content: flex-start; }
     .donate-amounts { gap: 0.5rem; }
     .donate-amount { padding: 0.65rem 1.1rem; }
   }
@@ -55,23 +59,29 @@
 
   <h2>Make a donation</h2>
   <div class="donate-box">
-    <div class="donate-toggle">
-      <button class="active" onclick="setFrequency('one-off', this)">One-off</button>
-      <button onclick="setFrequency('monthly', this)">Monthly</button>
+    <div class="donate-box-left">
+      <div>
+        <div class="donate-toggle">
+          <button class="active" onclick="setFrequency('one-off', this)">One-off</button>
+          <button onclick="setFrequency('monthly', this)">Monthly</button>
+        </div>
+        <div class="donate-amounts">
+          <button class="donate-amount active" onclick="setAmount(5, this)">£5</button>
+          <button class="donate-amount" onclick="setAmount(10, this)">£10</button>
+          <button class="donate-amount" onclick="setAmount(25, this)">£25</button>
+          <button class="donate-amount" onclick="setAmount(50, this)">£50</button>
+        </div>
+      </div>
+      <p class="donate-note">You'll be taken to a secure Stripe payment page. We never see your card details.</p>
     </div>
-    <div class="donate-amounts">
-      <button class="donate-amount active" onclick="setAmount(5, this)">£5</button>
-      <button class="donate-amount" onclick="setAmount(10, this)">£10</button>
-      <button class="donate-amount" onclick="setAmount(25, this)">£25</button>
-      <button class="donate-amount" onclick="setAmount(50, this)">£50</button>
+    <div class="donate-box-right">
+      <a id="donate-btn" href="https://buy.stripe.com/bJe7sL0uT3rfeby62R7AI00" target="_blank" class="donate-cta"><span style="font-weight:900;">Donate</span><br><span style="font-size:1.1rem;font-weight:900;">£5 one-off</span></a>
     </div>
-    <a id="donate-btn" href="https://buy.stripe.com/bJe7sL0uT3rfeby62R7AI00" target="_blank" class="donate-cta">Donate £5 →</a>
-    <p class="donate-note">You'll be taken to a secure Stripe payment page. We never see your card details.</p>
   </div>
 
   <h2>How donations are used</h2>
   <p>YIMBY Glasgow's running costs are currently minimal — domain registration and small operational expenses, covered personally by volunteers. Donations go toward expanding the campaign: events, printed materials, outreach, and eventually paid coordination time so the campaign can grow beyond what volunteers alone can sustain.</p>
-  <p>Every donation will be recorded on our <a href="funding.html">funding page</a>. We will never accept money from anyone with a direct financial interest in planning decisions or housing development in Glasgow.</p>
+  <p>Every donation will be recorded on our <a href="funding.html">funding page</a>.</p>
 
   <h2>Other ways to help</h2>
   <p>The most valuable thing you can do right now costs nothing: respond to planning applications, write to your councillor, share the myth-busting pages, and talk to people. See our <a href="../get-involved.html">get involved page</a> for specifics.</p>
@@ -115,8 +125,8 @@ function setAmount(amount, btn) {
 function updateDonateLink() {
   var btn = document.getElementById('donate-btn');
   btn.href = STRIPE_LINKS[currentFrequency][currentAmount];
-  var label = currentFrequency === 'monthly' ? 'Donate £' + currentAmount + '/month →' : 'Donate £' + currentAmount + ' →';
-  btn.textContent = label;
+  var line2 = currentFrequency === 'monthly' ? '£' + currentAmount + ' / month' : '£' + currentAmount + ' one-off';
+  btn.innerHTML = '<span style="font-weight:900;">Donate</span><br><span style="font-size:1.1rem;font-weight:900;">' + line2 + '</span>';
 }
 </script>
 </body>
